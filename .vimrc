@@ -6,10 +6,10 @@ set incsearch		" do incremental searching
 set mouse=a
 
 set autoindent	    " Auto-indent new lines
-set shiftwidth=4	" Number of auto-indent spaces
+set shiftwidth=4    " Number of auto-indent spaces
 set smartindent	    " Enable smart-indent
 set smarttab	    " Enable smart-tabs
-set softtabstop=4	" Number of spaces per Tabset errorbells
+set softtabstop=4   " Number of spaces per Tabset errorbells
 
 set hlsearch	" Highlight all search results
 set smartcase	" Enable smart-case search
@@ -52,7 +52,11 @@ endfunction
 noremap <F5> :call Cecp()<cr>
 noremap <S-F5> :call Cecp()
 " autocmds
-autocmd BufEnter * silent! lcd %:p:h
+" autocmd BufEnter * silent! lcd %:p:h
+if has("autocmd")
+    autocmd BufRead *.sql set filetype=mysql      
+    autocmd BufRead *.test set filetype=mysql
+endif
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -81,20 +85,20 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " color scheme
+let g:gruvbox_italic = 1
 color gruvbox
 set background=dark
 " nerd tree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeChDirMode = 2
 " super tab
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc','&completefunc']
 let g:SuperTabRetainCompletionType=2
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = '▸'
-let g:airline#extensions#tabline#left_alt_sep = '>'
