@@ -1,44 +1,129 @@
-" settings
-set history=50		" keep 50 lines of command line history
-set ruler		    " show the cursor position all the time
-set showcmd		    " display incomplete commands
-set incsearch		" do incremental searching
-set mouse=a
+source ~/.plugins.vim
 
-set autoindent	    " Auto-indent new lines
-set shiftwidth=4    " Number of auto-indent spaces
-set smartindent	    " Enable smart-indent
-set smarttab	    " Enable smart-tabs
-set softtabstop=4   " Number of spaces per Tabset errorbells
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+abbr W w
 
-set hlsearch	" Highlight all search results
-set smartcase	" Enable smart-case search
-set ignorecase	" Always case-insensitive
-set incsearch   " Searches for strings incrementally
+set history=1000 " keep 50 lines of command line history
+set ruler " show the cursor position all the time
+set showcmd " display incomplete commands
+set autoread " detect when a file is changed
 
-set number
-set novisualbell
-set showmatch
+set backupdir=~/.vim-tmp,~/.tmp,/var/tmp,/tmp " the .swp files goes here
+
 set undolevels=1000
-set showtabline=2
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" User Interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax on
 set t_Co=256
 
+let g:gruvbox_italic = 1
+color gruvbox
+set background=dark
+
+"set number
+set relativenumber
+
+set autoindent " Auto-indent new lines
+set smartindent " Enable smart-indent
+
+set list
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set showbreak=↪
+
+" highlight conflicts
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+" tab control
+set smarttab " Enable smart-tabs respect 'tabstop', 'shiftwidth', and 'softtabstop'
+set shiftwidth=4 " Number of auto-indent spaces
+set softtabstop=4 " Edit as if the tabs are 4 characters wide
+set tabstop=4 " the visible width of tabs
+set shiftround " round indent to a multiple of 'shiftwidth'
+set completeopt+=longest
+
+" code folding settings
+set foldnestmax=10          " deepest fold is 10 levels
+set nofoldenable            " don't fold by default
+"set foldmethod=syntax       " fold based on indent
+set foldlevel=1
+
+set clipboard=unnamed
+
+set ttyfast " faster redrawing
+set laststatus=2 " show the status line at all times
+set wildmenu " enchance command line completion
+set wildmode=list:longest " complete files like a shell
+set cmdheight=1 " command bar height
+set title
+
+" searching
+set hlsearch " Highlight all search results
+set smartcase " Enable smart-case search
+set ignorecase " Always case-insensitive
+set incsearch " Searches for strings incrementally
+set nolazyredraw " don't redraw while executing macros
+set incsearch " do incremental searching
+
+set showmatch               " show matching braces
+set mat=2                   " how many tenths of a second to blink
+
+" error bells
+set noerrorbells
+set visualbell
+set t_vb=
+set tm=200
+
+if has('mouse')
+    set mouse=a " to ignore the mouse ->"set mouse="
+    " set ttymouse=xterm2
+endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " key mapping
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = ','
+
+inoremap kl <esc>
+
+" shortcut to save
+nmap <leader>, :w<cr>
+
+" set paste toggle
+set pastetoggle=<leader>v
+
+vnoremap . :normal .<cr>
+
+" scroll the viewport faster
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
 noremap ç l
 noremap l k
 noremap k j
 noremap j h
-nnoremap <BS> i<bs>
+
+nmap <C-w>j <C-w><left>
+nmap <C-w>k <C-w><down>
+nmap <C-w>l <C-w><up>
+nmap <C-w>ç <C-w><right>
+
+nnoremap <BS> i<bs><esc><right>
 nmap <F4> :b#<cr>
-nmap <F8> :so $MYVIMRC<cr>
+" source the .vimrc (again) ~ reload the configs
+noremap <F8> :so $MYVIMRC<cr>
 nnoremap <space> za
 vnoremap <space> zf
 map <F2> :bp<CR>
 map <F3> :bn<CR>
-
-map <F12> :tabe ~/.vimrc<CR>
-map <S-F12> :tabclose<cr>
+noremap <S-F5> :bd<CR>
+noremap <F5> :Bclose<CR>
+map <F12> :tabe $MYVIMRC<CR>
+map <S-F12> :bd<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compiler Function
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Cecp(...)
     if expand('%:e') ==? "py"
 	if (a:0 > 0)
@@ -47,52 +132,28 @@ function! Cecp(...)
 	else
 	    execute ":!python ".expand('%:p')
 	endif
+    elseif expand('%:e') ==? "sql"
+	execute ":!mysql -p < ".expand('%:p')
     endif
 endfunction
-noremap <F5> :call Cecp()<cr>
-noremap <S-F5> :call Cecp()
+noremap <F6> :call Cecp()<cr>
+noremap <S-F6> :call Cecp()
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmds
-" autocmd BufEnter * silent! lcd %:p:h
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
     autocmd BufRead *.sql set filetype=mysql      
     autocmd BufRead *.test set filetype=mysql
 endif
-
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'morhetz/gruvbox' " colorscheme
-Plugin 'tpope/vim-fugitive' 
-Plugin 'scrooloose/nerdtree'
-Plugin 'ervandew/supertab'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'scrooloose/syntastic'
-Plugin 'joonty/vdebug'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'taglist.vim'
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-" filetype plugin on
-" :PluginUpdate
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-" color scheme
-let g:gruvbox_italic = 1
-color gruvbox
-set background=dark
-" nerd tree
+" autocmd BufEnter * silent! lcd %:p:h
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-map <C-n> :NERDTreeToggle<CR>
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins Configs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nerd tree
+map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeChDirMode = 2
@@ -100,5 +161,28 @@ let g:NERDTreeChDirMode = 2
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc','&completefunc']
 let g:SuperTabRetainCompletionType=2
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1
+"let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = '☰'
+"let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-markdown-preview
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let vim_markdown_preview_hotkey='<C-m>'
