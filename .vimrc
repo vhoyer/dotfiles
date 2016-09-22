@@ -4,6 +4,7 @@ source ~/.plugins.vim
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 abbr W w
+abbr Q q
 
 set history=1000 " keep 50 lines of command line history
 set ruler " show the cursor position all the time
@@ -23,7 +24,7 @@ let g:gruvbox_italic = 1
 color gruvbox
 set background=dark
 
-"set number
+set number
 set relativenumber
 
 set autoindent " Auto-indent new lines
@@ -64,7 +65,7 @@ set hlsearch " Highlight all search results
 set smartcase " Enable smart-case search
 set ignorecase " Always case-insensitive
 set incsearch " Searches for strings incrementally
-set nolazyredraw " don't redraw while executing macros
+"set nolazyredraw " don't redraw while executing macros
 set incsearch " do incremental searching
 
 set showmatch               " show matching braces
@@ -83,12 +84,10 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " key mapping
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader = ','
-
 inoremap kl <esc>
 
 " shortcut to save
-nmap <leader>, :w<cr>
+nmap <leader>\ :w<cr>
 
 " set paste toggle
 set pastetoggle=<leader>v
@@ -112,7 +111,7 @@ nmap <C-w>ç <C-w><right>
 nnoremap <BS> i<bs><esc><right>
 nmap <F4> :b#<cr>
 " source the .vimrc (again) ~ reload the configs
-noremap <F8> :so $MYVIMRC<cr>
+nnoremap <F8> :so $MYVIMRC<cr>
 nnoremap <space> za
 vnoremap <space> zf
 map <F2> :bp<CR>
@@ -150,21 +149,29 @@ autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins Configs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeChDirMode = 2
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " super tab
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc','&completefunc']
 let g:SuperTabRetainCompletionType=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-markdown-preview
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let vim_markdown_preview_hotkey='<C-m>'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
 "let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
 "let g:airline_right_sep = '«'
@@ -181,8 +188,3 @@ let g:airline_symbols.paste = 'ρ'
 "let g:airline_symbols.paste = '∥'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = '∄'
-let g:airline_symbols.whitespace = 'Ξ'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-markdown-preview
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let vim_markdown_preview_hotkey='<C-m>'
