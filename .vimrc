@@ -31,11 +31,9 @@ set autoindent " Auto-indent new lines
 set smartindent " Enable smart-indent
 
 set list
-set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-set showbreak=↪
-
-" highlight conflicts
-match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+set listchars=tab:⋮\ ,eol:¬,trail:•,extends:❯,precedes:❮
+"set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+"set showbreak=↪
 
 " tab control
 set smarttab " Enable smart-tabs respect 'tabstop', 'shiftwidth', and 'softtabstop'
@@ -124,16 +122,16 @@ map <S-F12> :bd<cr>
 " Compiler Function
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Cecp(...)
-    if expand('%:e') ==? "py"
+	if expand('%:e') ==? "py"
 	if (a:0 > 0)
-	    let arg = join(a:000, " ")
-	    execute ":!python ".expand('%:p')." ".arg
+		let arg = join(a:000, " ")
+		execute ":!python ".expand('%:p')." ".arg
 	else
-	    execute ":!python ".expand('%:p')
+		execute ":!python ".expand('%:p')
 	endif
-    elseif expand('%:e') ==? "sql"
+	elseif expand('%:e') ==? "sql"
 	execute ":!mysql -p < ".expand('%:p')
-    endif
+	endif
 endfunction
 noremap <F6> :call Cecp()<cr>
 noremap <S-F6> :call Cecp()
@@ -182,7 +180,7 @@ let g:airline_symbols.linenr = '␤'
 "let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.maxlinenr = '☰'
 "let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.branch = '⎇ '
 let g:airline_symbols.paste = 'ρ'
 "let g:airline_symbols.paste = 'Þ'
 "let g:airline_symbols.paste = '∥'
