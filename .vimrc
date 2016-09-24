@@ -76,19 +76,29 @@ set t_vb=
 set tm=200
 
 if has('mouse')
-    set mouse=a " to ignore the mouse ->"set mouse="
+    set mouse=nv " to ignore the mouse ->"set mouse="
     " set ttymouse=xterm2
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " key mapping
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Avoiding the <esc>
 inoremap kl <esc>
+cmap <C-space> <C-c>
 
-" shortcut to save
+" close things after inserting them
+inoremap [ []<esc>i
+inoremap ( ()<esc>i
+inoremap { {<esc>o}<esc>O
+inoremap < <><esc>i
+inoremap " ""<esc>i
+
 nmap <leader>\ :w<cr>
+nmap <leader>; \pA;<esc>\p
 
 " set paste toggle
-set pastetoggle=<leader>v
+"nnoremap \p :set invpaste<cr>
+set pastetoggle=<leader>p
 
 vnoremap . :normal .<cr>
 
@@ -96,6 +106,7 @@ vnoremap . :normal .<cr>
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
+" movimento
 noremap ç l
 noremap l k
 noremap k j
@@ -108,18 +119,21 @@ nmap <C-w>ç <C-w><right>
 
 nnoremap <BS> i<bs><esc><right>
 nmap <F4> :b#<cr>
+
 " source the .vimrc (again) ~ reload the configs
 nnoremap <F8> :so $MYVIMRC<cr>
+noremap <silent> <leader>w <esc>:set wrap!<cr>
 nnoremap <space> za
 vnoremap <space> zf
 map <F2> :bp<CR>
 map <F3> :bn<CR>
 noremap <S-F5> :bd<CR>
-noremap <F5> :Bclose<CR>
-map <F12> :tabe $MYVIMRC<CR>
-map <S-F12> :bd<cr>
+noremap <F5> :Bclose<CR>:enew<cr>
+"Linux only due filesys
+map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
+map <S-F12> :bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Compiler Function
+" Function
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Cecp(...)
 	if expand('%:e') ==? "py"
@@ -135,6 +149,18 @@ function! Cecp(...)
 endfunction
 noremap <F6> :call Cecp()<cr>
 noremap <S-F6> :call Cecp()
+
+" this works just in vim standalone {{{
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+"}}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmds
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""

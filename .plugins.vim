@@ -19,6 +19,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'taglist.vim'
 Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'vadimr/bclose.vim'
 " Plugin 'siminino/vim-autoprefixer'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
