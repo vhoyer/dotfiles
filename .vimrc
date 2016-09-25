@@ -11,7 +11,8 @@ set ruler " show the cursor position all the time
 set showcmd " display incomplete commands
 set autoread " detect when a file is changed
 
-set backupdir=~/.vim-tmp,~/.tmp,/var/tmp,/tmp " the .swp files goes here
+set backupdir=~/.vim-tmp// ",~/.tmp/,/var/tmp/,/tmp/ " the .swp files goes here
+set directory=~/.vim-tmp// ",~/.tmp/,/var/tmp/,/tmp/
 
 set undolevels=1000
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -31,8 +32,8 @@ set autoindent " Auto-indent new lines
 set smartindent " Enable smart-indent
 
 set list
-set listchars=tab:⋮\ ,eol:¬,trail:•,extends:❯,precedes:❮
-"set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set listchars=tab:┆\ ,eol:¬,trail:•,extends:❯,precedes:❮
+"set listchars=tab:→⋮ ┆,eol:¬,trail:⋅•
 "set showbreak=↪
 
 " tab control
@@ -76,35 +77,33 @@ set t_vb=
 set tm=200
 
 if has('mouse')
-    set mouse=nv " to ignore the mouse ->"set mouse="
-    " set ttymouse=xterm2
+	set mouse=nv " to ignore the mouse ->"set mouse="
+	" set ttymouse=xterm2
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " key mapping
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = "\<Space>"
 "Avoiding the <esc>
 inoremap kl <esc>
 cmap <C-space> <C-c>
 
 " close things after inserting them
 inoremap [ []<esc>i
-inoremap ( ()<esc>i
-inoremap { {<esc>o}<esc>O
 inoremap < <><esc>i
-inoremap " ""<esc>i
 
-nmap <leader>\ :w<cr>
-nmap <leader>; \pA;<esc>\p
+noremap <leader>s :w<cr>
 
 " set paste toggle
-"nnoremap \p :set invpaste<cr>
-set pastetoggle=<leader>p
+nnoremap <silent> \p :set invpaste<cr>
+"set pastetoggle="\p"
 
 vnoremap . :normal .<cr>
+vnoremap kl <esc>
 
 " scroll the viewport faster
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
+nnoremap K 2<C-e>
+nnoremap L 2<C-y>
 
 " movimento
 noremap ç l
@@ -112,39 +111,42 @@ noremap l k
 noremap k j
 noremap j h
 
-nmap <C-w>j <C-w><left>
-nmap <C-w>k <C-w><down>
-nmap <C-w>l <C-w><up>
-nmap <C-w>ç <C-w><right>
+nnoremap <leader>j <C-w><left>
+nnoremap <leader>k <C-w><down>
+nnoremap <leader>l <C-w><up>
+nnoremap <leader>ç <C-w><right>
 
 nnoremap <BS> i<bs><esc><right>
 nmap <F4> :b#<cr>
 
-" source the .vimrc (again) ~ reload the configs
-nnoremap <F8> :so $MYVIMRC<cr>
-noremap <silent> <leader>w <esc>:set wrap!<cr>
+noremap <leader>n mygg=G`y
+nnoremap <leader>e :q<cr>
+noremap <C-w> <esc>:set wrap!<cr>
 nnoremap <space> za
 vnoremap <space> zf
 map <F2> :bp<CR>
 map <F3> :bn<CR>
-noremap <S-F5> :bd<CR>
-noremap <F5> :Bclose<CR>:enew<cr>
+noremap Q <nop>
+noremap <leader>Q :bd<CR>
+noremap <leader>q :Bclose<CR>:enew<cr>
 "Linux only due filesys
 map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
 map <S-F12> :bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr>
+" source the .vimrc (again) ~ reload the configs
+nnoremap <F8> :so $MYVIMRC<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Cecp(...)
 	if expand('%:e') ==? "py"
-	if (a:0 > 0)
-		let arg = join(a:000, " ")
-		execute ":!python ".expand('%:p')." ".arg
-	else
-		execute ":!python ".expand('%:p')
-	endif
+		if (a:0 > 0)
+			let arg = join(a:000, " ")
+			execute ":!python ".expand('%:p')." ".arg
+		else
+			execute ":!python ".expand('%:p')
+		endif
 	elseif expand('%:e') ==? "sql"
-	execute ":!mysql -p < ".expand('%:p')
+		execute ":!mysql -p < ".expand('%:p')
 	endif
 endfunction
 noremap <F6> :call Cecp()<cr>
@@ -156,17 +158,17 @@ let &t_EI .= "\<Esc>[?2004l"
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 function! XTermPasteBegin()
-  set pastetoggle=<Esc>[201~
-  set paste
-  return ""
+	set pastetoggle=<Esc>[201~
+	set paste
+	return ""
 endfunction
 "}}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmds
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
-    autocmd BufRead *.sql set filetype=mysql      
-    autocmd BufRead *.test set filetype=mysql
+	autocmd BufRead *.sql set filetype=mysql      
+	autocmd BufRead *.test set filetype=mysql
 endif
 " autocmd BufEnter * silent! lcd %:p:h
 autocmd StdinReadPre * let s:std_in=1
