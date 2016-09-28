@@ -92,24 +92,38 @@ cmap <C-space> <C-c>
 inoremap [ []<esc>i
 inoremap < <><esc>i
 
-noremap <leader>s :w<cr>
+" windows
+nnoremap <silent> <leader>h <esc>:split<cr>
+nnoremap <silent> <leader>H <esc>:vsplit<cr>
+nnoremap <up> <C-w>-
+nnoremap <down> <C-w>+
+nnoremap <left> <C-w><
+nnoremap <right> <C-w>>
+
 
 " set paste toggle
 nnoremap <silent> \p :set invpaste<cr>
-"set pastetoggle="\p"
+" set pastetoggle="\p"
 
 vnoremap . :normal .<cr>
-vnoremap kl <esc>
+vnoremap <leader><leader> <esc>
 
 " scroll the viewport faster
 nnoremap K 2<C-e>
 nnoremap L 2<C-y>
+
+" Code Folding
+nnoremap <leader>f <esc>za
+vnoremap <leader>f <esc>zf
 
 " movimento
 noremap ç l
 noremap l k
 noremap k j
 noremap j h
+
+noremap J 0
+noremap Ç $
 
 nnoremap <leader>j <C-w><left>
 nnoremap <leader>k <C-w><down>
@@ -119,11 +133,10 @@ nnoremap <leader>ç <C-w><right>
 nnoremap <BS> i<bs><esc><right>
 nmap <F4> :b#<cr>
 
-noremap <leader>n mygg=G`y
+noremap <leader>s :w<cr>
+noremap <leader>n <esc>mygg=G`y
 nnoremap <leader>e :q<cr>
-noremap <C-w> <esc>:set wrap!<cr>
-nnoremap <space> za
-vnoremap <space> zf
+nnoremap W <esc>:set wrap!<cr>
 map <F2> :bp<CR>
 map <F3> :bn<CR>
 noremap Q <nop>
