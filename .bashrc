@@ -143,3 +143,5 @@ else
 	export PS1="$bgcolor$fgcolor\u@\h:\e[38;2;135;175;135m\w\e[38;2;135;175;175m $(__git_ps1 "%s")\n\r$fgcolor\$ "
 fi
 export PS2="$bgcolor$fgcolor> "
+echo -e "$bgcolor$fgcolor"
+clear
