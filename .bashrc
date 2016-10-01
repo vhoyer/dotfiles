@@ -127,3 +127,14 @@ export ANDROIDAPI="14"  # Minimum API version your application require
 # I don't really know what I am doing...
 stty -ixon
 export ANDROIDNDKVER="r10e"  # Version of the NDK you installed
+
+# colors
+export bgcolor="\e[48;2;38;38;38m" #hex:262626
+export fgcolor="\e[38;2;255;215;175m" #hex:FFD7AF
+# current working directory (\w) .................... - hex:87AF87
+# current branch on git [if any] $(__git_ps1 "%s") .. - hex:87AFAF
+export PS1="$bgcolor$fgcolor\u@\h:\e[38;2;135;175;135m\w\e[38;2;135;175;175m $(__git_ps1 "%s")\n\r$fgcolor\$ "
+export PS2="$bgcolor$fgcolor> "
+
+#navigate to home
+cd $HOME
