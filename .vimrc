@@ -125,8 +125,8 @@ noremap l k
 noremap k j
 noremap j h
 
-noremap J 0
-noremap Ç ^
+noremap J ^
+noremap Ç $
 
 nnoremap <leader>j <C-w><left>
 nnoremap <leader>k <C-w><down>
