@@ -91,10 +91,6 @@ let mapleader = "\<Space>"
 inoremap kl <esc>
 cmap <C-space> <C-c>
 
-" close things after inserting them
-inoremap [ []<esc>i
-inoremap < <><esc>i
-
 " windows
 nnoremap <silent> <leader>h <esc>:split<cr>
 nnoremap <silent> <leader>H <esc>:vsplit<cr>
@@ -102,7 +98,6 @@ nnoremap <up> <C-w>-
 nnoremap <down> <C-w>+
 nnoremap <left> <C-w><
 nnoremap <right> <C-w>>
-
 
 " set paste toggle
 nnoremap <silent> \p :set invpaste<cr>
@@ -137,6 +132,8 @@ nnoremap <BS> i<bs><esc><right>
 nmap <F4> :b#<cr>
 
 nnoremap ~ g~
+noremap <C-k> :tabprevious<cr>
+noremap <C-l> :tabNext<cr>
 noremap <leader>s :w<cr>
 noremap <leader>n <esc>mygg=G`y
 nnoremap <leader>e :q<cr>
@@ -192,17 +189,33 @@ function! TwiddleCase(str)
   return result
 endfunction
 vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgvl
+"turn "Close thigs after inserting then" shortcut on if filetype html or xml
+function! InrmapCloseThings()
+	inoremap < <
+	inoremap " "
+	inoremap [ [
+	inoremap { {
+	if &filetype ==? 'html' || &filetype ==? 'xml' || &filetype ==? 'vim'
+		inoremap < <><left>
+	elseif &filetype ==? 'cs'
+		inoremap " ""<left>
+		inoremap [ []<left>
+		inoremap {{ {<esc>o}<esc>O
+	endif
+endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmds
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
-	autocmd BufRead *.sql set filetype=mysql      
-	autocmd BufRead *.test set filetype=mysql
+	autocmd BufNewFile,BufRead *.sql set filetype=mysql      
+	autocmd BufNewFile,BufRead *.test set filetype=mysql
+	autocmd BufEnter,BufNewFile,BufRead *.aspx set filetype=html
+	"autocmd BufEnter * silent! lcd %:p:h
+	autocmd BufEnter * call InrmapCloseThings()
+	autocmd StdinReadPre * let s:std_in=1
+	"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+	"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 endif
-" autocmd BufEnter * silent! lcd %:p:h
-autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
