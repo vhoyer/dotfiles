@@ -129,7 +129,9 @@ stty -ixon
 export ANDROIDNDKVER="r10e"  # Version of the NDK you installed
 
 #navigate to home
-cd $HOME
+if [[ "$OSTYPE" == "msys" ]]; then
+	cd $HOME
+fi
 
 # colors
 export bgcolor="\e[48;2;38;38;38m" #hex:262626

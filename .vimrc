@@ -131,21 +131,22 @@ nnoremap <leader>ç <C-w><right>
 nnoremap <BS> i<bs><esc><right>
 nmap <F4> :b#<cr>
 
+noremap <leader>p <esc>:CtrlP<cr>
 nnoremap ~ g~
-noremap <C-k> :tabprevious<cr>
-noremap <C-l> :tabNext<cr>
+noremap <C-k> :bp<CR>
+noremap <C-l> :bn<CR>
+noremap <F2>  :tabprevious<cr>
+noremap <F3>  :tabNext<cr>
 noremap <leader>s :w<cr>
 noremap <leader>n <esc>mygg=G`y
-nnoremap <leader>e :q<cr>
+nnoremap <leader>e :bd<cr>
 nnoremap W <esc>:set wrap!<cr>
-map <F2> :bp<CR>
-map <F3> :bn<CR>
 noremap Q <nop>
-noremap <leader>Q :bd<CR>
+noremap <leader>Q :q<CR>
 noremap <leader>q :Bclose<CR>:enew<cr>
 "Linux only due filesys
 map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
-map <S-F12> :bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr>
+map <S-F12> :bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr><F8>
 " source the .vimrc (again) ~ reload the configs
 nnoremap <F8> :so $MYVIMRC<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -179,26 +180,32 @@ endfunction
 "}}}
 " visualy toggling case of words
 function! TwiddleCase(str)
-  if a:str ==# toupper(a:str)
-    let result = tolower(a:str)
-  elseif a:str ==# tolower(a:str)
-    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
-  else
-    let result = toupper(a:str)
-  endif
-  return result
+	if a:str ==# toupper(a:str)
+		let result = tolower(a:str)
+	elseif a:str ==# tolower(a:str)
+		let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+	else
+		let result = toupper(a:str)
+	endif
+	return result
 endfunction
 vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgvl
 "turn "Close thigs after inserting then" shortcut on if filetype html or xml
 function! InrmapCloseThings()
 	inoremap < <
 	inoremap " "
+	inoremap ' '
+	inoremap ( (
 	inoremap [ [
 	inoremap { {
+	inoremap \\ \\
 	if &filetype ==? 'html' || &filetype ==? 'xml' || &filetype ==? 'vim'
 		inoremap < <><left>
+		inoremap ' ''<left>
+		inoremap \\ /
 	elseif &filetype ==? 'cs'
 		inoremap " ""<left>
+		inoremap ( ()<left>
 		inoremap [ []<left>
 		inoremap {{ {<esc>o}<esc>O
 	endif
@@ -256,3 +263,13 @@ let g:airline_symbols.paste = 'ρ'
 "let g:airline_symbols.paste = '∥'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = '∄'
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctrl-p
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:ctrlp_map = '<leader>p'
+"let g:ctrlp_prompt_mappings = {
+	"\ 'PrtSelectMove("j")': '<C-k>',
+	"\ 'PrtSelectMove("k")': '<C-l>',
+	"\ 'MarkToOpen()':         ['<c-z>'],
+	"\ 'OpenMulti()':          ['<c-o>']
+	"\ }
