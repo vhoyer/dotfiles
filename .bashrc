@@ -134,16 +134,19 @@ if [[ "$OSTYPE" == "msys" ]]; then
 fi
 
 # colors
-export bgcolor="\e[48;2;38;38;38m" #hex:262626
-export fgcolor="\e[38;2;255;215;175m" #hex:FFD7AF
+export bgcolor="\[\e[48;2;38;38;38m\]" #hex:262626
+export fgcolor="\[\e[38;2;255;215;175m\]" #hex:FFD7AF
 # current working directory (\w) .................... - hex:87AF87
 # current branch on git [if any] $(__git_ps1 "%s") .. - hex:87AFAF
-if [[ "$(__git_ps1 "%s")" == *"command not found"* ]]
-then
-	export PS1="$bgcolor$fgcolor\u@\h:\e[38;2;135;175;135m\w\e[38;2;135;175;175m\n\r$fgcolor\$ "
-else
-	export PS1="$bgcolor$fgcolor\u@\h:\e[38;2;135;175;135m\w\e[38;2;135;175;175m $(__git_ps1 "%s")\n\r$fgcolor\$ "
-fi
-export PS2="$bgcolor$fgcolor> "
+
+#if [[ "$(__git_ps1 "%s")" == *"command not found"* ]]
+#then
+	#export PS1="$bgcolor$fgcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\]\n$fgcolor\@\$ "
+#else
+	export PS1="$bgcolor$fgcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\] $(__git_ps1 "%s")\n$fgcolor\@\$ "
+#fi
+
+export PS2="$bgcolor$fgcolor\@> "
+
 echo -e "$bgcolor$fgcolor"
 clear

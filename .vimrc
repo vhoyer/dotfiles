@@ -1,5 +1,5 @@
 " create backup dir if it doesn't exists
-silent !mkdir ~/.vim_backup > /dev/null 2>&1
+silent !mkdir ~/.vim-tmp/ > /dev/null 2>&1
 " load Plugins
 source ~/.plugins.vim
 
