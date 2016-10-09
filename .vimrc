@@ -120,8 +120,10 @@ noremap l k
 noremap k j
 noremap j h
 
-noremap J ^
-noremap Ç $
+noremap J b
+noremap Ç w
+noremap <leader>J ^
+noremap <leader>Ç $
 
 nnoremap <leader>j <C-w><left>
 nnoremap <leader>k <C-w><down>
@@ -138,7 +140,7 @@ noremap <C-l> :bn<CR>
 noremap <F2>  :tabprevious<cr>
 noremap <F3>  :tabNext<cr>
 noremap <leader>s :w<cr>
-noremap <leader>n <esc>mygg=G`y
+noremap <C-n> <esc>mygg=G`y
 nnoremap <leader>e :bd<cr>
 nnoremap W <esc>:set wrap!<cr>
 noremap Q <nop>
@@ -146,7 +148,7 @@ noremap <leader>Q :q<CR>
 noremap <leader>q :Bclose<CR>:enew<cr>
 "Linux only due filesys
 map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
-map <S-F12> :bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr><F8>
+map <S-F12> :wa<cr>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr><F8>
 " source the .vimrc (again) ~ reload the configs
 nnoremap <F8> :so $MYVIMRC<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -226,7 +228,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-n> :NERDTreeToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeChDirMode = 2
