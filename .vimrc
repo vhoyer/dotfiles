@@ -141,14 +141,17 @@ noremap <F2>  :tabprevious<cr>
 noremap <F3>  :tabNext<cr>
 noremap <leader>s :w<cr>
 noremap <C-n> <esc>mygg=G`y
-nnoremap <leader>e :bd<cr>
 nnoremap W <esc>:set wrap!<cr>
 noremap Q <nop>
-noremap <leader>Q :q<CR>
-noremap <leader>q :Bclose<CR>:enew<cr>
+nnoremap <leader>e :bd<cr>
+nnoremap <leader>ee :bd!<cr>
+nnoremap <leader>Q :q<CR>
+nnoremap <leader>QQ :q!<cr>
+nnoremap <leader>q :Bclose<CR>:enew<cr>
+nnoremap <leader>qq :Bclose!<CR>:enew<cr>
 "Linux only due filesys
 map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
-map <S-F12> :wa<cr>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr><F8>
+map <S-F12> <esc><F8>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr>
 " source the .vimrc (again) ~ reload the configs
 nnoremap <F8> :so $MYVIMRC<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
