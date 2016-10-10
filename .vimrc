@@ -94,8 +94,8 @@ cmap <C-space> <C-c>
 " windows
 nnoremap <silent> <leader>h <esc>:split<cr>
 nnoremap <silent> <leader>H <esc>:vsplit<cr>
-nnoremap <up> <C-w>-
-nnoremap <down> <C-w>+
+nnoremap <up> <C-w>+
+nnoremap <down> <C-w>-
 nnoremap <left> <C-w><
 nnoremap <right> <C-w>>
 
@@ -103,16 +103,16 @@ nnoremap <right> <C-w>>
 nnoremap <silent> \p :set invpaste<cr>
 " set pastetoggle="\p"
 
-vnoremap . :normal .<cr>
+vnoremap ´ :normal .<cr>
 vnoremap <leader><leader> <esc>
 
 " scroll the viewport faster
-nnoremap K 2<C-e>
-nnoremap L 2<C-y>
+noremap K 2<C-e>
+noremap L 2<C-y>
 
 " Code Folding
 nnoremap <leader>f <esc>za
-vnoremap <leader>f <esc>zf
+vnoremap <leader>f zf
 
 " movimento
 noremap ç l
@@ -130,30 +130,33 @@ nnoremap <leader>k <C-w><down>
 nnoremap <leader>l <C-w><up>
 nnoremap <leader>ç <C-w><right>
 
-nnoremap <BS> i<bs><esc><right>
-nmap <F4> :b#<cr>
 
-noremap <leader>p <esc>:CtrlP<cr>
-nnoremap ~ g~
+noremap ´ .
+noremap Q <nop>
+noremap <leader>g `
+noremap <F2> :tabprevious<cr>
+noremap <F3> :tabNext<cr>
+noremap <F4> :b#<cr>
 noremap <C-k> :bp<CR>
 noremap <C-l> :bn<CR>
-noremap <F2>  :tabprevious<cr>
-noremap <F3>  :tabNext<cr>
-noremap <leader>s :w<cr>
 noremap <C-n> <esc>mygg=G`y
+noremap <leader>s <esc>:w<cr>
+noremap <leader>p <esc>:CtrlP<cr>
+
+nnoremap ~ g~
 nnoremap W <esc>:set wrap!<cr>
-noremap Q <nop>
-nnoremap <leader>e :bd<cr>
-nnoremap <leader>ee :bd!<cr>
-nnoremap <leader>Q :q<CR>
-nnoremap <leader>QQ :q!<cr>
+nnoremap <BS> i<bs><esc><right>
 nnoremap <leader>q :Bclose<CR>:enew<cr>
-nnoremap <leader>qq :Bclose!<CR>:enew<cr>
+nnoremap <leader>qq :bd<cr>
+nnoremap <leader>Q :Bclose!<CR>:enew<cr>
+nnoremap <leader>QQ :bd!<cr>
+nnoremap <leader>e :q<CR>
+nnoremap <leader>E :q!<cr>
 "Linux only due filesys
 map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
 map <S-F12> <esc><F8>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr>
-" source the .vimrc (again) ~ reload the configs
-nnoremap <F8> :so $MYVIMRC<cr>
+"source the .vimrc (again) ~ reload the configs
+noremap <F8> :so $MYVIMRC<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -203,6 +206,7 @@ function! InrmapCloseThings()
 	inoremap ( (
 	inoremap [ [
 	inoremap { {
+	inoremap {{ {{
 	inoremap \\ \\
 	if &filetype ==? 'html' || &filetype ==? 'xml' || &filetype ==? 'vim'
 		inoremap < <><left>
@@ -213,6 +217,10 @@ function! InrmapCloseThings()
 		inoremap ( ()<left>
 		inoremap [ []<left>
 		inoremap {{ {<esc>o}<esc>O
+	elseif &filetype ==? 'mysql'
+		inoremap ( ()<left>
+		inoremap (( (<esc>o);<esc>O<tab>
+		inoremap ' ''<left>
 	endif
 endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -225,6 +233,8 @@ if has("autocmd")
 	"autocmd BufEnter * silent! lcd %:p:h
 	autocmd BufEnter * call InrmapCloseThings()
 	autocmd StdinReadPre * let s:std_in=1
+	autocmd BufWrite,VimLeave *.* mkview
+	autocmd BufRead *.* silent loadview
 	"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 	"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 endif
