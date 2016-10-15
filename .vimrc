@@ -152,9 +152,11 @@ nnoremap <leader>Q :Bclose!<CR>:enew<cr>
 nnoremap <leader>QQ :bd!<cr>
 nnoremap <leader>e :q<CR>
 nnoremap <leader>E :q!<cr>
+nnoremap <leader>ee :qa<cr>
+nnoremap <leader>EE :qa!<cr>
 "Linux only due filesys
 map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
-map <S-F12> <esc><F8>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr>
+map <S-F12> <esc>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr><F8>
 "source the .vimrc (again) ~ reload the configs
 noremap <F8> :so $MYVIMRC<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -203,24 +205,36 @@ function! InrmapCloseThings()
 	inoremap < <
 	inoremap " "
 	inoremap ' '
-	inoremap ( (
-	inoremap [ [
-	inoremap { {
-	inoremap {{ {{
+	inoremap ( ( | inoremap (( (( | inoremap () ()
+	inoremap [ [ | inoremap [[ [[ | inoremap [] []
+	inoremap { { | inoremap {{ {{
+	inoremap , ,
+	inoremap : :
+	inoremap ; ;
 	inoremap \\ \\
-	if &filetype ==? 'html' || &filetype ==? 'xml' || &filetype ==? 'vim'
+	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'vim'
 		inoremap < <><left>
 		inoremap ' ''<left>
 		inoremap \\ /
-	elseif &filetype ==? 'cs'
+	elseif &filetype == 'cs'
 		inoremap " ""<left>
+		inoremap (( (
+		inoremap () ()
 		inoremap ( ()<left>
+		inoremap [[ [
+		inoremap [] []
 		inoremap [ []<left>
 		inoremap {{ {<esc>o}<esc>O
-	elseif &filetype ==? 'mysql'
+		inoremap ; ;<left>
+	elseif &filetype == 'mysql'
 		inoremap ( ()<left>
 		inoremap (( (<esc>o);<esc>O<tab>
 		inoremap ' ''<left>
+	elseif &filetype == 'css'
+		inoremap , ,<space>
+		inoremap ( ()<left>
+		inoremap {{ {<esc>o}<esc>O
+		inoremap : :<space>;<left>
 	endif
 endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -230,13 +244,11 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.sql set filetype=mysql      
 	autocmd BufNewFile,BufRead *.test set filetype=mysql
 	autocmd BufEnter,BufNewFile,BufRead *.aspx set filetype=html
-	"autocmd BufEnter * silent! lcd %:p:h
 	autocmd BufEnter * call InrmapCloseThings()
 	autocmd StdinReadPre * let s:std_in=1
 	autocmd BufWrite,VimLeave *.* mkview
 	autocmd BufRead *.* silent loadview
-	"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-	"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+	autocmd BufRead *.* '.
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree
