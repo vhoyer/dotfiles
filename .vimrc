@@ -58,7 +58,7 @@ set clipboard=unnamed
 set ttyfast " faster redrawing
 set laststatus=2 " show the status line at all times
 set wildmenu " enchance command line completion
-set wildmode=list:longest " complete files like a shell
+set wildmode=full " complete files like a shell (Default)
 set cmdheight=1 " command bar height
 set title
 
@@ -83,6 +83,10 @@ if has('mouse')
 	set mouse=nv " to ignore the mouse ->"set mouse="
 	" set ttymouse=xterm2
 endif
+
+" Scroll offset
+set scrolloff=2
+set sidescrolloff=5
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " key mapping
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -129,7 +133,6 @@ nnoremap <leader>j <C-w><left>
 nnoremap <leader>k <C-w><down>
 nnoremap <leader>l <C-w><up>
 nnoremap <leader>ç <C-w><right>
-
 
 noremap ´ .
 noremap Q <nop>
@@ -203,14 +206,13 @@ vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgvl
 "turn "Close thigs after inserting then" shortcut on if filetype html or xml
 function! InrmapCloseThings()
 	inoremap < <
-	inoremap " "
+	inoremap " "| inoremap "" ""
 	inoremap ' '
-	inoremap ( ( | inoremap (( (( | inoremap () ()
-	inoremap [ [ | inoremap [[ [[ | inoremap [] []
-	inoremap { { | inoremap {{ {{
+	inoremap ( (|inoremap (( ((|inoremap () ()
+	inoremap [ [|inoremap [[ [[|inoremap [] []
+	inoremap { {|inoremap {{ {{
 	inoremap , ,
 	inoremap : :
-	inoremap ; ;
 	inoremap \\ \\
 	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'vim'
 		inoremap < <><left>
@@ -225,7 +227,6 @@ function! InrmapCloseThings()
 		inoremap [] []
 		inoremap [ []<left>
 		inoremap {{ {<esc>o}<esc>O
-		inoremap ; ;<left>
 	elseif &filetype == 'mysql'
 		inoremap ( ()<left>
 		inoremap (( (<esc>o);<esc>O<tab>
@@ -257,6 +258,7 @@ map <leader>n :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeChDirMode = 2
+let g:NERDTreeQuitOnOpen = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " super tab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -295,8 +297,12 @@ let g:airline_symbols.notexists = '∄'
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "let g:ctrlp_map = '<leader>p'
 "let g:ctrlp_prompt_mappings = {
-	"\ 'PrtSelectMove("j")': '<C-k>',
-	"\ 'PrtSelectMove("k")': '<C-l>',
-	"\ 'MarkToOpen()':         ['<c-z>'],
-	"\ 'OpenMulti()':          ['<c-o>']
-	"\ }
+"\ 'PrtSelectMove("j")': '<C-k>',
+"\ 'PrtSelectMove("k")': '<C-l>',
+"\ 'MarkToOpen()':         ['<c-z>'],
+"\ 'OpenMulti()':          ['<c-o>']
+"\ }
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Jedi-vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:jedi#docunetation_command = "<C-K>"

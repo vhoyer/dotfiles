@@ -6,6 +6,7 @@ filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox' " colorscheme
 Plugin 'tpope/vim-fugitive' 
@@ -20,6 +21,10 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'taglist.vim'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'vadimr/bclose.vim'
+"Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-surround'
+
 " Plugin 'siminino/vim-autoprefixer'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

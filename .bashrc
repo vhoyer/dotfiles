@@ -119,6 +119,8 @@ if [ -f ~/.install.sh ]; then
 	. ~/.install.sh
 fi
 
+PATH+=:~/bin
+
 # This are some PATHS, bcuz, y not right?
 export ANDROIDSDK="$HOME/Documents/android-sdk-21"
 export ANDROIDNDK="$HOME/Documents/android-ndk-r10e"
