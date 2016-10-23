@@ -205,7 +205,7 @@ endfunction
 vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgvl
 "turn "Close thigs after inserting then" shortcut on if filetype html or xml
 function! InrmapCloseThings()
-	inoremap < <
+	inoremap < <|inoremap >> >>|inoremap >>> >>>
 	inoremap " "| inoremap "" ""
 	inoremap ' '
 	inoremap ( (|inoremap (( ((|inoremap () ()
@@ -214,7 +214,13 @@ function! InrmapCloseThings()
 	inoremap , ,
 	inoremap : :
 	inoremap \\ \\
-	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'vim'
+	if &filetype == 'html' || &filetype == 'xml'
+		inoremap << < /><left><left><left>
+		inoremap >> ><esc>T<ywA</<esc>pA><esc><left>T>i
+		inoremap >>> ><esc>T<ywA</<esc>pA><esc><left>T>i<cr><esc>O
+		inoremap ' ''<left>
+		inoremap \\ /
+	elseif &filetype == 'vim'
 		inoremap < <><left>
 		inoremap ' ''<left>
 		inoremap \\ /
@@ -249,7 +255,6 @@ if has("autocmd")
 	autocmd StdinReadPre * let s:std_in=1
 	autocmd BufWrite,VimLeave *.* mkview
 	autocmd BufRead *.* silent loadview
-	autocmd BufRead *.* '.
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree
@@ -305,4 +310,5 @@ let g:airline_symbols.notexists = '∄'
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Jedi-vim
 """""""""""""""""""""""""""""""""""""""""""""""""""
-let g:jedi#docunetation_command = "<C-K>"
+let g:jedi#usages_command = ""
+let g:jedi#documentation_command = ""

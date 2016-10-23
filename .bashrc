@@ -122,9 +122,11 @@ fi
 PATH+=:~/bin
 
 # This are some PATHS, bcuz, y not right?
-export ANDROIDSDK="$HOME/Documents/android-sdk-21"
-export ANDROIDNDK="$HOME/Documents/android-ndk-r10e"
+export ANDROID_HOME=/home/vhoyer/Android/sdk
+export ANDROIDNDK=/home/vhoyer/Android/ndk
 export ANDROIDAPI="14"  # Minimum API version your application require
+
+PATH+=:/home/vhoyer/Android/sdk/platform-tools:/home/vhoyer/Android/sdk/tools
 
 # I don't really know what I am doing...
 stty -ixon
