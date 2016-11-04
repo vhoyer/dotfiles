@@ -1,7 +1,7 @@
-" create backup dir if it doesn't exists
-silent !mkdir ~/.vim-tmp/ > /dev/null 2>&1
 " load Plugins
 source ~/.plugins.vim
+" create backup dir if it doesn't exists
+silent !mkdir ~/.vim-tmp/ > /dev/null 2>&1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -107,12 +107,16 @@ nnoremap <right> <C-w>>
 nnoremap <silent> \p :set invpaste<cr>
 " set pastetoggle="\p"
 
-vnoremap ´ :normal .<cr>
-vnoremap <leader><leader> <esc>
+vnoremap <leader><leader> :normal .<cr>
+vnoremap v <esc>
 
 " scroll the viewport faster
 noremap K 2<C-e>
 noremap L 2<C-y>
+
+" copy/paste solutions
+vnoremap <C-C> "+y
+vnoremap <C-V> "+p
 
 " Code Folding
 nnoremap <leader>f <esc>za
@@ -134,8 +138,9 @@ nnoremap <leader>k <C-w><down>
 nnoremap <leader>l <C-w><up>
 nnoremap <leader>ç <C-w><right>
 
-noremap ´ .
+noremap <leader><leader> .
 noremap Q <nop>
+noremap Y y$
 noremap <leader>g `
 noremap <F2> :tabprevious<cr>
 noremap <F3> :tabNext<cr>
@@ -214,6 +219,7 @@ function! InrmapCloseThings()
 	inoremap , ,
 	inoremap : :
 	inoremap \\ \\
+	inoremap -- --
 	if &filetype == 'html' || &filetype == 'xml'
 		inoremap << < /><left><left><left>
 		inoremap >> ><esc>T<ywA</<esc>pA><esc><left>T>i
@@ -227,10 +233,8 @@ function! InrmapCloseThings()
 	elseif &filetype == 'cs'
 		inoremap " ""<left>
 		inoremap (( (
-		inoremap () ()
 		inoremap ( ()<left>
 		inoremap [[ [
-		inoremap [] []
 		inoremap [ []<left>
 		inoremap {{ {<esc>o}<esc>O
 	elseif &filetype == 'mysql'
@@ -242,6 +246,14 @@ function! InrmapCloseThings()
 		inoremap ( ()<left>
 		inoremap {{ {<esc>o}<esc>O
 		inoremap : :<space>;<left>
+	elseif $filetype == 'php'
+		inoremap -- ->
+		inoremap " ""<left>
+		inoremap (( (
+		inoremap ( ()<left>
+		inoremap [[ [
+		inoremap [ []<left>
+		inoremap {{ {<esc>o}<esc>O
 	endif
 endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -297,16 +309,6 @@ let g:airline_symbols.paste = 'ρ'
 "let g:airline_symbols.paste = '∥'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = '∄'
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ctrl-p
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:ctrlp_map = '<leader>p'
-"let g:ctrlp_prompt_mappings = {
-"\ 'PrtSelectMove("j")': '<C-k>',
-"\ 'PrtSelectMove("k")': '<C-l>',
-"\ 'MarkToOpen()':         ['<c-z>'],
-"\ 'OpenMulti()':          ['<c-o>']
-"\ }
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Jedi-vim
 """""""""""""""""""""""""""""""""""""""""""""""""""

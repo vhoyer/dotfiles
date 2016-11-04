@@ -19,13 +19,13 @@ Plugin 'joonty/vdebug'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'taglist.vim'
-Plugin 'JamshedVesuna/vim-markdown-preview'
+"Plugin 'JamshedVesuna/vim-markdown-preview' "doesn't seen to work'
 Plugin 'vadimr/bclose.vim'
 "Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
+"Plugin 'siminino/vim-autoprefixer'
 
-" Plugin 'siminino/vim-autoprefixer'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required

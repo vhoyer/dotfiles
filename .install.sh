@@ -4,7 +4,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 		$apps = $apps + " git"
 	fi
 	if [[ $(which vim) == "" ]]; then
-		$apps = $apps + " vim"
+		$apps = $apps + " vim vim-gtk"
 	fi
 	if [[ $(which ctags) == "" ]]; then
 		$apps = $apps + " exuberant-ctags"
