@@ -133,7 +133,7 @@ stty -ixon
 export ANDROIDNDKVER="r10e"  # Version of the NDK you installed
 
 #navigate to home
-if [[ "$OSTYPE" == "msys" ]]; then
+if [[ ( "$OSTYPE" == "msys" ) && ( "$(pwd)" == "/" ) ]]; then
 	cd $HOME
 fi
 
