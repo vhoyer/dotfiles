@@ -154,9 +154,9 @@ noremap <leader>p <esc>:CtrlP<cr>
 nnoremap ~ g~
 nnoremap W <esc>:set wrap!<cr>
 nnoremap <BS> i<bs><esc><right>
-nnoremap <leader>q :Bclose<CR>:enew<cr>
+nnoremap <leader>q :Bclose<CR>
 nnoremap <leader>qq :bd<cr>
-nnoremap <leader>Q :Bclose!<CR>:enew<cr>
+nnoremap <leader>Q :Bclose!<CR>
 nnoremap <leader>QQ :bd!<cr>
 nnoremap <leader>e :q<CR>
 nnoremap <leader>E :q!<cr>
