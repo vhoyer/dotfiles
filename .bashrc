@@ -140,22 +140,20 @@ fi
 # colors
 export bgcolor="\[\e[48;2;38;38;38m\]" #hex:262626
 export fgcolor="\[\e[38;2;255;215;175m\]" #hex:FFD7AF
+export termcolor="$bgcolor$fgcolor"
 # current working directory (\w) .................... - hex:87AF87
 # current branch on git [if any] $(__git_ps1 "%s") .. - hex:87AFAF
 
-#if [[ "$(__git_ps1 "%s")" == *"command not found"* ]]
-#then
-	#export PS1="$bgcolor$fgcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\]\n$fgcolor\@\$ "
-#else
-	export PS1="$bgcolor$fgcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\] $(__git_ps1 "%s")\n$fgcolor\@\$ "
-#fi
+#Git ps1
+if [[ "$(__git_ps1 "%s")" == *"command not found"* ]]
+then
+	export PS1="$termcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\]\n$fgcolor\@\$ "
+else
+	export PS1="$termcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\] \$(__git_ps1 "%s")\n$fgcolor\@\$ "
+fi
+export PS2="$fgcolor\@> "
 
-export PS2="$bgcolore$fgcolor\@> "
-
-# trying to set up apache
+# set up apache envvars - required
 if [ -f /etc/apache2/envvars ]; then
 	. /etc/apache2/envvars
 fi
-
-echo -e "$bgcolor$fgcolor"
-clear

@@ -62,6 +62,13 @@ set wildmode=full " complete files like a shell (Default)
 set cmdheight=1 " command bar height
 set title
 
+"insted of cutting a word to break the line, break the line before the word begin
+set wrap
+set linebreak
+"keeps vim from inserting a 'new line'
+set textwidth=0
+set wrapmargin=0
+
 " searching
 set hlsearch " Highlight all search results
 set smartcase " Enable smart-case search
@@ -121,6 +128,9 @@ vnoremap <C-V> "+p
 " Code Folding
 nnoremap <leader>f <esc>za
 vnoremap <leader>f zf
+
+" spell checking
+noremap <leader>cc 1z=
 
 " movimento
 noremap ç l
