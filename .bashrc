@@ -140,7 +140,7 @@ fi
 # colors
 export bgcolor="\[\e[48;2;38;38;38m\]" #hex:262626
 export fgcolor="\[\e[38;2;255;215;175m\]" #hex:FFD7AF
-export termcolor="$bgcolor$fgcolor"
+export termcolor="$fgcolor"
 # current working directory (\w) .................... - hex:87AF87
 # current branch on git [if any] $(__git_ps1 "%s") .. - hex:87AFAF
 

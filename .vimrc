@@ -50,7 +50,8 @@ set completeopt+=longest
 " code folding settings
 set foldnestmax=10          " deepest fold is 10 levels
 set nofoldenable            " don't fold by default
-"set foldmethod=syntax       " fold based on indent
+"set foldmethod=syntax       " fold based on syntax
+set foldmethod=marker       " fold based on marker
 set foldlevel=1
 
 set clipboard=unnamed
@@ -180,7 +181,8 @@ noremap <F8> :so $MYVIMRC<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! Cecp(...)
+
+function! Cecp(...) "{{{
 	if expand('%:e') ==? "py"
 		if (a:0 > 0)
 			let arg = join(a:000, " ")
@@ -194,7 +196,16 @@ function! Cecp(...)
 endfunction
 noremap <F6> :call Cecp()<cr>
 noremap <S-F6> :call Cecp()
-
+"}}}
+" set TransparentBg {{{
+function! TransparentBg()
+	hi! NonText ctermbg=NONE guibg=NONE
+	hi! Normal ctermbg=NONE guibg=NONE
+	hi! Number ctermbg=NONE guibg=NONE
+	hi! Folded ctermbg=NONE guibg=NONE
+endfunction
+abbr tbg call<space>TransparentBg()
+"}}}
 " this works just in vim standalone {{{
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
@@ -206,7 +217,7 @@ function! XTermPasteBegin()
 	return ""
 endfunction
 "}}}
-" visualy toggling case of words
+" visualy toggling case of words {{{
 function! TwiddleCase(str)
 	if a:str ==# toupper(a:str)
 		let result = tolower(a:str)
@@ -218,6 +229,8 @@ function! TwiddleCase(str)
 	return result
 endfunction
 vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgvl
+"}}}
+"Close thigs after inserting then {{{
 "turn "Close thigs after inserting then" shortcut on if filetype html or xml
 function! InrmapCloseThings()
 	inoremap < <|inoremap >> >>|inoremap >>> >>>
@@ -266,11 +279,13 @@ function! InrmapCloseThings()
 		inoremap {{ {<esc>o}<esc>O
 	endif
 endfunction
+"}}}
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmds
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
-	autocmd BufNewFile,BufRead *.sql set filetype=mysql      
+	autocmd BufNewFile,BufRead *.sql set filetype=mysql
 	autocmd BufNewFile,BufRead *.test set filetype=mysql
 	autocmd BufEnter,BufNewFile,BufRead *.aspx set filetype=html
 	autocmd BufEnter * call InrmapCloseThings()
