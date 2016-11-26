@@ -18,6 +18,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 	fi
 
 	if [[ ( $apps != "" ) && ( `uname -n` == *"ubuntu" ) ]]; then
+		sudo apt-get update && sudo apt-get upgrade
 		for i in $apps; do
 			sudo apt-get install -y $i
 		done
