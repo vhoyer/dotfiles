@@ -18,7 +18,9 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 	fi
 
 	if [[ ( $apps != "" ) && ( `uname -n` == *"ubuntu" ) ]]; then
-		sudo apt-get install -y$apps
+		for i in $apps; do
+			sudo apt-get install -y $i
+		done
 	fi
 
 	if [ -d "~/.vim" ]; then
