@@ -1,3 +1,4 @@
+# Automatically generated {{{
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -113,13 +114,20 @@ if ! shopt -oq posix; then
 		. /etc/bash_completion
 	fi
 fi
+# }}}
+####################################
+# My changes
+#
 
 # will source ~/.install.sh if it exists
 if [ -f ~/.install.sh ]; then
 	. ~/.install.sh
 fi
 
+# Adds a custom folder for my scripts to run anywhere
 PATH+=:~/bin
+
+# Here are some android stuff {{{
 
 # This are some PATHS, bcuz, y not right?
 export ANDROID_HOME=/home/vhoyer/Android/sdk
@@ -128,30 +136,38 @@ export ANDROIDAPI="14"  # Minimum API version your application require
 
 PATH+=:/home/vhoyer/Android/sdk/platform-tools:/home/vhoyer/Android/sdk/tools
 
-# I don't really know what I am doing...
 stty -ixon
 export ANDROIDNDKVER="r10e"  # Version of the NDK you installed
 
-#navigate to home
+#}}}
+
+#navigate to home when started at sysroot (if in git-bash)
 if [[ ( "$OSTYPE" == "msys" ) && ( "$(pwd)" == "/" ) ]]; then
 	cd $HOME
 fi
 
+# Visual interface customization {{{
+#######################
 # colors
+#
 export bgcolor="\[\e[48;2;38;38;38m\]" #hex:262626
 export fgcolor="\[\e[38;2;255;215;175m\]" #hex:FFD7AF
 export termcolor="$fgcolor"
 # current working directory (\w) .................... - hex:87AF87
 # current branch on git [if any] $(__git_ps1 "%s") .. - hex:87AFAF
 
+######################
 #Git ps1
+#
 if [[ "$(__git_ps1 "%s")" == *"command not found"* ]]
 then
 	export PS1="$termcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\]\n$fgcolor\@\$ "
 else
+	export GIT_PS1_SHOWDIRTYSTATE=1
 	export PS1="$termcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\] \$(__git_ps1 "%s")\n$fgcolor\@\$ "
 fi
 export PS2="$fgcolor\@> "
+# }}}
 
 # set up apache envvars - required
 if [ -f /etc/apache2/envvars ]; then
