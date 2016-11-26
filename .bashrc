@@ -159,12 +159,20 @@ export termcolor="$fgcolor"
 ######################
 #Git ps1
 #
+git_ps () {
+	if [[ $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ]];
+	then
+		echo ;
+	else
+		echo -e $(__git_ps1 '[%s]');
+	fi
+}
 if [[ "$(__git_ps1 "%s")" == *"command not found"* ]]
 then
 	export PS1="$termcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\]\n$fgcolor\@\$ "
 else
 	export GIT_PS1_SHOWDIRTYSTATE=1
-	export PS1="$termcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\] \$(__git_ps1 "%s")\n$fgcolor\@\$ "
+	export PS1="$termcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\] \$(git_ps)\n$fgcolor\@\$ "
 fi
 export PS2="$fgcolor\@> "
 # }}}
