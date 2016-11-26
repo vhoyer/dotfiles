@@ -6,9 +6,6 @@ silent !mkdir ~/.vim-tmp/ > /dev/null 2>&1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-abbr W w
-abbr Q q
-
 set history=1000 " keep 50 lines of command line history
 set ruler " show the cursor position all the time
 set showcmd " display incomplete commands
@@ -106,6 +103,7 @@ cmap <C-space> <C-c>
 " windows
 nnoremap <silent> <leader>h <esc>:split<cr>
 nnoremap <silent> <leader>H <esc>:vsplit<cr>
+
 nnoremap <up> <C-w>+
 nnoremap <down> <C-w>-
 nnoremap <left> <C-w><
@@ -121,10 +119,6 @@ vnoremap v <esc>
 " scroll the viewport faster
 noremap K 2<C-e>
 noremap L 2<C-y>
-
-" copy/paste solutions
-vnoremap <C-C> "+y
-vnoremap <C-V> "+p
 
 " Code Folding
 nnoremap <leader>f <esc>za
@@ -163,7 +157,7 @@ noremap <leader>s <esc>:w<cr>
 noremap <leader>p <esc>:CtrlP<cr>
 
 nnoremap ~ g~
-nnoremap W <esc>:set wrap!<cr>
+nnoremap <leader>W <esc>:set wrap!<cr>
 nnoremap <BS> i<bs><esc><right>
 nnoremap <leader>q :Bclose<CR>
 nnoremap <leader>qq :bd<cr>
@@ -287,7 +281,11 @@ endfunction
 if has("autocmd")
 	autocmd BufNewFile,BufRead *.sql set filetype=mysql
 	autocmd BufNewFile,BufRead *.test set filetype=mysql
-	autocmd BufEnter,BufNewFile,BufRead *.aspx set filetype=html
+	autocmd BufNewFile,BufRead *.aspx set filetype=html
+	autocmd BufNewFile,BufRead *.master set filetype=html
+
+	autocmd BufNewFile,BufRead *.md setlocal spell
+
 	autocmd BufEnter * call InrmapCloseThings()
 	autocmd StdinReadPre * let s:std_in=1
 	autocmd BufWrite,VimLeave *.* mkview
@@ -339,3 +337,7 @@ let g:airline_symbols.notexists = '∄'
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jedi#usages_command = ""
 let g:jedi#documentation_command = ""
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" TagBar
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tagbar_map_showproto = "d"
