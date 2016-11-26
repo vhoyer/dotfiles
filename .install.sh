@@ -17,7 +17,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 		phpenmod mcrypt
 	fi
 
-	if [[ $apps != "" ]]; then
+	if [[ ( $apps != "" ) && ( `uname -n` == *"ubuntu" ) ]]; then
 		sudo apt-get install -y$apps
 	fi
 
