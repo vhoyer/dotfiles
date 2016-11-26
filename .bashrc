@@ -119,11 +119,6 @@ fi
 # My changes
 #
 
-# will source ~/.install.sh if it exists
-if [ -f ~/.install.sh ]; then
-	. ~/.install.sh
-fi
-
 # Adds a custom folder for my scripts to run anywhere
 PATH+=:~/bin
 
