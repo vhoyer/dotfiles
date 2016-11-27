@@ -49,8 +49,10 @@ set completeopt+=longest
 
 " code folding settings
 set foldnestmax=10          " deepest fold is 10 levels
-set nofoldenable            " don't fold by default
-"set foldmethod=syntax       " fold based on indent
+"set nofoldenable            " don't fold by default
+"set foldmethod=syntax       " fold based on highlight
+"set foldmethod=indent       " fold based on indent
+set foldmethod=marker       " fold based on markers, default {{{,}}}
 set foldlevel=1
 
 set clipboard=unnamed
@@ -215,22 +217,22 @@ function! InrmapCloseThings()
 	inoremap ' '
 	inoremap ( (|inoremap (( ((|inoremap () ()
 	inoremap [ [|inoremap [[ [[|inoremap [] []
-	inoremap { {|inoremap {{ {{
+	inoremap { {|inoremap {{ {{|
 	inoremap , ,
-	inoremap : :
+	inoremap : :|inoremap :: ::
 	inoremap \\ \\
 	inoremap -- --
 	if &filetype == 'html' || &filetype == 'xml'
-		inoremap << < /><left><left><left>
-		inoremap >> ><esc>T<ywA</<esc>pA><esc><left>T>i
-		inoremap >>> ><esc>T<ywA</<esc>pA><esc><left>T>i<cr><esc>O
+		inoremap << <space>/><left><left><left>
+		inoremap >> <space>><esc>T<yt<space>A</<esc>pA><esc><left>F<space>xa
+		inoremap >>> <space>><esc>T<yt<space>A</<esc>pA><esc><left>F<space>xa<cr><esc>O
 		inoremap ' ''<left>
 		inoremap \\ /
 	elseif &filetype == 'vim'
 		inoremap < <><left>
 		inoremap ' ''<left>
 		inoremap \\ /
-	elseif &filetype == 'cs'
+	elseif &filetype == 'cs' || &filetype == 'javascript'
 		inoremap " ""<left>
 		inoremap (( (
 		inoremap ( ()<left>
@@ -246,6 +248,7 @@ function! InrmapCloseThings()
 		inoremap ( ()<left>
 		inoremap {{ {<esc>o}<esc>O
 		inoremap : :<space>;<left>
+		inoremap :: :
 	elseif $filetype == 'php'
 		inoremap -- ->
 		inoremap " ""<left>
@@ -260,9 +263,10 @@ endfunction
 " autocmds
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
-	autocmd BufNewFile,BufRead *.sql set filetype=mysql      
+	autocmd BufNewFile,BufRead *.sql set filetype=mysql
 	autocmd BufNewFile,BufRead *.test set filetype=mysql
-	autocmd BufEnter,BufNewFile,BufRead *.aspx set filetype=html
+	autocmd BufNewFile,BufRead *.aspx set filetype=html
+	autocmd BufNewFile,BufRead *.master set filetype=html
 	autocmd BufEnter * call InrmapCloseThings()
 	autocmd StdinReadPre * let s:std_in=1
 	autocmd BufWrite,VimLeave *.* mkview

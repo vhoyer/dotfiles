@@ -25,6 +25,7 @@ Plugin 'vadimr/bclose.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 "Plugin 'siminino/vim-autoprefixer'
+Plugin 'albfan/AnsiEsc.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
