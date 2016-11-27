@@ -255,6 +255,18 @@ function! InrmapCloseThings()
 		inoremap [[ [
 		inoremap [ []<left>
 		inoremap {{ {<esc>o}<esc>O
+	elseif &filetype == 'php'
+		inoremap << <space>/><left><left><left>
+		inoremap >> <space>><esc>T<yt<space>A</<esc>pA><esc><left>F<space>xa
+		inoremap >>> <space>><esc>T<yt<space>A</<esc>pA><esc><left>F<space>xa<cr><esc>O
+		inoremap -- ->
+		inoremap " ""<left>
+		inoremap ' ''<left>
+		inoremap (( (
+		inoremap ( ()<left>
+		inoremap [[ [
+		inoremap [ []<left>
+		inoremap {{ {<esc>o}<esc>O
 	elseif &filetype == 'mysql'
 		inoremap ( ()<left>
 		inoremap (( (<esc>o);<esc>O<tab>
@@ -265,14 +277,6 @@ function! InrmapCloseThings()
 		inoremap {{ {<esc>o}<esc>O
 		inoremap : :<space>;<left>
 		inoremap :: :
-	elseif $filetype == 'php'
-		inoremap -- ->
-		inoremap " ""<left>
-		inoremap (( (
-		inoremap ( ()<left>
-		inoremap [[ [
-		inoremap [ []<left>
-		inoremap {{ {<esc>o}<esc>O
 	endif
 endfunction
 "}}}
@@ -285,6 +289,7 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.test set filetype=mysql
 	autocmd BufNewFile,BufRead *.aspx set filetype=html
 	autocmd BufNewFile,BufRead *.master set filetype=html
+	autocmd BufNewFile,BufRead *.php setfiletype=php
 
 	autocmd BufNewFile,BufRead *.md setlocal spell
 
