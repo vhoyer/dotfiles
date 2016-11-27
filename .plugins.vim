@@ -9,7 +9,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox' " colorscheme
-Plugin 'tpope/vim-fugitive' 
+Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'davidhalter/jedi-vim'
@@ -18,7 +18,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'joonty/vdebug'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'taglist.vim'
+Plugin 'majutsushi/tagbar'
 "Plugin 'JamshedVesuna/vim-markdown-preview' "doesn't seen to work'
 Plugin 'vadimr/bclose.vim'
 "Plugin 'SirVer/ultisnips'

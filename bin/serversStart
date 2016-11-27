@@ -1,0 +1,99 @@
+#!/bin/bash
+
+##### Functions
+
+function START()
+{
+	echo -n "Starting apache2..."
+	response=$(service apache2 status)
+	if [[ "$response" == *"Active: inactive (dead)"* ]]; then
+		nohup /etc/init.d/apache2 start >& /dev/null &
+		echo ok.
+	elif [[ "$response" == *"Active: active (running)"* ]]; then
+		echo already running.
+	else
+		printf "Error encountered:\n\n$response\n\n"
+	fi
+
+	echo -n "Starting mongod..."
+	response=$(service mongod status)
+	if [[ "$response" == *"Active: inactive (dead)"* ]]; then
+		service mongod start
+		echo ok.
+	elif [[ "$response" == *"Active: active (running)"* ]]; then
+		echo already running.
+	else
+		printf "Error encountered:\n\n$response\n\n"
+	fi
+}
+
+function STOP()
+{
+	echo -n "Stoping apache2..."
+	response=$(service apache2 status)
+	if [[ "$response" == *"Active: inactive (dead)"* ]]; then
+		echo not running.
+	elif [[ "$response" == *"Active: active (running)"* ]]; then
+		nohup /etc/init.d/apache2 stop >& /dev/null &
+		echo ok.
+	else
+		printf "Error encountered:\n\n$response\n\n"
+	fi
+
+	echo -n "Stoping mongod..."
+	response=$(service mongod status)
+	if [[ "$response" == *"Active: inactive (dead)"* ]]; then
+		echo not running.
+	elif [[ "$response" == *"Active: active (running)"* ]]; then
+		service mongod stop
+		echo ok.
+	else
+		printf "Error encountered:\n\n$response\n\n"
+	fi
+
+}
+
+function RESTART()
+{
+	STOP
+	START
+}
+
+function STATUS()
+{
+	echo -n "apache2 status: "
+	response=$(service apache2 status)
+	if [[ "$response" == *"Active: inactive (dead)"* ]]; then
+		echo inactive
+	elif [[ "$response" == *"Active: active (running)"* ]]; then
+		echo active
+	else
+		printf "Error encountered:\n\n$response\n\n"
+	fi
+
+	echo -n "mongod status: "
+	response=$(service mongod status)
+	if [[ "$response" == *"Active: inactive (dead)"* ]]; then
+		echo inactive
+	elif [[ "$response" == *"Active: active (running)"* ]]; then
+		echo active
+	else
+		printf "Error encountered:\n\n$response\n\n"
+	fi
+}
+
+##### Main
+
+if [[ "$1" == "start" ]]; then
+	START
+elif [[ "$1" == "stop" ]]; then
+	STOP
+elif [[ "$1" == "restart" ]]; then
+	RESTART
+elif [[ "$1" == "status" ]]; then
+	STATUS
+else
+	echo command not found!
+fi
+
+echo bye!

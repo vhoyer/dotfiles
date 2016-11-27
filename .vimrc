@@ -6,9 +6,6 @@ silent !mkdir ~/.vim-tmp/ > /dev/null 2>&1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-abbr W w
-abbr Q q
-
 set history=1000 " keep 50 lines of command line history
 set ruler " show the cursor position all the time
 set showcmd " display incomplete commands
@@ -64,6 +61,13 @@ set wildmode=full " complete files like a shell (Default)
 set cmdheight=1 " command bar height
 set title
 
+"insted of cutting a word to break the line, break the line before the word begin
+set wrap
+set linebreak
+"keeps vim from inserting a 'new line'
+set textwidth=0
+set wrapmargin=0
+
 " searching
 set hlsearch " Highlight all search results
 set smartcase " Enable smart-case search
@@ -100,6 +104,7 @@ cmap <C-space> <C-c>
 " windows
 nnoremap <silent> <leader>h <esc>:split<cr>
 nnoremap <silent> <leader>H <esc>:vsplit<cr>
+
 nnoremap <up> <C-w>+
 nnoremap <down> <C-w>-
 nnoremap <left> <C-w><
@@ -116,13 +121,12 @@ vnoremap v <esc>
 noremap K 2<C-e>
 noremap L 2<C-y>
 
-" copy/paste solutions
-vnoremap <C-C> "+y
-vnoremap <C-V> "+p
-
 " Code Folding
 nnoremap <leader>f <esc>za
 vnoremap <leader>f zf
+
+" spell checking
+noremap <leader>cc 1z=
 
 " movimento
 noremap ç l
@@ -154,7 +158,7 @@ noremap <leader>s <esc>:w<cr>
 noremap <leader>p <esc>:CtrlP<cr>
 
 nnoremap ~ g~
-nnoremap W <esc>:set wrap!<cr>
+nnoremap <leader>W <esc>:set wrap!<cr>
 nnoremap <BS> i<bs><esc><right>
 nnoremap <leader>q :Bclose<CR>
 nnoremap <leader>qq :bd<cr>
@@ -172,7 +176,8 @@ noremap <F8> :so $MYVIMRC<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! Cecp(...)
+
+function! Cecp(...) "{{{
 	if expand('%:e') ==? "py"
 		if (a:0 > 0)
 			let arg = join(a:000, " ")
@@ -186,7 +191,16 @@ function! Cecp(...)
 endfunction
 noremap <F6> :call Cecp()<cr>
 noremap <S-F6> :call Cecp()
-
+"}}}
+" set TransparentBg {{{
+function! TransparentBg()
+	hi! NonText ctermbg=NONE guibg=NONE
+	hi! Normal ctermbg=NONE guibg=NONE
+	hi! Number ctermbg=NONE guibg=NONE
+	hi! Folded ctermbg=NONE guibg=NONE
+endfunction
+abbr tbg call<space>TransparentBg()
+"}}}
 " this works just in vim standalone {{{
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
@@ -198,7 +212,7 @@ function! XTermPasteBegin()
 	return ""
 endfunction
 "}}}
-" visualy toggling case of words
+" visualy toggling case of words {{{
 function! TwiddleCase(str)
 	if a:str ==# toupper(a:str)
 		let result = tolower(a:str)
@@ -210,6 +224,8 @@ function! TwiddleCase(str)
 	return result
 endfunction
 vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgvl
+"}}}
+"Close thigs after inserting then {{{
 "turn "Close thigs after inserting then" shortcut on if filetype html or xml
 function! InrmapCloseThings()
 	inoremap < <|inoremap >> >>|inoremap >>> >>>
@@ -259,6 +275,8 @@ function! InrmapCloseThings()
 		inoremap {{ {<esc>o}<esc>O
 	endif
 endfunction
+"}}}
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmds
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -267,6 +285,9 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.test set filetype=mysql
 	autocmd BufNewFile,BufRead *.aspx set filetype=html
 	autocmd BufNewFile,BufRead *.master set filetype=html
+
+	autocmd BufNewFile,BufRead *.md setlocal spell
+
 	autocmd BufEnter * call InrmapCloseThings()
 	autocmd StdinReadPre * let s:std_in=1
 	autocmd BufWrite,VimLeave *.* mkview
@@ -318,3 +339,7 @@ let g:airline_symbols.notexists = '∄'
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jedi#usages_command = ""
 let g:jedi#documentation_command = ""
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" TagBar
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tagbar_map_showproto = "d"
