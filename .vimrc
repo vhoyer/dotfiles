@@ -238,40 +238,35 @@ function! InrmapCloseThings()
 	inoremap : :|inoremap :: ::
 	inoremap \\ \\
 	inoremap -- --
-	if &filetype == 'html' || &filetype == 'xml'
+	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'php'
 		inoremap << <space>/><left><left><left>
-		inoremap >> <space>><esc>T<yt<space>A</<esc>pA><esc><left>F<space>xa
-		inoremap >>> <space>><esc>T<yt<space>A</<esc>pA><esc><left>F<space>xa<cr><esc>O
+		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
+		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
 		inoremap ' ''<left>
 		inoremap \\ /
-	elseif &filetype == 'vim'
+	endif
+	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'php'
+		inoremap " ""<left>
+		inoremap (( (
+		inoremap ( ()<left>
+		inoremap [[ [
+		inoremap [ []<left>
+		inoremap {{ {<esc>o}<esc>O
+	endif
+	if &filetype == 'php'
+		inoremap -- ->
+	endif
+	if &filetype == 'vim'
 		inoremap < <><left>
 		inoremap ' ''<left>
 		inoremap \\ /
-	elseif &filetype == 'cs' || &filetype == 'javascript'
-		inoremap " ""<left>
-		inoremap (( (
-		inoremap ( ()<left>
-		inoremap [[ [
-		inoremap [ []<left>
-		inoremap {{ {<esc>o}<esc>O
-	elseif &filetype == 'php'
-		inoremap << <space>/><left><left><left>
-		inoremap >> <space>><esc>T<yt<space>A</<esc>pA><esc><left>F<space>xa
-		inoremap >>> <space>><esc>T<yt<space>A</<esc>pA><esc><left>F<space>xa<cr><esc>O
-		inoremap -- ->
-		inoremap " ""<left>
-		inoremap ' ''<left>
-		inoremap (( (
-		inoremap ( ()<left>
-		inoremap [[ [
-		inoremap [ []<left>
-		inoremap {{ {<esc>o}<esc>O
-	elseif &filetype == 'mysql'
+	endif
+	if &filetype == 'mysql'
 		inoremap ( ()<left>
 		inoremap (( (<esc>o);<esc>O<tab>
 		inoremap ' ''<left>
-	elseif &filetype == 'css'
+	endif
+	if &filetype == 'css'
 		inoremap , ,<space>
 		inoremap ( ()<left>
 		inoremap {{ {<esc>o}<esc>O
