@@ -4,7 +4,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 		apps=$apps" git"
 	fi
 	if [[ $(which vim) == "" ]]; then
-		apps=$apps" vim vim-gtk"
+		apps=$apps" vim-gtk"
 	fi
 	if [[ $(which ctags) == "" ]]; then
 		apps=$apps" exuberant-ctags"
@@ -14,19 +14,20 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 	fi
 	if [[ $(which php) == "" ]]; then
 		apps=$apps" libapache2-mod-php7.0 php7.0-mysql php7.0-curl php7.0-json php-memcached php7.0-dev php7.0-mcrypt php7.0-sqlite3"
-		phpenmod mcrypt
+		#phpenmod mcrypt
 	fi
 
-	if [[ ( $apps != "" ) && ( `uname -n` == *"ubuntu" ) ]]; then
+	if [[ $apps != "" ]]; then
 		sudo apt-get update && sudo apt-get -y upgrade
 		for i in $apps; do
 			sudo apt-get install -y $i
 		done
 	fi
 
-	if [ -d "~/.vim" ]; then
-		mkdir ~/.vim-tmp ~/.vim/bundle/Vundle.vim
+	if [ ! -d "~/.vim" ]; then
+		mkdir ~/.vim-tmp ~/.vim ~/.vim/bundle/
 		git clone http://github.com/Vundlevim/Vundle.vim ~/.vim/bundle/Vundle.vim
 		vim +PluginInstall +qall
 	fi
+	echo -e \#\n\#\n\#\n\#Finish instalation\n\#\n\#\n\#\n
 fi
