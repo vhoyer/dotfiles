@@ -201,6 +201,37 @@ function! TransparentBg()
 endfunction
 abbr tbg call<space>TransparentBg()
 "}}}
+function! USlayout() "{{{
+	"Avoiding the <esc>
+	inoremap kl kl
+	inoremap jk <esc>
+
+	" movimento
+	noremap h h|noremap j <nop>
+	noremap j j|noremap k <nop>
+	noremap k k|noremap l <nop>
+	noremap l l|noremap ç <nop>
+
+	noremap H b|noremap J <nop>
+	noremap L w|noremap Ç <nop>
+	noremap <leader>H ^|noremap <leader>J <nop>
+	noremap <leader>L $|noremap <leader>Ç <nop>
+
+	nnoremap <leader>h <C-w><left>|nnoremap <leader>j <nop>
+	nnoremap <leader>j <C-w><down>|nnoremap <leader>k <nop>
+	nnoremap <leader>k <C-w><up>|nnoremap <leader>l <nop>
+	nnoremap <leader>l <C-w><right>|nnoremap <leader>ç <nop>
+
+	" scroll the viewport faster
+	noremap K <nop>|noremap <C-e> 2<C-e>
+	noremap L <nop>|noremap <C-q> 2<C-y>
+	noremap J 2<C-e>
+	noremap K 2<C-y>
+
+	noremap <C-j> :bp<CR>
+	noremap <C-k> :bn<CR>
+endfunction
+"}}}
 " this works just in vim standalone {{{
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
@@ -210,8 +241,7 @@ function! XTermPasteBegin()
 	set pastetoggle=<Esc>[201~
 	set paste
 	return ""
-endfunction
-"}}}
+endfunction"}}}
 " visualy toggling case of words {{{
 function! TwiddleCase(str)
 	if a:str ==# toupper(a:str)
