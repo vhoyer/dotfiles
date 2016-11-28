@@ -155,7 +155,7 @@ export termcolor="$fgcolor"
 #Git ps1
 #
 git_ps () {
-	if [[ ( $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ) && ( ( "$(__git_ps1 '[%s]')" != *"*"* ) || ( "$(__git_ps1 '[%s]')" != *"+"* ) ) ]];
+	if [[ $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ]] && [[ "$(__git_ps1 '[%s]')" != *"*"* ]] | [[ "$(__git_ps1 '[%s]')" != *"+"* ]];
 	then
 		echo ;
 	else
