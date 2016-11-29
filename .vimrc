@@ -155,6 +155,7 @@ noremap <C-k> :bp<CR>
 noremap <C-l> :bn<CR>
 noremap <C-n> <esc>mygg=G`y
 noremap <leader>s <esc>:w<cr>
+noremap <leader>S <esc>:w!<cr>
 noremap <leader>p <esc>:CtrlP<cr>
 
 nnoremap ~ g~

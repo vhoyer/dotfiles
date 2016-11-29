@@ -1,5 +1,7 @@
 if [[ $OSTYPE == "linux-gnu" ]]; then
+	#this will make the if condition make sense, and work properly
 	apps=""
+	pre=""
 	if [[ $(which git) == "" ]]; then
 		apps=$apps" git"
 	fi
@@ -9,12 +11,20 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 	if [[ $(which ctags) == "" ]]; then
 		apps=$apps" exuberant-ctags"
 	fi
+	if [[ $(which mysql) == "" ]]; then
+		apps=$apps" mariadb-server"
+		pre=$pre" sudo apt-get install software-properties-common && sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8 && sudo add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirror.ufscar.br/mariadb/repo/10.1/ubuntu xenial main'\n"
+	fi
 	if [[ $(which apache2) == "" ]]; then
 		apps=$apps" apache2"
 	fi
 	if [[ $(which php) == "" ]]; then
 		apps=$apps" libapache2-mod-php7.0 php7.0-mysql php7.0-curl php7.0-json php-memcached php7.0-dev php7.0-mcrypt php7.0-sqlite3"
 		#phpenmod mcrypt
+	fi
+
+	if [[ $pre != "" ]]; then
+		$pre
 	fi
 
 	if [[ $apps != "" ]]; then
@@ -24,10 +34,10 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 		done
 	fi
 
-	if [ ! -d "~/.vim" ]; then
+	if [ -d "~/.vim" ]; then
 		mkdir ~/.vim-tmp ~/.vim ~/.vim/bundle/
 		git clone http://github.com/Vundlevim/Vundle.vim ~/.vim/bundle/Vundle.vim
 		vim +PluginInstall +qall
 	fi
-	echo -e \#\n\#\n\#\n\#Finish instalation\n\#\n\#\n\#\n
+	echo -e "\n#\n#\n#\n#Finish instalation\n#\n#\n#\n"
 fi
