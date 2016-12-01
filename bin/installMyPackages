@@ -2,6 +2,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 	#this will make the if condition make sense, and work properly
 	apps=""
 	pre=""
+	pos=""
 	if [[ $(which git) == "" ]]; then
 		apps=$apps" git"
 	fi
@@ -13,14 +14,24 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 	fi
 	if [[ $(which mysql) == "" ]]; then
 		apps=$apps" mariadb-server"
-		pre=$pre" sudo apt-get install software-properties-common && sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8 && sudo add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirror.ufscar.br/mariadb/repo/10.1/ubuntu xenial main'\n"
+		pre=$pre" sudo apt-get install -y software-properties-common && sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8 && sudo add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirror.ufscar.br/mariadb/repo/10.1/ubuntu xenial main'\n"
 	fi
 	if [[ $(which apache2) == "" ]]; then
 		apps=$apps" apache2"
 	fi
 	if [[ $(which php) == "" ]]; then
-		apps=$apps" libapache2-mod-php7.0 php7.0-mysql php7.0-curl php7.0-json php-memcached php7.0-dev php7.0-mcrypt php7.0-sqlite3"
-		#phpenmod mcrypt
+		apps=$apps" libapache2-mod-php7.0 php7.0-mysql php7.0-curl php7.0-json php-memcached php7.0-dev php7.0-mcrypt php7.0-sqlite3 php-intl php-mbstring"
+		pos=$pos"phpenmod mcrypt\n"
+	fi
+	if [[ "$(which curl)" == "" ]]; then
+		apps=$apps" curl"
+	fi
+	if [[ "$(which composer)" == "" ]]; then
+		pos=$pos" curl -sS https://getcomposer.org/installer | php\n"
+	fi
+	if [[ "$(which mongod)" == "" ]]; then
+		pre=$pre" sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927\n echo \"deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse\" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list"
+		apps=$apps" mongodb-org"
 	fi
 
 	if [[ $pre != "" ]]; then
@@ -32,6 +43,10 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 		for i in $apps; do
 			sudo apt-get install -y $i
 		done
+	fi
+
+	if [[ $pos != "" ]]; then
+		$pos
 	fi
 
 	if [ -d "~/.vim" ]; then
