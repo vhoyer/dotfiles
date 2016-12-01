@@ -30,7 +30,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 		pos=$pos" curl -sS https://getcomposer.org/installer | php &&"
 	fi
 	if [[ "$(which mongod)" == "" ]]; then
-		pre=$pre" sudo echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" > /etc/apt/sources.list.d/mongodb-org-3.2.list && sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv 'EA312927' &&"
+		pre=$pre" sudo echo 'deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse' > /etc/apt/sources.list.d/mongodb-org-3.2.list && sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv 'EA312927' &&"
 		apps=$apps" mongodb-org"
 	fi
 
