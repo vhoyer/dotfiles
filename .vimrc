@@ -263,7 +263,7 @@ function! InrmapCloseThings()
 	inoremap " "| inoremap "" ""
 	inoremap ' '
 	inoremap ( (|inoremap (( ((|inoremap () ()
-	inoremap [ [|inoremap [[ [[|inoremap [] []
+	inoremap [ [|inoremap [[ [[|inoremap [] []|inoremap [<return> [<return>
 	inoremap { {|inoremap {{ {{|
 	inoremap , ,
 	inoremap : :|inoremap :: ::
@@ -286,6 +286,7 @@ function! InrmapCloseThings()
 	endif
 	if &filetype == 'php'
 		inoremap -- ->
+		inoremap [<return> []<left><return><esc>O
 	endif
 	if &filetype == 'vim'
 		inoremap < <><left>
