@@ -150,12 +150,23 @@ export fgcolor="\[\e[38;2;255;215;175m\]" #hex:FFD7AF
 export termcolor="$fgcolor"
 # current working directory (\w) .................... - hex:87AF87
 # current branch on git [if any] $(__git_ps1 "%s") .. - hex:87AFAF
-
+#lastcmd title {{{
+terminal() { #this will show in the title the current running command
+	trap 'echo -ne "\033]0;$BASH_COMMAND\007"' DEBUG
+}
+PROMPT_COMMAND=terminal
+#}}}
 ######################
 #Git ps1
 #
 git_ps () {
-	if [[ $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ]] && [[ "$(__git_ps1 '[%s]')" != *"*"* ]] | [[ "$(__git_ps1 '[%s]')" != *"+"* ]];
+	if [[ "$(__git_ps1 '[%s]')" == *"*"* ]];
+	then
+		echo -e $(__git_ps1 '[%s]');
+	elif  [[ "$(__git_ps1 '[%s]')" == *"+"* ]];
+	then
+		echo -e $(__git_ps1 '[%s]');
+	elif [[ $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ]];
 	then
 		echo ;
 	else
