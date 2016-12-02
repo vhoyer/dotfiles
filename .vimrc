@@ -204,7 +204,7 @@ abbr tbg call<space>TransparentBg()
 "}}}
 function! USlayout() "{{{
 	"Avoiding the <esc>
-	inoremap kl kl
+	inoremap kl <esc>
 	inoremap jk <esc>
 
 	" movimento
@@ -213,8 +213,14 @@ function! USlayout() "{{{
 	noremap k k|noremap l <nop>
 	noremap l l|noremap ç <nop>
 
+	" scroll the viewport faster
+	noremap K <nop>|noremap <C-e> 2<C-e>
+	noremap L <nop>|noremap <C-q> 2<C-y>
+	noremap J 2<C-e>
+	noremap K 2<C-y>
+
 	noremap H b|noremap J <nop>
-	noremap L w|noremap Ç <nop>
+	noremap Ç <nop>
 	noremap <leader>H ^|noremap <leader>J <nop>
 	noremap <leader>L $|noremap <leader>Ç <nop>
 
@@ -223,11 +229,7 @@ function! USlayout() "{{{
 	nnoremap <leader>k <C-w><up>|nnoremap <leader>l <nop>
 	nnoremap <leader>l <C-w><right>|nnoremap <leader>ç <nop>
 
-	" scroll the viewport faster
-	noremap K <nop>|noremap <C-e> 2<C-e>
-	noremap L <nop>|noremap <C-q> 2<C-y>
-	noremap J 2<C-e>
-	noremap K 2<C-y>
+	noremap L w
 
 	noremap <C-j> :bp<CR>
 	noremap <C-k> :bn<CR>
