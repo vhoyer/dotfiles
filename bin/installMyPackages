@@ -36,7 +36,11 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 	if [[ "$(which adventure)" == "" ]]; then
 		apps=$apps" bsdgames"
 	fi
+	if [[ "$(which tree)" == "" ]]; then
+		apps=$apps" tree"
+	fi
 
+	#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 	if [[ $pre != "" ]]; then
 		pre=$pre" echo pre done"
 		eval $pre
