@@ -26,6 +26,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 "Plugin 'siminino/vim-autoprefixer'
 Plugin 'albfan/AnsiEsc.vim'
+"Plugin 'OmniSharp/omnisharp-vim' "seens a good one, but needs vim compiled with python
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
