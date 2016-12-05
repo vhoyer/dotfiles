@@ -1,0 +1,28 @@
+#!/bin/bash
+helpmsg="usage: vhgclone <github username>/<github repo name> [folder]\n\ntry \"vhgclone [-h|--help]\" for more information."
+if [[ $# -eq 2 ]]; then
+	# build the git clone command
+	gitclone="git clone https://github.com/"$1
+
+	# test if there is the folder arg
+	if [[ $# -eq 2 ]]; then
+		gitclone=$gitclone" "$2
+	fi
+
+	# execute the command
+	eval $gitclone
+	exit 1
+########################################
+elif [[ $# -eq 1 ]]; then
+	if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
+		echo -e "usage: vhgclone <github username>/<github repo name> [folder]\n\nThere is no more help... sorry for that."
+		exit 1
+	fi
+	########################################
+	echo -e $helpmsg
+	exit 0
+else
+	echo -e $helpmsg
+	exit 1
+fi
+#vim:filetype=sh

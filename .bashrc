@@ -160,14 +160,16 @@ PROMPT_COMMAND=terminal
 #Git ps1
 #
 git_ps () {
-	if [[ "$(__git_ps1 '[%s]')" == *"*"* ]];
+	if [[ "$(__git_ps1 '[%s]')" == *"*"* ]]; #if there is modification
 	then
 		echo -e $(__git_ps1 '[%s]');
-	elif  [[ "$(__git_ps1 '[%s]')" == *"+"* ]];
+	elif  [[ "$(__git_ps1 '[%s]')" == *"+"* ]]; #if there is an addition
 	then
 		echo -e $(__git_ps1 '[%s]');
-	elif [[ $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ]];
+	elif [[ $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ]]; #if inside /home/$user
 	then
+		echo ;
+	elif [[ $(__git_ps1) == "fatal:"* ]]; then
 		echo ;
 	else
 		echo -e $(__git_ps1 '[%s]');
@@ -178,7 +180,7 @@ then
 	export PS1="$termcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\]\n$fgcolor\@\$ "
 else
 	export GIT_PS1_SHOWDIRTYSTATE=1
-	export PS1="$termcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\] \$(git_ps)\n$fgcolor\@\$ "
+	export PS1="$termcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\] \$(git_ps)\n$fgcolor\@\$\[\e[0m\] "
 fi
 export PS2="$fgcolor\@> "
 # }}}
