@@ -21,12 +21,13 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'majutsushi/tagbar'
 "Plugin 'JamshedVesuna/vim-markdown-preview' "doesn't seen to work'
 Plugin 'vadimr/bclose.vim'
-"Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 "Plugin 'siminino/vim-autoprefixer'
 Plugin 'albfan/AnsiEsc.vim'
 "Plugin 'OmniSharp/omnisharp-vim' "seens a good one, but needs vim compiled with python
+Plugin 'dhruvasagar/vim-table-mode'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

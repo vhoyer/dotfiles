@@ -377,3 +377,7 @@ let g:jedi#documentation_command = ""
 " TagBar
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:tagbar_map_showproto = "d"
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-table-mode
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:table_mode_corner = "|"
