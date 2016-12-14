@@ -203,33 +203,40 @@ endfunction
 abbr tbg call<space>TransparentBg()
 "}}}
 function! USlayout() "{{{
-	"Avoiding the <esc>
-	inoremap kl <esc>
-	inoremap jk <esc>
+	""""""""""""""""
+	nnoremap Ç :
+	cnoremap Ç <return>
+	cnoremap çç <return>
+	""""""""""""""""
+	inoremap kl kl
+	noremap H H
+	noremap J J
+	noremap K K
+	noremap L L
 
-	" movimento
-	noremap h h|noremap j <nop>
-	noremap j j|noremap k <nop>
-	noremap k k|noremap l <nop>
-	noremap l l|noremap ç <nop>
+	"Avoiding the <esc>
+	inoremap jk <esc>
+	cnoremap jk <esc>
 
 	" scroll the viewport faster
-	noremap K <nop>|noremap <C-e> 2<C-e>
-	noremap L <nop>|noremap <C-q> 2<C-y>
-	noremap J 2<C-e>
-	noremap K 2<C-y>
+	noremap <C-e> 2<C-e>
+	noremap <C-q> 2<C-y>
 
-	noremap H b|noremap J <nop>
-	noremap Ç <nop>
-	noremap <leader>H ^|noremap <leader>J <nop>
-	noremap <leader>L $|noremap <leader>Ç <nop>
+	"moviment
+	noremap h h
+	noremap j j
+	noremap k k
+	noremap l l
 
-	nnoremap <leader>h <C-w><left>|nnoremap <leader>j <nop>
-	nnoremap <leader>j <C-w><down>|nnoremap <leader>k <nop>
-	nnoremap <leader>k <C-w><up>|nnoremap <leader>l <nop>
-	nnoremap <leader>l <C-w><right>|nnoremap <leader>ç <nop>
+	noremap <leader><Bslash> <esc>:split<cr>
+	noremap <leader>\| <esc>:vsplit<cr>
+	noremap <leader>H ^
+	noremap <leader>L $
 
-	noremap L w
+	nnoremap <leader>h <C-w><left>
+	nnoremap <leader>j <C-w><down>
+	nnoremap <leader>k <C-w><up>
+	nnoremap <leader>l <C-w><right>
 
 	noremap <C-j> :bp<CR>
 	noremap <C-k> :bn<CR>
@@ -339,7 +346,7 @@ let g:NERDTreeQuitOnOpen = 1
 " super tab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc','&completefunc']
+"let g:SuperTabContextTextOmniPrecedence = ['&omnifunc','&completefunc']
 let g:SuperTabRetainCompletionType=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-markdown-preview
@@ -381,3 +388,10 @@ let g:tagbar_map_showproto = "d"
 " vim-table-mode
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:table_mode_corner = "|"
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" ultisnips
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsSnippetsDir = "~/.vim/Ultisnips"
+let g:UltiSnipsSnippetsDirectories=["Ultisnips"]

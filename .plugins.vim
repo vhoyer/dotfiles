@@ -12,7 +12,7 @@ Plugin 'morhetz/gruvbox' " colorscheme
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'joonty/vdebug'
