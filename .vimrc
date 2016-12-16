@@ -126,7 +126,7 @@ nnoremap <leader>f <esc>za
 vnoremap <leader>f zf
 
 " spell checking
-noremap <leader>cc 1z=
+noremap <leader>cw 1z=
 
 " movimento
 noremap ç l
@@ -346,7 +346,7 @@ let g:NERDTreeQuitOnOpen = 1
 " super tab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:SuperTabDefaultCompletionType = 'context'
-"let g:SuperTabContextTextOmniPrecedence = ['&omnifunc','&completefunc']
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc','&completefunc']
 let g:SuperTabRetainCompletionType=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-markdown-preview
