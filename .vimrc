@@ -241,6 +241,7 @@ function! USlayout() "{{{
 	noremap <C-j> :bp<CR>
 	noremap <C-k> :bn<CR>
 endfunction
+call USlayout()
 "}}}
 " this works just in vim standalone {{{
 let &t_SI .= "\<Esc>[?2004h"
@@ -278,6 +279,7 @@ function! InrmapCloseThings()
 	inoremap : :|inoremap :: ::
 	inoremap \\ \\
 	inoremap -- --
+	inoremap __ __
 	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'php'
 		inoremap << <space>/><left><left><left>
 		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
@@ -285,7 +287,7 @@ function! InrmapCloseThings()
 		inoremap ' ''<left>
 		inoremap \\ /
 	endif
-	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'php'
+	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'php' || &filetype == 'java' || &filetype == 'css'
 		inoremap " ""<left>
 		inoremap (( (
 		inoremap ( ()<left>
@@ -295,6 +297,7 @@ function! InrmapCloseThings()
 	endif
 	if &filetype == 'php'
 		inoremap -- ->
+		inoremap __ =>
 		inoremap [<return> []<left><return><esc>O
 	endif
 	if &filetype == 'vim'
@@ -309,11 +312,15 @@ function! InrmapCloseThings()
 	endif
 	if &filetype == 'css'
 		inoremap , ,<space>
-		inoremap ( ()<left>
-		inoremap {{ {<esc>o}<esc>O
 		inoremap : :<space>;<left>
 		inoremap :: :
 	endif
+endfunction
+"}}}
+"get better at vim{{{
+function! GetBetter()
+	noremap <bs> <nop>
+	inoremap <bs> <nop>
 endfunction
 "}}}
 
