@@ -189,3 +189,8 @@ export PS2="$fgcolor\@> "
 if [ -f /etc/apache2/envvars ]; then
 	. /etc/apache2/envvars
 fi
+
+############################
+# git related
+#
+git pull origin master --rebase
