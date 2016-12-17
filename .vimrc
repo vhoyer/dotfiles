@@ -144,23 +144,25 @@ nnoremap <leader>k <C-w><down>
 nnoremap <leader>l <C-w><up>
 nnoremap <leader>ç <C-w><right>
 
-noremap <leader><leader> .
 noremap Q <nop>
 noremap Y y$
-noremap <leader>g `
 noremap <F2> :tabprevious<cr>
 noremap <F3> :tabNext<cr>
 noremap <F4> :b#<cr>
+noremap <silent> <F6> :wa<cr>:make<cr>
+noremap <silent> <S-F6> :wa<cr>:make<space>
 noremap <C-k> :bp<CR>
 noremap <C-l> :bn<CR>
 noremap <C-n> <esc>mygg=G`y
+noremap <leader>g `
 noremap <leader>s <esc>:w<cr>
 noremap <leader>S <esc>:w!<cr>
 noremap <leader>p <esc>:CtrlP<cr>
+noremap <leader><leader> .
 
 nnoremap ~ g~
-nnoremap <leader>W <esc>:set wrap!<cr>
 nnoremap <BS> i<bs><esc><right>
+nnoremap <leader>W <esc>:set wrap!<cr>
 nnoremap <leader>q :Bclose<CR>
 nnoremap <leader>qq :bd<cr>
 nnoremap <leader>Q :Bclose!<CR>
@@ -178,21 +180,6 @@ noremap <F8> :so $MYVIMRC<cr>
 " Function
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-function! Cecp(...) "{{{
-	if expand('%:e') ==? "py"
-		if (a:0 > 0)
-			let arg = join(a:000, " ")
-			execute ":!python ".expand('%:p')." ".arg
-		else
-			execute ":!python ".expand('%:p')
-		endif
-	elseif expand('%:e') ==? "sql"
-		execute ":!mysql -p < ".expand('%:p')
-	endif
-endfunction
-noremap <F6> :call Cecp()<cr>
-noremap <S-F6> :call Cecp()
-"}}}
 " set TransparentBg {{{
 function! TransparentBg()
 	hi! NonText ctermbg=NONE guibg=NONE
