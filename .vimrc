@@ -149,10 +149,12 @@ noremap Y y$
 noremap <F2> :tabprevious<cr>
 noremap <F3> :tabNext<cr>
 noremap <F4> :b#<cr>
-noremap <silent> <F6> :wa<cr>:make<cr>
-noremap <silent> <S-F6> :wa<cr>:make<space>
-noremap <C-k> :bp<CR>
-noremap <C-l> :bn<CR>
+noremap <F6> :wa<cr>:make %:r<cr>:cw<cr>
+noremap <S-F6> :wa<cr>:make<space>
+noremap <C-j> :bp<CR>
+noremap <C-k> :bn<CR>
+noremap <C-h> :cp<CR>
+noremap <C-l> :cn<CR>
 noremap <C-n> <esc>mygg=G`y
 noremap <leader>g `
 noremap <leader>s <esc>:w<cr>
