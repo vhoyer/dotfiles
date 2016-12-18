@@ -309,6 +309,7 @@ function! GetBetter()
 	noremap <bs> <nop>
 	inoremap <bs> <nop>
 endfunction
+call GetBetter()
 "}}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -388,4 +389,4 @@ let g:table_mode_corner = "|"
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsSnippetsDir = "~/.vim/Ultisnips"
-let g:UltiSnipsSnippetsDirectories=["Ultisnips"]
+let g:UltiSnipsSnippetsDirectories=["~/.vim/Ultisnips", "Ultisnips"]
