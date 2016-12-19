@@ -50,7 +50,7 @@ set foldnestmax=10          " deepest fold is 10 levels
 "set foldmethod=syntax       " fold based on highlight
 "set foldmethod=indent       " fold based on indent
 set foldmethod=marker       " fold based on markers, default {{{,}}}
-set foldlevel=1
+set foldlevelstart=1
 
 set clipboard=unnamed
 
