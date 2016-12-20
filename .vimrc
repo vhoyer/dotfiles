@@ -146,11 +146,14 @@ nnoremap <leader>ç <C-w><right>
 
 noremap Q <nop>
 noremap Y y$
+noremap + :cw<cr>
+noremap - :ccl<cr>
 noremap <F2> :tabprevious<cr>
 noremap <F3> :tabNext<cr>
 noremap <F4> :b#<cr>
-noremap <F6> :wa<cr>:make %:r<cr>:cw<cr>
-noremap <S-F6> :wa<cr>:make<space>
+noremap <F5> :wa<cr>:make<cr>:cw<cr>
+noremap <S-F5> :wa<cr>:make<space>
+noremap <C-F5> :wa<cr>:make %:r<cr>:cw<cr>
 noremap <C-j> :bp<CR>
 noremap <C-k> :bn<CR>
 noremap <C-h> :cp<CR>
@@ -260,10 +263,11 @@ vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgvl
 function! InrmapCloseThings()
 	inoremap < <|inoremap >> >>|inoremap >>> >>>
 	inoremap " "| inoremap "" ""
-	inoremap ' '
-	inoremap ( (|inoremap (( ((|inoremap () ()
-	inoremap [ [|inoremap [[ [[|inoremap [] []|inoremap [<return> [<return>
-	inoremap { {|inoremap {{ {{|
+	inoremap '' ''
+	inoremap (( ((|inoremap ((( (((
+	inoremap [[ [[|inoremap [<return> [<return>
+	inoremap {{ {{|inoremap {{{ {{{
+	"}}} }}}
 	inoremap , ,
 	inoremap : :|inoremap :: ::
 	inoremap \\ \\
@@ -273,15 +277,13 @@ function! InrmapCloseThings()
 		inoremap << <space>/><left><left><left>
 		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
 		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
-		inoremap ' ''<left>
+		inoremap '' ''<left>
 		inoremap \\ /
 	endif
 	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'php' || &filetype == 'java' || &filetype == 'css'
-		inoremap " ""<left>
-		inoremap (( (
-		inoremap ( ()<left>
-		inoremap [[ [
-		inoremap [ []<left>
+		inoremap "" ""<left>
+		inoremap (( ()<left>
+		inoremap [[ []<left>
 		inoremap {{ {<esc>o}<esc>O
 	endif
 	if &filetype == 'php'
@@ -291,27 +293,18 @@ function! InrmapCloseThings()
 	endif
 	if &filetype == 'vim'
 		inoremap < <><left>
-		inoremap ' ''<left>
+		inoremap '' ''<left>
 		inoremap \\ /
 	endif
 	if &filetype == 'mysql'
-		inoremap ( ()<left>
-		inoremap (( (<esc>o);<esc>O<tab>
-		inoremap ' ''<left>
+		inoremap (( ()<left>
+		inoremap ((( (<esc>o);<esc>O<tab>
+		inoremap '' ''<left>
 	endif
 	if &filetype == 'css'
-		inoremap , ,<space>
-		inoremap : :<space>;<left>
-		inoremap :: :
+		inoremap :: :<space>;<left>
 	endif
 endfunction
-"}}}
-"get better at vim{{{
-function! GetBetter()
-	noremap <bs> <nop>
-	inoremap <bs> <nop>
-endfunction
-call GetBetter()
 "}}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -373,11 +366,6 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = '∄'
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" Jedi-vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:jedi#usages_command = ""
-let g:jedi#documentation_command = ""
-"""""""""""""""""""""""""""""""""""""""""""""""""""
 " TagBar
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:tagbar_map_showproto = "d"
@@ -392,3 +380,8 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsSnippetsDir = "~/.vim/Ultisnips"
 let g:UltiSnipsSnippetsDirectories=["~/.vim/Ultisnips", "Ultisnips"]
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" syntastic
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_java_javac_config_file_enabled = 1
+	"command to call in project folder -> :SyntasticJavacEditClasspath
