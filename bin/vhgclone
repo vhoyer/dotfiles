@@ -12,11 +12,7 @@ CLONE() {
 	eval $gitclone
 }
 
-if [[ $# -gt 1 ]]; then
-	# execute the command
-	exit 1
-########################################
-elif [[ $# -eq 1 ]]; then
+if [[ $# -eq 1 ]]; then
 	if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
 		echo -e "usage: vhgclone <github username>/<github repo name> [folder]\n\nThere is no more help... sorry for that."
 		exit 1
@@ -30,6 +26,7 @@ elif [[ $# -eq 1 ]]; then
 elif [[ $# -eq 2 ]]; then
 	if [[ $1 == *"/"* ]]; then
 		CLONE $1 $2
+		exit 1
 	fi
 else
 	echo -e $helpmsg
