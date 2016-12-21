@@ -151,11 +151,11 @@ noremap - :ccl<cr>
 noremap <F2> :tabprevious<cr>
 noremap <F3> :tabNext<cr>
 noremap <F4> :b#<cr>
-noremap <F5> :wa<cr>:make<cr>:cw<cr>
-noremap <S-F5> :wa<cr>:make<space>
-noremap <C-F5> :wa<cr>:make %:r<cr>:cw<cr>
-noremap <C-j> :bp<CR>
-noremap <C-k> :bn<CR>
+noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr>
+noremap <S-F5> <esc>:wa<cr>:make<space>
+noremap <C-F5> <esc>:wa<cr>:make %:r<cr>:cw<cr>
+noremap <C-j> :bp!<CR>
+noremap <C-k> :bn!<CR>
 noremap <C-h> :cp<CR>
 noremap <C-l> :cn<CR>
 noremap <C-n> <esc>mygg=G`y
