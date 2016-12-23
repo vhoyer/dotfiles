@@ -193,4 +193,7 @@ fi
 ############################
 # git related
 #
-git fetch origin master
+if [[ $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ]]; #if inside /home/$user
+then
+	git fetch origin master
+fi
