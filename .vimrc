@@ -285,9 +285,9 @@ function! InrmapCloseThings()
 		inoremap (( ()<left>
 		inoremap [[ []<left>
 		inoremap {{ {<esc>o}<esc>O
+		inoremap -- ->
 	endif
 	if &filetype == 'php'
-		inoremap -- ->
 		inoremap __ =>
 		inoremap [<return> []<left><return><esc>O
 	endif
