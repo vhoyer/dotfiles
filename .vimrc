@@ -160,6 +160,7 @@ noremap <C-h> :cp<CR>
 noremap <C-l> :cn<CR>
 noremap <C-n> <esc>mygg=G`y
 noremap <leader>g `
+noremap <leader>m <esc>:only<cr>
 noremap <leader>s <esc>:w<cr>
 noremap <leader>S <esc>:w!<cr>
 noremap <leader>p <esc>:CtrlP<cr>
