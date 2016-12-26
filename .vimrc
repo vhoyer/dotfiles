@@ -148,6 +148,7 @@ noremap Q <nop>
 noremap Y y$
 noremap + :cw<cr>
 noremap - :ccl<cr>
+noremap VV ^v$h
 noremap <F2> :tabprevious<cr>
 noremap <F3> :tabNext<cr>
 noremap <F4> :b#<cr>
