@@ -197,3 +197,4 @@ if [[ $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ]]; #if inside /
 then
 	git fetch origin master
 fi
+export PYTHONPATH=$PYTHONPATH:$PWD

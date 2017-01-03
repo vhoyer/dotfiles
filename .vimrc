@@ -138,6 +138,7 @@ noremap J b
 noremap Ç w
 noremap <leader>J ^
 noremap <leader>Ç $
+vnoremap <leader>Ç $<left>
 
 nnoremap <leader>j <C-w><left>
 nnoremap <leader>k <C-w><down>
@@ -226,6 +227,7 @@ function! USlayout() "{{{
 	noremap <leader>\| <esc>:vsplit<cr>
 	noremap <leader>H ^
 	noremap <leader>L $
+	vnoremap <leader>L $<left>
 
 	nnoremap <leader>h <C-w><left>
 	nnoremap <leader>j <C-w><down>
@@ -263,6 +265,7 @@ vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgvl
 "Close thigs after inserting then {{{
 "turn "Close thigs after inserting then" shortcut on if filetype html or xml
 function! InrmapCloseThings()
+	inoremap <? <?
 	inoremap < <|inoremap >> >>|inoremap >>> >>>
 	inoremap " "| inoremap "" ""
 	inoremap '' ''
@@ -276,17 +279,19 @@ function! InrmapCloseThings()
 	inoremap -- --
 	inoremap __ __
 	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'php'
-		inoremap << <space>/><left><left><left>
+		inoremap <? <?php<space>?><left><left><left>
+		inoremap <! <!----><left><left><left>
+		inoremap << <space>/>
 		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
 		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
 		inoremap '' ''<left>
 		inoremap \\ /
 	endif
-	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'php' || &filetype == 'java' || &filetype == 'css'
+	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'php' || &filetype == 'java' || &filetype == 'css' || &filetype == 'python'
 		inoremap "" ""<left>
 		inoremap (( ()<left>
 		inoremap [[ []<left>
-		inoremap {{ {<esc>o}<esc>O
+		inoremap {{ {<cr>}<esc>O
 		inoremap -- ->
 	endif
 	if &filetype == 'php'
