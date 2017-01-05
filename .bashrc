@@ -147,12 +147,13 @@ fi
 #
 export bgcolor="\[\e[48;2;38;38;38m\]" #hex:262626
 export fgcolor="\[\e[38;2;255;215;175m\]" #hex:FFD7AF
+export cmdCOLOR="\[\e[0;38;5;208m\]"
 export termcolor="$fgcolor"
 # current working directory (\w) .................... - hex:87AF87
 # current branch on git [if any] $(__git_ps1 "%s") .. - hex:87AFAF
 #lastcmd title {{{
 terminal() { #this will show in the title the current running command
-	trap 'echo -ne "\033]0;$BASH_COMMAND\007"' DEBUG
+	trap 'echo -ne "\033]0;$BASH_COMMAND\007" && [[ -t 1 ]] && tput sgr0' DEBUG
 }
 PROMPT_COMMAND=terminal
 #}}}
@@ -175,14 +176,14 @@ git_ps () {
 		echo -e $(__git_ps1 '[%s]');
 	fi
 }
-if [[ "$(__git_ps1 "%s")" == *"command not found"* ]]
+export PS1="\[\e[0m\]$termcolor\u@\h:\[\e[0;38;5;2m\]\w\[\e[0;38;5;12m\]"
+if [[ "$(__git_ps1 "%s")" != *"command not found"* ]]
 then
-	export PS1="$termcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\]\n$fgcolor\@\$ "
-else
 	export GIT_PS1_SHOWDIRTYSTATE=1
-	export PS1="$termcolor\u@\h:\[\e[38;2;135;175;135m\]\w\[\e[38;2;135;175;175m\] \$(git_ps)\n$fgcolor\@\$\[\e[0m\] "
+	export PS1=$PS1" \$(git_ps)"
 fi
-export PS2="$fgcolor\@> "
+export PS1=$PS1"\[\e[0m\]\n$fgcolor\@\$ $cmdCOLOR"
+export PS2="\[\e[0m\]$fgcolor\@> $cmdCOLOR"
 # }}}
 
 # set up apache envvars - required
@@ -197,4 +198,6 @@ if [[ $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ]]; #if inside /
 then
 	git fetch origin master
 fi
+
+#envvars
 export PYTHONPATH=$PYTHONPATH:$PWD

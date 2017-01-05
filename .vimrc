@@ -288,6 +288,7 @@ function! InrmapCloseThings()
 	endif
 	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'php' || &filetype == 'java' || &filetype == 'css' || &filetype == 'python'
 		inoremap "" ""<left>
+		inoremap '' ''<left>
 		inoremap (( ()<left>
 		inoremap [[ []<left>
 		inoremap {{ {<cr>}<esc>O
