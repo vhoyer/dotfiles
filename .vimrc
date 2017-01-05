@@ -280,7 +280,6 @@ function! InrmapCloseThings()
 	inoremap __ __
 	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'php'
 		inoremap <? <?php<space>?><left><left><left>
-		inoremap <! <!----><left><left><left>
 		inoremap << <space>/>
 		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
 		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
@@ -310,6 +309,9 @@ function! InrmapCloseThings()
 	endif
 	if &filetype == 'css'
 		inoremap :: :<space>;<left>
+	endif
+	if &filetype == 'markdown' || &filetype == 'html' || &filetype == 'xml' || &filetype == 'php'
+		inoremap <! <!----><left><left><left>
 	endif
 endfunction
 "}}}
