@@ -28,6 +28,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'albfan/AnsiEsc.vim'
 "Plugin 'OmniSharp/omnisharp-vim' "seens a good one, but needs vim compiled with python
 Plugin 'dhruvasagar/vim-table-mode'
+"Plugin 'jaxbot/semantic-highlight.vim' "custom color for variables
+Plugin 'vhoyer/Mark'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

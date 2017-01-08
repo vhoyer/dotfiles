@@ -71,7 +71,7 @@ set wrapmargin=0
 " searching
 set hlsearch " Highlight all search results
 set smartcase " Enable smart-case search
-set ignorecase " Always case-insensitive
+set noignorecase " Always case-insensitive
 set incsearch " Searches for strings incrementally
 "set nolazyredraw " don't redraw while executing macros
 set incsearch " do incremental searching
@@ -156,6 +156,8 @@ noremap <F4> :b#<cr>
 noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr>
 noremap <S-F5> <esc>:wa<cr>:make<space>
 noremap <C-F5> <esc>:wa<cr>:make %:r<cr>:cw<cr>
+noremap <F9> <esc>:e Makefile<cr>
+noremap <S-F9> <esc>:bd Makefile<cr>
 noremap <C-j> :bp!<CR>
 noremap <C-k> :bn!<CR>
 noremap <C-h> :cp<CR>
@@ -395,3 +397,9 @@ let g:UltiSnipsSnippetsDirectories=["~/.vim/Ultisnips", "Ultisnips"]
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_java_javac_config_file_enabled = 1
 	"command to call in project folder -> :SyntasticJavacEditClasspath
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Mark
+""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader><leader>m <Plug>MarkSet
+vmap <leader><leader>m <Plug>MarkSet
+nmap <leader><leader>n <Plug>MarkClear
