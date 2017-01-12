@@ -167,10 +167,11 @@ git_ps () {
 	elif  [[ "$(__git_ps1 '[%s]')" == *"+"* ]]; #if there is an addition
 	then
 		echo -e $(__git_ps1 '[%s]');
-	elif [[ $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ]]; #if inside /home/$user
+	elif [[ ! "$(pwd)" =~ ^\/home\/ ]]; #if inside /home/$user
 	then
 		echo ;
-	elif [[ $(__git_ps1) == "fatal:"* ]]; then
+	elif [[ $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ]]; #if inside /home/$user
+	then
 		echo ;
 	else
 		echo -e $(__git_ps1 '[%s]');
