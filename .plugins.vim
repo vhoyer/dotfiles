@@ -30,6 +30,7 @@ Plugin 'albfan/AnsiEsc.vim'
 Plugin 'dhruvasagar/vim-table-mode'
 "Plugin 'jaxbot/semantic-highlight.vim' "custom color for variables
 Plugin 'vhoyer/Mark'
+Plugin 'mattn/emmet-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
