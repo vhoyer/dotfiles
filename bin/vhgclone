@@ -2,7 +2,7 @@
 helpmsg="usage: vhgclone <github username>/<github repo name> [folder]\n\ntry \"vhgclone [-h|--help]\" for more information."
 CLONE() {
 	# build the git clone command
-	gitclone="git clone https://github.com/"$1
+	gitclone="git clone https://github.com/"$1".git"
 
 	# test if there is the folder arg
 	if [[ $# -eq 2 ]]; then

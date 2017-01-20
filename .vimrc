@@ -316,6 +316,9 @@ function! InrmapCloseThings()
 	if &filetype == 'markdown' || &filetype == 'html' || &filetype == 'xml' || &filetype == 'php'
 		inoremap <! <!----><left><left><left>
 	endif
+	if &filetype == 'sh'
+		inoremap [[ [[  ]]<left><left><left>
+	endif
 endfunction
 "}}}
 
