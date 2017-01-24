@@ -14,6 +14,7 @@ set autoread " detect when a file is changed
 set backupdir=~/.vim-tmp// ",~/.tmp/,/var/tmp/,/tmp/ " the .swp files goes here
 set directory=~/.vim-tmp// ",~/.tmp/,/var/tmp/,/tmp/
 
+set hidden
 set undolevels=1000
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " User Interface
