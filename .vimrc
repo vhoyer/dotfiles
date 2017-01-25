@@ -393,9 +393,7 @@ let g:table_mode_corner = "|"
 " ultisnips
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsSnippetsDir = "~/.vim/Ultisnips"
-let g:UltiSnipsSnippetsDirectories=["~/.vim/Ultisnips", "Ultisnips"]
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""
