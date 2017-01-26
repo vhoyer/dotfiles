@@ -1,0 +1,56 @@
+#!/bin/bash
+QUICKHELP="usage: octopressh -[h|r[i]] [--rbenv] [folder [theme]]\n\ntype octopressh -h for more info"
+HELP="usage: octopressh -[h|r[i]] [--rbenv] [folder [theme]]\n
+\t	the most basic usage is \`octopressh -r\`\n
+\n
+\t	-h\t	\t	show this message\n
+\t	-r\t	\t	run the script\n
+\t	-i\t	\t	install theme, if theme is not specified, octopress'\n
+\t	\t	\t	default theme is installed\n
+\t	[folder]\t	if not specified, default is 'octopress'\n
+\t	--rbenv\t	if you are using rbenv\n
+\n
+inspirated on a post from http://tableless.com.br"
+FOLDER='octopress'
+THEME=""
+
+if [[ $# == 0 ]]; then
+	echo -e $QUICKHELP
+	exit 1
+elif [[ $# == 1 ]]; then
+	if [[ $1 == "-h" ]]; then
+		echo -e $HELP
+		exit 0
+	fi
+elif [[ $# -gt 0 ]]; then # args 1 or greater
+	if [[ $1 =~ "^-[^-]" ]]; then
+		FLAGS=$FLAGS$(echo $1|cut -d'-' -f 2)
+	fi
+	if [[ $# -gt 1 ]]; then # args 2 or greater
+		while [[ $2 =~ "^--" ]]; do
+			FLAGS=$FLAGS$(echo $2|cut -d'--' -f 2)
+			shift
+		done
+		FOLDER=$2
+		if [[ ! $3 == "" ]];then
+			THEME='['$3']'
+		fi
+	fi
+fi
+
+git clone git://github.com/imathis/octopress.git $FOLDER
+cd $FOLDER
+
+gem install bundler
+
+if [[ $FLAGS =~ "rbenv" ]]; then
+	rbenv rehash
+fi
+
+bundle install
+
+if [[ $FLAGS =~ "i" ]]; then
+	eval rake install"$THEME"
+fi
+exit 0 #exit successfully
+# vim: ts=8 sw=8 sts=8
