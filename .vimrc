@@ -211,6 +211,7 @@ function! USlayout() "{{{
 	noremap J J
 	noremap K K
 	noremap L L
+	noremap <C-J> a<cr><esc>k$
 
 	"Avoiding the <esc>
 	inoremap jk <esc>
