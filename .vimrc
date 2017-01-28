@@ -91,6 +91,12 @@ if has('mouse')
 	" set ttymouse=xterm2
 endif
 
+" GVim
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
+
 " Scroll offset
 set scrolloff=2
 set sidescrolloff=5
@@ -332,7 +338,7 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.test set filetype=mysql
 	autocmd BufNewFile,BufRead *.aspx set filetype=html
 	autocmd BufNewFile,BufRead *.master set filetype=html
-	autocmd BufNewFile,BufRead *.php setfiletype=php
+	autocmd BufNewFile,BufRead *.php set filetype=php
 
 	autocmd BufNewFile,BufRead *.md setlocal spell
 
@@ -340,6 +346,8 @@ if has("autocmd")
 	autocmd StdinReadPre * let s:std_in=1
 	autocmd BufWrite,VimLeave *.* mkview
 	autocmd BufRead *.* silent loadview
+
+	autocmd BufNewFile,BufRead ~/Documents/defold/*.script set filetype=lua
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree
