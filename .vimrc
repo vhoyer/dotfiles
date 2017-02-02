@@ -104,29 +104,32 @@ set sidescrolloff=5
 " key mapping
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = "\<Space>"
-"Avoiding the <esc>
-inoremap kl <esc>
-cmap <C-space> <C-c>
+" Avoiding the <esc>
+inoremap jk <esc>
+cnoremap jk <C-[>
 
-" windows
-nnoremap <silent> <leader>h <esc>:split<cr>
-nnoremap <silent> <leader>H <esc>:vsplit<cr>
+" Always forget {{{
+nnoremap Ç :
+cnoremap Ç <return>
+cnoremap çç <return>
+"}}}
+
+" windows {{{
+noremap <leader><Bslash> <esc>:vsplit<cr>
+noremap <leader>\| <esc>:split<cr>
 
 nnoremap <up> <C-w>+
 nnoremap <down> <C-w>-
 nnoremap <left> <C-w><
 nnoremap <right> <C-w>>
-
-" set paste toggle
-nnoremap <silent> \p :set invpaste<cr>
-" set pastetoggle="\p"
+"}}}
 
 vnoremap <leader><leader> :normal .<cr>
 vnoremap v <esc>
 
 " scroll the viewport faster
-noremap K 2<C-e>
-noremap L 2<C-y>
+noremap <C-e> 2<C-e>
+noremap <C-q> 2<C-y>
 
 " Code Folding
 nnoremap <leader>f <esc>za
@@ -135,41 +138,42 @@ vnoremap <leader>f zf
 " spell checking
 noremap <leader>cw 1z=
 
-" movimento
-noremap ç l
-noremap l k
-noremap k j
-noremap j h
+" moviment {{{
+noremap <leader>H ^
+noremap <leader>L $
+vnoremap <leader>L $<left>
 
-noremap J b
-noremap Ç w
-noremap <leader>J ^
-noremap <leader>Ç $
-vnoremap <leader>Ç $<left>
+nnoremap <leader>h <C-w><left>
+nnoremap <leader>j <C-w><down>
+nnoremap <leader>k <C-w><up>
+nnoremap <leader>l <C-w><right>
+"}}}
 
-nnoremap <leader>j <C-w><left>
-nnoremap <leader>k <C-w><down>
-nnoremap <leader>l <C-w><up>
-nnoremap <leader>ç <C-w><right>
-
-noremap Q <nop>
-noremap Y y$
-noremap + :cw<cr>
-noremap - :ccl<cr>
-noremap VV ^v$h
-noremap <F2> :tabprevious<cr>
-noremap <F3> :tabNext<cr>
-noremap <F4> :b#<cr>
+" Quickfix & make {{{
 noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr>
 noremap <S-F5> <esc>:wa<cr>:make<space>
 noremap <C-F5> <esc>:wa<cr>:make %:r<cr>:cw<cr>
 noremap <F9> <esc>:e Makefile<cr>
 noremap <S-F9> <esc>:bd Makefile<cr>
-noremap <C-j> :bp!<CR>
-noremap <C-k> :bn!<CR>
+noremap + :cw<cr>
+noremap - :ccl<cr>
 noremap <C-h> :cp<CR>
 noremap <C-l> :cn<CR>
+"}}}
+
+noremap Q <nop>
+noremap Y y$
+noremap VV ^v$h
+noremap <F2> :tabprevious<cr>
+noremap <F3> :tabNext<cr>
+noremap <F4> :b#<cr>
+noremap <C-j> :bp<CR>
+noremap <C-k> :bn<CR>
+" Normalize the file
 noremap <C-n> <esc>mygg=G`y
+" reverse 'J'
+noremap JJ a<cr><esc>k$
+" go to mark ...
 noremap <leader>g `
 noremap <leader>m <esc>:only<cr>
 noremap <leader>s <esc>:w<cr>
@@ -205,49 +209,6 @@ function! TransparentBg()
 	hi! Folded ctermbg=NONE guibg=NONE
 endfunction
 abbr tbg call<space>TransparentBg()
-"}}}
-function! USlayout() "{{{
-	""""""""""""""""
-	nnoremap Ç :
-	cnoremap Ç <return>
-	cnoremap çç <return>
-	""""""""""""""""
-	inoremap kl kl
-	noremap H H
-	noremap J J
-	noremap K K
-	noremap L L
-	noremap <C-J> a<cr><esc>k$
-
-	"Avoiding the <esc>
-	inoremap jk <esc>
-	cnoremap jk <esc>
-
-	" scroll the viewport faster
-	noremap <C-e> 2<C-e>
-	noremap <C-q> 2<C-y>
-
-	"moviment
-	noremap h h
-	noremap j j
-	noremap k k
-	noremap l l
-
-	noremap <leader><Bslash> <esc>:split<cr>
-	noremap <leader>\| <esc>:vsplit<cr>
-	noremap <leader>H ^
-	noremap <leader>L $
-	vnoremap <leader>L $<left>
-
-	nnoremap <leader>h <C-w><left>
-	nnoremap <leader>j <C-w><down>
-	nnoremap <leader>k <C-w><up>
-	nnoremap <leader>l <C-w><right>
-
-	noremap <C-j> :bp<CR>
-	noremap <C-k> :bn<CR>
-endfunction
-call USlayout()
 "}}}
 " this works just in vim standalone {{{
 let &t_SI .= "\<Esc>[?2004h"
