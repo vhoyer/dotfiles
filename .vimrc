@@ -96,6 +96,7 @@ set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
+set guifont=UbuntuMono\ 13
 
 " Scroll offset
 set scrolloff=2
@@ -172,7 +173,7 @@ noremap <C-k> :bn<CR>
 " Normalize the file
 noremap <C-n> <esc>mygg=G`y
 " reverse 'J'
-noremap JJ a<cr><esc>k$
+noremap JJ i<cr><esc>k$
 " go to mark ...
 noremap <leader>g `
 noremap <leader>m <esc>:only<cr>
@@ -249,15 +250,16 @@ function! InrmapCloseThings()
 	inoremap \\ \\
 	inoremap -- --
 	inoremap __ __
-	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'php'
+	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'phtml'
 		inoremap <? <?php<space>?><left><left><left>
+		inoremap <+ <?=<space>?><left><left><left>
 		inoremap << <space>/>
 		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
 		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
 		inoremap '' ''<left>
 		inoremap \\ /
 	endif
-	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'php' || &filetype == 'java' || &filetype == 'css' || &filetype == 'python'
+	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'phtml' || &filetype == 'java' || &filetype == 'css' || &filetype == 'python'
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>
@@ -265,7 +267,7 @@ function! InrmapCloseThings()
 		inoremap {{ {<cr>}<esc>O
 		inoremap -- ->
 	endif
-	if &filetype == 'php'
+	if &filetype == 'phtml'
 		inoremap __ =>
 		inoremap [<return> []<left><return><esc>O
 	endif
@@ -282,7 +284,7 @@ function! InrmapCloseThings()
 	if &filetype == 'css'
 		inoremap :: :<space>;<left>
 	endif
-	if &filetype == 'markdown' || &filetype == 'html' || &filetype == 'xml' || &filetype == 'php'
+	if &filetype == 'markdown' || &filetype == 'html' || &filetype == 'xml' || &filetype == 'phtml'
 		inoremap <! <!----><left><left><left>
 	endif
 	if &filetype == 'sh'
@@ -299,7 +301,7 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.test set filetype=mysql
 	autocmd BufNewFile,BufRead *.aspx set filetype=html
 	autocmd BufNewFile,BufRead *.master set filetype=html
-	autocmd BufNewFile,BufRead *.php set filetype=php
+	autocmd BufNewFile,BufRead *.php set filetype=phtml
 
 	autocmd BufNewFile,BufRead *.md setlocal spell
 
