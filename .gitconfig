@@ -1,0 +1,12 @@
+[user]
+	name = vhoyer
+	email = vhoyer@live.com
+[core]
+	autocrlf = false
+	safecrlf = true
+[alias]
+	pow = push origin master
+	pullom = pull origin master
+	co = commit -sa
+[credential]
+	helper = store
