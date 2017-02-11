@@ -6,6 +6,8 @@ silent !mkdir ~/.vim-tmp/ > /dev/null 2>&1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+abbr sptbr set spelllang=pt_br
+
 set history=1000 " keep 50 lines of command line history
 set ruler " show the cursor position all the time
 set showcmd " display incomplete commands
@@ -168,6 +170,7 @@ noremap VV ^v$h
 noremap <F2> :tabprevious<cr>
 noremap <F3> :tabNext<cr>
 noremap <F4> :b#<cr>
+noremap CA <esc>mygg"+yG`y
 noremap <C-j> :bp<CR>
 noremap <C-k> :bn<CR>
 " Normalize the file
