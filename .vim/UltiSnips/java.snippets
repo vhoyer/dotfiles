@@ -1,0 +1,14 @@
+snippet cle "public class { ... }" b
+package ${1:io.github.vhoyer.$2;}
+
+public class ${3:`!p snip.rv = snip.basename or "untitled"`}${4:
+	${5:extends ${6:Class} }${7:implements ${8:Serializable}}} {
+	$0
+}
+endsnippet
+
+snippet pco "Class constructor" b
+public ${1:`!p snip.rv = snip.basename or "untitled"`}($2) {
+	$0
+}
+endsnippet

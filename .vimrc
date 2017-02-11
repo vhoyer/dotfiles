@@ -170,6 +170,7 @@ noremap VV ^v$h
 noremap <F2> :tabprevious<cr>
 noremap <F3> :tabNext<cr>
 noremap <F4> :b#<cr>
+noremap <F10> :UltiSnipsEdit<cr>
 noremap CA <esc>mygg"+yG`y
 noremap <C-j> :bp<CR>
 noremap <C-k> :bn<CR>
@@ -307,6 +308,7 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.php set filetype=phtml
 
 	autocmd BufNewFile,BufRead *.md setlocal spell
+	autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell
 
 	autocmd BufEnter * call InrmapCloseThings()
 	autocmd StdinReadPre * let s:std_in=1
