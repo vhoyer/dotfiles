@@ -175,7 +175,7 @@ noremap CA <esc>mygg"+yG`y
 noremap <C-j> :bp<CR>
 noremap <C-k> :bn<CR>
 " Normalize the file
-noremap <C-n> <esc>mygg=G`y
+noremap == <esc>mygg=G`y
 " reverse 'J'
 noremap JJ i<cr><esc>k$
 " go to mark ...
@@ -197,9 +197,14 @@ nnoremap <leader>e :q<CR>
 nnoremap <leader>E :q!<cr>
 nnoremap <leader>ee :qa<cr>
 nnoremap <leader>EE :qa!<cr>
+
+"insert maps
+inoremap <C-n> <C-x><C-n>
+
 "Linux only due filesys
 map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
-map <S-F12> <esc>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr><F8>
+map <S-F12> <esc>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr>
+
 "source the .vimrc (again) ~ reload the configs
 noremap <F8> :so $MYVIMRC<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -282,7 +287,7 @@ function! InrmapCloseThings()
 	endif
 	if &filetype == 'mysql'
 		inoremap (( ()<left>
-		inoremap ((( (<esc>o);<esc>O<tab>
+		inoremap ((( (<esc>o);<esc>O
 		inoremap '' ''<left>
 	endif
 	if &filetype == 'css'
@@ -326,12 +331,6 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeQuitOnOpen = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" super tab
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc','&completefunc']
-let g:SuperTabRetainCompletionType=2
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-markdown-preview
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let vim_markdown_preview_hotkey='<C-m>'
@@ -369,9 +368,9 @@ let g:table_mode_corner = "|"
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " ultisnips
 """""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<cr>"
-let g:UltiSnipsJumpBackwardTrigger = "<S-cr>"
+let g:UltiSnipsExpandTrigger = "<Nul>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic
