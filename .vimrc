@@ -370,6 +370,8 @@ let g:table_mode_corner = "|"
 " ultisnips
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<cr>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-cr>"
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic

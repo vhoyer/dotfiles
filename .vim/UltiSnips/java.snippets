@@ -1,22 +1,25 @@
 snippet cle "public class { ... }" b
 package ${1:io.github.vhoyer.$2;}
 
-public class ${3:`!p snip.rv = snip.basename or "untitled"`}${4:
-	${5:extends ${6:Class} }${7:implements ${8:Serializable}}} {
+public class `!p snip.rv = snip.basename or "untitled"`${3:
+	${4:extends ${7:Class} }${8:implements ${9:Serializable}}} {
+
 	$0
 }
 endsnippet
 
 snippet pco "Class constructor" b
-public ${1:`!p snip.rv = snip.basename or "untitled"`}($2) {
-	$0
+public `!p snip.rv = snip.basename or "untitled"`($1){$0
 }
 endsnippet
 
 snippet pv "Public void" b
-public void ${1:methodName}($2){
-	$0
+public void ${1:methodName}($2){$0
 }
+endsnippet
+
+snippet spl "println"
+System.out.println($0);
 endsnippet
 
 snippet pub "public"
@@ -35,6 +38,18 @@ snippet uid "serialVersionUID"
 public static final long serialVersionUID = 1L;$0
 endsnippet
 
-snippet str "static"
+snippet Str "String"
 String $0
+endsnippet
+
+snippet sleep "sleep"
+try{
+	Thread.sleep(${1:1000});
+} catch(InterruptedException ex) { ex.printStackTrace(); }$0
+endsnippet
+
+snippet for "for loop"
+for(int ${1:i} = ${2:0}; $1 ${3:<} ${4:10}; $1${5:++}){
+	$0
+}
 endsnippet
