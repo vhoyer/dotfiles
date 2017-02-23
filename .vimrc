@@ -45,7 +45,9 @@ set shiftwidth=4 " Number of auto-indent spaces
 set softtabstop=4 " Edit as if the tabs are 4 characters wide
 set tabstop=4 " the visible width of tabs
 set shiftround " round indent to a multiple of 'shiftwidth'
+
 set completeopt+=longest
+set complete=.,w,b
 
 " code folding settings
 set foldnestmax=10          " deepest fold is 10 levels
@@ -199,7 +201,9 @@ nnoremap <leader>ee :qa<cr>
 nnoremap <leader>EE :qa!<cr>
 
 "insert maps
-inoremap <C-n> <C-x><C-n>
+
+"visual maps
+vnoremap s :s/
 
 "Linux only due filesys
 map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
