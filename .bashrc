@@ -178,7 +178,7 @@ git_ps () {
 	fi
 }
 export PS1="\[\e[0m\]$termcolor\u@\h:\[\e[0;38;5;2m\]\w\[\e[0;38;5;12m\]"
-if [[ "$(__git_ps1 "%s")" != *"command not found"* ]]
+if [[ ( "$(__git_ps1 "%s")" != *"command not found"* ) && ( $OSTYPE != "msys" ) ]]
 then
 	export GIT_PS1_SHOWDIRTYSTATE=1
 	export PS1=$PS1" \$(git_ps)"
