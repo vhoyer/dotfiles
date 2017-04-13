@@ -27,6 +27,9 @@ set t_Co=256
 let g:gruvbox_italic = 1
 color gruvbox
 set background=dark
+if $VHTHEME == "light"
+	set background=light
+endif
 
 set number
 set relativenumber
@@ -144,14 +147,18 @@ vnoremap <leader>f zf
 noremap <leader>cw 1z=
 
 " moviment {{{
-noremap <leader>H ^
-noremap <leader>L $
-vnoremap <leader>L $<left>
+noremap <leader>h ^
+noremap <leader>l $
+vnoremap <leader>l $<left>
 
-nnoremap <leader>h <C-w><left>
-nnoremap <leader>j <C-w><down>
-nnoremap <leader>k <C-w><up>
-nnoremap <leader>l <C-w><right>
+" transform the up and down to work on line wraps
+noremap j gj
+noremap k gk
+
+nnoremap <leader>H <C-w><left>
+nnoremap <leader>J <C-w><down>
+nnoremap <leader>K <C-w><up>
+nnoremap <leader>L <C-w><right>
 "}}}
 
 " Quickfix & make {{{
@@ -190,6 +197,7 @@ noremap <leader><leader> .
 
 nnoremap ~ g~
 nnoremap <BS> i<bs><esc><right>
+nnoremap <leader>r <esc>my:e!<cr>`y
 nnoremap <leader>W <esc>:set wrap!<cr>
 nnoremap <leader>q :Bclose<CR>
 nnoremap <leader>qq :bd<cr>
@@ -387,3 +395,5 @@ let g:syntastic_java_javac_config_file_enabled = 1
 nmap <leader><leader>m <Plug>MarkSet
 vmap <leader><leader>m <Plug>MarkSet
 nmap <leader><leader>n <Plug>MarkClear
+nmap <leader><leader>r <Plug>MarkRegex
+vmap <leader><leader>r <Plug>MarkRegex

@@ -145,15 +145,30 @@ fi
 #######################
 # colors
 #
-export bgcolor="\[\e[48;2;38;38;38m\]" #hex:262626
-export fgcolor="\[\e[38;2;255;215;175m\]" #hex:FFD7AF
 export cmdCOLOR="\[\e[0;38;5;208m\]"
-export termcolor="$fgcolor"
+
+export VHTHEME="dark"
+definevhTheme() {
+if [[ $VHTHEME == "dark" ]]; then
+	# Dark theme {{{
+	export bgcolor="\[\e[48;2;38;38;38m\]" #hex:262626
+	export fgcolor="\[\e[38;2;255;215;175m\]" #hex:ffd7af
+	export termcolor="$fgcolor"
+	#}}}
+elif [[ $VHTHEME == "light" ]]; then
+	# Light theme {{{
+	export bgcolor="\[\e[48;2;255;255;175m\]" #hex:ffffaf
+	export fgcolor="\[\e[38;2;38;38;38m\]" #hex:262626
+	export termcolor="$fgcolor"
+	#}}}
+fi
+}
+definevhTheme
 # current working directory (\w) .................... - hex:87AF87
 # current branch on git [if any] $(__git_ps1 "%s") .. - hex:87AFAF
 #lastcmd title {{{
 terminal() { #this will show in the title the current running command
-	trap 'echo -ne "\033]0;$BASH_COMMAND\007" && [[ -t 1 ]] && tput sgr0' DEBUG
+	trap 'echo -ne "\033]0;$BASH_COMMAND\007" && [[ -t 1 ]] && tput sgr0 && definevhTheme && setPS' DEBUG
 }
 PROMPT_COMMAND=terminal
 #}}}
@@ -177,14 +192,17 @@ git_ps () {
 		echo -e $(__git_ps1 '[%s]');
 	fi
 }
-export PS1="\[\e[0m\]$termcolor\u@\h:\[\e[0;38;5;2m\]\w\[\e[0;38;5;12m\]"
-if [[ ( "$(__git_ps1 "%s")" != *"command not found"* ) && ( $OSTYPE != "msys" ) ]]
-then
-	export GIT_PS1_SHOWDIRTYSTATE=1
-	export PS1=$PS1" \$(git_ps)"
-fi
-export PS1=$PS1"\[\e[0m\]\n$fgcolor\@\$ $cmdCOLOR"
-export PS2="\[\e[0m\]$fgcolor\@> $cmdCOLOR"
+setPS() {
+	export PS1="\[\e[0m\]$termcolor\u@\h:\[\e[0;38;5;2m\]\w\[\e[0;38;5;12m\]"
+	if [[ ( "$(__git_ps1 "%s")" != *"command not found"* ) && ( $OSTYPE != "msys" ) ]]
+	then
+		export GIT_PS1_SHOWDIRTYSTATE=1
+		export PS1=$PS1" \$(git_ps)"
+	fi
+	export PS1=$PS1"\[\e[0m\]\n$fgcolor\@\$ $cmdCOLOR"
+	export PS2="\[\e[0m\]$fgcolor\@> $cmdCOLOR"
+}
+setPS
 # }}}
 
 # set up apache envvars - required
