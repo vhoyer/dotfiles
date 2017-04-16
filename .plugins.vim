@@ -11,26 +11,22 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox' " colorscheme
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'ervandew/supertab'
-"Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'joonty/vdebug'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'majutsushi/tagbar'
-"Plugin 'JamshedVesuna/vim-markdown-preview' "doesn't seen to work'
 Plugin 'vadimr/bclose.vim'
 Plugin 'SirVer/ultisnips'
-"Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
-"Plugin 'siminino/vim-autoprefixer'
 Plugin 'albfan/AnsiEsc.vim'
-"Plugin 'OmniSharp/omnisharp-vim' "seens a good one, but needs vim compiled with python
 Plugin 'dhruvasagar/vim-table-mode'
-"Plugin 'jaxbot/semantic-highlight.vim' "custom color for variables
 Plugin 'vhoyer/Mark'
-"Plugin 'mattn/emmet-vim'
+"Plugin 'sjl/gundo'
+"Plugin 'siminino/vim-autoprefixer'
+"Plugin 'jaxbot/semantic-highlight.vim' "custom color for variables
+"Plugin 'mattn/emmet-vim' "html>body>div.container into html file
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
