@@ -2,7 +2,7 @@
 	name = vhoyer
 	email = vhoyer@live.com
 [core]
-	autocrlf = false
+	autocrlf = input
 	safecrlf = warn
 [alias]
 	pow = push origin master
