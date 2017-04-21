@@ -1,42 +1,45 @@
+#!/bin/bash
+
+INSTALL_ALL() { #{{{
 if [[ $OSTYPE == "linux-gnu" ]]; then
 	#this will make the if condition make sense, and work properly
 	apps=""
 	pre=""
 	pos=""
-	if [[ $(which git) == "" ]]; then
+	if [[ $(which git) == "" ]] && [[ ! "$1" == *"git"* ]]; then
 		apps=$apps" git"
 	fi
-	if [[ $(which vim) == "" ]]; then
+	if [[ $(which vim) == "" ]] && [[ ! "$1" == *"vim"* ]]; then
 		apps=$apps" vim-gtk"
 	fi
-	if [[ $(which ctags) == "" ]]; then
+	if [[ $(which ctags) == "" ]] && [[ ! "$1" == *"ctags"* ]]; then
 		apps=$apps" exuberant-ctags"
 	fi
-	if [[ $(which mysql) == "" ]]; then
+	if [[ $(which mysql) == "" ]] && [[ ! "$1" == *"mysql"* ]]; then
 		apps=$apps" mariadb-server"
 		pre=$pre" sudo apt-get install -y software-properties-common && sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8 && sudo add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirror.ufscar.br/mariadb/repo/10.1/ubuntu xenial main' &&"
 	fi
-	if [[ $(which apache2) == "" ]]; then
+	if [[ $(which apache2) == "" ]] && [[ ! "$1" == *"apache2"* ]]; then
 		apps=$apps" apache2"
 	fi
-	if [[ $(which php) == "" ]]; then
+	if [[ $(which php) == "" ]] && [[ ! "$1" == *"php"* ]]; then
 		apps=$apps" libapache2-mod-php7.0 php7.0-mysql php7.0-curl php7.0-json php-memcached php7.0-dev php7.0-mcrypt php7.0-sqlite3 php-intl php-mbstring"
 		pos=$pos" phpenmod mcrypt &&"
 	fi
-	if [[ "$(which curl)" == "" ]]; then
+	if [[ "$(which curl)" == "" ]] && [[ ! "$1" == *"curl"* ]]; then
 		apps=$apps" curl"
 	fi
-	if [[ "$(which composer)" == "" ]]; then
+	if [[ "$(which composer)" == "" ]] && [[ ! "$1" == *"composer"* ]]; then
 		pos=$pos" curl -sS https://getcomposer.org/installer | php &&"
 	fi
-	if [[ "$(which mongod)" == "" ]]; then
+	if [[ "$(which mongod)" == "" ]] && [[ ! "$1" == *"mongod"* ]]; then
 		pre=$pre" sudo echo 'deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse' > /etc/apt/sources.list.d/mongodb-org-3.2.list && sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv 'EA312927' &&"
 		apps=$apps" mongodb-org"
 	fi
-	if [[ "$(which adventure)" == "" ]]; then
+	if [[ "$(which adventure)" == "" ]] && [[ ! "$1" == *"adventure"* ]]; then
 		apps=$apps" bsdgames"
 	fi
-	if [[ "$(which tree)" == "" ]]; then
+	if [[ "$(which tree)" == "" ]] && [[ ! "$1" == *"tree"* ]]; then
 		apps=$apps" tree"
 	fi
 
@@ -64,4 +67,28 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 		vim +PluginInstall +qall
 	fi
 	echo -e "\n#\n#\n#\n#Finish instalation\n#\n#\n#\n"
+fi
+} #}}}
+HELPMSG(){
+	echo "usage: vhinstall install [ignored_package ...]"
+}
+
+if [[ $# > 0 ]]; then
+	if [[ $# == 1 ]]; then
+		if [[ "$1" == "install" ]]; then
+			INSTALL_ALL
+		fi
+	elif [[ $# > 1 ]]; then
+		if [[ "$1" == "install" ]]; then
+			shift
+			sudo apt-get update && sudo apt-get -y upgrade
+			while [[ $# ]]; do
+				ignore=$ignore" "$1
+				shift
+			done
+			INSTALL_ALL $ignore
+		fi
+	fi
+else
+	HELPMSG
 fi
