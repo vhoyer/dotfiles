@@ -175,6 +175,7 @@ noremap <C-l> :cn<CR>
 
 noremap Q <nop>
 noremap Y y$
+noremap <leader>y "+y
 noremap VV ^v$h
 noremap <F2> :tabprevious<cr>
 noremap <F3> :tabNext<cr>
