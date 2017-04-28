@@ -230,7 +230,7 @@ function! TransparentBg()
 	hi! Number ctermbg=NONE guibg=NONE
 	hi! Folded ctermbg=NONE guibg=NONE
 endfunction
-abbr tbg call<space>TransparentBg()
+command! Tbg call TransparentBg()
 "}}}
 " this works just in vim standalone {{{
 let &t_SI .= "\<Esc>[?2004h"
