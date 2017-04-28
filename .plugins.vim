@@ -23,6 +23,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'albfan/AnsiEsc.vim'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'vhoyer/Mark'
+Plugin 'wakatime/vim-wakatime'
 "Plugin 'sjl/gundo'
 "Plugin 'siminino/vim-autoprefixer'
 "Plugin 'jaxbot/semantic-highlight.vim' "custom color for variables
