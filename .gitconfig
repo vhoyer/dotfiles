@@ -8,5 +8,7 @@
 	pow = push origin master
 	pullom = pull origin master
 	co = commit -sa
+	stu = status -uno
+	st = status
 [credential]
 	helper = store
