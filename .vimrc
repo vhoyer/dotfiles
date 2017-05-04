@@ -398,3 +398,7 @@ vmap <leader><leader>m <Plug>MarkSet
 nmap <leader><leader>n <Plug>MarkClear
 nmap <leader><leader>r <Plug>MarkRegex
 vmap <leader><leader>r <Plug>MarkRegex
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Emmet
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:user_emmet_leader_key = '<C-e>'

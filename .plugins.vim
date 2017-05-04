@@ -24,10 +24,10 @@ Plugin 'albfan/AnsiEsc.vim'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'vhoyer/Mark'
 Plugin 'wakatime/vim-wakatime'
+Plugin 'mattn/emmet-vim' "html>body>div.container into html file
 "Plugin 'sjl/gundo'
 "Plugin 'siminino/vim-autoprefixer'
 "Plugin 'jaxbot/semantic-highlight.vim' "custom color for variables
-"Plugin 'mattn/emmet-vim' "html>body>div.container into html file
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
