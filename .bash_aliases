@@ -1,1 +1,1 @@
-alias vimusl="vim +\"call USlayout()\" $*"
+alias cd..="cd .."
