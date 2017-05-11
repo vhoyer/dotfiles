@@ -281,7 +281,7 @@ function! InrmapCloseThings()
 		inoremap '' ''<left>
 		inoremap \\ /
 	endif
-	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'phtml' || &filetype == 'java' || &filetype == 'css' || &filetype == 'python'
+	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'phtml' || &filetype == 'java' || &filetype == 'css' || &filetype == 'python' || &filetype == 'scss'
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>
@@ -303,7 +303,7 @@ function! InrmapCloseThings()
 		inoremap ((( (<esc>o);<esc>O
 		inoremap '' ''<left>
 	endif
-	if &filetype == 'css'
+	if &filetype == 'css' || &filetype == 'scss'
 		inoremap :: :<space>;<left>
 	endif
 	if &filetype == 'markdown' || &filetype == 'html' || &filetype == 'xml' || &filetype == 'phtml'
@@ -402,3 +402,18 @@ vmap <leader><leader>r <Plug>MarkRegex
 " Emmet
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:user_emmet_leader_key = '<C-e>'
+let g:user_emmet_expandabbr_key = '<C-e>e'
+let g:user_emmet_expandword_key = '<C-e>;'
+let g:user_emmet_update_tag = '<C-e>u'
+let g:user_emmet_balancetaginward_key = '<C-e>d'
+let g:user_emmet_balancetagoutward_key = '<C-e>D'
+let g:user_emmet_next_key = '<C-e>n'
+let g:user_emmet_prev_key = '<C-e>N'
+let g:user_emmet_imagesize_key = '<C-e>i'
+let g:user_emmet_togglecomment_key = '<C-e>/'
+let g:user_emmet_splitjointag_key = '<C-e>j'
+let g:user_emmet_removetag_key = '<C-e>k'
+let g:user_emmet_anchorizeurl_key = '<C-e>a'
+let g:user_emmet_anchorizesummary_key = '<C-e>A'
+let g:user_emmet_mergelines_key = '<C-e>m'
+let g:user_emmet_codepretty_key = '<C-e>c'
