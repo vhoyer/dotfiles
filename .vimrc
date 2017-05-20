@@ -344,10 +344,6 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeQuitOnOpen = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-markdown-preview
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let vim_markdown_preview_hotkey='<C-m>'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1
