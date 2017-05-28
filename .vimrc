@@ -198,6 +198,7 @@ noremap <leader><leader> .
 
 nnoremap ~ g~
 nnoremap <BS> i<bs><esc><right>
+nnoremap <leader>gg <esc>:Gcommit -sa<cr>
 nnoremap <leader>r <esc>my:e!<cr>`y
 nnoremap <leader>W <esc>:set wrap!<cr>
 nnoremap <leader>q :Bclose<CR>
@@ -305,6 +306,7 @@ function! InrmapCloseThings()
 	endif
 	if &filetype == 'css' || &filetype == 'scss'
 		inoremap :: :<space>;<left>
+		inoremap ?? /**/<left><left>
 	endif
 	if &filetype == 'markdown' || &filetype == 'html' || &filetype == 'xml' || &filetype == 'phtml'
 		inoremap <! <!----><left><left><left>
