@@ -199,7 +199,7 @@ noremap <leader><leader> .
 
 nnoremap ~ g~
 nnoremap <BS> i<bs><esc><right>
-nnoremap <leader>gg <esc>:Gcommit -sa<cr>
+nnoremap <leader>gg <esc>:Gcommit -s<cr>
 nnoremap <leader>r <esc>my:e!<cr>`y
 nnoremap <leader>W <esc>:set wrap!<cr>
 nnoremap <leader>q :Bclose<CR>
