@@ -213,7 +213,7 @@ fi
 ############################
 # git related
 #
-if [[ $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ]]; #if inside /home/$user
+if [[ ( $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ) || ( $(git rev-parse --show-toplevel) =~ \/root\/home$ ) ]]; #if inside /home/$user or /$driver/root/home
 then
 	git fetch origin master
 fi
