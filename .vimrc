@@ -274,7 +274,7 @@ function! InrmapCloseThings()
 	inoremap \\ \\
 	inoremap -- --
 	inoremap __ __
-	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'phtml'
+	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'phtml' || &filetype == 'xhtml'
 		inoremap <? <?php<space>?><left><left><left>
 		inoremap <+ <?=<space>?><left><left><left>
 		inoremap << <space>/>
@@ -309,7 +309,7 @@ function! InrmapCloseThings()
 		inoremap :: :<space>;<left>
 		inoremap ?? /**/<left><left>
 	endif
-	if &filetype == 'markdown' || &filetype == 'html' || &filetype == 'xml' || &filetype == 'phtml'
+	if &filetype == 'markdown' || &filetype == 'html' || &filetype == 'xml' || &filetype == 'phtml' || &filetype == 'xhtml'
 		inoremap <! <!----><left><left><left>
 	endif
 	if &filetype == 'sh'
