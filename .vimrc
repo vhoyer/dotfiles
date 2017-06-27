@@ -37,6 +37,7 @@ set relativenumber
 set autoindent " Auto-indent new lines
 set smartindent " Enable smart-indent
 
+set cursorline
 set list
 set listchars=tab:┆\ ,eol:¬,trail:•,extends:❯,precedes:❮
 "set listchars=tab:→⋮ ┆,eol:¬,trail:⋅•
@@ -107,7 +108,7 @@ set guifont=UbuntuMono\ 13
 
 " Scroll offset
 set scrolloff=2
-set sidescrolloff=5
+set sidescrolloff=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " key mapping
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
