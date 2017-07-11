@@ -23,6 +23,7 @@ Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'vhoyer/Mark'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'mattn/emmet-vim' "html>body>div.container into html file
+Plugin 'udalov/kotlin-vim'
 "Plugin 'joonty/vdebug'
 "Plugin 'sjl/gundo'
 "Plugin 'siminino/vim-autoprefixer'

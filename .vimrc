@@ -234,7 +234,7 @@ function! TransparentBg()
 	hi! Number ctermbg=NONE guibg=NONE
 	hi! Folded ctermbg=NONE guibg=NONE
 endfunction
-command! Tbg call TransparentBg()
+command! SetBGtransparent call TransparentBg()
 "}}}
 " this works just in vim standalone {{{
 let &t_SI .= "\<Esc>[?2004h"
@@ -284,7 +284,7 @@ function! InrmapCloseThings()
 		inoremap '' ''<left>
 		inoremap \\ /
 	endif
-	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'phtml' || &filetype == 'java' || &filetype == 'css' || &filetype == 'python' || &filetype == 'scss'
+	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'phtml' || &filetype == 'java' || &filetype == 'css' || &filetype == 'python' || &filetype == 'scss' || &filetype == 'kotlin'
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>
@@ -323,11 +323,13 @@ endfunction
 " autocmds
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
-	autocmd BufNewFile,BufRead *.sql set filetype=mysql
-	autocmd BufNewFile,BufRead *.test set filetype=mysql
-	autocmd BufNewFile,BufRead *.aspx set filetype=html
-	autocmd BufNewFile,BufRead *.master set filetype=html
-	autocmd BufNewFile,BufRead *.php set filetype=phtml
+	autocmd BufNewFile,BufRead *.sql setfiletype mysql
+	autocmd BufNewFile,BufRead *.test setfiletype mysql
+	autocmd BufNewFile,BufRead *.aspx setfiletype html
+	autocmd BufNewFile,BufRead *.master setfiletype html
+	autocmd BufNewFile,BufRead *.php setfiletype phtml
+	autocmd BufNewFile,BufRead *.kl setfiletype kotlin
+	autocmd BufNewFile,BufRead *.kls setfiletype kotlin
 
 	autocmd BufNewFile,BufRead *.md setlocal spell
 	autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell
@@ -337,7 +339,7 @@ if has("autocmd")
 	autocmd BufWrite,VimLeave *.* mkview
 	autocmd BufRead *.* silent loadview
 
-	autocmd BufNewFile,BufRead ~/Documents/defold/*.script set filetype=lua
+	autocmd BufNewFile,BufRead ~/Documents/defold/*.script setfiletype lua
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree
