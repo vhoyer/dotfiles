@@ -104,7 +104,7 @@ set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
-set guifont=UbuntuMono\ 13
+set guifont=Roboto\ Mono\ for\ Powerline\ Regular\ 11
 
 " Scroll offset
 set scrolloff=2
@@ -357,9 +357,9 @@ if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
 "let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
+let g:airline_left_sep = ''
 "let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
+let g:airline_right_sep = ''
 let g:airline_symbols.crypt = '🔒'
 let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.linenr = '␤'
