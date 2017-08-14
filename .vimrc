@@ -275,7 +275,7 @@ function! InrmapCloseThings()
 	inoremap \\ \\
 	inoremap -- --
 	inoremap __ __
-	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'phtml' || &filetype == 'xhtml'
+	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'php' || &filetype == 'xhtml'
 		inoremap <? <?php<space>?><left><left><left>
 		inoremap <+ <?=<space>?><left><left><left>
 		inoremap << <space>/>
@@ -284,7 +284,7 @@ function! InrmapCloseThings()
 		inoremap '' ''<left>
 		inoremap \\ /
 	endif
-	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'phtml' || &filetype == 'java' || &filetype == 'css' || &filetype == 'python' || &filetype == 'scss' || &filetype == 'kotlin'
+	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'php' || &filetype == 'java' || &filetype == 'css' || &filetype == 'python' || &filetype == 'scss' || &filetype == 'kotlin'
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>
@@ -292,7 +292,7 @@ function! InrmapCloseThings()
 		inoremap {{ {<cr>}<esc>O
 		inoremap -- ->
 	endif
-	if &filetype == 'phtml'
+	if &filetype == 'php'
 		inoremap __ =>
 		inoremap [<return> []<left><return><esc>O
 	endif
@@ -310,7 +310,7 @@ function! InrmapCloseThings()
 		inoremap :: :<space>;<left>
 		inoremap ?? /**/<left><left>
 	endif
-	if &filetype == 'markdown' || &filetype == 'html' || &filetype == 'xml' || &filetype == 'phtml' || &filetype == 'xhtml'
+	if &filetype == 'markdown' || &filetype == 'html' || &filetype == 'xml' || &filetype == 'php' || &filetype == 'xhtml'
 		inoremap <! <!----><left><left><left>
 	endif
 	if &filetype == 'sh'
@@ -327,7 +327,7 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.test setfiletype mysql
 	autocmd BufNewFile,BufRead *.aspx setfiletype html
 	autocmd BufNewFile,BufRead *.master setfiletype html
-	autocmd BufNewFile,BufRead *.php setfiletype phtml
+	autocmd BufNewFile,BufRead *.php set ft=html|set syn=php
 	autocmd BufNewFile,BufRead *.kl setfiletype kotlin
 	autocmd BufNewFile,BufRead *.kls setfiletype kotlin
 
