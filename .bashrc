@@ -120,7 +120,7 @@ fi
 #
 
 # Adds a custom folder for my scripts to run anywhere
-PATH+=:~/bin
+PATH+=:~/.bin
 
 # Here are some android stuff {{{
 
