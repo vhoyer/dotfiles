@@ -180,7 +180,8 @@ noremap VV ^v$h
 noremap <F2> :tabprevious<cr>
 noremap <F3> :tabNext<cr>
 noremap <F4> :b#<cr>
-nmap <insert> :Git add -A .<cr><cr>
+nmap <insert> :Git add -u<cr><cr>
+nmap <S-insert> :Git add -A<cr><cr>
 nmap <pageup> :Git pow<cr>
 noremap <F10> :UltiSnipsEdit<cr>
 noremap CA <esc>mygg"+yG`y
