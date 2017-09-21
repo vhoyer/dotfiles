@@ -163,9 +163,8 @@ nnoremap <leader>L <C-w><right>
 "}}}
 
 " Quickfix & make {{{
-noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr>
+noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 noremap <S-F5> <esc>:wa<cr>:make<space>
-noremap <C-F5> <esc>:wa<cr>:make %:r<cr>:cw<cr>
 noremap <F9> <esc>:e Makefile<cr>
 noremap <S-F9> <esc>:bd Makefile<cr>
 noremap + :cw<cr>
@@ -197,11 +196,11 @@ noremap <leader>m <esc>:only<cr>
 noremap <leader>s <esc>:w<cr>
 noremap <leader>S <esc>:w!<cr>
 noremap <leader>p <esc>:CtrlP<cr>
-noremap <leader><leader> .
 
 nnoremap ~ g~
 nnoremap <BS> i<bs><esc><right>
 nnoremap <leader>gg <esc>:Gcommit -s<cr>
+nnoremap <leader>ga <esc>:Git add %<cr><cr>
 nnoremap <leader>r <esc>my:e!<cr>`y
 nnoremap <leader>W <esc>:set wrap!<cr>
 nnoremap <leader>q :Bclose<CR>
@@ -276,26 +275,13 @@ function! InrmapCloseThings()
 	inoremap \\ \\
 	inoremap -- --
 	inoremap __ __
-	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'php' || &filetype == 'xhtml'
-		inoremap <? <?php<space>?><left><left><left>
-		inoremap <+ <?=<space>?><left><left><left>
-		inoremap << <space>/>
-		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
-		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
-		inoremap '' ''<left>
-		inoremap \\ /
-	endif
-	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'php' || &filetype == 'java' || &filetype == 'css' || &filetype == 'python' || &filetype == 'scss' || &filetype == 'kotlin'
+	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'php' || &filetype == 'java' || &filetype == 'css' || &filetype == 'python' || &filetype == 'scss' || &filetype == 'kotlin' || &filetype == 'html'
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>
 		inoremap [[ []<left>
 		inoremap {{ {<cr>}<esc>O
 		inoremap -- ->
-	endif
-	if &filetype == 'php'
-		inoremap __ =>
-		inoremap [<return> []<left><return><esc>O
 	endif
 	if &filetype == 'vim'
 		inoremap < <><left>
@@ -316,6 +302,17 @@ function! InrmapCloseThings()
 	endif
 	if &filetype == 'sh'
 		inoremap [[ [[  ]]<left><left><left>
+	endif
+	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'php' || &filetype == 'xhtml'
+		inoremap <? <?php<space><space>?><left><left><left>
+		inoremap <+ <?=<space>?><left><left><left>
+		inoremap << <space>/>
+		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
+		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
+		inoremap '' ""<left>
+		inoremap \\ /
+		inoremap .. =>
+		inoremap [<return> []<left><return><esc>O
 	endif
 endfunction
 "}}}
