@@ -165,8 +165,6 @@ nnoremap <leader>L <C-w><right>
 " Quickfix & make {{{
 noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 noremap <S-F5> <esc>:wa<cr>:make<space>
-noremap <F9> <esc>:e Makefile<cr>
-noremap <S-F9> <esc>:bd Makefile<cr>
 noremap + :cw<cr>
 noremap - :ccl<cr>
 noremap <C-h> :cp<CR>

@@ -220,3 +220,10 @@ fi
 
 #envvars
 export PYTHONPATH=$PYTHONPATH:$PWD
+
+###########################
+# gruvbox magic colors
+#
+if [ -f ~/.vim/bundle/gruvbox/gruvbox_256palette.sh ]; then
+	. ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
+fi
