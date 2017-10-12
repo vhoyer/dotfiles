@@ -72,7 +72,7 @@ case "$TERM" in
 	*)
 		;;
 esac
-TERM=xterm-256color
+#TERM=xterm-256color
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
