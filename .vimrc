@@ -24,7 +24,9 @@ set undolevels=1000
 syntax on
 set t_Co=256
 
-let g:gruvbox_italic = 1
+if empty(matchstr($TERM, '^screen.*$'))
+	let g:gruvbox_italic = 1
+endif
 color gruvbox
 set background=dark
 if $VHTHEME == "light"
@@ -178,7 +180,9 @@ noremap VV ^v$h
 noremap <F2> :tabprevious<cr>
 noremap <F3> :tabNext<cr>
 noremap <F4> :b#<cr>
-nmap <insert> :Git add -A .<cr><cr>
+nmap <insert> :Git add %<cr><cr>
+nmap <insert><insert> :Git add -u<cr><cr>
+nmap <insert><insert><insert> :Git add -A<cr><cr>
 nmap <pageup> :Git pow<cr>
 noremap <F10> :UltiSnipsEdit<cr>
 noremap CA <esc>mygg"+yG`y
@@ -217,7 +221,7 @@ vnoremap s :s/
 
 "Linux only due filesys
 map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
-map <S-F12> <esc>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr>
+map <F12><F12> <esc>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr>
 
 "source the .vimrc (again) ~ reload the configs
 noremap <F8> :so $MYVIMRC<cr>
