@@ -167,6 +167,7 @@ nnoremap <leader>L <C-w><right>
 " Quickfix & make {{{
 noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 noremap <S-F5> <esc>:wa<cr>:make<space>
+noremap [31~ <esc>:wa<cr>:make<space>
 noremap + :cw<cr>
 noremap - :ccl<cr>
 noremap <C-h> :cp<CR>
@@ -311,7 +312,6 @@ function! InrmapCloseThings()
 		inoremap << <space>/>
 		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
 		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
-		inoremap '' ""<left>
 		inoremap \\ /
 		inoremap .. =>
 		inoremap [<return> []<left><return><esc>O
