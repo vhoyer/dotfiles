@@ -7,7 +7,7 @@
 [alias]
 	pow = push origin master
 	pullom = pull origin master
-	co = commit -sa
+	co = commit -s
 	stu = status -uno
 	st = status
 [credential]
