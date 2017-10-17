@@ -19,6 +19,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'vadimr/bclose.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'vhoyer/Mark'
 Plugin 'wakatime/vim-wakatime'
@@ -37,3 +38,8 @@ filetype plugin indent on    " required
 " :PluginUpdate
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
