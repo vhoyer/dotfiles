@@ -278,7 +278,7 @@ function! InrmapCloseThings()
 	inoremap \\ \\
 	inoremap -- --
 	inoremap __ __
-	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'php' || &filetype == 'java' || &filetype == 'css' || &filetype == 'python' || &filetype == 'scss' || &filetype == 'kotlin' || &filetype == 'html'
+	if index(['cs', 'javascript', 'php', 'java', 'css', 'python', 'scss', 'kotlin', 'html'],&filetype)!=-1
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>
@@ -286,27 +286,27 @@ function! InrmapCloseThings()
 		inoremap {{ {<cr>}<esc>O
 		inoremap -- ->
 	endif
-	if &filetype == 'vim'
+	if index(['vim',],&filetype)!=-1
 		inoremap < <><left>
 		inoremap '' ''<left>
 		inoremap \\ /
 	endif
-	if &filetype == 'mysql'
+	if index(['mysql'],&filetype)!=-1
 		inoremap (( ()<left>
 		inoremap ((( (<esc>o);<esc>O
 		inoremap '' ''<left>
 	endif
-	if &filetype == 'css' || &filetype == 'scss'
+	if index(['css', 'scss'],&filetype)!=-1
 		inoremap :: :<space>;<left>
 		inoremap ?? /**/<left><left>
 	endif
-	if &filetype == 'markdown' || &filetype == 'html' || &filetype == 'xml' || &filetype == 'php' || &filetype == 'xhtml'
+	if index(['markdown','html','xml','php','xhtml'],&filetype)!=-1
 		inoremap <! <!----><left><left><left>
 	endif
-	if &filetype == 'sh'
+	if index(['sh'],&filetype)!=-1
 		inoremap [[ [[  ]]<left><left><left>
 	endif
-	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'php' || &filetype == 'xhtml'
+	if index(['html','xml','php','xhtml'],&filetype)!=-1
 		inoremap <? <?php<space><space>?><left><left><left>
 		inoremap <+ <?=<space>?><left><left><left>
 		inoremap << <space>/>
@@ -315,6 +315,9 @@ function! InrmapCloseThings()
 		inoremap \\ /
 		inoremap .. =>
 		inoremap [<return> []<left><return><esc>O
+	endif
+	if index(['tex','plaintex'], &filetype)!=-1
+		inoremap {{ {}<left>
 	endif
 endfunction
 "}}}
