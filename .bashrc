@@ -166,12 +166,7 @@ fi
 definevhTheme
 # current working directory (\w) .................... - hex:87AF87
 # current branch on git [if any] $(__git_ps1 "%s") .. - hex:87AFAF
-#lastcmd title {{{
-terminal() { #this will show in the title the current running command
-	trap 'echo -ne "\033]0;$BASH_COMMAND\007" && [[ -t 1 ]] && tput sgr0 && definevhTheme && setPS' DEBUG
-}
-PROMPT_COMMAND=terminal
-#}}}
+
 ######################
 #Git ps1
 #
@@ -213,10 +208,31 @@ fi
 ############################
 # git related
 #
-if [[ ( $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ) || ( $(git rev-parse --show-toplevel) =~ \/root\/home$ ) ]]; #if inside /home/$user or /$driver/root/home
+if [[ $(git rev-parse --show-toplevel) =~ \/(root\/home|home\/[A-Za-z0-9]+)$ ]]; #if inside /home/$user or /$driver/root/home
 then
 	git fetch origin master
 fi
+shopt -s extdebug
+exitWithNoGit() {
+	if ! [[ $BASH_COMMAND =~ ^(exit|shutdown.*) ]]; then
+		return 0
+	fi
+	#if inside /home/$user or /$driver/root/home repo
+	if ! [[ $(git rev-parse --show-toplevel) =~ \/(root\/home|home\/[A-Za-z0-9]+)$ ]];then
+		return 0
+	fi
+	if ! [[ $(__git_ps1 '[%s]') =~ (\*|\+) ]]; then
+		return 0
+	fi
+	#if inside /home/$user or /$driver/root/home
+	if [[ $(pwd) =~ \/(root\/home|home\/[A-Za-z0-9]+)$ ]]; then
+		return 0
+	fi
+
+	echo "commit your shit!"
+	cd ~
+	return 1
+}
 
 #envvars
 export PYTHONPATH=$PYTHONPATH:$PWD
@@ -227,3 +243,18 @@ export PYTHONPATH=$PYTHONPATH:$PWD
 if [ -f ~/.vim/bundle/gruvbox/gruvbox_256palette.sh ]; then
 	. ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 fi
+
+######################
+# Execute after every command
+#
+AfterCMD(){
+	definevhTheme
+	setPS
+}
+PROMPT_COMMAND=AfterCMD
+#this trap command will:
+#1. show in the title the current running command
+#2. don't know
+#3. don't remember
+#4. check if there is changes in the git and do its things
+trap 'echo -ne "\033]0;$BASH_COMMAND\007" && [[ -t 1 ]] && tput sgr0 && exitWithNoGit' DEBUG
