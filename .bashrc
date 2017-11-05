@@ -247,11 +247,12 @@ fi
 ######################
 # Execute after every command
 #
-AfterCMD(){
+Terminal(){
+	#Named 'Terminal' because it stays on the window name :p
 	definevhTheme
 	setPS
 }
-PROMPT_COMMAND=AfterCMD
+PROMPT_COMMAND=Terminal
 #this trap command will:
 #1. show in the title the current running command
 #2. don't know
