@@ -136,11 +136,6 @@ export ANDROIDNDKVER="r10e"  # Version of the NDK you installed
 
 #}}}
 
-#navigate to home when started at sysroot (if in git-bash)
-if [[ ( "$OSTYPE" == "msys" ) && ( "$(pwd)" == "/" ) ]]; then
-	cd $HOME
-fi
-
 # Visual interface customization {{{
 #######################
 # colors
@@ -244,18 +239,22 @@ if [ -f ~/.vim/bundle/gruvbox/gruvbox_256palette.sh ]; then
 	. ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 fi
 
-######################
-# Execute after every command
+##############################
+# TRAP AND PROMPT_COMMAND
 #
 Terminal(){
 	#Named 'Terminal' because it stays on the window name :p
 	definevhTheme
 	setPS
+	tput sgr0
 }
+# PROMPT_COMMAND calls once after a full command is executed (this includes &&)
 PROMPT_COMMAND=Terminal
+
 #this trap command will:
 #1. show in the title the current running command
-#2. don't know
-#3. don't remember
+#2. check if there is a STDOUT
+#3. removes all attributes (color, weight, position, etc)
 #4. check if there is changes in the git and do its things
+# executes before each and every single command
 trap 'echo -ne "\033]0;$BASH_COMMAND\007" && [[ -t 1 ]] && tput sgr0 && exitWithNoGit' DEBUG
