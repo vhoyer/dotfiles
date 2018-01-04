@@ -1,1 +1,3 @@
 Basics of assembler (TIS-100 mode)
+-
+Difference between rain, showers, drizzle: https://hackerbits.com/life/what-is-the-difference-between-rain-and-showers/
