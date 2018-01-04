@@ -195,11 +195,6 @@ setPS() {
 setPS
 # }}}
 
-# set up apache envvars - required
-if [ -f /etc/apache2/envvars ]; then
-	. /etc/apache2/envvars
-fi
-
 ############################
 # git related
 #
@@ -224,7 +219,7 @@ exitWithNoGit() {
 		return 0
 	fi
 
-	echo -e "\n\e[38;2;255;215;175m\e[48;2;251;66;44m[commit your shit!]\n"
+	echo -e "\n\e[38;2;255;215;175m\e[48;2;251;66;44m[commit your shit!]\e[0m\n"
 	cd ~
 	return 1
 }
