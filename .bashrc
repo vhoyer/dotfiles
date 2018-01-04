@@ -219,7 +219,7 @@ exitWithNoGit() {
 		return 0
 	fi
 
-	echo -e "\n\e[38;2;255;215;175m\e[48;2;251;66;44m[commit your shit!]\e[0m\n"
+	echo -e "\n\e[38;2;255;215;175m\e[48;2;251;66;44m[commit your shit!]\e[0m\n\n$(git stu)\n"
 	cd ~
 	return 1
 }
