@@ -224,7 +224,7 @@ exitWithNoGit() {
 		return 0
 	fi
 
-	echo "commit your shit!"
+	echo -e "\n\e[38;2;255;215;175m\e[48;2;251;66;44m[commit your shit!]\n"
 	cd ~
 	return 1
 }
