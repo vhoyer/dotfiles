@@ -165,9 +165,8 @@ nnoremap <leader>L <C-w><right>
 "}}}
 
 " Quickfix & make {{{
+noremap <F5><F5> <esc>:wa<cr>:make<cr>:cw<cr>
 noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
-noremap <S-F5> <esc>:wa<cr>:make<space>
-noremap [31~ <esc>:wa<cr>:make<space>
 noremap + :cw<cr>
 noremap - :ccl<cr>
 noremap <C-h> :cp<CR>
@@ -214,11 +213,6 @@ nnoremap <leader>e :q<CR>
 nnoremap <leader>E :q!<cr>
 nnoremap <leader>ee :qa<cr>
 nnoremap <leader>EE :qa!<cr>
-
-"insert maps
-
-"visual maps
-vnoremap s :s/
 
 "Linux only due filesys
 map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
@@ -278,7 +272,7 @@ function! InrmapCloseThings()
 	inoremap \\ \\
 	inoremap -- --
 	inoremap __ __
-	if index(['cs', 'javascript', 'php', 'java', 'css', 'python', 'scss', 'kotlin', 'html'],&filetype)!=-1
+	if index(['cs', 'javascript', 'php', 'java', 'css', 'python', 'scss', 'kotlin', 'html', 'c'],&filetype)!=-1
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>

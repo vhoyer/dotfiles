@@ -30,6 +30,6 @@ elif [[ $# -gt 0 ]]; then
 			tMSG=$3
 		fi
 	fi
-	eval sleep $tTIME && notify-send --urgency="$tURGENCY" "$tTITLE" "$tMSG"
+	eval sleep $tTIME && echo "wtf" && notify-send --urgency="$tURGENCY" "$tTITLE" "$tMSG"
 fi
 # vim: ts=8 sw=8 sts=8
