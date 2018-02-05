@@ -266,6 +266,7 @@ function! InrmapCloseThings()
 	inoremap (( ((|inoremap ((( (((
 	inoremap [[ [[|inoremap [<return> [<return>
 	inoremap {{ {{|inoremap {{{ {{{
+	inoremap }} }}
 	"}}} }}}
 	inoremap , ,
 	inoremap : :|inoremap :: ::
@@ -279,6 +280,12 @@ function! InrmapCloseThings()
 		inoremap [[ []<left>
 		inoremap {{ {<cr>}<esc>O
 		inoremap -- ->
+	endif
+	if index(['html','vue'],&filetype)!=-1
+		inoremap }} {{}}<left><left><space><space><left>
+	endif
+	if index(['javascript',],&filetype)!=-1
+		inoremap :: :<space>,<left>
 	endif
 	if index(['vim',],&filetype)!=-1
 		inoremap < <><left>
