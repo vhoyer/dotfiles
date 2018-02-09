@@ -26,6 +26,7 @@ Plugin 'wakatime/vim-wakatime' " waka waka waka
 Plugin 'mattn/emmet-vim' "html>body>div.container into html file
 Plugin 'udalov/kotlin-vim'
 Plugin 'othree/html5.vim'
+Plugin 'posva/vim-vue'
 "Plugin 'joonty/vdebug'
 "Plugin 'sjl/gundo'
 "Plugin 'jaxbot/semantic-highlight.vim' "custom color for variables

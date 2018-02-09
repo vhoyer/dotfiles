@@ -334,9 +334,10 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.php set ft=html|set syn=php
 	autocmd BufNewFile,BufRead *.kl setfiletype kotlin
 	autocmd BufNewFile,BufRead *.kls setfiletype kotlin
+	autocmd BufNewFile,BufRead *.vue setfiletype vue.html.javascript.css
 	autocmd BufNewFile,BufRead *.tex set ft=tex tw=100 spell spl=pt_br
 
-	autocmd BufNewFile,BufRead *.md setlocal spell
+	autocmd BufNewFile,BufRead *.md setlocal spell tw=100
 	autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell
 
 	autocmd BufEnter * call InrmapCloseThings()
