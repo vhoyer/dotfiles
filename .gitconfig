@@ -5,7 +5,7 @@
 	autocrlf = input
 	safecrlf = warn
 [alias]
-	pow = push origin master
+	pow = push origin --all
 	pullom = pull origin master
 	co = commit
 	stu = status -uno
