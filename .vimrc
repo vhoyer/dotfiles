@@ -273,7 +273,7 @@ function! InrmapCloseThings()
 	inoremap \\ \\
 	inoremap -- --
 	inoremap __ __
-	if index(['cs', 'javascript', 'php', 'java', 'css', 'python', 'scss', 'kotlin', 'html', 'c'],&filetype)!=-1
+	if index(['cs','javascript','php','java','css','python','scss','kotlin','html','c','vue'],&filetype)!=-1
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>
@@ -284,10 +284,10 @@ function! InrmapCloseThings()
 	if index(['html','vue'],&filetype)!=-1
 		inoremap }} {{}}<left><left><space><space><left>
 	endif
-	if index(['javascript',],&filetype)!=-1
+	if index(['javascript','vue'],&filetype)!=-1
 		inoremap :: :<space>,<left>
 	endif
-	if index(['vim',],&filetype)!=-1
+	if index(['vim'],&filetype)!=-1
 		inoremap < <><left>
 		inoremap '' ''<left>
 		inoremap \\ /
@@ -297,23 +297,25 @@ function! InrmapCloseThings()
 		inoremap ((( (<esc>o);<esc>O
 		inoremap '' ''<left>
 	endif
-	if index(['css', 'scss'],&filetype)!=-1
+	if index(['css','scss'],&filetype)!=-1
 		inoremap :: :<space>;<left>
 		inoremap ?? /**/<left><left>
 	endif
-	if index(['markdown','html','xml','php','xhtml'],&filetype)!=-1
+	if index(['markdown','html','xml','php','xhtml','vue'],&filetype)!=-1
 		inoremap <! <!----><left><left><left>
 	endif
 	if index(['sh'],&filetype)!=-1
 		inoremap [[ [[  ]]<left><left><left>
 	endif
-	if index(['html','xml','php','xhtml'],&filetype)!=-1
-		inoremap <? <?php<space><space>?><left><left><left>
-		inoremap <+ <?=<space>?><left><left><left>
+	if index(['html','xml','php','xhtml','vue'],&filetype)!=-1
 		inoremap << <space>/>
 		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
 		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
 		inoremap \\ /
+	endif
+	if index(['php','phtml'],&filetype)!=-1
+		inoremap <? <?php<space><space>?><left><left><left>
+		inoremap <+ <?=<space>?><left><left><left>
 		inoremap .. =>
 		inoremap [<return> []<left><return><esc>O
 	endif
@@ -331,7 +333,7 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.test setfiletype mysql
 	autocmd BufNewFile,BufRead *.aspx setfiletype html
 	autocmd BufNewFile,BufRead *.master setfiletype html
-	autocmd BufNewFile,BufRead *.php set ft=html|set syn=php
+	autocmd BufNewFile,BufRead *.php set ft=phtml syn=php
 	autocmd BufNewFile,BufRead *.kl setfiletype kotlin
 	autocmd BufNewFile,BufRead *.kls setfiletype kotlin
 	autocmd BufNewFile,BufRead *.vue setfiletype vue.html.javascript.css
