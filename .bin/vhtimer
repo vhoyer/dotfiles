@@ -15,12 +15,12 @@ tLONGHELP="usage: vhtimer <TIME> [TITLE [MESSAGE]]\n
 \t	MESSAGE\tis optional, default is \'$tMSG\'\n"
 
 if [[ $# -eq 0 ]]; then
-    echo -e $tLONGHELP
+    echo -e $tSHORTHELP
 elif [[ $# -gt 0 ]]; then
 	if [[ $1 =~ [1-9][0-9]*[smhd] ]]; then
 		tTIME=$1
 	else
-		echo -e $tSHORTHELP
+		echo -e $tLONGHELP
 		exit 0
 	fi
 	if [[ $# -gt 1 ]]; then
