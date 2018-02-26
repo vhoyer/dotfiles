@@ -72,7 +72,7 @@ case "$TERM" in
 	*)
 		;;
 esac
-TERM=xterm-256color
+#TERM=xterm-256color
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -136,11 +136,6 @@ export ANDROIDNDKVER="r10e"  # Version of the NDK you installed
 
 #}}}
 
-#navigate to home when started at sysroot (if in git-bash)
-if [[ ( "$OSTYPE" == "msys" ) && ( "$(pwd)" == "/" ) ]]; then
-	cd $HOME
-fi
-
 # Visual interface customization {{{
 #######################
 # colors
@@ -166,12 +161,7 @@ fi
 definevhTheme
 # current working directory (\w) .................... - hex:87AF87
 # current branch on git [if any] $(__git_ps1 "%s") .. - hex:87AFAF
-#lastcmd title {{{
-terminal() { #this will show in the title the current running command
-	trap 'echo -ne "\033]0;$BASH_COMMAND\007" && [[ -t 1 ]] && tput sgr0 && definevhTheme && setPS' DEBUG
-}
-PROMPT_COMMAND=terminal
-#}}}
+
 ######################
 #Git ps1
 #
@@ -205,18 +195,61 @@ setPS() {
 setPS
 # }}}
 
-# set up apache envvars - required
-if [ -f /etc/apache2/envvars ]; then
-	. /etc/apache2/envvars
-fi
-
 ############################
 # git related
 #
-if [[ ( $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ) || ( $(git rev-parse --show-toplevel) =~ \/root\/home$ ) ]]; #if inside /home/$user or /$driver/root/home
+if [[ $(git rev-parse --show-toplevel) =~ \/(root\/home|home\/[A-Za-z0-9]+)$ ]]; #if inside /home/$user or /$driver/root/home
 then
 	git fetch origin master
 fi
+shopt -s extdebug
+exitWithNoGit() {
+	if ! [[ $BASH_COMMAND =~ ^(exit|shutdown.*) ]]; then
+		return 0
+	fi
+	#if inside /home/$user or /$driver/root/home repo
+	if ! [[ $(git rev-parse --show-toplevel) =~ \/(root\/home|home\/[A-Za-z0-9]+)$ ]];then
+		return 0
+	fi
+	if ! [[ $(__git_ps1 '[%s]') =~ (\*|\+) ]]; then
+		return 0
+	fi
+	#if inside /home/$user or /$driver/root/home
+	if [[ $(pwd) =~ \/(root\/home|home\/[A-Za-z0-9]+)$ ]]; then
+		return 0
+	fi
+
+	echo -e "\n\e[38;2;255;215;175m\e[48;2;251;66;44m[commit your shit!]\e[0m\n\n$(git stu)\n"
+	cd ~
+	return 1
+}
 
 #envvars
 export PYTHONPATH=$PYTHONPATH:$PWD
+
+###########################
+# gruvbox magic colors
+#
+if [ -f ~/.vim/bundle/gruvbox/gruvbox_256palette.sh ]; then
+	. ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
+fi
+
+##############################
+# TRAP AND PROMPT_COMMAND
+#
+Terminal(){
+	#Named 'Terminal' because it stays on the window name :p
+	definevhTheme
+	setPS
+	tput sgr0
+}
+# PROMPT_COMMAND calls once after a full command is executed (this includes &&)
+PROMPT_COMMAND=Terminal
+
+#this trap command will:
+#1. show in the title the current running command
+#2. check if there is a STDOUT
+#3. removes all attributes (color, weight, position, etc)
+#4. check if there is changes in the git and do its things
+# executes before each and every single command
+trap 'echo -ne "\033]0;$BASH_COMMAND\007" && [[ -t 1 ]] && tput sgr0 && exitWithNoGit' DEBUG

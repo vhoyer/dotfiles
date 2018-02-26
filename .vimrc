@@ -24,7 +24,9 @@ set undolevels=1000
 syntax on
 set t_Co=256
 
-let g:gruvbox_italic = 1
+if empty(matchstr($TERM, '^screen.*$'))
+	let g:gruvbox_italic = 1
+endif
 color gruvbox
 set background=dark
 if $VHTHEME == "light"
@@ -163,10 +165,8 @@ nnoremap <leader>L <C-w><right>
 "}}}
 
 " Quickfix & make {{{
+noremap <F5><F5> <esc>:wa<cr>:make<cr>:cw<cr>
 noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
-noremap <S-F5> <esc>:wa<cr>:make<space>
-noremap <F9> <esc>:e Makefile<cr>
-noremap <S-F9> <esc>:bd Makefile<cr>
 noremap + :cw<cr>
 noremap - :ccl<cr>
 noremap <C-h> :cp<CR>
@@ -180,8 +180,9 @@ noremap VV ^v$h
 noremap <F2> :tabprevious<cr>
 noremap <F3> :tabNext<cr>
 noremap <F4> :b#<cr>
-nmap <insert> :Git add -u<cr><cr>
-nmap <S-insert> :Git add -A<cr><cr>
+nmap <insert> :Git add %<cr><cr>
+nmap <insert><insert> :Git add -u<cr><cr>
+nmap <insert><insert><insert> :Git add -A<cr><cr>
 nmap <pageup> :Git pow<cr>
 noremap <F10> :UltiSnipsEdit<cr>
 noremap CA <esc>mygg"+yG`y
@@ -200,7 +201,7 @@ noremap <leader>p <esc>:CtrlP<cr>
 
 nnoremap ~ g~
 nnoremap <BS> i<bs><esc><right>
-nnoremap <leader>gg <esc>:Gcommit -s<cr>
+nnoremap <leader>gg <esc>:Gcommit<cr>
 nnoremap <leader>ga <esc>:Git add %<cr><cr>
 nnoremap <leader>r <esc>my:e!<cr>`y
 nnoremap <leader>W <esc>:set wrap!<cr>
@@ -213,14 +214,9 @@ nnoremap <leader>E :q!<cr>
 nnoremap <leader>ee :qa<cr>
 nnoremap <leader>EE :qa!<cr>
 
-"insert maps
-
-"visual maps
-vnoremap s :s/
-
 "Linux only due filesys
 map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
-map <S-F12> <esc>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr>
+map <F12><F12> <esc>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr>
 
 "source the .vimrc (again) ~ reload the configs
 noremap <F8> :so $MYVIMRC<cr>
@@ -270,13 +266,14 @@ function! InrmapCloseThings()
 	inoremap (( ((|inoremap ((( (((
 	inoremap [[ [[|inoremap [<return> [<return>
 	inoremap {{ {{|inoremap {{{ {{{
+	inoremap }} }}
 	"}}} }}}
 	inoremap , ,
 	inoremap : :|inoremap :: ::
 	inoremap \\ \\
 	inoremap -- --
 	inoremap __ __
-	if &filetype == 'cs' || &filetype == 'javascript' || &filetype == 'php' || &filetype == 'java' || &filetype == 'css' || &filetype == 'python' || &filetype == 'scss' || &filetype == 'kotlin' || &filetype == 'html'
+	if index(['cs','javascript','php','java','css','python','scss','kotlin','html','c','vue'],&filetype)!=-1
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>
@@ -284,36 +281,46 @@ function! InrmapCloseThings()
 		inoremap {{ {<cr>}<esc>O
 		inoremap -- ->
 	endif
-	if &filetype == 'vim'
+	if index(['html','vue'],&filetype)!=-1
+		inoremap }} {{}}<left><left><space><space><left>
+	endif
+	if index(['javascript','vue'],&filetype)!=-1
+		inoremap :: :<space>,<left>
+	endif
+	if index(['vim'],&filetype)!=-1
 		inoremap < <><left>
 		inoremap '' ''<left>
 		inoremap \\ /
 	endif
-	if &filetype == 'mysql'
+	if index(['mysql'],&filetype)!=-1
 		inoremap (( ()<left>
 		inoremap ((( (<esc>o);<esc>O
 		inoremap '' ''<left>
 	endif
-	if &filetype == 'css' || &filetype == 'scss'
+	if index(['css','scss'],&filetype)!=-1
 		inoremap :: :<space>;<left>
 		inoremap ?? /**/<left><left>
 	endif
-	if &filetype == 'markdown' || &filetype == 'html' || &filetype == 'xml' || &filetype == 'php' || &filetype == 'xhtml'
+	if index(['markdown','html','xml','php','xhtml','vue'],&filetype)!=-1
 		inoremap <! <!----><left><left><left>
 	endif
-	if &filetype == 'sh'
+	if index(['sh'],&filetype)!=-1
 		inoremap [[ [[  ]]<left><left><left>
 	endif
-	if &filetype == 'html' || &filetype == 'xml' || &filetype == 'php' || &filetype == 'xhtml'
-		inoremap <? <?php<space><space>?><left><left><left>
-		inoremap <+ <?=<space>?><left><left><left>
+	if index(['html','xml','php','xhtml','vue'],&filetype)!=-1
 		inoremap << <space>/>
 		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
 		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
-		inoremap '' ""<left>
 		inoremap \\ /
+	endif
+	if index(['php','phtml'],&filetype)!=-1
+		inoremap <? <?php<space><space>?><left><left><left>
+		inoremap <+ <?=<space>?><left><left><left>
 		inoremap .. =>
 		inoremap [<return> []<left><return><esc>O
+	endif
+	if index(['tex','plaintex'], &filetype)!=-1
+		inoremap {{ {}<left>
 	endif
 endfunction
 "}}}
@@ -326,11 +333,13 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.test setfiletype mysql
 	autocmd BufNewFile,BufRead *.aspx setfiletype html
 	autocmd BufNewFile,BufRead *.master setfiletype html
-	autocmd BufNewFile,BufRead *.php set ft=html|set syn=php
+	autocmd BufNewFile,BufRead *.php set ft=phtml syn=php
 	autocmd BufNewFile,BufRead *.kl setfiletype kotlin
 	autocmd BufNewFile,BufRead *.kls setfiletype kotlin
+	autocmd BufNewFile,BufRead *.vue setfiletype vue.html.javascript.css
+	autocmd BufNewFile,BufRead *.tex set ft=tex tw=100 spell spl=pt_br
 
-	autocmd BufNewFile,BufRead *.md setlocal spell
+	autocmd BufNewFile,BufRead *.md setlocal spell tw=100
 	autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell
 
 	autocmd BufEnter * call InrmapCloseThings()
