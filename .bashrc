@@ -175,7 +175,7 @@ git_ps () {
 	elif [[ ! "$(pwd)" =~ ^\/home\/ ]]; #if inside /home/$user
 	then
 		echo ;
-	elif [[ $(git rev-parse --show-toplevel) =~ \/home\/[A-Za-z0-9]+$ ]]; #if inside /home/$user
+	elif [[ "$(git rev-parse --show-toplevel)" =~ \/home\/[A-Za-z0-9]+$ ]]; #if inside /home/$user
 	then
 		echo ;
 	else
@@ -187,7 +187,7 @@ setPS() {
 	if [[ ( "$(__git_ps1 "%s")" != *"command not found"* ) && ( $OSTYPE != "msys" ) ]]
 	then
 		export GIT_PS1_SHOWDIRTYSTATE=1
-		export PS1=$PS1" \$(git_ps)"
+		export PS1=$PS1" $(git_ps)"
 	fi
 	export PS1=$PS1"\[\e[0m\]\n$fgcolor\@\$ $cmdCOLOR"
 	export PS2="\[\e[0m\]$fgcolor\@> $cmdCOLOR"
@@ -198,28 +198,28 @@ setPS
 ############################
 # git related
 #
-if [[ $(git rev-parse --show-toplevel) =~ \/(root\/home|home\/[A-Za-z0-9]+)$ ]]; #if inside /home/$user or /$driver/root/home
+if [[ "$(git rev-parse --show-toplevel)" =~ \/(root\/home|home\/[A-Za-z0-9]+)$ ]]; #if inside /home/$user or /$driver/root/home
 then
 	git fetch origin master
 fi
 shopt -s extdebug
 exitWithNoGit() {
-	if ! [[ $BASH_COMMAND =~ ^(exit|shutdown.*) ]]; then
+	if ! [[ $BASH_COMMAND =~ ^(exit|shutdown.*|logout) ]]; then
 		return 0
 	fi
-	#if inside /home/$user or /$driver/root/home repo
-	if ! [[ $(git rev-parse --show-toplevel) =~ \/(root\/home|home\/[A-Za-z0-9]+)$ ]];then
+	#if inside /home/$user or /$driver/root/home or /$driver/Users/$user
+	if ! [[ "$(git rev-parse --show-toplevel)" =~ \/(root\/home|(home|[a-Z]\/Users)\/[a-Z0-9]+)$ ]];then
 		return 0
 	fi
-	if ! [[ $(__git_ps1 '[%s]') =~ (\*|\+) ]]; then
+	if ! [[ "$(__git_ps1 '[%s]')" =~ (\*|\+) ]]; then
 		return 0
 	fi
-	#if inside /home/$user or /$driver/root/home
-	if [[ $(pwd) =~ \/(root\/home|home\/[A-Za-z0-9]+)$ ]]; then
+	#if inside /home/$user or /$driver/root/home or /$driver/Users/$user
+	if [[ "$(pwd)" =~ \/(root\/home|(home|[a-Z]\/Users)\/[a-Z0-9]+)$ ]]; then
 		return 0
 	fi
 
-	echo -e "\n\e[38;2;255;215;175m\e[48;2;251;66;44m[commit your shit!]\e[0m\n\n$(git stu)\n"
+	echo -e "\n\e[38;2;255;215;175m\e[48;2;251;66;44m[commit your shit!]\e[0m\n\n$(git st)\n"
 	cd ~
 	return 1
 }
@@ -241,7 +241,6 @@ Terminal(){
 	#Named 'Terminal' because it stays on the window name :p
 	definevhTheme
 	setPS
-	tput sgr0
 }
 # PROMPT_COMMAND calls once after a full command is executed (this includes &&)
 PROMPT_COMMAND=Terminal
