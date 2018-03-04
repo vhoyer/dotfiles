@@ -5,8 +5,9 @@
 	autocrlf = input
 	safecrlf = warn
 [alias]
-	pow = push origin --all
-	pullom = pull origin master
+	pow = push origin HEAD
+	pom = pull origin master
+	pod = pull origin development
 	co = commit
 	st = status
 [credential]
