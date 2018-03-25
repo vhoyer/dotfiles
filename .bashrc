@@ -198,7 +198,7 @@ setPS
 ############################
 # git related
 #
-if [[ "$(git rev-parse --show-toplevel)" =~ \/(root\/home|home\/[A-Za-z0-9]+)$ ]]; #if inside /home/$user or /$driver/root/home
+if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" =~ \/(root\/home|home\/[A-Za-z0-9]+)$ ]]; #if inside /home/$user or /$driver/root/home
 then
 	git fetch origin master
 fi
