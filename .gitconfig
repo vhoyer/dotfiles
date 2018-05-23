@@ -4,11 +4,13 @@
 [core]
 	autocrlf = input
 	safecrlf = warn
+	editor = vim
 [alias]
 	pow = push origin HEAD
 	pom = pull origin master
 	pod = pull origin development
 	co = commit
 	st = status
+	ch = checkout
 [credential]
 	helper = store
