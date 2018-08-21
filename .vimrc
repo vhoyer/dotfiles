@@ -15,6 +15,7 @@ set autoread " detect when a file is changed
 
 set backupdir=~/.vim-tmp// ",~/.tmp/,/var/tmp/,/tmp/ " the .swp files goes here
 set directory=~/.vim-tmp// ",~/.tmp/,/var/tmp/,/tmp/
+set viewdir=~/.vim/view
 
 set hidden
 set undolevels=1000
@@ -39,8 +40,14 @@ set relativenumber
 set autoindent " Auto-indent new lines
 set smartindent " Enable smart-indent
 
+set encoding=utf-8
+set iskeyword-=-
+set iskeyword-=_
+
 set cursorline
 set list
+
+set fillchars=fold:-,vert:\│
 set listchars=tab:┆\ ,eol:¬,trail:•,extends:❯,precedes:❮
 "set listchars=tab:→⋮ ┆,eol:¬,trail:⋅•
 "set showbreak=↪
@@ -106,7 +113,15 @@ set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
-set guifont=Roboto\ Mono\ for\ Powerline\ Regular\ 11
+if has("gui_running")
+	if has("gui_gtk2")
+		set guifont=Roboto\ Mono\ for\ Powerline\ Regular\ 12
+	elseif has("gui_macvim")
+		set guifont=Menlo\ Regular:h14
+	elseif has("gui_win32")
+		set guifont=Consolas:h11:cANSI
+	endif
+endif
 
 " Scroll offset
 set scrolloff=2
@@ -118,6 +133,7 @@ let mapleader = "\<Space>"
 " Avoiding the <esc>
 inoremap jk <esc>
 cnoremap jk <C-[>
+inoremap <c-c> <c-c>:set isk-=-<cr>
 
 " Always forget {{{
 nnoremap Ç :
@@ -348,6 +364,9 @@ if has("autocmd")
 	autocmd BufRead *.* silent loadview
 
 	autocmd BufNewFile,BufRead ~/Documents/defold/*.script setfiletype lua
+
+	autocmd InsertEnter *.* set isk+=- isk+=_
+	autocmd InsertLeave *.* set isk-=- isk-=_
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree
