@@ -252,3 +252,6 @@ PROMPT_COMMAND=Terminal
 #4. check if there is changes in the git and do its things
 # executes before each and every single command
 trap 'echo -ne "\033]0;$BASH_COMMAND\007" && [[ -t 1 ]] && tput sgr0 && exitWithNoGit' DEBUG
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
