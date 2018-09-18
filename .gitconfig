@@ -12,5 +12,3 @@
 	co = commit
 	st = status
 	ch = checkout
-[credential]
-	helper = store
