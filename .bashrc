@@ -268,3 +268,5 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add elastic search to path for tests
 PATH=$PATH:/usr/share/elasticsearch/bin
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
