@@ -42,7 +42,6 @@ set smartindent " Enable smart-indent
 
 set encoding=utf-8
 set iskeyword-=-
-set iskeyword-=_
 
 set cursorline
 set list
@@ -180,9 +179,12 @@ nnoremap <leader>K <C-w><up>
 nnoremap <leader>L <C-w><right>
 "}}}
 
-" Quickfix & make {{{
+" Quickfix & make & search {{{
 noremap <F5><F5> <esc>:wa<cr>:make<cr>:cw<cr>
 noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
+
+noremap <F6> <esc>:grep -R '' .<left><left><left>
+
 noremap + :cw<cr>
 noremap - :ccl<cr>
 noremap <C-h> :cp<CR>
@@ -353,7 +355,10 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.kl setfiletype kotlin
 	autocmd BufNewFile,BufRead *.kls setfiletype kotlin
 	autocmd BufNewFile,BufRead *.vue setfiletype vue.html.javascript.css
+	autocmd BufNewFile,BufRead *.slim setfiletype slim
 	autocmd BufNewFile,BufRead *.tex set ft=tex tw=100 spell spl=pt_br
+	autocmd BufNewFile,BufRead *.rb set et ts=2
+	autocmd BufNewFile,BufRead *.coffee setfiletype coffee
 
 	autocmd BufNewFile,BufRead *.md setlocal spell tw=100
 	autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell
@@ -365,8 +370,10 @@ if has("autocmd")
 
 	autocmd BufNewFile,BufRead ~/Documents/defold/*.script setfiletype lua
 
-	autocmd InsertEnter *.* set isk+=- isk+=_
-	autocmd InsertLeave *.* set isk-=- isk-=_
+	"autocmd InsertEnter *.* set isk+=- isk+=_
+	"autocmd InsertLeave *.* set isk-=- isk-=_
+	autocmd InsertEnter *.* set isk+=-
+	autocmd InsertLeave *.* set isk-=-
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree
