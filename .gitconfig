@@ -12,3 +12,4 @@
 	co = commit
 	st = status
 	ch = checkout
+	adog = log --all --decorate --oneline --graph
