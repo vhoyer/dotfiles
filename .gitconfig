@@ -5,6 +5,7 @@
 	autocrlf = input
 	safecrlf = warn
 	editor = vim
+	excludesfile = ~/.ggitignore
 [alias]
 	pow = push origin HEAD
 	pom = pull origin master

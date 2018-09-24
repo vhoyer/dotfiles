@@ -183,7 +183,11 @@ nnoremap <leader>L <C-w><right>
 noremap <F5><F5> <esc>:wa<cr>:make<cr>:cw<cr>
 noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 
-noremap <F6> <esc>:grep -R '' .<left><left><left>
+"ctrl shift f
+"noremap <key> <esc>:grep -R '' .<left><left><left>
+
+noremap <F6> <esc>:tn<cr>
+noremap <F7> <esc>:tp<cr>
 
 noremap + :cw<cr>
 noremap - :ccl<cr>
@@ -291,14 +295,16 @@ function! InrmapCloseThings()
 	inoremap \\ \\
 	inoremap -- --
 	inoremap __ __
-	if index(['cs','javascript','php','java','css','python','scss','kotlin','html','c','vue'],&filetype)!=-1
+	if index(['ruby','cs','javascript','php','java','css','python','scss','kotlin','html','c','vue'],&filetype)!=-1
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>
 		inoremap [[ []<left>
 		inoremap {{ {<cr>}<esc>O
-		inoremap -- ->
 	endif
+	if index(['php'],&filetype)!=-1
+		inoremap -- ->
+    endif
 	if index(['html','vue'],&filetype)!=-1
 		inoremap }} {{}}<left><left><space><space><left>
 	endif
@@ -315,6 +321,10 @@ function! InrmapCloseThings()
 		inoremap ((( (<esc>o);<esc>O
 		inoremap '' ''<left>
 	endif
+	if index(['eruby'],&filetype)!=-1
+		inoremap <+ <%=  %><left><left><left>
+		inoremap <% <%  %><left><left><left>
+    endif
 	if index(['css','scss'],&filetype)!=-1
 		inoremap :: :<space>;<left>
 		inoremap ?? /**/<left><left>
@@ -325,7 +335,7 @@ function! InrmapCloseThings()
 	if index(['sh'],&filetype)!=-1
 		inoremap [[ [[  ]]<left><left><left>
 	endif
-	if index(['html','xml','php','xhtml','vue'],&filetype)!=-1
+	if index(['html','xml','php','xhtml','vue','eruby'],&filetype)!=-1
 		inoremap << <space>/>
 		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
 		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
@@ -426,6 +436,12 @@ let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_java_javac_config_file_enabled = 1
 	"command to call in project folder -> :SyntasticJavacEditClasspath
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctrlp
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_max_files=0
+let g:ctrlp_custom_ignore='.git$|\tmp$|log$'
+let g:ctrlp_max_depth=40
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Mark
 """"""""""""""""""""""""""""""""""""""""""""""""""
