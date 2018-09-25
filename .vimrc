@@ -235,7 +235,6 @@ nnoremap <leader>e :q<CR>
 nnoremap <leader>E :q!<cr>
 nnoremap <leader>ee :qa<cr>
 nnoremap <leader>EE :qa!<cr>
-
 "Linux only due filesys
 map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
 map <F12><F12> <esc>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr>
@@ -295,6 +294,7 @@ function! InrmapCloseThings()
 	inoremap \\ \\
 	inoremap -- --
 	inoremap __ __
+	inoremap <pipe><pipe> <pipe><pipe>
 	if index(['ruby','cs','javascript','php','java','css','python','scss','kotlin','html','c','vue'],&filetype)!=-1
 		inoremap "" ""<left>
 		inoremap '' ''<left>
@@ -302,6 +302,9 @@ function! InrmapCloseThings()
 		inoremap [[ []<left>
 		inoremap {{ {<cr>}<esc>O
 	endif
+	if index(['ruby'],&filetype)!=-1
+		inoremap <pipe><pipe> <pipe><pipe><left>
+    endif
 	if index(['php'],&filetype)!=-1
 		inoremap -- ->
     endif
@@ -329,7 +332,7 @@ function! InrmapCloseThings()
 		inoremap :: :<space>;<left>
 		inoremap ?? /**/<left><left>
 	endif
-	if index(['markdown','html','xml','php','xhtml','vue'],&filetype)!=-1
+	if index(['markdown','html','xml','php','xhtml','vue', 'eruby'],&filetype)!=-1
 		inoremap <! <!----><left><left><left>
 	endif
 	if index(['sh'],&filetype)!=-1
@@ -347,7 +350,7 @@ function! InrmapCloseThings()
 		inoremap .. =>
 		inoremap [<return> []<left><return><esc>O
 	endif
-	if index(['tex','plaintex'], &filetype)!=-1
+	if index(['tex','plaintex', 'ruby', 'eruby'], &filetype)!=-1
 		inoremap {{ {}<left>
 	endif
 endfunction
@@ -361,16 +364,18 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.test setfiletype mysql
 	autocmd BufNewFile,BufRead *.aspx setfiletype html
 	autocmd BufNewFile,BufRead *.master setfiletype html
-	autocmd BufNewFile,BufRead *.php set ft=phtml syn=php
 	autocmd BufNewFile,BufRead *.kl setfiletype kotlin
 	autocmd BufNewFile,BufRead *.kls setfiletype kotlin
 	autocmd BufNewFile,BufRead *.vue setfiletype vue.html.javascript.css
 	autocmd BufNewFile,BufRead *.slim setfiletype slim
-	autocmd BufNewFile,BufRead *.tex set ft=tex tw=100 spell spl=pt_br
-	autocmd BufNewFile,BufRead *.rb set et ts=2
 	autocmd BufNewFile,BufRead *.coffee setfiletype coffee
 
+	autocmd BufNewFile,BufRead *.php set ft=phtml syn=php
+	autocmd BufNewFile,BufRead *.tex set ft=tex tw=100 spell spl=pt_br
 	autocmd BufNewFile,BufRead *.md setlocal spell tw=100
+	autocmd BufNewFile,BufRead *.rb set et ts=2 sw=2
+	autocmd BufNewFile,BufRead *.erb set et ts=2 sw=2
+	autocmd BufNewFile,BufRead *.html set et ts=2 sw=2
 	autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell
 
 	autocmd BufEnter * call InrmapCloseThings()
