@@ -2,6 +2,7 @@ vim-gtk
 exuberant-ctags
 curl
 tmux
+xsel
 
 compizconfig-settings-manager
 compiz-plugins-extra

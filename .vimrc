@@ -369,6 +369,7 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.vue setfiletype vue.html.javascript.css
 	autocmd BufNewFile,BufRead *.slim setfiletype slim
 	autocmd BufNewFile,BufRead *.coffee setfiletype coffee
+	autocmd BufNewFile,BufRead *tmux.conf setfiletype tmux
 
 	autocmd BufNewFile,BufRead *.php set ft=phtml syn=php
 	autocmd BufNewFile,BufRead *.tex set ft=tex tw=100 spell spl=pt_br
