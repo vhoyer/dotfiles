@@ -53,10 +53,11 @@ set listchars=tab:┆\ ,eol:¬,trail:•,extends:❯,precedes:❮
 
 " tab control
 set smarttab " Enable smart-tabs respect 'tabstop', 'shiftwidth', and 'softtabstop'
-set shiftwidth=4 " Number of auto-indent spaces
-set softtabstop=4 " Edit as if the tabs are 4 characters wide
-set tabstop=4 " the visible width of tabs
+set shiftwidth=2 " Number of auto-indent spaces
+set softtabstop=2 " Edit as if the tabs are 4 characters wide
+set tabstop=2 " the visible width of tabs
 set shiftround " round indent to a multiple of 'shiftwidth'
+set expandtab
 
 set completeopt+=longest
 set complete=.,w,b
@@ -374,9 +375,6 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.php set ft=phtml syn=php
 	autocmd BufNewFile,BufRead *.tex set ft=tex tw=100 spell spl=pt_br
 	autocmd BufNewFile,BufRead *.md setlocal spell tw=100
-	autocmd BufNewFile,BufRead *.rb set et ts=2 sw=2
-	autocmd BufNewFile,BufRead *.erb set et ts=2 sw=2
-	autocmd BufNewFile,BufRead *.html set et ts=2 sw=2
 	autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell
 
 	autocmd BufEnter * call InrmapCloseThings()
@@ -442,6 +440,9 @@ let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_java_javac_config_file_enabled = 1
 	"command to call in project folder -> :SyntasticJavacEditClasspath
+"let g:syntastic_scss_sass_args = '-I <path to variables file>'
+    "option relates to https://github.com/vim-syntastic/syntastic/issues/1140
+    "should get rid of false-positive for variable not declared
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctrlp
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -475,3 +476,10 @@ let g:user_emmet_anchorizeurl_key = '<C-e>a'
 let g:user_emmet_anchorizesummary_key = '<C-e>A'
 let g:user_emmet_mergelines_key = '<C-e>m'
 let g:user_emmet_codepretty_key = '<C-e>c'
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-gitgutter
+""""""""""""""""""""""""""""""""""""""""""""""""""
+set updatetime=100
+let g:gitgutter_map_keys = 0
+"see readme for more info
+"let g:gitgutter_terminal_reports_focus=0 "if commented is enabled
