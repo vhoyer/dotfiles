@@ -185,7 +185,7 @@ noremap <F5><F5> <esc>:wa<cr>:make<cr>:cw<cr>
 noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 
 "ctrl shift f
-"noremap <key> <esc>:grep -R '' .<left><left><left>
+noremap <F3> <esc>:grep -R '' .<left><left><left>
 
 noremap <F6> <esc>:tn<cr>
 noremap <F7> <esc>:tp<cr>
@@ -201,7 +201,6 @@ noremap Y y$
 noremap <leader>y "+y
 noremap VV ^v$h
 noremap <F2> :tabprevious<cr>
-noremap <F3> :tabNext<cr>
 noremap <F4> :b#<cr>
 nmap <insert> :Git add %<cr><cr>
 nmap <insert><insert> :Git add -u<cr><cr>

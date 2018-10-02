@@ -14,3 +14,4 @@
 	st = status
 	ch = checkout
 	adog = log --all --decorate --oneline --graph
+	amend = commit --amend
