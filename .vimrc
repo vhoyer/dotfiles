@@ -67,7 +67,8 @@ set foldnestmax=10          " deepest fold is 10 levels
 "set nofoldenable            " don't fold by default
 "set foldmethod=syntax       " fold based on highlight
 "set foldmethod=indent       " fold based on indent
-set foldmethod=marker       " fold based on markers, default {{{,}}}
+"set foldmethod=marker       " fold based on markers, default {{{,}}}
+set foldmethod=manual       " fold based on manually
 set foldlevelstart=1
 
 set clipboard=unnamed
@@ -185,10 +186,10 @@ noremap <F5><F5> <esc>:wa<cr>:make<cr>:cw<cr>
 noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 
 "ctrl shift f
-noremap <F3> <esc>:grep -R '' .<left><left><left>
+noremap <F3> <esc>:grep --exclude=tags -R '' .<left><left><left>
 
-noremap <F6> <esc>:tn<cr>
-noremap <F7> <esc>:tp<cr>
+noremap <F6> <esc>:tp<cr>
+noremap <F7> <esc>:tn<cr>
 
 noremap + :cw<cr>
 noremap - :ccl<cr>
