@@ -211,9 +211,9 @@ noremap <leader>y "+y
 noremap VV ^v$h
 noremap <F2> :tabprevious<cr>
 noremap <F4> :b#<cr>
-nmap <insert> :Git add %<cr><cr>
-nmap <insert><insert> :Git add -u<cr><cr>
-nmap <insert><insert><insert> :Git add -A<cr><cr>
+nmap <insert> :Git add %<cr>:bd!<cr>
+nmap <insert><insert> :Git add -u<cr>:bd!<cr>
+nmap <insert><insert><insert> :Git add -A<cr>:bd!<cr>
 nmap <pageup> :Git pow<cr>
 noremap <F10> :UltiSnipsEdit<cr>
 noremap CA <esc>mygg"+yG`y
@@ -388,6 +388,7 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell
 
 	autocmd BufEnter * call InrmapCloseThings()
+	autocmd BufEnter * :GitGutterAll
 	autocmd StdinReadPre * let s:std_in=1
 	autocmd BufWrite,VimLeave *.* mkview
 	autocmd BufRead *.* silent! loadview

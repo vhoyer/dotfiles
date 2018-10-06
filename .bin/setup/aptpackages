@@ -8,3 +8,6 @@ compizconfig-settings-manager
 compiz-plugins-extra
 
 firefox
+
+# add ppa
+nvim
