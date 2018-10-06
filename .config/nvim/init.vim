@@ -89,7 +89,7 @@ set cmdheight=1 " command bar height
 set title
 
 "insted of cutting a word to break the line, break the line before the word begin
-set wrap
+set nowrap
 set linebreak
 "keeps vim from inserting a 'new line'
 set textwidth=0
@@ -228,7 +228,9 @@ noremap <leader>g `
 noremap <leader>m <esc>:only<cr>
 noremap <leader>s <esc>:w<cr>
 noremap <leader>S <esc>:w!<cr>
-noremap <leader>p <esc>:CtrlP<cr>
+
+noremap <leader>p <esc>:FZF<cr>
+noremap <C-p> <esc>:CtrlPBuffer<cr>
 
 nnoremap ~ g~
 nnoremap <BS> i<bs><esc><right>
@@ -389,6 +391,7 @@ if has("autocmd")
 
 	autocmd BufEnter * call InrmapCloseThings()
 	autocmd BufEnter * :GitGutterAll
+	autocmd BufEnter * :syntax sync fromstart
 	autocmd StdinReadPre * let s:std_in=1
 	autocmd BufWrite,VimLeave *.* mkview
 	autocmd BufRead *.* silent! loadview
@@ -455,11 +458,12 @@ let g:syntastic_java_javac_config_file_enabled = 1
     "option relates to https://github.com/vim-syntastic/syntastic/issues/1140
     "should get rid of false-positive for variable not declared
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" Ctrlp
+"Ctrlp
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_max_files=0
 let g:ctrlp_custom_ignore='.git$|\tmp$|log$'
 let g:ctrlp_max_depth=40
+let g:ctrlp_map = '<nul>'
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Mark
 """"""""""""""""""""""""""""""""""""""""""""""""""
