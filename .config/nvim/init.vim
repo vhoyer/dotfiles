@@ -59,7 +59,7 @@ set smartindent " Enable smart-indent
 set encoding=utf-8
 
 set iskeyword -=-
-syntax iskeyword -,@,48-57,192-255,$,_
+syntax iskeyword -,@,$,_
 
 set cursorline
 set list
@@ -89,8 +89,8 @@ set foldnestmax=10          " deepest fold is 10 levels
 set foldmethod=manual       " fold based on manually
 set foldlevelstart=0
 
-set concealcursor=
-set conceallevel=1
+set concealcursor=nvi
+set conceallevel=2
 
 set clipboard=unnamed
 
@@ -454,21 +454,6 @@ let g:tagbar_map_showproto = "d"
 " vim-table-mode
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:table_mode_corner = "|"
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-javascript
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:javascript_conceal_function             = "ƒ"
-"let g:javascript_conceal_null                 = "ø"
-"let g:javascript_conceal_this                 = "@"
-"let g:javascript_conceal_return               = "⇚"
-"let g:javascript_conceal_undefined            = "¿"
-"let g:javascript_conceal_NaN                  = "ℕ"
-"let g:javascript_conceal_prototype            = "¶"
-"let g:javascript_conceal_static               = "•"
-"let g:javascript_conceal_super                = "Ω"
-"let g:javascript_conceal_arrow_function       = "⇒"
-"let g:javascript_conceal_noarg_arrow_function = "🞅"
-"let g:javascript_conceal_underscore_arrow_function = "🞅"
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""
