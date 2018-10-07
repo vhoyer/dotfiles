@@ -231,6 +231,7 @@ noremap <leader>S <esc>:w!<cr>
 
 noremap <leader>p <esc>:FZF<cr>
 noremap <C-p> <esc>:CtrlPBuffer<cr>
+noremap <C-P> <esc>:CtrlPMRUFiles<cr>
 
 nnoremap ~ g~
 nnoremap <BS> i<bs><esc><right>
