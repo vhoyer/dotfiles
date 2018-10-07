@@ -89,6 +89,9 @@ set foldnestmax=10          " deepest fold is 10 levels
 set foldmethod=manual       " fold based on manually
 set foldlevelstart=0
 
+set concealcursor=
+set conceallevel=1
+
 set clipboard=unnamed
 
 set ttyfast " faster redrawing
@@ -452,12 +455,20 @@ let g:tagbar_map_showproto = "d"
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:table_mode_corner = "|"
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" ultisnips
+" vim-javascript
 """""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger = "<Nul>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
-let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+let g:javascript_conceal_function             = "ƒ"
+"let g:javascript_conceal_null                 = "ø"
+"let g:javascript_conceal_this                 = "@"
+"let g:javascript_conceal_return               = "⇚"
+"let g:javascript_conceal_undefined            = "¿"
+"let g:javascript_conceal_NaN                  = "ℕ"
+"let g:javascript_conceal_prototype            = "¶"
+"let g:javascript_conceal_static               = "•"
+"let g:javascript_conceal_super                = "Ω"
+"let g:javascript_conceal_arrow_function       = "⇒"
+"let g:javascript_conceal_noarg_arrow_function = "🞅"
+"let g:javascript_conceal_underscore_arrow_function = "🞅"
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -504,6 +515,7 @@ let g:user_emmet_codepretty_key = '<C-e>c'
 " vim-gitgutter
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set updatetime=100
+let g:gitgutter_max_signs = 1000
 "see readme for more info
 "let g:gitgutter_terminal_reports_focus=0 "if commented is enabled
 
