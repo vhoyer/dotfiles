@@ -27,6 +27,14 @@ set viewdir+=view/
 
 set hidden
 set undolevels=1000
+
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " User Interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -194,7 +202,8 @@ noremap <F5><F5> <esc>:wa<cr>:make<cr>:cw<cr>
 noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 
 "ctrl shift f
-noremap <F3> <esc>:grep --exclude=tags -R '' .<left><left><left>
+noremap <F3> <esc>:grep '\b<C-R><C-W>\b' .<cr>
+noremap <F3><F3> <esc>:grep '' .<left><left><left>
 
 noremap <F6> <esc>:tp<cr>
 noremap <F7> <esc>:tn<cr>
@@ -231,7 +240,7 @@ noremap <leader>S <esc>:w!<cr>
 
 noremap <leader>p <esc>:FZF<cr>
 noremap <C-p> <esc>:CtrlPBuffer<cr>
-noremap <C-P> <esc>:CtrlPMRUFiles<cr>
+noremap <C-p><C-p> <esc>:CtrlPMRUFiles<cr>
 
 nnoremap ~ g~
 nnoremap <BS> i<bs><esc><right>
