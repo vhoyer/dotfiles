@@ -31,8 +31,8 @@ set undolevels=1000
 
 " The Silver Searcher
 if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+	" Use ag over grep
+	set grepprg=ag\ --nogroup\ --nocolor
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -57,7 +57,9 @@ set autoindent " Auto-indent new lines
 set smartindent " Enable smart-indent
 
 set encoding=utf-8
-set iskeyword-=-
+
+set iskeyword -=-
+syntax iskeyword -,@,48-57,192-255,$,_
 
 set cursorline
 set list
@@ -85,7 +87,7 @@ set foldnestmax=10          " deepest fold is 10 levels
 "set foldmethod=indent       " fold based on indent
 "set foldmethod=marker       " fold based on markers, default {{{,}}}
 set foldmethod=manual       " fold based on manually
-set foldlevelstart=1
+set foldlevelstart=0
 
 set clipboard=unnamed
 
@@ -187,10 +189,6 @@ noremap <leader>h ^
 noremap <leader>l $
 vnoremap <leader>l $<left>
 
-" transform the up and down to work on line wraps
-noremap j gj
-noremap k gk
-
 nnoremap <leader>H <C-w><left>
 nnoremap <leader>J <C-w><down>
 nnoremap <leader>K <C-w><up>
@@ -286,7 +284,7 @@ function! XTermPasteBegin()
 	set pastetoggle=<Esc>[201~
 	set paste
 	return ""
-endfunction"}}}
+endfunction "}}}
 " visualy toggling case of words {{{
 function! TwiddleCase(str)
 	if a:str ==# toupper(a:str)
@@ -327,10 +325,10 @@ function! InrmapCloseThings()
 	endif
 	if index(['ruby'],&filetype)!=-1
 		inoremap <pipe><pipe> <pipe><pipe><left>
-    endif
+	endif
 	if index(['php'],&filetype)!=-1
 		inoremap -- ->
-    endif
+	endif
 	if index(['html','vue'],&filetype)!=-1
 		inoremap }} {{}}<left><left><space><space><left>
 	endif
@@ -350,7 +348,7 @@ function! InrmapCloseThings()
 	if index(['eruby'],&filetype)!=-1
 		inoremap <+ <%=  %><left><left><left>
 		inoremap <% <%  %><left><left><left>
-    endif
+	endif
 	if index(['css','scss'],&filetype)!=-1
 		inoremap :: :<space>;<left>
 		inoremap ?? /**/<left><left>
@@ -408,10 +406,11 @@ if has("autocmd")
 
 	autocmd BufNewFile,BufRead ~/Documents/defold/*.script setfiletype lua
 
-	"autocmd InsertEnter *.* set isk+=- isk+=_
-	"autocmd InsertLeave *.* set isk-=- isk-=_
-	autocmd InsertEnter *.* set isk+=-
-	autocmd InsertLeave *.* set isk-=-
+	autocmd InsertEnter *.* set isk +=_
+	autocmd InsertLeave *.* set isk -=_
+	autocmd InsertEnter *.* set isk +=-
+	autocmd InsertLeave *.* set isk -=-
+	autocmd InsertLeave *.* syntax iskeyword -,@,48-57,192-255,$,_
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree
@@ -463,10 +462,10 @@ let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 " syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_java_javac_config_file_enabled = 1
-	"command to call in project folder -> :SyntasticJavacEditClasspath
+"	command to call in project folder -> :SyntasticJavacEditClasspath
 "let g:syntastic_scss_sass_args = '-I <path to variables file>'
-    "option relates to https://github.com/vim-syntastic/syntastic/issues/1140
-    "should get rid of false-positive for variable not declared
+"	option relates to https://github.com/vim-syntastic/syntastic/issues/1140
+"	should get rid of false-positive for variable not declared
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "Ctrlp
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -505,6 +504,8 @@ let g:user_emmet_codepretty_key = '<C-e>c'
 " vim-gitgutter
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set updatetime=100
-let g:gitgutter_map_keys = 0
 "see readme for more info
 "let g:gitgutter_terminal_reports_focus=0 "if commented is enabled
+
+
+" vim: noet ts=4 sw=4 sts=4 fdm=marker

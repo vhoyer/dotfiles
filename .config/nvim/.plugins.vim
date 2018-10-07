@@ -57,3 +57,6 @@ set rtp+=~/.fzf
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
 endif
+
+
+" vim: noet ts=4 sw=4 sts=4
