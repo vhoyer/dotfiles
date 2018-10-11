@@ -272,3 +272,5 @@ PATH=$PATH:/usr/share/elasticsearch/bin
 . $HOME/.asdf/completions/asdf.bash
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export PATH=~/.local/bin:$PATH

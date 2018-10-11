@@ -53,13 +53,15 @@ endif
 set number
 set relativenumber
 
+set diffopt+=vertical
+
 set autoindent " Auto-indent new lines
 set smartindent " Enable smart-indent
 
 set encoding=utf-8
 
 set iskeyword -=-
-syntax iskeyword -,@,$,_
+syntax iskeyword -,_
 
 set cursorline
 set list
@@ -90,7 +92,7 @@ set foldmethod=manual       " fold based on manually
 set foldlevelstart=0
 
 set concealcursor=nvi
-set conceallevel=2
+set conceallevel=0
 
 set clipboard=unnamed
 
@@ -319,7 +321,7 @@ function! InrmapCloseThings()
 	inoremap -- --
 	inoremap __ __
 	inoremap <pipe><pipe> <pipe><pipe>
-	if index(['ruby','cs','javascript','php','java','css','python','scss','kotlin','html','c','vue'],&filetype)!=-1
+	if index(['svg', 'ruby','cs','javascript','php','java','css','python','scss','kotlin','html','c','vue'],&filetype)!=-1
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>
@@ -362,7 +364,7 @@ function! InrmapCloseThings()
 	if index(['sh'],&filetype)!=-1
 		inoremap [[ [[  ]]<left><left><left>
 	endif
-	if index(['html','xml','php','xhtml','vue','eruby'],&filetype)!=-1
+	if index(['html','xml','php','xhtml','vue','eruby', 'svg'],&filetype)!=-1
 		inoremap << <space>/>
 		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
 		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
@@ -413,7 +415,6 @@ if has("autocmd")
 	autocmd InsertLeave *.* set isk -=_
 	autocmd InsertEnter *.* set isk +=-
 	autocmd InsertLeave *.* set isk -=-
-	autocmd InsertLeave *.* syntax iskeyword -,@,48-57,192-255,$,_
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree
