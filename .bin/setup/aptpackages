@@ -9,8 +9,6 @@ compiz-plugins-extra
 
 firefox
 
-# add ppa
-nvim
+neovim
 
 silversearcher-ag
-nvm
