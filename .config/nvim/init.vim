@@ -1,7 +1,14 @@
+" Set a vim home, duh
+let $VIMHOME = $HOME."/.config/nvim/"
+let $MYVIMPLUGINS = $VIMHOME.".plugins.vim"
+" Its commented because, well, Im only using linux, but what if, right?
+" if has('win32') || has ('win64')
+"   let $VIMHOME = $VIM."/vimfiles"
+
 " load Plugins
-source ~/.plugins.vim
+source $MYVIMPLUGINS
 " create backup dir if it doesn't exists
-silent !mkdir ~/.vim-tmp/ > /dev/null 2>&1
+silent !mkdir $VIMHOME'view' > /dev/null 2>&1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -13,12 +20,21 @@ set ruler " show the cursor position all the time
 set showcmd " display incomplete commands
 set autoread " detect when a file is changed
 
-set backupdir=~/.vim-tmp// ",~/.tmp/,/var/tmp/,/tmp/ " the .swp files goes here
-set directory=~/.vim-tmp// ",~/.tmp/,/var/tmp/,/tmp/
-set viewdir=~/.vim/view
+set backupdir=~/.nvim-tmp " the .swp files goes here
+set directory=~/.nvim-tmp
+set viewdir=$VIMHOME
+set viewdir+=view/
 
 set hidden
 set undolevels=1000
+
+
+" The Silver Searcher
+if executable('ag')
+	" Use ag over grep
+	set grepprg=ag\ --nogroup\ --nocolor
+endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " User Interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -37,11 +53,15 @@ endif
 set number
 set relativenumber
 
+set diffopt+=vertical
+
 set autoindent " Auto-indent new lines
 set smartindent " Enable smart-indent
 
 set encoding=utf-8
-set iskeyword-=-
+
+set iskeyword -=-
+syntax iskeyword -,_
 
 set cursorline
 set list
@@ -53,10 +73,11 @@ set listchars=tab:┆\ ,eol:¬,trail:•,extends:❯,precedes:❮
 
 " tab control
 set smarttab " Enable smart-tabs respect 'tabstop', 'shiftwidth', and 'softtabstop'
-set shiftwidth=4 " Number of auto-indent spaces
-set softtabstop=4 " Edit as if the tabs are 4 characters wide
-set tabstop=4 " the visible width of tabs
+set shiftwidth=2 " Number of auto-indent spaces
+set softtabstop=2 " Edit as if the tabs are 4 characters wide
+set tabstop=2 " the visible width of tabs
 set shiftround " round indent to a multiple of 'shiftwidth'
+set expandtab
 
 set completeopt+=longest
 set complete=.,w,b
@@ -68,7 +89,10 @@ set foldnestmax=10          " deepest fold is 10 levels
 "set foldmethod=indent       " fold based on indent
 "set foldmethod=marker       " fold based on markers, default {{{,}}}
 set foldmethod=manual       " fold based on manually
-set foldlevelstart=1
+set foldlevelstart=0
+
+set concealcursor=nvi
+set conceallevel=0
 
 set clipboard=unnamed
 
@@ -80,7 +104,7 @@ set cmdheight=1 " command bar height
 set title
 
 "insted of cutting a word to break the line, break the line before the word begin
-set wrap
+set nowrap
 set linebreak
 "keeps vim from inserting a 'new line'
 set textwidth=0
@@ -145,7 +169,7 @@ cnoremap çç <return>
 noremap <leader><Bslash> <esc>:vsplit<cr>
 noremap <leader>\| <esc>:split<cr>
 
-nnoremap <up> <C-w>+
+noremap <up> <C-w>+
 nnoremap <down> <C-w>-
 nnoremap <left> <C-w><
 nnoremap <right> <C-w>>
@@ -170,10 +194,6 @@ noremap <leader>h ^
 noremap <leader>l $
 vnoremap <leader>l $<left>
 
-" transform the up and down to work on line wraps
-noremap j gj
-noremap k gk
-
 nnoremap <leader>H <C-w><left>
 nnoremap <leader>J <C-w><down>
 nnoremap <leader>K <C-w><up>
@@ -185,7 +205,8 @@ noremap <F5><F5> <esc>:wa<cr>:make<cr>:cw<cr>
 noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 
 "ctrl shift f
-noremap <F3> <esc>:grep --exclude=tags -R '' .<left><left><left>
+noremap <F3> <esc>:grep '\b<C-R><C-W>\b' .<cr>
+noremap <F3><F3> <esc>:grep '' .<left><left><left>
 
 noremap <F6> <esc>:tp<cr>
 noremap <F7> <esc>:tn<cr>
@@ -202,9 +223,9 @@ noremap <leader>y "+y
 noremap VV ^v$h
 noremap <F2> :tabprevious<cr>
 noremap <F4> :b#<cr>
-nmap <insert> :Git add %<cr><cr>
-nmap <insert><insert> :Git add -u<cr><cr>
-nmap <insert><insert><insert> :Git add -A<cr><cr>
+nmap <insert> :Git add %<cr>:bd!<cr>
+nmap <insert><insert> :Git add -u<cr>:bd!<cr>
+nmap <insert><insert><insert> :Git add -A<cr>:bd!<cr>
 nmap <pageup> :Git pow<cr>
 noremap <F10> :UltiSnipsEdit<cr>
 noremap CA <esc>mygg"+yG`y
@@ -219,7 +240,10 @@ noremap <leader>g `
 noremap <leader>m <esc>:only<cr>
 noremap <leader>s <esc>:w<cr>
 noremap <leader>S <esc>:w!<cr>
-noremap <leader>p <esc>:CtrlP<cr>
+
+noremap <leader>p <esc>:FZF<cr>
+noremap <C-p> <esc>:CtrlPBuffer<cr>
+noremap <C-p><C-p> <esc>:CtrlPMRUFiles<cr>
 
 nnoremap ~ g~
 nnoremap <BS> i<bs><esc><right>
@@ -236,9 +260,10 @@ nnoremap <leader>E :q!<cr>
 nnoremap <leader>ee :qa<cr>
 nnoremap <leader>EE :qa!<cr>
 
+
 "Linux only due filesys
-map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
-map <F12><F12> <esc>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr>
+map <F12> :tabe $MYVIMPLUGINS<CR>:vsplit $MYVIMRC<cr>
+map <F12><F12> <esc>:bd<cr>:bd<cr>
 
 "source the .vimrc (again) ~ reload the configs
 noremap <F8> :so $MYVIMRC<cr>
@@ -264,7 +289,7 @@ function! XTermPasteBegin()
 	set pastetoggle=<Esc>[201~
 	set paste
 	return ""
-endfunction"}}}
+endfunction "}}}
 " visualy toggling case of words {{{
 function! TwiddleCase(str)
 	if a:str ==# toupper(a:str)
@@ -296,7 +321,7 @@ function! InrmapCloseThings()
 	inoremap -- --
 	inoremap __ __
 	inoremap <pipe><pipe> <pipe><pipe>
-	if index(['ruby','cs','javascript','php','java','css','python','scss','kotlin','html','c','vue'],&filetype)!=-1
+	if index(['svg', 'ruby','cs','javascript','php','java','css','python','scss','kotlin','html','c','vue'],&filetype)!=-1
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>
@@ -305,10 +330,10 @@ function! InrmapCloseThings()
 	endif
 	if index(['ruby'],&filetype)!=-1
 		inoremap <pipe><pipe> <pipe><pipe><left>
-    endif
+	endif
 	if index(['php'],&filetype)!=-1
 		inoremap -- ->
-    endif
+	endif
 	if index(['html','vue'],&filetype)!=-1
 		inoremap }} {{}}<left><left><space><space><left>
 	endif
@@ -328,7 +353,7 @@ function! InrmapCloseThings()
 	if index(['eruby'],&filetype)!=-1
 		inoremap <+ <%=  %><left><left><left>
 		inoremap <% <%  %><left><left><left>
-    endif
+	endif
 	if index(['css','scss'],&filetype)!=-1
 		inoremap :: :<space>;<left>
 		inoremap ?? /**/<left><left>
@@ -339,7 +364,7 @@ function! InrmapCloseThings()
 	if index(['sh'],&filetype)!=-1
 		inoremap [[ [[  ]]<left><left><left>
 	endif
-	if index(['html','xml','php','xhtml','vue','eruby'],&filetype)!=-1
+	if index(['html','xml','php','xhtml','vue','eruby', 'svg'],&filetype)!=-1
 		inoremap << <space>/>
 		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
 		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
@@ -378,14 +403,18 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell
 
 	autocmd BufEnter * call InrmapCloseThings()
+	autocmd BufEnter * :GitGutterAll
+	autocmd BufEnter * :syntax sync fromstart
 	autocmd StdinReadPre * let s:std_in=1
 	autocmd BufWrite,VimLeave *.* mkview
-	autocmd BufRead *.* silent loadview
+	autocmd BufRead *.* silent! loadview
 
 	autocmd BufNewFile,BufRead ~/Documents/defold/*.script setfiletype lua
 
-	autocmd InsertEnter *.* set isk+=- isk+=_
-	autocmd InsertLeave *.* set isk-=- isk-=_
+	autocmd InsertEnter *.* set isk +=_
+	autocmd InsertLeave *.* set isk -=_
+	autocmd InsertEnter *.* set isk +=-
+	autocmd InsertLeave *.* set isk -=-
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree
@@ -427,26 +456,20 @@ let g:tagbar_map_showproto = "d"
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:table_mode_corner = "|"
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" ultisnips
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger = "<Nul>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
-let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-"""""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_java_javac_config_file_enabled = 1
-	"command to call in project folder -> :SyntasticJavacEditClasspath
+"	command to call in project folder -> :SyntasticJavacEditClasspath
 "let g:syntastic_scss_sass_args = '-I <path to variables file>'
-    "option relates to https://github.com/vim-syntastic/syntastic/issues/1140
-    "should get rid of false-positive for variable not declared
+"	option relates to https://github.com/vim-syntastic/syntastic/issues/1140
+"	should get rid of false-positive for variable not declared
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" Ctrlp
+"Ctrlp
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_max_files=0
 let g:ctrlp_custom_ignore='.git$|\tmp$|log$'
 let g:ctrlp_max_depth=40
+let g:ctrlp_map = '<nul>'
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Mark
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -478,6 +501,9 @@ let g:user_emmet_codepretty_key = '<C-e>c'
 " vim-gitgutter
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set updatetime=100
-let g:gitgutter_map_keys = 0
+let g:gitgutter_max_signs = 1000
 "see readme for more info
 "let g:gitgutter_terminal_reports_focus=0 "if commented is enabled
+
+
+" vim: noet ts=4 sw=4 sts=4 fdm=marker

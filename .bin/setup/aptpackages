@@ -1,0 +1,16 @@
+vim-gtk
+exuberant-ctags
+curl
+tmux
+xsel
+
+compizconfig-settings-manager
+compiz-plugins-extra
+
+firefox
+
+# add ppa
+nvim
+
+silversearcher-ag
+nvm

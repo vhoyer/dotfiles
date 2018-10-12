@@ -17,7 +17,6 @@ Plugin 'kien/ctrlp.vim' " just press ctrl+p too see
 Plugin 'scrooloose/nerdcommenter' " auto comment code based on ft
 Plugin 'majutsushi/tagbar' " run :Tagbar, neat thing for bit files
 Plugin 'vadimr/bclose.vim' " close buffer instead of window
-Plugin 'SirVer/ultisnips' " snippets
 Plugin 'tpope/vim-surround' " handy, hard to explain in one line
 Plugin 'tpope/vim-repeat' " make . work with surrond
 Plugin 'dhruvasagar/vim-table-mode' " utililty for tables in .md
@@ -34,9 +33,11 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ap/vim-css-color'
 Plugin 'tpope/vim-haml'
+Plugin 'pangloss/vim-javascript'
 "Plugin 'tpope/vim-rails'
 "Plugin 'joonty/vdebug'
 "Plugin 'sjl/gundo'
+"Plugin 'SirVer/ultisnips' " snippets
 "Plugin 'jaxbot/semantic-highlight.vim' "custom color for variables
 
 " All of your Plugins must be added before the following line
@@ -48,7 +49,14 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+
+" for fuzzy file finder 'junegunn/fzf' its just... different
+set rtp+=~/.fzf
+
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
 endif
+
+
+" vim: noet ts=4 sw=4 sts=4
