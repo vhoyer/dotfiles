@@ -26,6 +26,11 @@ InstallApt(){
 	apt install -y $(aptpackages)
 }
 
+configureGnomeEnviroment(){
+	#apply configurations from that file to touchpad
+	gsettings set org.gnome.settings-daemon.peripherals.input-devices hotplug-command "/home/$USER/.bin/setup/helper/touchpad_settings.sh"
+}
+
 while (($#))
 do
 	eval $1
@@ -33,3 +38,4 @@ do
 	shift || break
 done
 
+# vim: noet ts=4 sw=4 sts=4 fdm=marker

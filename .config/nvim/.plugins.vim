@@ -59,4 +59,4 @@ if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
 endif
 
 
-" vim: noet ts=4 sw=4 sts=4
+" vim: noet ts=4 sw=4 sts=4 fdm=marker
