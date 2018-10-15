@@ -12,6 +12,24 @@ InstallTmuxPluginManager(){
 }
 
 InstallFzf(){
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	~/.fzf/install
 }
+
+#node version manager
+InstallNvm(){
+	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+}
+
+InstallApt(){
+	./addppa
+	apt install -y $(aptpackages)
+}
+
+while (($#))
+do
+	eval $1
+
+	shift || break
+done
+
