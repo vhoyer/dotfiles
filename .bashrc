@@ -147,7 +147,7 @@ definevhTheme() {
 if [[ $VHTHEME == "dark" ]]; then
 	# Dark theme {{{
 	export bgcolor="\[\e[48;2;38;38;38m\]" #hex:262626
-	export fgcolor="\[\e[38;2;255;215;175m\]" #hex:ffd7af
+	export fgcolor="\[\e[38;1;255;215;175m\]" #hex:ffd7af normal (to make it bold :s/;1;/;2;/)
 	export termcolor="$fgcolor"
 	#}}}
 elif [[ $VHTHEME == "light" ]]; then
