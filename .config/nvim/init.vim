@@ -361,6 +361,7 @@ function! InrmapCloseThings()
 	if index(['javascript','vue'],&filetype)!=-1
 		inoremap :: :<space>,<left>
 		inoremap {{{ {<cr>},<esc>O
+		"}}} }}}
 	endif
 	if index(['vim'],&filetype)!=-1
 		inoremap < <><left>
