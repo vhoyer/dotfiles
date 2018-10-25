@@ -179,8 +179,8 @@ vnoremap <leader><leader> :normal .<cr>
 vnoremap v <esc>
 
 " scroll the viewport faster
-noremap <C-e> 2<C-e>
-noremap <C-q> 2<C-y>
+noremap <C-e> 3<C-e>
+noremap <C-q> 3<C-y>
 
 " Code Folding
 nnoremap <leader>f <esc>za
@@ -205,8 +205,7 @@ noremap <F5><F5> <esc>:wa<cr>:make<cr>:cw<cr>
 noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 
 "ctrl shift f
-noremap <F3> <esc>:grep '\b<C-R><C-W>\b' .<cr>
-noremap <F3><F3> <esc>:grep '' .<left><left><left>
+noremap <F3> <esc>:Ag<cr>
 
 noremap <F6> <esc>:tp<cr>
 noremap <F7> <esc>:tn<cr>
@@ -270,7 +269,27 @@ noremap <F8> :so $MYVIMRC<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Maximize toggle {{{
+nnoremap <C-W>O :call MaximizeToggle()<CR>
+nnoremap <C-W>o :call MaximizeToggle()<CR>
+nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
 
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
+"}}}
 " set TransparentBg {{{
 function! TransparentBg()
 	hi! NonText ctermbg=NONE guibg=NONE
@@ -504,6 +523,36 @@ set updatetime=100
 let g:gitgutter_max_signs = 1000
 "see readme for more info
 "let g:gitgutter_terminal_reports_focus=0 "if commented is enabled
+
+"""""""""""""""""""""""""
+" autozimu/LanguageClient-neovim
+"""""""""""""""""""""""""
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+" Minimal LSP configuration for JavaScript
+let g:LanguageClient_serverCommands = {
+			\ 'javascript': ['javascript-typescript-stdio'],
+			\ 'vue': ['vls'],
+			\ }
+" Use LanguageServer for omnifunc completion
+autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+autocmd FileType vue setlocal omnifunc=LanguageClient#complete
+
+" go to definition
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<cr>
+" type info under cursor
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<cr>
+" rename variable under cursor
+nnoremap <silent> RR :call LanguageClient_textDocument_rename()<cr>
+
+"""""""""""""""""""""""""
+" fzf.vim
+"""""""""""""""""""""""""
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 
 " vim: noet ts=4 sw=4 sts=4 fdm=marker

@@ -20,3 +20,4 @@
 	addu = "!git add `git diff --name-only --diff-filter=U`"
 	diffw = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
 	hist = log --graph --decorate --pretty=oneline --abbrev-commit --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+	mup = !git checkout master && git pull && git checkout -

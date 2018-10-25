@@ -34,6 +34,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'ap/vim-css-color'
 Plugin 'tpope/vim-haml'
 Plugin 'pangloss/vim-javascript'
+Plugin 'junegunn/fzf.vim'
+Plugin 'autozimu/LanguageClient-neovim'
 "Plugin 'tpope/vim-rails'
 "Plugin 'joonty/vdebug'
 "Plugin 'sjl/gundo'
@@ -55,7 +57,7 @@ set rtp+=~/.fzf
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
+	runtime! macros/matchit.vim
 endif
 
 
