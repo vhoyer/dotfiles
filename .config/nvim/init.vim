@@ -537,10 +537,13 @@ let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
 			\ 'javascript': ['javascript-typescript-stdio'],
 			\ 'vue': ['vls'],
+			\ 'html': ['html-languageserver', '--stdio'],
+			\ 'css': ['css-languageserver', '--stdio'],
+			\ 'json': ['json-languageserver', '--stdio'],
 			\ }
 " Use LanguageServer for omnifunc completion
-autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-autocmd FileType vue setlocal omnifunc=LanguageClient#complete
+autocmd FileType javascript, vue, html, css, json
+			\ setlocal omnifunc=LanguageClient#complete
 
 " go to definition
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<cr>
