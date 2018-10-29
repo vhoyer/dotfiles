@@ -206,6 +206,8 @@ noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 
 "ctrl shift f
 noremap <F3> <esc>:Ag<cr>
+vnoremap s y:%s/<C-R>"//gc<left><left><left>
+vnoremap // y/<C-R>"<CR>
 
 noremap <F6> <esc>:tp<cr>
 noremap <F7> <esc>:tn<cr>
@@ -546,7 +548,7 @@ let g:LanguageClient_serverCommands = {
 			\ 'json': ['json-languageserver', '--stdio'],
 			\ }
 " Use LanguageServer for omnifunc completion
-autocmd FileType javascript, vue, html, css, json
+autocmd FileType javascript,vue,html,css,json
 			\ setlocal omnifunc=LanguageClient#complete
 
 " go to definition
@@ -560,6 +562,11 @@ nnoremap <silent> RR :call LanguageClient_textDocument_rename()<cr>
 " fzf.vim
 """""""""""""""""""""""""
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+"""""""""""""""""""""""""
+" ALE
+"""""""""""""""""""""""""
+nmap ]e <Plug>(ale_next_wrap)
+nmap [e <Plug>(ale_previous_wrap)
 
 
 " vim: noet ts=4 sw=4 sts=4 fdm=marker

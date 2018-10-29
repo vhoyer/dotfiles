@@ -12,7 +12,7 @@ Plugin 'morhetz/gruvbox' " colorscheme
 Plugin 'tpope/vim-fugitive' " git wrapper
 Plugin 'scrooloose/nerdtree' " tree file explorer
 Plugin 'vim-airline/vim-airline' " the bottom thingy
-Plugin 'scrooloose/syntastic' " ?
+Plugin 'w0rp/ale' " asynchronos linting
 Plugin 'kien/ctrlp.vim' " just press ctrl+p too see
 Plugin 'scrooloose/nerdcommenter' " auto comment code based on ft
 Plugin 'majutsushi/tagbar' " run :Tagbar, neat thing for bit files
@@ -36,6 +36,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'pangloss/vim-javascript'
 Plugin 'junegunn/fzf.vim'
 Plugin 'autozimu/LanguageClient-neovim'
+"Plugin 'scrooloose/syntastic' " ?
 "Plugin 'tpope/vim-rails'
 "Plugin 'joonty/vdebug'
 "Plugin 'sjl/gundo'
