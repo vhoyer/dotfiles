@@ -358,7 +358,7 @@ function! InrmapCloseThings()
 	if index(['html','vue'],&filetype)!=-1
 		inoremap }} {{}}<left><left><space><space><left>
 		inoremap {{ {<cr>}<esc>O
-		inoremap ::: :<space>;<left>
+		inoremap ;; :<space>;<left>
 	endif
 	if index(['javascript','vue'],&filetype)!=-1
 		inoremap :: :<space>,<left>
