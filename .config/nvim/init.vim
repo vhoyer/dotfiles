@@ -565,6 +565,8 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 """""""""""""""""""""""""
 " ALE
 """""""""""""""""""""""""
+let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+
 nmap ]e <Plug>(ale_next_wrap)
 nmap [e <Plug>(ale_previous_wrap)
 
