@@ -150,14 +150,6 @@ endif
 " Scroll offset
 set scrolloff=2
 set sidescrolloff=2
-
-""""""""""""""""
-" Code style
-"
-
-" match as error lines over 120 characters
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%121v.\+/
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " key mapping
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -214,10 +206,8 @@ noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 
 "ctrl shift f
 noremap <F3> <esc>:Ag<cr>
-vnoremap R y:%s/<C-R>"//gc<left><left><left>
+vnoremap s y:%s/<C-R>"//gc<left><left><left>
 vnoremap // y/<C-R>"<CR>
-
-vnoremap s :sort i<cr>
 
 noremap <F6> <esc>:tp<cr>
 noremap <F7> <esc>:tn<cr>
@@ -432,8 +422,6 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.coffee setfiletype coffee
 	autocmd BufNewFile,BufRead *tmux.conf setfiletype tmux
 
-    autocmd BufNewFile *.vue 0r $VIMHOME/templates/skeleton.vue
-
 	autocmd BufNewFile,BufRead *.php set ft=phtml syn=php
 	autocmd BufNewFile,BufRead *.tex set ft=tex tw=100 spell spl=pt_br
 	autocmd BufNewFile,BufRead *.md setlocal spell tw=100
@@ -442,7 +430,6 @@ if has("autocmd")
 	autocmd BufEnter * call InrmapCloseThings()
 	autocmd BufEnter * :GitGutterAll
 	autocmd BufEnter * :syntax sync fromstart
-	autocmd BufEnter * match OverLength /\%121v.\+/
 	autocmd StdinReadPre * let s:std_in=1
 	autocmd BufWrite,VimLeave *.* mkview
 	autocmd BufRead *.* silent! loadview

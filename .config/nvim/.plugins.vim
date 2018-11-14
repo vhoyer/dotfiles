@@ -36,7 +36,6 @@ Plugin 'tpope/vim-haml'
 Plugin 'pangloss/vim-javascript'
 Plugin 'junegunn/fzf.vim'
 Plugin 'autozimu/LanguageClient-neovim'
-Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'scrooloose/syntastic' " ?
 "Plugin 'tpope/vim-rails'
 "Plugin 'joonty/vdebug'
