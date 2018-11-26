@@ -206,7 +206,8 @@ noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 
 "ctrl shift f
 noremap <F3> <esc>:Ag<cr>
-vnoremap s y:%s/<C-R>"//gc<left><left><left>
+vnoremap s :sort i<cr>
+vnoremap R y:%s/<C-R>"//gc<left><left><left>
 vnoremap // y/<C-R>"<CR>
 
 noremap <F6> <esc>:tp<cr>
@@ -224,10 +225,6 @@ noremap <leader>y "+y
 noremap VV ^v$h
 noremap <F2> :tabprevious<cr>
 noremap <F4> :b#<cr>
-nmap <insert> :Git add %<cr>:bd!<cr>
-nmap <insert><insert> :Git add -u<cr>:bd!<cr>
-nmap <insert><insert><insert> :Git add -A<cr>:bd!<cr>
-nmap <pageup> :Git pow<cr>
 noremap <F10> :UltiSnipsEdit<cr>
 noremap CA <esc>mygg"+yG`y
 noremap <C-j> :bp<CR>
@@ -238,7 +235,7 @@ noremap == <esc>mygg=G`y
 noremap JJ i<cr><esc>k$
 " go to mark ...
 noremap <leader>g `
-noremap <leader>m <esc>:only<cr>
+noremap <leader><leader>m <esc>:only<cr>
 noremap <leader>s <esc>:w<cr>
 noremap <leader>S <esc>:w!<cr>
 
@@ -248,8 +245,6 @@ noremap <C-p><C-p> <esc>:CtrlPMRUFiles<cr>
 
 nnoremap ~ g~
 nnoremap <BS> i<bs><esc><right>
-nnoremap <leader>gg <esc>:Gcommit<cr>
-nnoremap <leader>ga <esc>:Git add %<cr><cr>
 nnoremap <leader>r <esc>my:e!<cr>`y
 nnoremap <leader>W <esc>:set wrap!<cr>
 nnoremap <leader>q :Bclose<CR>
@@ -268,6 +263,16 @@ map <F12><F12> <esc>:bd<cr>:bd<cr>
 
 "source the .vimrc (again) ~ reload the configs
 noremap <F8> :so $MYVIMRC<cr>
+
+" fugitive
+nmap <insert> :Git add %<cr>:bd!<cr>
+nmap <insert><insert> :Git add -u<cr>:bd!<cr>
+nmap <insert><insert><insert> :Git add -A<cr>:bd!<cr>
+nmap <pageup> :Git pow<cr>
+nnoremap <leader>gg <esc>:Gcommit<cr>
+nnoremap <leader>b <esc>:Gblame<cr>
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -498,8 +503,8 @@ let g:ctrlp_map = '<nul>'
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Mark
 """"""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader><leader>m <Plug>MarkSet
-vmap <leader><leader>m <Plug>MarkSet
+nmap <leader>m <Plug>MarkSet
+vmap <leader>m <Plug>MarkSet
 nmap <leader><leader>n <Plug>MarkClear
 nmap <leader><leader>r <Plug>MarkRegex
 vmap <leader><leader>r <Plug>MarkRegex
