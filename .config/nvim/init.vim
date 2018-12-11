@@ -207,7 +207,8 @@ noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 "ctrl shift f
 noremap <F3> <esc>:Ag<cr>
 vnoremap s :sort i<cr>
-vnoremap R y:%s/<C-R>"//gc<left><left><left>
+vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
+vnoremap RR y:%s/<C-R>"//gc<left><left><left>
 vnoremap // y/<C-R>"<CR>
 
 noremap <F6> <esc>:tp<cr>
@@ -235,7 +236,7 @@ noremap == <esc>mygg=G`y
 noremap JJ i<cr><esc>k$
 " go to mark ...
 noremap <leader>g `
-noremap <leader><leader>m <esc>:only<cr>
+noremap <leader>M <esc>:only<cr>
 noremap <leader>s <esc>:w<cr>
 noremap <leader>S <esc>:w!<cr>
 
