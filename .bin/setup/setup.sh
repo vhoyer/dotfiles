@@ -31,6 +31,12 @@ configureGnomeEnviroment(){
 	gsettings set org.gnome.settings-daemon.peripherals.input-devices hotplug-command "/home/$USER/.bin/setup/helper/touchpad_settings.sh"
 }
 
+configfiles(){
+	#ranger TODO:
+	#`locate rifle.conf` altera a ordem dos arquivos de imagem para o gimp aparecer primeiro
+	echo "Abre o arquivo e faz na mão xD, se fude ai"
+}
+
 while (($#))
 do
 	eval $1

@@ -23,5 +23,6 @@
 	mup = !git checkout master && git pull && git checkout -
 	wp = "!git add -A && git rebase --continue"
 	ad = add -p
+	d = diff
 [push]
 	default = simple

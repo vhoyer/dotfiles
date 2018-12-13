@@ -198,10 +198,6 @@ setPS
 ############################
 # git related
 #
-if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" =~ \/(root\/home|home\/[A-Za-z0-9]+)$ ]]; #if inside /home/$user or /$driver/root/home
-then
-	git fetch origin master
-fi
 shopt -s extdebug
 exitWithNoGit() {
 	if ! [[ $BASH_COMMAND =~ ^(exit|shutdown.*|logout) ]]; then
@@ -274,3 +270,5 @@ PATH=$PATH:/usr/share/elasticsearch/bin
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export PATH=~/.local/bin:$PATH
+
+export FONT_AWESOME_TOKEN=C86ECDE9-D1A9-44A0-BF56-049B8FE65722
