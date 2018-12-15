@@ -235,7 +235,6 @@ nnoremap <leader>e :q<CR>
 nnoremap <leader>E :q!<cr>
 nnoremap <leader>ee :qa<cr>
 nnoremap <leader>EE :qa!<cr>
-
 "Linux only due filesys
 map <F12> :tabe ~/.plugins.vim<CR>:vsplit $MYVIMRC<cr>
 map <F12><F12> <esc>:bd ~/.vimrc<cr>:bd ~/.plugins.vim<cr>
@@ -384,8 +383,10 @@ if has("autocmd")
 
 	autocmd BufNewFile,BufRead ~/Documents/defold/*.script setfiletype lua
 
-	autocmd InsertEnter *.* set isk+=- isk+=_
-	autocmd InsertLeave *.* set isk-=- isk-=_
+	"autocmd InsertEnter *.* set isk+=- isk+=_
+	"autocmd InsertLeave *.* set isk-=- isk-=_
+	autocmd InsertEnter *.* set isk+=-
+	autocmd InsertLeave *.* set isk-=-
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree

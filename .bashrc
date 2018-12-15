@@ -198,10 +198,6 @@ setPS
 ############################
 # git related
 #
-if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" =~ \/(root\/home|home\/[A-Za-z0-9]+)$ ]]; #if inside /home/$user or /$driver/root/home
-then
-	git fetch origin master
-fi
 shopt -s extdebug
 exitWithNoGit() {
 	if ! [[ $BASH_COMMAND =~ ^(exit|shutdown.*|logout) ]]; then
@@ -262,3 +258,6 @@ trap 'echo -ne "\033]0;$BASH_COMMAND\007" && [[ -t 1 ]] && tput sgr0 && exitWith
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+export PATH=~/.local/bin:$PATH

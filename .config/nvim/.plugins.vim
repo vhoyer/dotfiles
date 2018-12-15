@@ -12,7 +12,7 @@ Plugin 'morhetz/gruvbox' " colorscheme
 Plugin 'tpope/vim-fugitive' " git wrapper
 Plugin 'scrooloose/nerdtree' " tree file explorer
 Plugin 'vim-airline/vim-airline' " the bottom thingy
-Plugin 'scrooloose/syntastic' " ?
+Plugin 'w0rp/ale' " asynchronos linting
 Plugin 'kien/ctrlp.vim' " just press ctrl+p too see
 Plugin 'scrooloose/nerdcommenter' " auto comment code based on ft
 Plugin 'majutsushi/tagbar' " run :Tagbar, neat thing for bit files
@@ -34,6 +34,11 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'ap/vim-css-color'
 Plugin 'tpope/vim-haml'
 Plugin 'pangloss/vim-javascript'
+Plugin 'junegunn/fzf.vim'
+Plugin 'autozimu/LanguageClient-neovim'
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'scrooloose/syntastic' " ?
 "Plugin 'tpope/vim-rails'
 "Plugin 'joonty/vdebug'
 "Plugin 'sjl/gundo'
@@ -55,8 +60,8 @@ set rtp+=~/.fzf
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
+	runtime! macros/matchit.vim
 endif
 
 
-" vim: noet ts=4 sw=4 sts=4
+" vim: noet ts=4 sw=4 sts=4 fdm=marker

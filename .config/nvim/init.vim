@@ -179,8 +179,8 @@ vnoremap <leader><leader> :normal .<cr>
 vnoremap v <esc>
 
 " scroll the viewport faster
-noremap <C-e> 2<C-e>
-noremap <C-q> 2<C-y>
+noremap <C-e> 3<C-e>
+noremap <C-q> 3<C-y>
 
 " Code Folding
 nnoremap <leader>f <esc>za
@@ -205,8 +205,11 @@ noremap <F5><F5> <esc>:wa<cr>:make<cr>:cw<cr>
 noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 
 "ctrl shift f
-noremap <F3> <esc>:grep '\b<C-R><C-W>\b' .<cr>
-noremap <F3><F3> <esc>:grep '' .<left><left><left>
+noremap <F3> <esc>:Ag<cr>
+vnoremap s :sort i<cr>
+vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
+vnoremap RR y:%s/<C-R>"//gc<left><left><left>
+vnoremap // y/<C-R>"<CR>
 
 noremap <F6> <esc>:tp<cr>
 noremap <F7> <esc>:tn<cr>
@@ -223,10 +226,6 @@ noremap <leader>y "+y
 noremap VV ^v$h
 noremap <F2> :tabprevious<cr>
 noremap <F4> :b#<cr>
-nmap <insert> :Git add %<cr>:bd!<cr>
-nmap <insert><insert> :Git add -u<cr>:bd!<cr>
-nmap <insert><insert><insert> :Git add -A<cr>:bd!<cr>
-nmap <pageup> :Git pow<cr>
 noremap <F10> :UltiSnipsEdit<cr>
 noremap CA <esc>mygg"+yG`y
 noremap <C-j> :bp<CR>
@@ -237,7 +236,7 @@ noremap == <esc>mygg=G`y
 noremap JJ i<cr><esc>k$
 " go to mark ...
 noremap <leader>g `
-noremap <leader>m <esc>:only<cr>
+noremap <leader>M <esc>:only<cr>
 noremap <leader>s <esc>:w<cr>
 noremap <leader>S <esc>:w!<cr>
 
@@ -247,8 +246,6 @@ noremap <C-p><C-p> <esc>:CtrlPMRUFiles<cr>
 
 nnoremap ~ g~
 nnoremap <BS> i<bs><esc><right>
-nnoremap <leader>gg <esc>:Gcommit<cr>
-nnoremap <leader>ga <esc>:Git add %<cr><cr>
 nnoremap <leader>r <esc>my:e!<cr>`y
 nnoremap <leader>W <esc>:set wrap!<cr>
 nnoremap <leader>q :Bclose<CR>
@@ -267,10 +264,40 @@ map <F12><F12> <esc>:bd<cr>:bd<cr>
 
 "source the .vimrc (again) ~ reload the configs
 noremap <F8> :so $MYVIMRC<cr>
+
+" fugitive
+nmap <insert> :Git add %<cr>:bd!<cr>
+nmap <insert><insert> :Git add -u<cr>:bd!<cr>
+nmap <insert><insert><insert> :Git add -A<cr>:bd!<cr>
+nmap <pageup> :Git pow<cr>
+nnoremap <leader>gg <esc>:Gcommit<cr>
+nnoremap <leader>b <esc>:Gblame<cr>
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Maximize toggle {{{
+nnoremap <C-W>O :call MaximizeToggle()<CR>
+nnoremap <C-W>o :call MaximizeToggle()<CR>
+nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
 
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
+"}}}
 " set TransparentBg {{{
 function! TransparentBg()
 	hi! NonText ctermbg=NONE guibg=NONE
@@ -337,11 +364,12 @@ function! InrmapCloseThings()
 	if index(['html','vue'],&filetype)!=-1
 		inoremap }} {{}}<left><left><space><space><left>
 		inoremap {{ {<cr>}<esc>O
-		inoremap ::: :<space>;<left>
+		inoremap ;; :<space>;<left>
 	endif
 	if index(['javascript','vue'],&filetype)!=-1
 		inoremap :: :<space>,<left>
 		inoremap {{{ {<cr>},<esc>O
+		"}}} }}}
 	endif
 	if index(['vim'],&filetype)!=-1
 		inoremap < <><left>
@@ -459,13 +487,78 @@ let g:tagbar_map_showproto = "d"
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:table_mode_corner = "|"
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" syntastic
+" https://github.com/xream/nerdcommenter
 """""""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_java_javac_config_file_enabled = 1
-"	command to call in project folder -> :SyntasticJavacEditClasspath
-"let g:syntastic_scss_sass_args = '-I <path to variables file>'
-"	option relates to https://github.com/vim-syntastic/syntastic/issues/1140
-"	should get rid of false-positive for variable not declared
+" from: https://gist.github.com/xream/c474a1adffeb6f70daa6a7ddc22386e0
+let g:SynDebug = 0
+map <leader>cd :call ToggleDebug()<CR>
+imap <leader>ci <SPACE><BS><ESC>:call Comment('Insert')<cr>
+map <leader>ca :call Comment('AltDelims')<cr>
+xmap <leader>c$ :call Comment('ToEOL', 'x')<cr>
+nmap <leader>c$ :call Comment('ToEOL', 'n')<cr>
+xmap <leader>cA :call Comment('Append', 'x')<cr>
+nmap <leader>cA :call Comment('Append', 'n')<cr>
+xmap <leader>cs :call Comment('Sexy', 'x')<cr>
+nmap <leader>cs :call Comment('Sexy', 'n')<cr>
+xmap <leader>ci :call Comment('Invert', 'x')<cr>
+nmap <leader>ci :call Comment('Invert', 'n')<cr>
+xmap <leader>cm :call Comment('Minimal', 'x')<cr>
+nmap <leader>cm :call Comment('Minimal', 'n')<cr>
+xmap <leader>c<space> :call Comment('Toggle', 'x')<cr>
+nmap <leader>c<space> :call Comment('Toggle', 'n')<cr>
+xmap <leader>cl :call Comment('AlignLeft', 'x')<cr>
+nmap <leader>cl :call Comment('AlignLeft', 'n')<cr>
+xmap <leader>cb :call Comment('AlignBoth', 'x')<cr>
+nmap <leader>cb :call Comment('AlignBoth', 'n')<cr>
+xmap <leader>cc :call Comment('Comment', 'x')<cr>
+nmap <leader>cc :call Comment('Comment', 'n')<cr>
+xmap <leader>cn :call Comment('Nested', 'x')<cr>
+nmap <leader>cn :call Comment('Nested', 'n')<cr>
+xmap <leader>cu :call Comment('Uncomment', 'x')<cr>
+nmap <leader>cu :call Comment('Uncomment', 'n')<cr>
+xmap <leader>cy :call Comment('Yank', 'x')<cr>
+nmap <leader>cy :call Comment('Yank', 'n')<cr>
+let g:NERDCreateDefaultMappings=0
+let g:NERDSpaceDelims=1
+let g:NERDCustomDelimiters = {'pug': { 'left': '//-', 'leftAlt': '//' }}
+function! ToggleDebug()
+  let g:SynDebug = !g:SynDebug
+  echo 'Syntax Debug Mode: '.g:SynDebug
+endfunction
+function! Comment(...) range
+  let mode = a:0
+  let type = a:1
+  let ft = &ft
+  let stack = synstack(line('.'), col('.'))
+  if g:SynDebug
+    echo ft
+    echo map(stack, 'synIDattr(v:val, "name")')
+  endif
+  if ft == 'vue'
+    if len(stack) > 0
+      let syn = synIDattr((stack)[0], 'name')
+      if len(syn) > 0
+        let syn = tolower(syn)
+        if g:SynDebug
+          echo syn
+        endif
+        exe 'setf '.syn
+      endif
+    endif
+  endif
+  if type == 'AltDelims'
+    exe "normal \<plug>NERDCommenterAltDelims"
+  elseif type == 'Insert'
+    call NERDComment('i', "insert")
+  else
+    exe 'silent '.a:firstline.','.a:lastline.'call NERDComment(mode, type)'
+  endif
+  if g:SynDebug
+    echo &ft
+  endif
+  exe "setf ".ft
+  syntax sync fromstart
+endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "Ctrlp
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -476,8 +569,8 @@ let g:ctrlp_map = '<nul>'
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Mark
 """"""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader><leader>m <Plug>MarkSet
-vmap <leader><leader>m <Plug>MarkSet
+nmap <leader>m <Plug>MarkSet
+vmap <leader>m <Plug>MarkSet
 nmap <leader><leader>n <Plug>MarkClear
 nmap <leader><leader>r <Plug>MarkRegex
 vmap <leader><leader>r <Plug>MarkRegex
@@ -507,6 +600,46 @@ set updatetime=100
 let g:gitgutter_max_signs = 1000
 "see readme for more info
 "let g:gitgutter_terminal_reports_focus=0 "if commented is enabled
+
+"""""""""""""""""""""""""
+" autozimu/LanguageClient-neovim
+"""""""""""""""""""""""""
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+" Minimal LSP configuration for JavaScript
+let g:LanguageClient_serverCommands = {
+			\ 'javascript': ['javascript-typescript-stdio'],
+			\ 'vue': ['vls'],
+			\ 'html': ['html-languageserver', '--stdio'],
+			\ 'css': ['css-languageserver', '--stdio'],
+			\ 'json': ['json-languageserver', '--stdio'],
+			\ }
+" Use LanguageServer for omnifunc completion
+autocmd FileType javascript,vue,html,css,json
+			\ setlocal omnifunc=LanguageClient#complete
+
+" go to definition
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<cr>
+" type info under cursor
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<cr>
+" rename variable under cursor
+nnoremap <silent> RR :call LanguageClient_textDocument_rename()<cr>
+
+"""""""""""""""""""""""""
+" fzf.vim
+"""""""""""""""""""""""""
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+"""""""""""""""""""""""""
+" ALE
+"""""""""""""""""""""""""
+let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+
+nmap ]e <Plug>(ale_next_wrap)
+nmap [e <Plug>(ale_previous_wrap)
 
 
 " vim: noet ts=4 sw=4 sts=4 fdm=marker

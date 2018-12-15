@@ -3,6 +3,7 @@ exuberant-ctags
 curl
 tmux
 xsel
+tree
 
 compizconfig-settings-manager
 compiz-plugins-extra
@@ -12,3 +13,11 @@ firefox
 neovim
 
 silversearcher-ag
+
+ranger
+caca-utils
+highlight
+atool
+w3m
+poppler-utils
+mediainfo
