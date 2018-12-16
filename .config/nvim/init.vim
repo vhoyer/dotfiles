@@ -99,9 +99,12 @@ set clipboard=unnamed
 set ttyfast " faster redrawing
 set laststatus=2 " show the status line at all times
 set wildmenu " enchance command line completion
-set wildmode=full " complete files like a shell (Default)
+set wildmode=longest,list,full " complete files like a shell (Default)
 set cmdheight=1 " command bar height
 set title
+
+set splitbottom
+set splitright
 
 "insted of cutting a word to break the line, break the line before the word begin
 set nowrap
@@ -222,7 +225,7 @@ noremap <C-l> :cn<CR>
 
 noremap Q <nop>
 noremap Y y$
-noremap <leader>y "+y
+noremap <leader>y "*y<esc>:let @+=@*
 noremap VV ^v$h
 noremap <F2> :tabprevious<cr>
 noremap <F4> :b#<cr>
