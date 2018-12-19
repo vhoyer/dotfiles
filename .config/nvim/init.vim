@@ -1,4 +1,5 @@
 " Set a vim home, duh
+let g:original_home = $HOME
 let $VIMHOME = $HOME."/.config/nvim/"
 let $MYVIMPLUGINS = $VIMHOME.".plugins.vim"
 " Its commented because, well, Im only using linux, but what if, right?
@@ -206,10 +207,10 @@ noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 
 "ctrl shift f
 noremap <F3> <esc>:Ag<cr>
-vnoremap s :sort i<cr>
+vnoremap s :sort<cr>
 vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
 vnoremap RR y:%s/<C-R>"//gc<left><left><left>
-vnoremap // y/<C-R>"<CR>
+vnoremap // yk/<C-R>"<CR>
 
 noremap <F6> <esc>:tp<cr>
 noremap <F7> <esc>:tn<cr>
@@ -259,7 +260,7 @@ nnoremap <leader>EE :qa!<cr>
 
 
 "Linux only due filesys
-map <F12> :tabe $MYVIMPLUGINS<CR>:vsplit $MYVIMRC<cr>
+map <F12> :tabe $MYVIMRC<CR>:vsplit $MYVIMPLUGINS<cr><c-w><left>
 map <F12><F12> <esc>:bd<cr>:bd<cr>
 
 "source the .vimrc (again) ~ reload the configs
@@ -340,8 +341,8 @@ function! InrmapCloseThings()
 	inoremap (( ((|inoremap ((( (((
 	inoremap [[ [[|inoremap [<return> [<return>
 	inoremap {{ {{|inoremap {{{ {{{
-	inoremap }} }}
 	"}}} }}}
+	inoremap }} }}
 	inoremap , ,
 	inoremap : :|inoremap :: ::|inoremap ::: :::
 	inoremap \\ \\
@@ -367,6 +368,7 @@ function! InrmapCloseThings()
 		inoremap ;; :<space>;<left>
 	endif
 	if index(['javascript','vue'],&filetype)!=-1
+		inoremap lgo log
 		inoremap :: :<space>,<left>
 		inoremap {{{ {<cr>},<esc>O
 		"}}} }}}
@@ -412,6 +414,10 @@ function! InrmapCloseThings()
 	endif
 endfunction
 "}}}
+function! GFRelativeHome()
+	" Super hack to make js imports '~/paths' work with gf
+	nnoremap <buffer><silent> gf <esc>:let $HOME=getcwd()<cr>gf<esc>:let $HOME=g:original_home<cr>
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmds
@@ -432,6 +438,9 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.tex set ft=tex tw=100 spell spl=pt_br
 	autocmd BufNewFile,BufRead *.md setlocal spell tw=100
 	autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell
+
+	autocmd BufNewFile,BufRead *.vue call GFRelativeHome()
+	autocmd BufNewFile,BufRead *.js call GFRelativeHome()
 
 	autocmd BufEnter * call InrmapCloseThings()
 	autocmd BufEnter * :GitGutterAll
@@ -455,6 +464,10 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeQuitOnOpen = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Lokaltog/neoranger
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>n :RangerCurrentFile<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -636,7 +649,10 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 """""""""""""""""""""""""
 " ALE
 """""""""""""""""""""""""
-let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+let g:ale_fixers = {
+				\	'vue': ['eslint'],
+				\	'javascript': ['eslint'],
+				\}
 
 nmap ]e <Plug>(ale_next_wrap)
 nmap [e <Plug>(ale_previous_wrap)

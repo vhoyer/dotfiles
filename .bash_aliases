@@ -10,3 +10,4 @@ alias qbprod="ssh -t -i qbdev ubuntu@tools.querobolsa.space 'docker exec -it que
 alias dev="cd ~/devenv/"
 alias forest="solano"
 alias ybm="yarn && bundle && rails {db,seed}:migrate && RAILS_ENV=test rails {db,seed}:migrate"
+alias rng="ranger"

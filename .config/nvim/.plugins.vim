@@ -38,6 +38,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'Lokaltog/neoranger'
 "Plugin 'scrooloose/syntastic' " ?
 "Plugin 'tpope/vim-rails'
 "Plugin 'joonty/vdebug'
