@@ -56,6 +56,8 @@ set relativenumber
 
 set diffopt+=vertical
 
+set splitright
+
 set autoindent " Auto-indent new lines
 set smartindent " Enable smart-indent
 
@@ -79,6 +81,8 @@ set softtabstop=2 " Edit as if the tabs are 4 characters wide
 set tabstop=2 " the visible width of tabs
 set shiftround " round indent to a multiple of 'shiftwidth'
 set expandtab
+
+set colorcolumn=120
 
 set completeopt+=longest
 set complete=.,w,b
@@ -176,6 +180,8 @@ nnoremap <left> <C-w><
 nnoremap <right> <C-w>>
 "}}}
 
+noremap <leader>t :tabnew<cr>
+
 vnoremap <leader><leader> :normal .<cr>
 vnoremap v <esc>
 
@@ -208,6 +214,7 @@ noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 "ctrl shift f
 noremap <F3> <esc>:Ag<cr>
 vnoremap s :sort<cr>
+vnoremap ss :sort i<cr>
 vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
 vnoremap RR y:%s/<C-R>"//gc<left><left><left>
 vnoremap // yk/<C-R>"<CR>
@@ -225,19 +232,13 @@ noremap Q <nop>
 noremap Y y$
 noremap <leader>y "+y
 noremap VV ^v$h
-noremap <F2> :tabprevious<cr>
-noremap <F4> :b#<cr>
-noremap <F10> :UltiSnipsEdit<cr>
 noremap CA <esc>mygg"+yG`y
-noremap <C-j> :bp<CR>
-noremap <C-k> :bn<CR>
 " Normalize the file
 noremap == <esc>mygg=G`y
 " reverse 'J'
 noremap JJ i<cr><esc>k$
 " go to mark ...
 noremap <leader>g `
-noremap <leader>M <esc>:only<cr>
 noremap <leader>s <esc>:w<cr>
 noremap <leader>S <esc>:w!<cr>
 
@@ -245,8 +246,6 @@ noremap <leader>p <esc>:FZF<cr>
 noremap <C-p> <esc>:CtrlPBuffer<cr>
 noremap <C-p><C-p> <esc>:CtrlPMRUFiles<cr>
 
-nnoremap ~ g~
-nnoremap <BS> i<bs><esc><right>
 nnoremap <leader>r <esc>my:e!<cr>`y
 nnoremap <leader>W <esc>:set wrap!<cr>
 nnoremap <leader>q :Bclose<CR>
@@ -349,7 +348,7 @@ function! InrmapCloseThings()
 	inoremap -- --
 	inoremap __ __
 	inoremap <pipe><pipe> <pipe><pipe>
-	if index(['svg', 'ruby','cs','javascript','php','java','css','python','scss','kotlin','html','c','vue'],&filetype)!=-1
+	if index(['svg', 'ruby', 'cs', 'javascript', 'php', 'java', 'css', 'python', 'scss', 'kotlin', 'html', 'c', 'vue', 'eruby'],&filetype)!=-1
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>

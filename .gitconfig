@@ -11,7 +11,7 @@
 	pom = pull origin master
 	pod = pull origin development
 	co = commit
-	st = status
+	s = status
 	ch = checkout
 	adog = log --all --decorate --oneline --graph
 	fuck = commit --amend
@@ -24,5 +24,6 @@
 	wp = "!git add -A && git rebase --continue"
 	ad = add -p
 	d = diff
+	ds = diff --staged
 [push]
 	default = simple
