@@ -7,23 +7,22 @@
 	editor = nvim
 	excludesfile = ~/.ggitignore
 [alias]
-	pow = push origin HEAD
-	pom = pull origin master
-	pod = pull origin development
-	co = commit
-	s = status
-	ch = checkout
-	adog = log --all --decorate --oneline --graph
-	fuck = commit --amend
-	f = fetch -p
-	fix = "!nvim `git diff --name-only --diff-filter=U`"
-	addu = "!git add `git diff --name-only --diff-filter=U`"
-	diffw = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
-	hist = log --graph --decorate --pretty=oneline --abbrev-commit --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
-	mup = !git checkout master && git pull && git checkout -
-	wp = "!git add -A && git rebase --continue"
 	ad = add -p
+	adog = log --all --decorate --oneline --graph
+	ch = checkout
+	co = commit
 	d = diff
 	ds = diff --staged
+	dw = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
+	f = fetch -p
+	fix = "!nvim `git diff --name-only --diff-filter=U`"
+	fuck = commit --amend
+	hist = log --graph --decorate --pretty=oneline --abbrev-commit --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+	mup = !git checkout master && git pull && git checkout -
+	pod = pull origin development
+	pom = pull origin master
+	pow = push origin HEAD
+	s = status
+	wp = "!git add -A && git rebase --continue"
 [push]
 	default = simple

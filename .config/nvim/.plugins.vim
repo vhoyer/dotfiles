@@ -10,16 +10,13 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox' " colorscheme
 Plugin 'tpope/vim-fugitive' " git wrapper
-Plugin 'scrooloose/nerdtree' " tree file explorer
 Plugin 'vim-airline/vim-airline' " the bottom thingy
 Plugin 'w0rp/ale' " asynchronos linting
 Plugin 'kien/ctrlp.vim' " just press ctrl+p too see
 Plugin 'scrooloose/nerdcommenter' " auto comment code based on ft
-Plugin 'majutsushi/tagbar' " run :Tagbar, neat thing for bit files
 Plugin 'vadimr/bclose.vim' " close buffer instead of window
 Plugin 'tpope/vim-surround' " handy, hard to explain in one line
 Plugin 'tpope/vim-repeat' " make . work with surrond
-Plugin 'dhruvasagar/vim-table-mode' " utililty for tables in .md
 Plugin 'vhoyer/Mark' " hightlight words, handy for debug
 Plugin 'wakatime/vim-wakatime' " waka waka waka
 Plugin 'mattn/emmet-vim' "html>body>div.container into html file
@@ -46,6 +43,9 @@ Plugin 'chr4/nginx.vim'
 "Plugin 'sjl/gundo'
 "Plugin 'SirVer/ultisnips' " snippets
 "Plugin 'jaxbot/semantic-highlight.vim' "custom color for variables
+"Plugin 'scrooloose/nerdtree' " tree file explorer
+"Plugin 'majutsushi/tagbar' " run :Tagbar, neat thing for bit files
+"Plugin 'dhruvasagar/vim-table-mode' " utililty for tables in .md
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

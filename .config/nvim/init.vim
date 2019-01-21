@@ -200,11 +200,6 @@ noremap <leader>cw 1z=
 noremap <leader>h ^
 noremap <leader>l $
 vnoremap <leader>l $<left>
-
-nnoremap <leader>H <C-w><left>
-nnoremap <leader>J <C-w><down>
-nnoremap <leader>K <C-w><up>
-nnoremap <leader>L <C-w><right>
 "}}}
 
 " Quickfix & make & search {{{
@@ -218,6 +213,7 @@ vnoremap ss :sort i<cr>
 vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
 vnoremap RR y:%s/<C-R>"//gc<left><left><left>
 vnoremap // yk/<C-R>"<CR>
+vnoremap <C-r> "yy<esc>:args `ag -l '<C-r>y'`<cr>:argdo %s/<C-r>y/<C-r>y/ge <bar> update<left><left><left><left><left><left><left><left><left><left><left><left>
 
 noremap <F6> <esc>:tp<cr>
 noremap <F7> <esc>:tn<cr>
@@ -414,6 +410,8 @@ function! InrmapCloseThings()
 endfunction
 "}}}
 function! GFRelativeHome()
+	setlocal suffixes+=.vue
+	setlocal suffixes+=.js
 	" Super hack to make js imports '~/paths' work with gf
 	nnoremap <buffer><silent> gf <esc>:let $HOME=getcwd()<cr>gf<esc>:let $HOME=g:original_home<cr>
 endfunction
