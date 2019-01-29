@@ -85,7 +85,7 @@ set expandtab
 set colorcolumn=120
 
 set completeopt+=longest
-set complete=.,w,b
+set complete=.,w,b,u,i,U,],k
 
 " code folding settings
 set foldnestmax=10          " deepest fold is 10 levels
@@ -180,8 +180,6 @@ nnoremap <left> <C-w><
 nnoremap <right> <C-w>>
 "}}}
 
-noremap <leader>t :tabnew<cr>
-
 vnoremap <leader><leader> :normal .<cr>
 vnoremap v <esc>
 
@@ -212,7 +210,8 @@ vnoremap s :sort<cr>
 vnoremap ss :sort i<cr>
 vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
 vnoremap RR y:%s/<C-R>"//gc<left><left><left>
-vnoremap // yk/<C-R>"<CR>
+vnoremap // "yyk/<C-R>y<CR>
+nnoremap // <esc>"yyiwk/<C-R>y<CR>
 vnoremap <C-r> "yy<esc>:args `ag -l '<C-r>y'`<cr>:argdo %s/<C-r>y/<C-r>y/ge <bar> update<left><left><left><left><left><left><left><left><left><left><left><left>
 
 noremap <F6> <esc>:tp<cr>
@@ -363,7 +362,7 @@ function! InrmapCloseThings()
 		inoremap ;; :<space>;<left>
 	endif
 	if index(['javascript','vue'],&filetype)!=-1
-		inoremap lgo log
+		inoremap <buffer> lgo log
 		inoremap :: :<space>,<left>
 		inoremap {{{ {<cr>},<esc>O
 		"}}} }}}
@@ -414,6 +413,13 @@ function! GFRelativeHome()
 	setlocal suffixes+=.js
 	" Super hack to make js imports '~/paths' work with gf
 	nnoremap <buffer><silent> gf <esc>:let $HOME=getcwd()<cr>gf<esc>:let $HOME=g:original_home<cr>
+	" try
+	" finally
+	" endtry
+endfunction
+" TODO: wip
+function! RunJestWithCurrentFile()
+	%!npx jest test/%:r
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
