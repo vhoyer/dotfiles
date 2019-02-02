@@ -171,9 +171,6 @@ cnoremap çç <return>
 "}}}
 
 " windows {{{
-noremap <leader><Bslash> <esc>:vsplit<cr>
-noremap <leader>\| <esc>:split<cr>
-
 noremap <up> <C-w>+
 nnoremap <down> <C-w>-
 nnoremap <left> <C-w><
@@ -211,7 +208,7 @@ vnoremap ss :sort i<cr>
 vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
 vnoremap RR y:%s/<C-R>"//gc<left><left><left>
 vnoremap // "yyk/<C-R>y<CR>
-nnoremap // <esc>"yyiwk/<C-R>y<CR>
+nnoremap // <esc>"yyiw/<C-R>y<CR>
 vnoremap <C-r> "yy<esc>:args `ag -l '<C-r>y'`<cr>:argdo %s/<C-r>y/<C-r>y/ge <bar> update<left><left><left><left><left><left><left><left><left><left><left><left>
 
 noremap <F6> <esc>:tp<cr>
