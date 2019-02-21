@@ -85,7 +85,7 @@ set expandtab
 set colorcolumn=120
 
 set completeopt+=longest
-set complete=.,w,b,u,i,U,],k
+set complete=.,w,b,u,i,k
 
 " code folding settings
 set foldnestmax=10          " deepest fold is 10 levels
@@ -175,6 +175,8 @@ noremap <up> <C-w>+
 nnoremap <down> <C-w>-
 nnoremap <left> <C-w><
 nnoremap <right> <C-w>>
+
+nnoremap <leader>t <esc>:tabe<esc>:Bclose<CR>
 "}}}
 
 vnoremap <leader><leader> :normal .<cr>
@@ -269,27 +271,6 @@ nnoremap <leader>b <esc>:Gblame<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Maximize toggle {{{
-nnoremap <C-W>O :call MaximizeToggle()<CR>
-nnoremap <C-W>o :call MaximizeToggle()<CR>
-nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
-
-function! MaximizeToggle()
-  if exists("s:maximize_session")
-    exec "source " . s:maximize_session
-    call delete(s:maximize_session)
-    unlet s:maximize_session
-    let &hidden=s:maximize_hidden_save
-    unlet s:maximize_hidden_save
-  else
-    let s:maximize_hidden_save = &hidden
-    let s:maximize_session = tempname()
-    set hidden
-    exec "mksession! " . s:maximize_session
-    only
-  endif
-endfunction
-"}}}
 " set TransparentBg {{{
 function! TransparentBg()
 	hi! NonText ctermbg=NONE guibg=NONE
