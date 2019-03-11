@@ -38,6 +38,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Lokaltog/neoranger'
 Plugin 'chr4/nginx.vim'
 Plugin 'unblevable/quick-scope'
+Plugin 'ruanyl/vim-gh-line'
 "Plugin 'scrooloose/syntastic' " ?
 "Plugin 'tpope/vim-rails'
 "Plugin 'joonty/vdebug'

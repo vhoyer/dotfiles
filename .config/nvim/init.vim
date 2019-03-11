@@ -210,7 +210,6 @@ vnoremap ss :sort i<cr>
 vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
 vnoremap RR y:%s/<C-R>"//gc<left><left><left>
 vnoremap // "yyk/<C-R>y<CR>
-nnoremap // <esc>"yyiw/<C-R>y<CR>
 vnoremap <C-r> "yy<esc>:args `ag -l '<C-r>y'`<cr>:argdo %s/<C-r>y/<C-r>y/ge <bar> update<left><left><left><left><left><left><left><left><left><left><left><left>
 
 noremap <F6> <esc>:tp<cr>
@@ -231,8 +230,6 @@ noremap CA <esc>mygg"+yG`y
 noremap == <esc>mygg=G`y
 " reverse 'J'
 noremap JJ i<cr><esc>k$
-" go to mark ...
-noremap <leader>g `
 noremap <leader>s <esc>:w<cr>
 noremap <leader>S <esc>:w!<cr>
 
@@ -246,10 +243,6 @@ nnoremap <leader>q :Bclose<CR>
 nnoremap <leader>qq :bd<cr>
 nnoremap <leader>Q :Bclose!<CR>
 nnoremap <leader>QQ :bd!<cr>
-nnoremap <leader>e :q<CR>
-nnoremap <leader>E :q!<cr>
-nnoremap <leader>ee :qa<cr>
-nnoremap <leader>EE :qa!<cr>
 
 
 "Linux only due filesys
@@ -637,6 +630,10 @@ let g:ale_fixers = {
 
 nmap ]e <Plug>(ale_next_wrap)
 nmap [e <Plug>(ale_previous_wrap)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ruanyl/vim-gh-line
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gh_open_command = 'google-chrome '
 
 
 " vim: noet ts=4 sw=4 sts=4 fdm=marker
