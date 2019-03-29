@@ -24,5 +24,6 @@
 	pow = push origin HEAD
 	s = status
 	wp = "!git add -A && git rebase --continue"
+	cp = cherry-pick
 [push]
 	default = simple

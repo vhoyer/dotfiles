@@ -334,6 +334,7 @@ function! InrmapCloseThings()
 	endif
 	if index(['javascript','vue'],&filetype)!=-1
 		inoremap <buffer> lgo log
+		inoremap <buffer> >> () => {}<left>
 		inoremap :: :<space>,<left>
 		inoremap {{{ {<cr>},<esc>O
 		"}}} }}}
@@ -362,12 +363,6 @@ function! InrmapCloseThings()
 	if index(['sh'],&filetype)!=-1
 		inoremap [[ [[  ]]<left><left><left>
 	endif
-	if index(['html','xml','php','xhtml','vue','eruby', 'svg'],&filetype)!=-1
-		inoremap << <space>/>
-		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
-		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
-		inoremap \\ /
-	endif
 	if index(['php','phtml'],&filetype)!=-1
 		inoremap <? <?php<space><space>?><left><left><left>
 		inoremap <+ <?=<space>?><left><left><left>
@@ -387,10 +382,6 @@ function! GFRelativeHome()
 	" try
 	" finally
 	" endtry
-endfunction
-" TODO: wip
-function! RunJestWithCurrentFile()
-	%!npx jest test/%:r
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
