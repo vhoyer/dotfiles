@@ -314,7 +314,7 @@ function! InrmapCloseThings()
 	inoremap -- --
 	inoremap __ __
 	inoremap <pipe><pipe> <pipe><pipe>
-	if index(['svg', 'ruby', 'cs', 'javascript', 'php', 'java', 'css', 'python', 'scss', 'kotlin', 'html', 'c', 'vue', 'eruby'],&filetype)!=-1
+	if index(['svg', 'ruby', 'cs', 'javascript', 'php', 'java', 'css', 'python', 'scss', 'kotlin', 'html', 'c', 'vue', 'eruby', 'json'],&filetype)!=-1
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>
@@ -327,17 +327,18 @@ function! InrmapCloseThings()
 	if index(['php'],&filetype)!=-1
 		inoremap -- ->
 	endif
-	if index(['html','vue'],&filetype)!=-1
+	if index(['javascript', 'html','vue', 'json'],&filetype)!=-1
+		inoremap :: :<space>,<left>
 		inoremap }} {{}}<left><left><space><space><left>
-		inoremap {{ {<cr>}<esc>O
+		inoremap {{{ {<cr>},<esc>O
+		"}}} }}}
+	endif
+	if index(['html','vue'],&filetype)!=-1
 		inoremap ;; :<space>;<left>
 	endif
 	if index(['javascript','vue'],&filetype)!=-1
 		inoremap <buffer> lgo log
 		inoremap <buffer> >> () => {}<left>
-		inoremap :: :<space>,<left>
-		inoremap {{{ {<cr>},<esc>O
-		"}}} }}}
 	endif
 	if index(['vim'],&filetype)!=-1
 		inoremap < <><left>
@@ -401,7 +402,7 @@ if has("autocmd")
 
 	autocmd BufNewFile,BufRead *.php set ft=phtml syn=php
 	autocmd BufNewFile,BufRead *.tex set ft=tex tw=100 spell spl=pt_br
-	autocmd BufNewFile,BufRead *.md setlocal spell tw=100
+	autocmd BufNewFile,BufRead *.md setlocal spell
 	autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell
 
 	autocmd BufNewFile,BufRead *.vue call GFRelativeHome()
@@ -611,6 +612,7 @@ nnoremap <silent> RR :call LanguageClient_textDocument_rename()<cr>
 " fzf.vim
 """""""""""""""""""""""""
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 """""""""""""""""""""""""
 " ALE
 """""""""""""""""""""""""

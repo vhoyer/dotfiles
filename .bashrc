@@ -249,6 +249,8 @@ PROMPT_COMMAND=Terminal
 # executes before each and every single command
 trap 'echo -ne "\033]0;$BASH_COMMAND\007" && [[ -t 1 ]] && tput sgr0 && exitWithNoGit' DEBUG
 
+export EDITOR=nvim
+
 ####################3333
 # Auto added lines
 #

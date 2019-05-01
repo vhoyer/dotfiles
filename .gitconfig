@@ -11,6 +11,7 @@
 	adog = log --all --decorate --oneline --graph
 	ch = checkout
 	co = commit
+	cp = cherry-pick
 	d = diff
 	ds = diff --staged
 	dw = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
@@ -19,11 +20,9 @@
 	fuck = commit --amend
 	hist = log --graph --decorate --pretty=oneline --abbrev-commit --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
 	mup = !git checkout master && git pull && git checkout -
-	pod = pull origin development
-	pom = pull origin master
 	pow = push origin HEAD
+	powf = push origin HEAD --force-with-lease
 	s = status
-	wp = "!git add -A && git rebase --continue"
-	cp = cherry-pick
+	wp = rebase --continue
 [push]
 	default = simple
