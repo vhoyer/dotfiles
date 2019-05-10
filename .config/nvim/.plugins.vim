@@ -10,6 +10,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox' " colorscheme
 Plugin 'tpope/vim-fugitive' " git wrapper
+Plugin 'tommcdo/vim-fugitive-blame-ext'
 Plugin 'vim-airline/vim-airline' " the bottom thingy
 Plugin 'w0rp/ale' " asynchronos linting
 Plugin 'kien/ctrlp.vim' " just press ctrl+p too see
