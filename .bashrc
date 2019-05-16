@@ -249,15 +249,21 @@ PROMPT_COMMAND=Terminal
 # executes before each and every single command
 trap 'echo -ne "\033]0;$BASH_COMMAND\007" && [[ -t 1 ]] && tput sgr0 && exitWithNoGit' DEBUG
 
+export EDITOR=nvim
+
 ####################3333
 # Auto added lines
 #
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export PATH=~/.local/bin:$PATH

@@ -1,4 +1,5 @@
 " Set a vim home, duh
+let g:original_home = $HOME
 let $VIMHOME = $HOME."/.config/nvim/"
 let $MYVIMPLUGINS = $VIMHOME.".plugins.vim"
 " Its commented because, well, Im only using linux, but what if, right?
@@ -55,6 +56,8 @@ set relativenumber
 
 set diffopt+=vertical
 
+set splitright
+
 set autoindent " Auto-indent new lines
 set smartindent " Enable smart-indent
 
@@ -79,8 +82,10 @@ set tabstop=2 " the visible width of tabs
 set shiftround " round indent to a multiple of 'shiftwidth'
 set expandtab
 
+set colorcolumn=120
+
 set completeopt+=longest
-set complete=.,w,b
+set complete=.,w,b,u,i,k
 
 " code folding settings
 set foldnestmax=10          " deepest fold is 10 levels
@@ -99,12 +104,9 @@ set clipboard=unnamed
 set ttyfast " faster redrawing
 set laststatus=2 " show the status line at all times
 set wildmenu " enchance command line completion
-set wildmode=longest,list,full " complete files like a shell (Default)
+set wildmode=full " complete files like a shell (Default)
 set cmdheight=1 " command bar height
 set title
-
-set splitbottom
-set splitright
 
 "insted of cutting a word to break the line, break the line before the word begin
 set nowrap
@@ -169,13 +171,12 @@ cnoremap çç <return>
 "}}}
 
 " windows {{{
-noremap <leader><Bslash> <esc>:vsplit<cr>
-noremap <leader>\| <esc>:split<cr>
-
 noremap <up> <C-w>+
 nnoremap <down> <C-w>-
 nnoremap <left> <C-w><
 nnoremap <right> <C-w>>
+
+nnoremap <leader>t <esc>:tabe<esc>:Bclose<CR>
 "}}}
 
 vnoremap <leader><leader> :normal .<cr>
@@ -196,11 +197,6 @@ noremap <leader>cw 1z=
 noremap <leader>h ^
 noremap <leader>l $
 vnoremap <leader>l $<left>
-
-nnoremap <leader>H <C-w><left>
-nnoremap <leader>J <C-w><down>
-nnoremap <leader>K <C-w><up>
-nnoremap <leader>L <C-w><right>
 "}}}
 
 " Quickfix & make & search {{{
@@ -209,10 +205,12 @@ noremap <F5> <esc>:wa<cr>:make<cr>:cw<cr><cr>
 
 "ctrl shift f
 noremap <F3> <esc>:Ag<cr>
-vnoremap s :sort i<cr>
+vnoremap s :sort<cr>
+vnoremap ss :sort i<cr>
 vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
 vnoremap RR y:%s/<C-R>"//gc<left><left><left>
-vnoremap // y/<C-R>"<CR>
+vnoremap // "yyk/<C-R>y<CR>
+vnoremap <C-r> "yy<esc>:args `ag -l '<C-r>y'`<cr>:argdo %s/<C-r>y/<C-r>y/ge <bar> update<left><left><left><left><left><left><left><left><left><left><left><left>
 
 noremap <F6> <esc>:tp<cr>
 noremap <F7> <esc>:tn<cr>
@@ -225,21 +223,13 @@ noremap <C-l> :cn<CR>
 
 noremap Q <nop>
 noremap Y y$
-noremap <leader>y "*y<esc>:let @+=@*
+noremap <leader>y "+y
 noremap VV ^v$h
-noremap <F2> :tabprevious<cr>
-noremap <F4> :b#<cr>
-noremap <F10> :UltiSnipsEdit<cr>
 noremap CA <esc>mygg"+yG`y
-noremap <C-j> :bp<CR>
-noremap <C-k> :bn<CR>
 " Normalize the file
 noremap == <esc>mygg=G`y
 " reverse 'J'
 noremap JJ i<cr><esc>k$
-" go to mark ...
-noremap <leader>g `
-noremap <leader>M <esc>:only<cr>
 noremap <leader>s <esc>:w<cr>
 noremap <leader>S <esc>:w!<cr>
 
@@ -247,22 +237,16 @@ noremap <leader>p <esc>:FZF<cr>
 noremap <C-p> <esc>:CtrlPBuffer<cr>
 noremap <C-p><C-p> <esc>:CtrlPMRUFiles<cr>
 
-nnoremap ~ g~
-nnoremap <BS> i<bs><esc><right>
 nnoremap <leader>r <esc>my:e!<cr>`y
 nnoremap <leader>W <esc>:set wrap!<cr>
 nnoremap <leader>q :Bclose<CR>
 nnoremap <leader>qq :bd<cr>
 nnoremap <leader>Q :Bclose!<CR>
 nnoremap <leader>QQ :bd!<cr>
-nnoremap <leader>e :q<CR>
-nnoremap <leader>E :q!<cr>
-nnoremap <leader>ee :qa<cr>
-nnoremap <leader>EE :qa!<cr>
 
 
 "Linux only due filesys
-map <F12> :tabe $MYVIMPLUGINS<CR>:vsplit $MYVIMRC<cr>
+map <F12> :tabe $MYVIMRC<CR>:vsplit $MYVIMPLUGINS<cr><c-w><left>
 map <F12><F12> <esc>:bd<cr>:bd<cr>
 
 "source the .vimrc (again) ~ reload the configs
@@ -280,27 +264,6 @@ nnoremap <leader>b <esc>:Gblame<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Maximize toggle {{{
-nnoremap <C-W>O :call MaximizeToggle()<CR>
-nnoremap <C-W>o :call MaximizeToggle()<CR>
-nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
-
-function! MaximizeToggle()
-  if exists("s:maximize_session")
-    exec "source " . s:maximize_session
-    call delete(s:maximize_session)
-    unlet s:maximize_session
-    let &hidden=s:maximize_hidden_save
-    unlet s:maximize_hidden_save
-  else
-    let s:maximize_hidden_save = &hidden
-    let s:maximize_session = tempname()
-    set hidden
-    exec "mksession! " . s:maximize_session
-    only
-  endif
-endfunction
-"}}}
 " set TransparentBg {{{
 function! TransparentBg()
 	hi! NonText ctermbg=NONE guibg=NONE
@@ -343,15 +306,15 @@ function! InrmapCloseThings()
 	inoremap (( ((|inoremap ((( (((
 	inoremap [[ [[|inoremap [<return> [<return>
 	inoremap {{ {{|inoremap {{{ {{{
-	inoremap }} }}
 	"}}} }}}
+	inoremap }} }}
 	inoremap , ,
 	inoremap : :|inoremap :: ::|inoremap ::: :::
 	inoremap \\ \\
 	inoremap -- --
 	inoremap __ __
 	inoremap <pipe><pipe> <pipe><pipe>
-	if index(['svg', 'ruby','cs','javascript','php','java','css','python','scss','kotlin','html','c','vue'],&filetype)!=-1
+	if index(['svg', 'ruby', 'cs', 'javascript', 'php', 'java', 'css', 'python', 'scss', 'kotlin', 'html', 'c', 'vue', 'eruby', 'json'],&filetype)!=-1
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>
@@ -364,15 +327,18 @@ function! InrmapCloseThings()
 	if index(['php'],&filetype)!=-1
 		inoremap -- ->
 	endif
-	if index(['html','vue'],&filetype)!=-1
+	if index(['javascript', 'html','vue', 'json'],&filetype)!=-1
+		inoremap :: :<space>,<left>
 		inoremap }} {{}}<left><left><space><space><left>
-		inoremap {{ {<cr>}<esc>O
+		inoremap {{{ {<cr>},<esc>O
+		"}}} }}}
+	endif
+	if index(['html','vue'],&filetype)!=-1
 		inoremap ;; :<space>;<left>
 	endif
 	if index(['javascript','vue'],&filetype)!=-1
-		inoremap :: :<space>,<left>
-		inoremap {{{ {<cr>},<esc>O
-		"}}} }}}
+		inoremap <buffer> lgo log
+		inoremap <buffer> >> () => {}<left>
 	endif
 	if index(['vim'],&filetype)!=-1
 		inoremap < <><left>
@@ -398,12 +364,6 @@ function! InrmapCloseThings()
 	if index(['sh'],&filetype)!=-1
 		inoremap [[ [[  ]]<left><left><left>
 	endif
-	if index(['html','xml','php','xhtml','vue','eruby', 'svg'],&filetype)!=-1
-		inoremap << <space>/>
-		inoremap >> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa
-		inoremap >>> <space>><esc>mtT<yt<space>`ta</<esc>pa><esc><left>F<space>xa<cr><esc>O
-		inoremap \\ /
-	endif
 	if index(['php','phtml'],&filetype)!=-1
 		inoremap <? <?php<space><space>?><left><left><left>
 		inoremap <+ <?=<space>?><left><left><left>
@@ -415,6 +375,15 @@ function! InrmapCloseThings()
 	endif
 endfunction
 "}}}
+function! GFRelativeHome()
+	setlocal suffixes+=.vue
+	setlocal suffixes+=.js
+	" Super hack to make js imports '~/paths' work with gf
+	nnoremap <buffer><silent> gf <esc>:let $HOME=getcwd()<cr>gf<esc>:let $HOME=g:original_home<cr>
+	" try
+	" finally
+	" endtry
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmds
@@ -433,8 +402,11 @@ if has("autocmd")
 
 	autocmd BufNewFile,BufRead *.php set ft=phtml syn=php
 	autocmd BufNewFile,BufRead *.tex set ft=tex tw=100 spell spl=pt_br
-	autocmd BufNewFile,BufRead *.md setlocal spell tw=100
+	autocmd BufNewFile,BufRead *.md setlocal spell
 	autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell
+
+	autocmd BufNewFile,BufRead *.vue call GFRelativeHome()
+	autocmd BufNewFile,BufRead *.js call GFRelativeHome()
 
 	autocmd BufEnter * call InrmapCloseThings()
 	autocmd BufEnter * :GitGutterAll
@@ -458,6 +430,10 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeQuitOnOpen = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Lokaltog/neoranger
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>n :RangerCurrentFile<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -636,13 +612,21 @@ nnoremap <silent> RR :call LanguageClient_textDocument_rename()<cr>
 " fzf.vim
 """""""""""""""""""""""""
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 """""""""""""""""""""""""
 " ALE
 """""""""""""""""""""""""
-let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+let g:ale_fixers = {
+				\	'vue': ['eslint'],
+				\	'javascript': ['eslint'],
+				\}
 
 nmap ]e <Plug>(ale_next_wrap)
 nmap [e <Plug>(ale_previous_wrap)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ruanyl/vim-gh-line
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gh_open_command = 'google-chrome '
 
 
 " vim: noet ts=4 sw=4 sts=4 fdm=marker

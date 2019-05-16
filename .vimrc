@@ -53,10 +53,11 @@ set listchars=tab:┆\ ,eol:¬,trail:•,extends:❯,precedes:❮
 
 " tab control
 set smarttab " Enable smart-tabs respect 'tabstop', 'shiftwidth', and 'softtabstop'
-set shiftwidth=4 " Number of auto-indent spaces
-set softtabstop=4 " Edit as if the tabs are 4 characters wide
-set tabstop=4 " the visible width of tabs
+set shiftwidth=2 " Number of auto-indent spaces
+set softtabstop=2 " Edit as if the tabs are 4 characters wide
+set tabstop=2 " the visible width of tabs
 set shiftround " round indent to a multiple of 'shiftwidth'
+set expandtab
 
 set completeopt+=longest
 set complete=.,w,b

@@ -34,6 +34,7 @@ configureGnomeEnviroment(){
 configfiles(){
 	#ranger TODO:
 	#`locate rifle.conf` altera a ordem dos arquivos de imagem para o gimp aparecer primeiro
+	# https://www.digitalocean.com/community/tutorials/installing-and-using-ranger-a-terminal-file-manager-on-a-ubuntu-vps
 	echo "Abre o arquivo e faz na mão xD, se fude ai"
 }
 
