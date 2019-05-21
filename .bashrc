@@ -141,84 +141,19 @@ export ANDROIDNDKVER="r10e"  # Version of the NDK you installed
 # colors
 #
 export cmdCOLOR="\[\e[0;38;5;208m\]"
+export bgcolor="\[\e[48;2;38;38;38m\]" #hex:262626
+export fgcolor="\[\e[38;1;255;215;175m\]" #hex:ffd7af normal (to make it bold :s/;1;/;2;/)
+export termcolor="$fgcolor"
 
-export VHTHEME="dark"
-definevhTheme() {
-if [[ $VHTHEME == "dark" ]]; then
-	# Dark theme {{{
-	export bgcolor="\[\e[48;2;38;38;38m\]" #hex:262626
-	export fgcolor="\[\e[38;1;255;215;175m\]" #hex:ffd7af normal (to make it bold :s/;1;/;2;/)
-	export termcolor="$fgcolor"
-	#}}}
-elif [[ $VHTHEME == "light" ]]; then
-	# Light theme {{{
-	export bgcolor="\[\e[48;2;255;255;175m\]" #hex:ffffaf
-	export fgcolor="\[\e[38;2;38;38;38m\]" #hex:262626
-	export termcolor="$fgcolor"
-	#}}}
-fi
-}
-definevhTheme
-# current working directory (\w) .................... - hex:87AF87
-# current branch on git [if any] $(__git_ps1 "%s") .. - hex:87AFAF
+#export green="\[\e[38;1;56;108;11m\]"
+#export blue="\[\e[38;1;57;160;237m\]"
+export green="\[\e[01;32m\]"
+export blue="\[\e[01;34m\]"
+export white="\[\e[01;37m\]"
 
-######################
-#Git ps1
-#
-git_ps () {
-	if [[ "$(__git_ps1 '[%s]')" == *"*"* ]]; #if there is modification
-	then
-		echo -e $(__git_ps1 '[%s]');
-	elif  [[ "$(__git_ps1 '[%s]')" == *"+"* ]]; #if there is an addition
-	then
-		echo -e $(__git_ps1 '[%s]');
-	elif [[ ! "$(pwd)" =~ ^\/home\/ ]]; #if inside /home/$user
-	then
-		echo ;
-	elif [[ "$(git rev-parse --show-toplevel)" =~ \/home\/[A-Za-z0-9]+$ ]]; #if inside /home/$user
-	then
-		echo ;
-	else
-		echo -e $(__git_ps1 '[%s]');
-	fi
-}
-setPS() {
-	export PS1="\[\e[0m\]$termcolor\u@\h:\[\e[0;38;5;2m\]\w\[\e[0;38;5;12m\]"
-	if [[ ( "$(__git_ps1 "%s")" != *"command not found"* ) && ( $OSTYPE != "msys" ) ]]
-	then
-		export GIT_PS1_SHOWDIRTYSTATE=1
-		export PS1=$PS1" $(git_ps)"
-	fi
-	export PS1=$PS1"\[\e[0m\]\n$fgcolor\@\$ $cmdCOLOR"
-	export PS2="\[\e[0m\]$fgcolor\@> $cmdCOLOR"
-}
-setPS
+PS1="$green\w $blue$(__git_ps1 '[%s]')\n$white\$ $cmdCOLOR"
+PS2="$white> $cmdCOLOR"
 # }}}
-
-############################
-# git related
-#
-shopt -s extdebug
-exitWithNoGit() {
-	if ! [[ $BASH_COMMAND =~ ^(exit|shutdown.*|logout) ]]; then
-		return 0
-	fi
-	#if inside /home/$user or /$driver/root/home or /$driver/Users/$user
-	if ! [[ "$(git rev-parse --show-toplevel)" =~ \/(root\/home|(home|[a-Z]\/Users)\/[a-Z0-9]+)$ ]];then
-		return 0
-	fi
-	if ! [[ "$(__git_ps1 '[%s]')" =~ (\*|\+) ]]; then
-		return 0
-	fi
-	#if inside /home/$user or /$driver/root/home or /$driver/Users/$user
-	if [[ "$(pwd)" =~ \/(root\/home|(home|[a-Z]\/Users)\/[a-Z0-9]+)$ ]]; then
-		return 0
-	fi
-
-	echo -e "\n\e[38;2;255;215;175m\e[48;2;251;66;44m[commit your shit!]\e[0m\n\n$(git st)\n"
-	cd ~
-	return 1
-}
 
 #envvars
 export PYTHONPATH=$PYTHONPATH:$PWD
@@ -230,40 +165,10 @@ if [ -f ~/.vim/bundle/gruvbox/gruvbox_256palette.sh ]; then
 	. ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 fi
 
-##############################
-# TRAP AND PROMPT_COMMAND
-#
-Terminal(){
-	#Named 'Terminal' because it stays on the window name :p
-	definevhTheme
-	setPS
-}
-# PROMPT_COMMAND calls once after a full command is executed (this includes &&)
-PROMPT_COMMAND=Terminal
-
 #this trap command will:
-#1. show in the title the current running command
 #2. check if there is a STDOUT
 #3. removes all attributes (color, weight, position, etc)
-#4. check if there is changes in the git and do its things
 # executes before each and every single command
-trap 'echo -ne "\033]0;$BASH_COMMAND\007" && [[ -t 1 ]] && tput sgr0 && exitWithNoGit' DEBUG
+trap '[[ -t 1 ]] && tput sgr0' DEBUG
 
-export EDITOR=nvim
-
-####################3333
-# Auto added lines
-#
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-export PATH=~/.local/bin:$PATH
+export EDITOR=vim
