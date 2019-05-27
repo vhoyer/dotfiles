@@ -227,7 +227,7 @@ noremap <leader>y "+y
 noremap VV ^v$h
 noremap CA <esc>mygg"+yG`y
 " Normalize the file
-noremap == <esc>mygg=G`y
+" noremap == <esc>mygg=G`y
 " reverse 'J'
 noremap JJ i<cr><esc>k$
 noremap <leader>s <esc>:w<cr>
@@ -617,7 +617,7 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : 
 " ALE
 """""""""""""""""""""""""
 let g:ale_fixers = {
-				\	'vue': ['eslint'],
+				\	'vue': ['eslint', 'stylelint'],
 				\	'javascript': ['eslint'],
 				\}
 
