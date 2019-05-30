@@ -1,4 +1,4 @@
-all: install-programs setup-i3 setup-git
+all: install-programs setup-i3 setup-zsh setup-git
 
 install-programs:
 	sudo pacman -S --noconfirm `cat ./packages/pacman-install.txt`
@@ -9,6 +9,12 @@ setup-i3:
 	rm -rf ${HOME}/.i3
 	ln -s $(realpath ./home-files/.i3/) ${HOME}
 	i3-msg reload
+
+setup-zsh:
+	rm -f ${HOME}/{.zshrc,./.zcompdump}
+	ln -s $(realpath ./home-files/.zshrc) ${HOME}
+	ln -s $(realpath ./home-files/.zcompdump) ${HOME}
+	sudo chsh -s /bin/zsh ${USER}
 
 setup-git:
 	rm -f ${HOME}/{.gitconfig,.global_gitignore}
