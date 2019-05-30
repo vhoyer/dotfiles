@@ -4,7 +4,7 @@
 [core]
 	autocrlf = input
 	safecrlf = warn
-	editor = nvim
+	editor = vim
 	excludesfile = ~/.ggitignore
 [alias]
 	ad = add -p
