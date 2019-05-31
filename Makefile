@@ -16,6 +16,10 @@ setup-zsh:
 	ln -s $(realpath ./home-files/.zcompdump) ${HOME}
 	sudo chsh -s /bin/zsh ${USER}
 
+setup-ranger:
+	rm -rf ${HOME}/.config/ranger/
+	ln -s $(realpath ./home-files/.config/ranger/) ${HOME}/.config/
+
 setup-git:
 	rm -f ${HOME}/{.gitconfig,.global_gitignore}
 	ln -s $(realpath ./home-files/.gitconfig) ${HOME}
