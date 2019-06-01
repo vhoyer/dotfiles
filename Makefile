@@ -1,11 +1,14 @@
-all: install-programs setup-i3 setup-zsh setup-git
+all: install-programs setup-i3 setup-zsh setup-git setup-system-config
 
 install-programs:
 	sudo pacman -Syu --noconfirm `cat ./packages/pacman-install.txt`
 	yes | yay -S --nodiffmenu --nocleanmenu `cat ./packages/yay-install.txt`
 
-setup-i3:
+setup-system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
+	sudo timedatectl set-ntp true
+
+setup-i3:
 	rm -rf ${HOME}/.i3
 	ln -s $(realpath ./home-files/.i3/) ${HOME}
 	i3-msg reload
