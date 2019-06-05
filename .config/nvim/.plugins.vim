@@ -7,48 +7,40 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'Lokaltog/neoranger'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'autozimu/LanguageClient-neovim'
+Plugin 'junegunn/fzf.vim'
+Plugin 'kien/ctrlp.vim' " just press ctrl+p too see
+Plugin 'mattn/emmet-vim' "html>body>div.container into html file
 Plugin 'morhetz/gruvbox' " colorscheme
-Plugin 'tpope/vim-fugitive' " git wrapper
+Plugin 'ruanyl/vim-gh-line'
+Plugin 'scrooloose/nerdcommenter' " auto comment code based on ft
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tommcdo/vim-fugitive-blame-ext'
+Plugin 'tpope/vim-fugitive' " git wrapper
+Plugin 'tpope/vim-repeat' " make . work with surrond
+Plugin 'tpope/vim-surround' " handy, hard to explain in one line
+Plugin 'unblevable/quick-scope'
+Plugin 'vadimr/bclose.vim' " close buffer instead of window
+Plugin 'vhoyer/Mark' " hightlight words, handy for debug
 Plugin 'vim-airline/vim-airline' " the bottom thingy
 Plugin 'w0rp/ale' " asynchronos linting
-Plugin 'kien/ctrlp.vim' " just press ctrl+p too see
-Plugin 'scrooloose/nerdcommenter' " auto comment code based on ft
-Plugin 'vadimr/bclose.vim' " close buffer instead of window
-Plugin 'tpope/vim-surround' " handy, hard to explain in one line
-Plugin 'tpope/vim-repeat' " make . work with surrond
-Plugin 'vhoyer/Mark' " hightlight words, handy for debug
 Plugin 'wakatime/vim-wakatime' " waka waka waka
-Plugin 'mattn/emmet-vim' "html>body>div.container into html file
+
 Plugin 'udalov/kotlin-vim'
 Plugin 'othree/html5.vim'
 Plugin 'posva/vim-vue'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'slim-template/vim-slim'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'tmux-plugins/vim-tmux'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'ap/vim-css-color'
 Plugin 'tpope/vim-haml'
 Plugin 'pangloss/vim-javascript'
-Plugin 'junegunn/fzf.vim'
-Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'elixir-editors/vim-elixir'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'Lokaltog/neoranger'
 Plugin 'chr4/nginx.vim'
-Plugin 'unblevable/quick-scope'
-Plugin 'ruanyl/vim-gh-line'
-"Plugin 'scrooloose/syntastic' " ?
-"Plugin 'tpope/vim-rails'
-"Plugin 'joonty/vdebug'
-"Plugin 'sjl/gundo'
-"Plugin 'SirVer/ultisnips' " snippets
 "Plugin 'jaxbot/semantic-highlight.vim' "custom color for variables
-"Plugin 'scrooloose/nerdtree' " tree file explorer
-"Plugin 'majutsushi/tagbar' " run :Tagbar, neat thing for bit files
-"Plugin 'dhruvasagar/vim-table-mode' " utililty for tables in .md
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

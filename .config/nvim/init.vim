@@ -63,7 +63,7 @@ set smartindent " Enable smart-indent
 
 set encoding=utf-8
 
-set iskeyword -=-
+set iskeyword -=\-
 syntax iskeyword -,_
 
 set cursorline
@@ -162,7 +162,7 @@ let mapleader = "\<Space>"
 " Avoiding the <esc>
 inoremap jk <esc>
 cnoremap jk <C-[>
-inoremap <c-c> <c-c>:set isk-=-<cr>
+inoremap <c-c> <c-c>:set isk-=\-<cr>
 
 " Always forget {{{
 nnoremap Ç :
@@ -209,7 +209,7 @@ vnoremap s :sort<cr>
 vnoremap ss :sort i<cr>
 vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
 vnoremap RR y:%s/<C-R>"//gc<left><left><left>
-vnoremap // "yyk/<C-R>y<CR>
+vnoremap // "yyk/\<<C-R>y\><CR>
 vnoremap <C-r> "yy<esc>:args `ag -l '<C-r>y'`<cr>:argdo %s/<C-r>y/<C-r>y/ge <bar> update<left><left><left><left><left><left><left><left><left><left><left><left>
 
 noremap <F6> <esc>:tp<cr>
@@ -314,7 +314,7 @@ function! InrmapCloseThings()
 	inoremap -- --
 	inoremap __ __
 	inoremap <pipe><pipe> <pipe><pipe>
-	if index(['svg', 'ruby', 'cs', 'javascript', 'php', 'java', 'css', 'python', 'scss', 'kotlin', 'html', 'c', 'vue', 'eruby', 'json'],&filetype)!=-1
+	if index(['svg', 'ruby', 'cs', 'javascript', 'php', 'java', 'css', 'python', 'scss', 'stylus', 'kotlin', 'html', 'c', 'vue', 'eruby', 'json'],&filetype)!=-1
 		inoremap "" ""<left>
 		inoremap '' ''<left>
 		inoremap (( ()<left>
@@ -354,7 +354,7 @@ function! InrmapCloseThings()
 		inoremap <+ <%=  %><left><left><left>
 		inoremap <% <%  %><left><left><left>
 	endif
-	if index(['css','scss'],&filetype)!=-1
+	if index(['css','scss', 'stylus'],&filetype)!=-1
 		inoremap :: :<space>;<left>
 		inoremap ?? /**/<left><left>
 	endif
@@ -398,6 +398,7 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.vue setfiletype vue.html.javascript.css
 	autocmd BufNewFile,BufRead *.slim setfiletype slim
 	autocmd BufNewFile,BufRead *.coffee setfiletype coffee
+	autocmd BufNewFile,BufRead *.styl setfiletype stylus
 	autocmd BufNewFile,BufRead *tmux.conf setfiletype tmux
 
 	autocmd BufNewFile,BufRead *.php set ft=phtml syn=php
@@ -419,8 +420,8 @@ if has("autocmd")
 
 	autocmd InsertEnter *.* set isk +=_
 	autocmd InsertLeave *.* set isk -=_
-	autocmd InsertEnter *.* set isk +=-
-	autocmd InsertLeave *.* set isk -=-
+	autocmd InsertEnter *.* set isk +=\-
+	autocmd InsertLeave *.* set isk -=\-
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree
