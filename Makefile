@@ -22,8 +22,12 @@ setup-zsh:
 setup-dotconfig:
 	rm -rf ${HOME}/.config/ranger
 	ln -s $(realpath ./home-files/.config/ranger/) ${HOME}/.config/
+
+setup-nvim:
 	rm -rf ${HOME}/.config/nvim
 	ln -s $(realpath ./home-files/.config/nvim/) ${HOME}/.config/
+	curl -fLo ${HOME}/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	nvim +PlugInstall +UpdateRemotePlugins +qa
 
 setup-git:
 	rm -f ${HOME}/{.gitconfig,.global_gitignore}
