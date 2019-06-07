@@ -1,4 +1,4 @@
-all: install-programs setup-i3 setup-oh-my-zsh setup-git setup-system-config setup-dotconfig
+all: install-programs setup-i3 setup-oh-my-zsh setup-git setup-system-config setup-dotconfig setup-st
 
 install-programs:
 	sudo pacman -Syu --noconfirm `cat ./packages/pacman-install.txt`
@@ -29,6 +29,12 @@ setup-nvim:
 	ln -s $(realpath ./home-files/.config/nvim/) ${HOME}/.config/
 	curl -fLo ${HOME}/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	nvim +PlugInstall +UpdateRemotePlugins +qa
+
+setup-st:
+	mkdir -p ${HOME}/devenv/
+	rm -rf ${HOME}/devenv/st/
+	git clone https://github.com/LukeSmithxyz/st ${HOME}/devenv/st/
+	sudo make -C ${HOME}/devenv/st install
 
 setup-git:
 	rm -f ${HOME}/{.gitconfig,.global_gitignore}
