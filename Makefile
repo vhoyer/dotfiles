@@ -1,4 +1,4 @@
-all: install-programs setup-i3 setup-zsh setup-git setup-system-config setup-dotconfig
+all: install-programs setup-i3 setup-oh-my-zsh setup-git setup-system-config setup-dotconfig
 
 install-programs:
 	sudo pacman -Syu --noconfirm `cat ./packages/pacman-install.txt`
@@ -13,11 +13,12 @@ setup-i3:
 	ln -s $(realpath ./home-files/.i3/) ${HOME}
 	i3-msg reload
 
-setup-zsh:
-	rm -f ${HOME}/{.zshrc,./.zcompdump}
+setup-oh-my-zsh:
+	rm -f ${HOME}/{.zshrc,.zcompdump}
 	ln -s $(realpath ./home-files/.zshrc) ${HOME}
 	ln -s $(realpath ./home-files/.zcompdump) ${HOME}
 	sudo chsh -s /bin/zsh ${USER}
+	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 setup-dotconfig:
 	rm -rf ${HOME}/.config/ranger
