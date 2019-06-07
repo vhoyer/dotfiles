@@ -3,3 +3,7 @@ if !has("autocmd") || exists("g:loaded_augroups")
 endif
 
 let g:loaded_augroups = 1
+
+augroup TerminalStuff
+	autocmd TermOpen * setlocal nonumber norelativenumber
+augroup END
