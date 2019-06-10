@@ -1,4 +1,3 @@
 lib32-glibc
 npm
-ranger
 yay
