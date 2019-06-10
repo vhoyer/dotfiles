@@ -1,8 +1,8 @@
-all: install-programs setup-i3 setup-oh-my-zsh setup-git setup-system-config setup-dotconfig setup-st
+all: setup-i3 setup-oh-my-zsh setup-git setup-system-config setup-dotconfig setup-st
 
-install-programs:
-	sudo pacman -Syu --noconfirm `cat ./packages/pacman-install.txt`
-	yes | yay -S --nodiffmenu --nocleanmenu `cat ./packages/yay-install.txt`
+install-dependecies:
+	sudo pacman -Syyuu --noconfirm `cat ./packages/pacman-install.txt`
+	yay -S --nodiffmenu --nocleanmenu `cat ./packages/yay-install.txt`
 
 setup-system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
