@@ -1,3 +1,2 @@
-glibc
 google-chrome
 neovim
