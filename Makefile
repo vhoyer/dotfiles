@@ -1,4 +1,4 @@
-all: setup-i3 setup-oh-my-zsh setup-git setup-system-config setup-dotconfig setup-st
+all: setup-system-config setup-i3 setup-oh-my-zsh setup-dotconfig setup-nvim setup-st setup-git 
 
 install-dependecies:
 	sudo pacman -Syyuu --noconfirm `cat ./packages/pacman-install.txt`
