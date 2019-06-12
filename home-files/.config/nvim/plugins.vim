@@ -25,3 +25,4 @@ let g:gruvbox_italic=1
 " CocInstall coc-json
 " CocInstall coc-tsserver
 " CocInstall coc-vetur
+" CocInstall coc-eslint
