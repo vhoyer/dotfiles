@@ -18,7 +18,7 @@ setup-oh-my-zsh:
 	ln -s $(realpath ./home-files/.zshrc) ${HOME}
 	ln -s $(realpath ./home-files/.zcompdump) ${HOME}
 	sudo chsh -s /bin/zsh ${USER}
-	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 setup-dotconfig:
 	rm -rf ${HOME}/.config/ranger
