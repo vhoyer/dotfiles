@@ -1,7 +1,7 @@
 all: setup-system-config setup-i3 setup-oh-my-zsh setup-dotconfig setup-nvim setup-st setup-git 
 
-install-dependecies:
-	sudo pacman -Syyuu --noconfirm `cat ./packages/pacman-install.txt`
+install-dependencies:
+	sudo pacman -S --noconfirm `cat ./packages/pacman-install.txt`
 	yay -S --nodiffmenu --nocleanmenu `cat ./packages/yay-install.txt`
 
 setup-system-config:
