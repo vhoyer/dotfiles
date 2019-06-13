@@ -28,6 +28,8 @@ And run `make` on that directory:
 
 ```bash
 make
+
+make setup
 ```
 
 You may also choose what you want to setup manually, by calling:
