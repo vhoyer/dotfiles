@@ -64,8 +64,11 @@ I will not list what rules are present on the `Makefile` to lower the chances of
 ## Roadmap
 
 - [x] make an script to install it all!
-	- [ ] when installing yay packages, don't ask for [Y/n] to continue (it just need a `yes | yay ...`, but it cannot be used if yay asks for choosing installation, see next topic)
-	- [ ] when installing yay packages, don't ask for default (e.g.: google-chrome? 1=stable; 2=beta; etc)
+	- [ ] when installing yay packages, don't ask for [Y/n] to continue (it just 
+	      need a `yes | yay ...`, but it cannot be used if yay asks for choosing
+	      installation, see next topic)
+	- [ ] when installing yay packages, don't ask for default
+	      (e.g.: google-chrome? 1=stable; 2=beta; etc)
 - [x] install nvim
 	- [x] install gruvbox
 	- [x] install coc.nvim
