@@ -15,6 +15,14 @@ need. And so I ~did~ am doing it!
 
 I think that's it, I may be wrong, and if so, then I'm sorry.
 
+## Quick ssh-key to clipboard
+
+because I never remember that command:
+
+```bash
+bash <(curl -s https://raw.githubusercontent.com/vhoyer/dotfiles/i3-zsh/scripts/generate-ssh-key.sh) <your@email.here>
+```
+
 ## Quick start
 
 With all dependencies installed, you may clone the repository:
