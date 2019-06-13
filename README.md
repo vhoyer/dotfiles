@@ -60,3 +60,18 @@ make setup-git
 
 I will not list what rules are present on the `Makefile` to lower the chances of this
 `README.md` get out of date.
+
+## Roadmap
+
+- [x] install nvim
+	- [x] install gruvbox
+	- [x] install coc.nvim
+		- [ ] make CocInstall work by itself
+	- [x] install neoranger
+- [x] install zsh
+	- [x] install oh-my-zsh
+	- [ ] ask for reboot after finish make
+- [x] install i3
+- [x] install and use st
+- [x] install google-chrome
+	- [ ] make it default
