@@ -81,3 +81,4 @@ I will not list what rules are present on the `Makefile` to lower the chances of
 - [x] install and use st
 - [x] install google-chrome
 	- [ ] make it default
+- [ ] make two monitor setup work
