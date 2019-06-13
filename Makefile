@@ -1,5 +1,5 @@
 install-dependencies:
-	sudo pacman -S --noconfirm `cat ./packages/pacman-install.txt`
+	sudo pacman -Syu --noconfirm `cat ./packages/pacman-install.txt`
 	yay -S --nodiffmenu --nocleanmenu `cat ./packages/yay-install.txt`
 
 setup: system-config i3 oh-my-zsh dotconfig nvim st git 
