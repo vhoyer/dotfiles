@@ -28,7 +28,7 @@ nvim:
 	rm -rf ${HOME}/.config/nvim
 	ln -s $(realpath ./home-files/.config/nvim/) ${HOME}/.config/
 	curl -fLo ${HOME}/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	nvim +PlugInstall +UpdateRemotePlugins +qa
+	nvim -u ${HOME}/.config/nvim/plugins.vim +PlugInstall +UpdateRemotePlugins +qa
 
 st:
 	mkdir -p ${HOME}/devenv/
