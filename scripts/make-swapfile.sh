@@ -1,8 +1,10 @@
 #!/bin/sh
 
-#
-# this script must be run in sudo mode
-#
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit 1
+fi
+
 # https://linuxize.com/post/create-a-linux-swap-file/
 
 # 1. create the file
