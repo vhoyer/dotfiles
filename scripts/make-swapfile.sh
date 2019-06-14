@@ -44,4 +44,13 @@ echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
 # Mem:           488M        158M         83M        2.3M        246M        217M
 # Swap:          1.0G        506M        517M
 
-# 
+# To revert things do:
+
+# 1. First, deactivate the swap using the following command
+# $ swapoff -v /swapfile
+#
+# 2. Remove the swap file entry /swapfile swap swap defaults 0 0 from the /etc/fstab file
+# $ sed -i -e "/^\/swapfile swap swap defaults 0 0$/d" fstab
+#
+# 3. Delete the actual swapfile
+# $ rm /swapfile
