@@ -82,3 +82,8 @@ I will not list what rules are present on the `Makefile` to lower the chances of
 - [x] install google-chrome
 	- [ ] make it default
 - [ ] make two monitor setup work
+- [ ] improve `scripts/make-swapfile.sh`
+	- [ ] have an --help parameter
+	- [ ] have a undo option
+	- [ ] have the option to choose how much memory to allocate the swap
+	- [ ] have the option to change how much memory is allocated to be swap
