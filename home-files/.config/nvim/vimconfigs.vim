@@ -13,4 +13,5 @@ set complete+=k
 
 " Set cute characters
 set fillchars=fold:-,vert:\│
+set list
 set listchars=tab:┆\ ,eol:¬,trail:•,extends:❯,precedes:❮
