@@ -17,7 +17,7 @@ set softtabstop=2 " Edit as if the tabs are 2 characters wide
 set tabstop=2 " the visible width of tabs
 
 " Search dictionary for word completion
-set complete+=k
+set complete=.,w,b,u,i,k " see :h 'complete'
 
 " Set cute characters
 set fillchars=fold:-,vert:\│
