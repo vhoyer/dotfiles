@@ -23,3 +23,7 @@ let g:gruvbox_italic=1
 " CocInstall coc-vetur
 " CocInstall coc-eslint
 
+"
+" Plug 'airblade/vim-gitgutter'
+"
+let g:gitgutter_max_signs = 1000
