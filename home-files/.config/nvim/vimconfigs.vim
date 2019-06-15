@@ -5,8 +5,13 @@ set relativenumber
 " Set current line highlight
 set cursorline
 
-set shiftwidth=2
-set tabstop=2
+" tab/spaces stuffs
+set expandtab " transforms tabs into spaces
+set shiftround " round indent to a multiple of 'shiftwidth'
+set shiftwidth=2 " Number of auto-indent spaces
+set smarttab " Enable smart-tabs respect 'tabstop', 'shiftwidth', and 'softtabstop'
+set softtabstop=2 " Edit as if the tabs are 2 characters wide
+set tabstop=2 " the visible width of tabs
 
 " Search dictionary for word completion
 set complete+=k
