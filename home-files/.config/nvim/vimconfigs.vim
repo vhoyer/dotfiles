@@ -1,6 +1,9 @@
 " default encoding
 set encoding=utf-8
 
+" vim refresh rate
+set updatetime=200
+
 " Set line numbers
 set number
 set relativenumber
