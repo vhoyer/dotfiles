@@ -5,8 +5,10 @@ nnoremap Q <nop>
 inoremap jk <esc>
 cnoremap jk <esc>
 
-nnoremap <space>l $
 nnoremap <space>h ^
+nnoremap <space>l $
+vnoremap <space>h ^
+vnoremap <space>l $
 
 nnoremap <space>s <esc>:w<cr>
 
