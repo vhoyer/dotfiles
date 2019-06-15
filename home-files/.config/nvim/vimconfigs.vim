@@ -1,3 +1,6 @@
+" default encoding
+set encoding=utf-8
+
 " Set line numbers
 set number
 set relativenumber
