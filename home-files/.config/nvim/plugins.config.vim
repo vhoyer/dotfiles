@@ -22,6 +22,7 @@ let g:gruvbox_italic=1
 " CocInstall coc-tsserver
 " CocInstall coc-vetur
 " CocInstall coc-eslint
+" CocInstall coc-tslint
 
 "
 " Plug 'airblade/vim-gitgutter'
