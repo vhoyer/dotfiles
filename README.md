@@ -64,28 +64,28 @@ I will not list what rules are present on the `Makefile` to lower the chances of
 ## Roadmap
 
 - [x] make an script to install it all!
-	- [ ] when installing yay packages, don't ask for [Y/n] to continue (it just 
-	      need a `yes | yay ...`, but it cannot be used if yay asks for choosing
-	      installation, see next topic)
-	- [ ] when installing yay packages, don't ask for default
-	      (e.g.: google-chrome? 1=stable; 2=beta; etc)
+  - [ ] when installing yay packages, don't ask for [Y/n] to continue (it just 
+      need a `yes | yay ...`, but it cannot be used if yay asks for choosing
+      installation, see next topic)
+  - [ ] when installing yay packages, don't ask for default
+      (e.g.: google-chrome? 1=stable; 2=beta; etc)
 - [x] install nvim
-	- [x] install gruvbox
-	- [x] install coc.nvim
-		- [ ] make CocInstall work by itself
-	- [x] install neoranger
+  - [x] install gruvbox
+  - [x] install coc.nvim
+    - [ ] make CocInstall work by itself
+  - [x] install neoranger
 - [x] install zsh
-	- [x] install oh-my-zsh
-	- [ ] ask for reboot after finish make
+  - [x] install oh-my-zsh
+  - [ ] ask for reboot after finish make
 - [x] install i3
 - [x] install and use st
 - [x] install google-chrome
-	- [ ] make it default
-	- [ ] install and use a better default font with emoji support :D
+  - [ ] make it default
+  - [ ] install and use a better default font with emoji support :D
 - [ ] make two monitor setup work
 - [ ] setup that modular keybindings program: sxhkd
 - [ ] improve `scripts/make-swapfile.sh`
-	- [ ] have an --help parameter
-	- [ ] have a undo option
-	- [ ] have the option to choose how much memory to allocate the swap
-	- [ ] have the option to change how much memory is allocated to be swap
+  - [ ] have an --help parameter
+  - [ ] have a undo option
+  - [ ] have the option to choose how much memory to allocate the swap
+  - [ ] have the option to change how much memory is allocated to be swap
