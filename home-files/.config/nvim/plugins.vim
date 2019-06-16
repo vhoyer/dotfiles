@@ -9,3 +9,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
 call plug#end()
+
+" enable ftplugings
+filetype plugin on
