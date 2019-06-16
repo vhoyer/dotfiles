@@ -40,3 +40,7 @@ git:
 	rm -f ${HOME}/{.gitconfig,.global_gitignore}
 	ln -s $(realpath ./home-files/.gitconfig) ${HOME}
 	ln -s $(realpath ./home-files/.global_gitignore) ${HOME}
+
+redshift:
+	rm -f ${HOME}/.config/redshift.conf
+	ln -s $(realpath ./home-files/.config/redshift.conf) ${HOME}/.config/
