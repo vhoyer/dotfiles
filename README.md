@@ -7,7 +7,7 @@ need. And so I ~did~ am doing it!
 
 ## Dependencies
 
-- a Unix system
+- a Unix system (I'm making it for Manjaro, so I don't guarantee it works on other systems)
 - Git
 - GNU make (or any program capable of reading and executing a Makefile)
 - pacman package manager 
