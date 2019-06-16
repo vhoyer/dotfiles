@@ -26,3 +26,7 @@ set complete=.,w,b,u,i,k " see :h 'complete'
 set fillchars=fold:-,vert:\│
 set list
 set listchars=tab:┆\ ,eol:¬,trail:•,extends:❯,precedes:❮
+
+" open new tab on the bottom and on the right
+set splitbelow
+set splitright
