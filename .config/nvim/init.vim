@@ -233,7 +233,7 @@ noremap JJ i<cr><esc>k$
 noremap <leader>s <esc>:w<cr>
 noremap <leader>S <esc>:w!<cr>
 
-noremap <leader>p <esc>:FZF<cr>
+noremap <leader>fp <esc>:FZF<cr>
 noremap <C-p> <esc>:CtrlPBuffer<cr>
 noremap <C-p><C-p> <esc>:CtrlPMRUFiles<cr>
 
@@ -395,6 +395,7 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.master setfiletype html
 	autocmd BufNewFile,BufRead *.kl setfiletype kotlin
 	autocmd BufNewFile,BufRead *.kls setfiletype kotlin
+	autocmd BufNewFile,BufRead *.ts setfiletype typescript
 	autocmd BufNewFile,BufRead *.vue setfiletype vue.html.javascript.css
 	autocmd BufNewFile,BufRead *.slim setfiletype slim
 	autocmd BufNewFile,BufRead *.coffee setfiletype coffee

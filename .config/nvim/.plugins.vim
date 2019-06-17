@@ -29,17 +29,18 @@ Plugin 'vim-airline/vim-airline' " the bottom thingy
 Plugin 'w0rp/ale' " asynchronos linting
 Plugin 'wakatime/vim-wakatime' " waka waka waka
 
-Plugin 'udalov/kotlin-vim'
-Plugin 'othree/html5.vim'
-Plugin 'posva/vim-vue'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'slim-template/vim-slim'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'ap/vim-css-color'
-Plugin 'tpope/vim-haml'
-Plugin 'pangloss/vim-javascript'
-Plugin 'elixir-editors/vim-elixir'
 Plugin 'chr4/nginx.vim'
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'posva/vim-vue'
+Plugin 'slim-template/vim-slim'
+Plugin 'tpope/vim-haml'
+Plugin 'udalov/kotlin-vim'
 "Plugin 'jaxbot/semantic-highlight.vim' "custom color for variables
 
 " All of your Plugins must be added before the following line
