@@ -28,3 +28,9 @@ let g:gruvbox_italic=1
 " Plug 'airblade/vim-gitgutter'
 "
 let g:gitgutter_max_signs = 1000
+
+"
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+"
+let $FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l \"\""
