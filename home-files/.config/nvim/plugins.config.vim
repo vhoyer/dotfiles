@@ -34,3 +34,4 @@ let g:gitgutter_max_signs = 1000
 " Plug 'junegunn/fzf.vim'
 "
 let $FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l \"\""
+nnoremap <leader>p <esc>:Files<cr>
