@@ -7,6 +7,8 @@ setup: system-config i3 oh-my-zsh dotconfig nvim st git
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
 	sudo timedatectl set-ntp true
+	rm -f ${HOME}/.profile
+	ln -s $(realpath ./home-files/.profile) ${HOME}
 
 i3:
 	rm -rf ${HOME}/.i3
@@ -21,8 +23,9 @@ oh-my-zsh:
 	curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 dotconfig:
-	rm -rf ${HOME}/.config/ranger
+	rm -rf ${HOME}/.config/{ranger,mimeapps.list}
 	ln -s $(realpath ./home-files/.config/ranger/) ${HOME}/.config/
+	ln -s $(realpath ./home-files/.config/mimeapps.list) ${HOME}/.config/
 
 nvim:
 	rm -rf ${HOME}/.config/nvim
