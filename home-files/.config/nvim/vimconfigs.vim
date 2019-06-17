@@ -30,3 +30,6 @@ set listchars=tab:┆\ ,eol:¬,trail:•,extends:❯,precedes:❮
 " open new tab on the bottom and on the right
 set splitbelow
 set splitright
+
+" set mouse support, mainly for scrolling stuff
+set mouse=a
