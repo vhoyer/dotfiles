@@ -8,8 +8,9 @@ nnoremap <space>n <esc>:RangerCurrentFile<cr>
 "
 " Plug 'morhetz/gruvbox'
 "
-colorscheme gruvbox
 let g:gruvbox_italic=1
+
+colorscheme gruvbox
 
 "
 " Plug 'neoclide/coc.nvim'
