@@ -1,4 +1,6 @@
-npm
-yarn
 nodejs
+npm
+redshift
+unzip
+yarn
 yay
