@@ -81,7 +81,7 @@ I will not list what rules are present on the `Makefile` to lower the chances of
 - [x] install and use st
 - [x] install google-chrome
   - [ ] make it default
-  - [ ] install and use a better default font with emoji support :D
+  - [x] install and use a better default font with emoji support :D
 - [ ] make two monitor setup work
 - [ ] setup that modular keybindings program: sxhkd
 - [ ] improve `scripts/make-swapfile.sh`
