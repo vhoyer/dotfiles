@@ -89,4 +89,4 @@ I will not list what rules are present on the `Makefile` to lower the chances of
   - [ ] have a undo option
   - [ ] have the option to choose how much memory to allocate the swap
   - [ ] have the option to change how much memory is allocated to be swap
-- [ ] install redshift
+- [x] install redshift
