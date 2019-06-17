@@ -7,6 +7,7 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'wakatime/vim-wakatime'
 
 call plug#end()
 
