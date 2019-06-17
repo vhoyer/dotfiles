@@ -2,7 +2,7 @@ install-dependencies:
 	sudo pacman -Syu --noconfirm `cat ./packages/pacman-install.txt`
 	yay -S --nodiffmenu --nocleanmenu `cat ./packages/yay-install.txt`
 
-setup: system-config i3 oh-my-zsh dotconfig nvim st git 
+setup: system-config i3 oh-my-zsh dotconfig nvim st git fzf
 
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
@@ -50,3 +50,8 @@ git:
 redshift:
 	rm -f ${HOME}/.config/redshift.conf
 	ln -s $(realpath ./home-files/.config/redshift.conf) ${HOME}/.config/
+
+fzf:
+	rm -rf ${HOME}/.fzf
+	git clone --depth 1 https://github.com/junegunn/fzf.git ${HOME}/.fzf
+	${HOME}/.fzf/install --key-bindings --completion --update-rc
