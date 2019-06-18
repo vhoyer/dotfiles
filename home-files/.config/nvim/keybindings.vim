@@ -13,3 +13,7 @@ vnoremap <space>l $
 nnoremap <space>s <esc>:w<cr>
 
 vnoremap s :sort<cr>
+
+" find replace in the same buffer
+vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
+vnoremap RR y:%s/<C-R>"//gc<left><left><left>
