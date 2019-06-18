@@ -35,6 +35,21 @@ let g:gitgutter_max_signs = 1000
 " Plug 'junegunn/fzf.vim'
 "
 let $FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l \"\""
+
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+      \ 'ctrl-q': function('s:build_quickfix_list'),
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-x': 'split',
+      \ 'ctrl-v': 'vsplit' }
+
 nnoremap <f3> <esc>:Rg<cr>
 nnoremap <leader>fl <esc>:BCommits<cr>
 nnoremap <leader>fn <esc>:Buffers<cr>
@@ -63,3 +78,10 @@ nnoremap <leader>fp <esc>:Files<cr>
 " :Maps           " Normal mode mappings
 " :Helptags       " Help tags 1
 " :Filetypes      " File types
+
+"
+" stefandtw/quickfix-reflector.vim
+"
+" let g:qf_modifiable = 1 "If 1, automatically sets quickfix buffers 'modifiable'. Default: 1
+let g:qf_join_changes = 1 "If 1, changes in a buffer will be joined, to allow unding it all at once. Default: 0
+" let g:qf_write_changes = 1 "If 1, will write the files, if 0 will only change the buffer without saving the file. Default: 1
