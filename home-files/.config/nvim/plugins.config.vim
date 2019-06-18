@@ -36,10 +36,9 @@ let g:gitgutter_max_signs = 1000
 "
 let $FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l \"\""
 nnoremap <f3> <esc>:Rg<cr>
-nnoremap <leader>fh <esc>:Helptags<cr>
 nnoremap <leader>fl <esc>:BCommits<cr>
 nnoremap <leader>fn <esc>:Buffers<cr>
-nnoremap <leader>p <esc>:Files<cr>
+nnoremap <leader>fp <esc>:Files<cr>
 " :Files [PATH]   " Files (similar to :FZF)
 " :GFiles [OPTS]  " Git files (git ls-files)
 " :GFiles?        " Git files (git status)
