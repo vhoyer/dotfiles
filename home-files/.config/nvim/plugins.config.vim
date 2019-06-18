@@ -34,16 +34,20 @@ let g:gitgutter_max_signs = 1000
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
 "
+" make FZF see hidden lines in :Files<cr>
 let $FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l \"\""
 
+" bind ctrl-a to select all lines in fzf
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 
+" method to add lines to quickfix window
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
   copen
   cc
 endfunction
 
+" add ctrl-q to open selected files to quickfix window
 let g:fzf_action = {
       \ 'ctrl-q': function('s:build_quickfix_list'),
       \ 'ctrl-t': 'tab split',
