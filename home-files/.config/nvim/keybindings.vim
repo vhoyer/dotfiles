@@ -8,13 +8,13 @@ inoremap jk <esc>
 cnoremap jk <esc>
 
 " jump to begin and end of an line in normal and visual mode
-nnoremap <space>h ^
-nnoremap <space>l $
-vnoremap <space>h ^
-vnoremap <space>l $
+nnoremap <leader>h ^
+nnoremap <leader>l $
+vnoremap <leader>h ^
+vnoremap <leader>l $
 
 " save file with <leader>s
-nnoremap <space>s <esc>:w<cr>
+nnoremap <leader>s <esc>:w<cr>
 
 vnoremap s :sort<cr>
 
