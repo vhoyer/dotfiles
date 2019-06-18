@@ -54,6 +54,9 @@ let g:fzf_action = {
       \ 'ctrl-x': 'split',
       \ 'ctrl-v': 'vsplit' }
 
+" make :Rg<cr> see hidden files, cuz duh, why this is not default?
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --hidden --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, <bang>0)
+
 nnoremap <f3> <esc>:Rg<cr>
 nnoremap <leader>fl <esc>:BCommits<cr>
 nnoremap <leader>fn <esc>:Buffers<cr>
