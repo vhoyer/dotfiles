@@ -3,6 +3,7 @@ set encoding=utf-8
 
 " vim refresh rate
 set updatetime=200
+set timeoutlen=200
 
 " Set line numbers
 set number
