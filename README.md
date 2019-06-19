@@ -17,7 +17,7 @@ I think that's it, I may be wrong, and if so, then I'm sorry.
 
 ## Quick ssh-key to clipboard
 
-because I never remember that command:
+Because I never remember that command:
 
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/vhoyer/dotfiles/i3-zsh/scripts/generate-ssh-key.sh) <your@email.here>
@@ -84,7 +84,7 @@ I will not list what rules are present on the `Makefile` to lower the chances of
   - [x] make it default
   - [x] install and use a better default font with emoji support :D
 - [ ] make two monitor setup work
-- [ ] setup that modular keybindings program: sxhkd
+- [ ] setup that modular key bindings program: sxhkd
 - [ ] improve `scripts/make-swapfile.sh`
   - [ ] have an --help parameter
   - [ ] have a undo option
