@@ -1,3 +1,4 @@
 google-chrome
+mons
 neovim
 ttf-emojione
