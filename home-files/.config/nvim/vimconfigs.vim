@@ -34,3 +34,7 @@ set splitright
 
 " set mouse support, mainly for scrolling stuff
 set mouse=a
+
+" set diffview as vertical because defautl is horizontal split and that makes
+" no sense :p
+set diffopt+=vertical
