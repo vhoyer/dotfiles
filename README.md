@@ -83,7 +83,7 @@ I will not list what rules are present on the `Makefile` to lower the chances of
 - [x] install google-chrome
   - [x] make it default
   - [x] install and use a better default font with emoji support :D
-- [ ] make two monitor setup work
+- [x] make two monitor setup work
 - [ ] setup that modular key bindings program: sxhkd
 - [ ] improve `scripts/make-swapfile.sh`
   - [ ] have an --help parameter
