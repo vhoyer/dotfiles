@@ -85,9 +85,11 @@ I will not list what rules are present on the `Makefile` to lower the chances of
   - [x] install and use a better default font with emoji support :D
 - [x] make two monitor setup work
 - [ ] setup that modular key bindings program: sxhkd
-- [ ] improve `scripts/make-swapfile.sh`
+- [x] make `scripts/make-swapfile.sh`
   - [ ] have an --help parameter
   - [ ] have a undo option
   - [ ] have the option to choose how much memory to allocate the swap
   - [ ] have the option to change how much memory is allocated to be swap
 - [x] install redshift
+- [x] make `./home-files/.local/bin/commitizen`
+    - [ ] have a way to automatically commit formated
