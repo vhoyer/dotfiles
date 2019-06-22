@@ -41,8 +41,8 @@ nvim:
 	ln -s $(realpath ./home-files/.wakatime.cfg) ${HOME}
 
 st:
-	mkdir -p ${HOME}/devenv/
-	rm -rf ${HOME}/devenv/st/
+	mkdir -p ${HOME}/src/
+	rm -rf ${HOME}/src/st/
 	git clone https://github.com/LukeSmithxyz/st ${HOME}/devenv/st/
 	sudo make -C ${HOME}/devenv/st install
 
