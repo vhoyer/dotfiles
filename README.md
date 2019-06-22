@@ -74,7 +74,7 @@ I will not list what rules are present on the `Makefile` to lower the chances of
   - [x] install coc.nvim
     - [ ] make CocInstall work by itself
   - [x] install neoranger
-  - [ ] install `stefandtw/quickfix-reflector.vim`
+  - [x] install `stefandtw/quickfix-reflector.vim`
 - [x] install zsh
   - [x] install oh-my-zsh
   - [ ] ask for reboot after finish make
