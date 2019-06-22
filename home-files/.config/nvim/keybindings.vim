@@ -37,3 +37,6 @@ function! XTermPasteBegin()
   set paste
   return ""
 endfunction
+
+" set a sane version of Y to yank till end of the line
+nnoremap Y y$
