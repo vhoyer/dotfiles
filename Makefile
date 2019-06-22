@@ -2,7 +2,7 @@ install-dependencies:
 	sudo pacman -Syu --noconfirm `cat ./packages/pacman-install.txt`
 	yay -S --nodiffmenu --nocleanmenu `cat ./packages/yay-install.txt`
 
-setup: system-config i3 oh-my-zsh dotconfig nvim st git fzf
+setup: system-config i3 oh-my-zsh dotconfig nvim st git fzf nvm
 
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
@@ -55,3 +55,6 @@ fzf:
 	rm -rf ${HOME}/.fzf
 	git clone --depth 1 https://github.com/junegunn/fzf.git ${HOME}/.fzf
 	${HOME}/.fzf/install --key-bindings --completion --update-rc
+
+nvm:
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
