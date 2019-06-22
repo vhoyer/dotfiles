@@ -59,7 +59,7 @@ command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --hidden
 
 nnoremap <f3> <esc>:Rg<cr>
 nnoremap <leader>fl <esc>:BCommits<cr>
-nnoremap <leader>fn <esc>:Buffers<cr>
+nnoremap <leader>fb <esc>:Buffers<cr>
 nnoremap <leader>fp <esc>:Files<cr>
 " :Files [PATH]   " Files (similar to :FZF)
 " :GFiles [OPTS]  " Git files (git ls-files)
