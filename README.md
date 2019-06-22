@@ -5,6 +5,11 @@ So yeah, the motivations behind all this is: man, it feels freaking awesome to s
 computer just clone your .dotfiles repository and run a command to install everything you
 need. And so I ~did~ am doing it!
 
+## wiki
+
+So if you are my stalker, you probably saw that I had a personal wiki section here, right?
+Well, I moved it to its own [repository](https://github.com/vhoyer/studies).
+
 ## Dependencies
 
 - a Unix system (I'm making it for Manjaro, so I don't guarantee it works on other systems)
