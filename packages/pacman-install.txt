@@ -2,6 +2,7 @@ nodejs
 npm
 redshift
 ripgrep
+shellcheck
 unzip
 yarn
 yay
