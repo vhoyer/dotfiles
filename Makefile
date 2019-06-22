@@ -2,7 +2,7 @@ install-dependencies:
 	sudo pacman -Syu --noconfirm `cat ./packages/pacman-install.txt`
 	yay -S --nodiffmenu --nocleanmenu `cat ./packages/yay-install.txt`
 
-setup: system-config i3 oh-my-zsh dotconfig nvim st git fzf nvm
+setup: system-config i3 oh-my-zsh dotconfig dotlocal nvim st git fzf nvm
 
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
@@ -26,6 +26,10 @@ dotconfig:
 	rm -rf ${HOME}/.config/{ranger,mimeapps.list}
 	ln -s $(realpath ./home-files/.config/ranger/) ${HOME}/.config/
 	ln -s $(realpath ./home-files/.config/mimeapps.list) ${HOME}/.config/
+
+dotlocal:
+	rm -rf ${HOME}/.local/bin/
+	ln -s $(realpath ./home-files/.local/bin/) ${HOME}/.local/bin
 
 nvim:
 	rm -rf ${HOME}/.config/nvim
