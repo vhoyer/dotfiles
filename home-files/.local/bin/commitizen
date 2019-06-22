@@ -25,6 +25,7 @@ refactor:  A code change that neither fixes a bug or adds a
     test:  Adding missing tests
    chore:  Changes to the build process or auxiliary tools and
            libraries such as documantation generation
+
 "
 
 case "$1" in
