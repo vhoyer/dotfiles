@@ -38,3 +38,8 @@ set mouse=a
 " set diffview as vertical because defautl is horizontal split and that makes
 " no sense :p
 set diffopt+=vertical
+
+" when wrapping a line, wrap around words not any-letter
+set wrap
+set linebreak
+set breakindent
