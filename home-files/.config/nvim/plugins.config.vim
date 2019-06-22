@@ -93,3 +93,23 @@ nnoremap <leader>fw <esc>:Windows<cr>
 " let g:qf_modifiable = 1 "If 1, automatically sets quickfix buffers 'modifiable'. Default: 1
 let g:qf_join_changes = 1 "If 1, changes in a buffer will be joined, to allow unding it all at once. Default: 0
 " let g:qf_write_changes = 1 "If 1, will write the files, if 0 will only change the buffer without saving the file. Default: 1
+
+"
+" Plug 'mattn/emmet-vim'
+"
+let g:user_emmet_leader_key = '<C-e>'
+let g:user_emmet_expandabbr_key = '<C-e>e'
+let g:user_emmet_expandword_key = '<C-e>;'
+let g:user_emmet_update_tag = '<C-e>u'
+let g:user_emmet_balancetaginward_key = '<C-e>d'
+let g:user_emmet_balancetagoutward_key = '<C-e>D'
+let g:user_emmet_next_key = '<C-e>n'
+let g:user_emmet_prev_key = '<C-e>N'
+let g:user_emmet_imagesize_key = '<C-e>i'
+let g:user_emmet_togglecomment_key = '<C-e>/'
+let g:user_emmet_splitjointag_key = '<C-e>j'
+let g:user_emmet_removetag_key = '<C-e>k'
+let g:user_emmet_anchorizeurl_key = '<C-e>a'
+let g:user_emmet_anchorizesummary_key = '<C-e>A'
+let g:user_emmet_mergelines_key = '<C-e>m'
+let g:user_emmet_codepretty_key = '<C-e>c'
