@@ -11,3 +11,10 @@ augroup END
 augroup CocRelated
 	autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
+
+augroup DashUnderlineCompletion
+	autocmd InsertEnter *.* set isk +=_
+	autocmd InsertLeave *.* set isk -=_
+	autocmd InsertEnter *.* set isk +=\-
+	autocmd InsertLeave *.* set isk -=\-
+augroup END
