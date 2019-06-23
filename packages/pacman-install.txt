@@ -1,6 +1,7 @@
 inkscape
 nodejs
 npm
+python-pip
 redshift
 ripgrep
 shellcheck
