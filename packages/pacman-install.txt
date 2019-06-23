@@ -1,3 +1,4 @@
+inkscape
 nodejs
 npm
 redshift
