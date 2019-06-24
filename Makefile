@@ -43,7 +43,7 @@ nvim:
 st:
 	mkdir -p ${HOME}/src/
 	rm -rf ${HOME}/src/st/
-	git clone https://github.com/LukeSmithxyz/st ${HOME}/devenv/st/
+	git clone https://github.com/LukeSmithxyz/st ${HOME}/src/st/
 	sudo make -C ${HOME}/devenv/st install
 
 git:
