@@ -8,6 +8,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'posva/vim-vue'
 Plug 'sheerun/vim-polyglot'
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'tpope/vim-repeat'
