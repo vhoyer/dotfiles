@@ -113,3 +113,8 @@ let g:user_emmet_anchorizeurl_key = '<C-e>a'
 let g:user_emmet_anchorizesummary_key = '<C-e>A'
 let g:user_emmet_mergelines_key = '<C-e>m'
 let g:user_emmet_codepretty_key = '<C-e>c'
+
+"
+" Plug 'posva/vim-vue'
+"
+let g:vue_disable_pre_processors=1
