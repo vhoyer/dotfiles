@@ -14,6 +14,7 @@ Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
+Plug 'vim-airline/vim-airline'
 Plug 'wakatime/vim-wakatime'
 
 call plug#end()
