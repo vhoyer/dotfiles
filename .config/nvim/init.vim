@@ -118,10 +118,9 @@ set wrapmargin=0
 " searching
 set hlsearch " Highlight all search results
 set smartcase " Enable smart-case search
-set noignorecase " Always case-insensitive
+" set noignorecase " Always case-insensitive
 set incsearch " Searches for strings incrementally
 "set nolazyredraw " don't redraw while executing macros
-set incsearch " do incremental searching
 
 set showmatch               " show matching braces
 set mat=2                   " how many tenths of a second to blink
@@ -233,7 +232,9 @@ noremap JJ i<cr><esc>k$
 noremap <leader>s <esc>:w<cr>
 noremap <leader>S <esc>:w!<cr>
 
-noremap <leader>fp <esc>:FZF<cr>
+noremap <leader>fb <esc>:Buffers<cr>
+noremap <leader>fp <esc>:Files<cr>
+noremap <leader>fw <esc>:Windows<cr>
 noremap <C-p> <esc>:CtrlPBuffer<cr>
 noremap <C-p><C-p> <esc>:CtrlPMRUFiles<cr>
 
@@ -423,6 +424,9 @@ if has("autocmd")
 	autocmd InsertLeave *.* set isk -=_
 	autocmd InsertEnter *.* set isk +=\-
 	autocmd InsertLeave *.* set isk -=\-
+
+	autocmd CursorHold * silent call CocActionAsync('highlight')
+	autocmd FileType json syntax match Comment +\/\/.\+$+
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree
@@ -541,13 +545,6 @@ function! Comment(...) range
   syntax sync fromstart
 endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""
-"Ctrlp
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_max_files=0
-let g:ctrlp_custom_ignore='.git$|\tmp$|log$'
-let g:ctrlp_max_depth=40
-let g:ctrlp_map = '<nul>'
-"""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mark
 """"""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>m <Plug>MarkSet
@@ -583,34 +580,6 @@ let g:gitgutter_max_signs = 1000
 "let g:gitgutter_terminal_reports_focus=0 "if commented is enabled
 
 """""""""""""""""""""""""
-" autozimu/LanguageClient-neovim
-"""""""""""""""""""""""""
-" Required for operations modifying multiple buffers like rename.
-set hidden
-
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-
-" Minimal LSP configuration for JavaScript
-let g:LanguageClient_serverCommands = {
-			\ 'javascript': ['javascript-typescript-stdio'],
-			\ 'vue': ['vls'],
-			\ 'html': ['html-languageserver', '--stdio'],
-			\ 'css': ['css-languageserver', '--stdio'],
-			\ 'json': ['json-languageserver', '--stdio'],
-			\ }
-" Use LanguageServer for omnifunc completion
-autocmd FileType javascript,vue,html,css,json
-			\ setlocal omnifunc=LanguageClient#complete
-
-" go to definition
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<cr>
-" type info under cursor
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<cr>
-" rename variable under cursor
-nnoremap <silent> RR :call LanguageClient_textDocument_rename()<cr>
-
-"""""""""""""""""""""""""
 " fzf.vim
 """""""""""""""""""""""""
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
@@ -629,6 +598,6 @@ nmap [e <Plug>(ale_previous_wrap)
 " ruanyl/vim-gh-line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gh_open_command = 'google-chrome '
-
+let g:qf_join_changes = 1
 
 " vim: noet ts=4 sw=4 sts=4 fdm=marker
