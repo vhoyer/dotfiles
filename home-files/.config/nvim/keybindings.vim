@@ -40,3 +40,6 @@ endfunction
 
 " set a sane version of Y to yank till end of the line
 nnoremap Y y$
+
+" tab management
+nnoremap <leader>t <esc>:tabe %<cr><C-o>
