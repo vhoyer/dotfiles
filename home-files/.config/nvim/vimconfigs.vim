@@ -43,3 +43,6 @@ set diffopt+=vertical
 set wrap
 set linebreak
 set breakindent
+
+" set a vim theme options
+set background=dark
