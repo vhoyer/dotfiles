@@ -44,7 +44,7 @@ st:
 	mkdir -p ${HOME}/src/
 	rm -rf ${HOME}/src/st/
 	git clone https://github.com/LukeSmithxyz/st ${HOME}/src/st/
-	sudo make -C ${HOME}/devenv/st install
+	sudo make -C ${HOME}/src/st install
 
 git:
 	rm -f ${HOME}/{.gitconfig,.global_gitignore}
