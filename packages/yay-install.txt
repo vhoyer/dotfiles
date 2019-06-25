@@ -1,5 +1,6 @@
 caffeine-ng
 google-chrome
+heroku-cli
 mons
 neovim
 spotify
