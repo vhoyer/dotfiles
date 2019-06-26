@@ -88,7 +88,7 @@ fi
 
 export PATH="$PATH:$HOME/.local/bin"
 
-[ -f ./.local.zshrc ] && . ./.local.zshrc
+[ -f ~/.local.zshrc ] && . ~/.local.zshrc
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
