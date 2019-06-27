@@ -46,3 +46,6 @@ set breakindent
 
 " set a vim theme options
 set background=dark
+
+" prevent vim from complaning abount leaving an unsaved buffer
+set hidden
