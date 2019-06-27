@@ -118,3 +118,9 @@ let g:user_emmet_codepretty_key = '<C-e>c'
 " Plug 'posva/vim-vue'
 "
 let g:vue_disable_pre_processors=1
+
+"
+" Plug 'tpope/vim-fugitive'
+"
+nnoremap <leader>b <esc>:Gblame<cr>
+nnoremap <leader>c <esc>:Gcommit<cr>
