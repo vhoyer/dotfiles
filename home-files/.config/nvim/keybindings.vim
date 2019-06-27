@@ -46,3 +46,6 @@ nnoremap <leader>t <esc>:tabe %<cr><C-o>
 
 " refresh file
 nnoremap <leader>r <esc>:e!<cr>
+
+" search for selected bit
+vnoremap // "yy/\<<c-r>y\><cr>
