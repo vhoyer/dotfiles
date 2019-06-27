@@ -42,7 +42,7 @@ endfunction
 nnoremap Y y$
 
 " tab management
-nnoremap <leader>t <esc>:tabe %<cr><C-o>
+nnoremap <c-n> <esc>:tabe %<cr><C-o>
 
 " refresh file
 nnoremap <leader>r <esc>:e!<cr>
