@@ -12,6 +12,10 @@ augroup CocRelated
 	autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
 
+augroup UpdateXServerIfConfigFilesChanges
+	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
+augroup END
+
 augroup DashUnderlineCompletion
 	autocmd InsertEnter *.* set isk +=_
 	autocmd InsertLeave *.* set isk -=_
