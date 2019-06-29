@@ -14,48 +14,40 @@ XTerm*faceSize:          11
 XTerm*reverseVideo:      on
 XTerm*selectToClipboard: true
 
-*background:                      #222D31
-*foreground:                      #d8d8d8
+! hard contrast: *background: #1d2021
+*background:                      #282828
+! soft contrast: *background: #32302f
+*foreground:                      #ebdbb2
 *fading:                          8
 *fadeColor:                       black
 *cursorColor:                     #1ABB9B
 *pointerColorBackground:          #2B2C2B
 *pointerColorForeground:          #16A085
 
-!! black dark/light
-*color0:                          #222D31
-*color8:                          #585858
-
-!! red dark/light
-*color1:                          #ab4642
-*color9:                          #ab4642
-
-!! green dark/light
-*color2:                          #7E807E
-*color10:                         #8D8F8D
-
-!! yellow dark/light
-*color3:                          #f7ca88
-*color11:                         #f7ca88
-
-!! blue dark/light
-*color4:                          #7cafc2
-*color12:                         #7cafc2
-
-!! magenta dark/light
-*color5:                          #ba8baf
-*color13:                         #ba8baf
-
-!! cyan dark/light
-*color6:                          #1ABB9B
-*color14:                         #1ABB9B
-
-!! white dark/light
-*color7:                          #d8d8d8
-*color15:                         #f8f8f8
-
-Xcursor.theme: xcursor-breeze
-Xcursor.size:                     0
+! Black + DarkGrey
+*color0:                          #282828
+*color8:                          #928374
+! DarkRed + Red
+*color1:                          #cc241d
+*color9:                          #fb4934
+! DarkGreen + Green
+*color2:                          #98971a
+*color10:                         #b8bb26
+! DarkYellow + Yellow
+*color3:                          #d79921
+*color11:                         #fabd2f
+! DarkBlue + Blue
+*color4:                          #458588
+*color12:                         #83a598
+! DarkMagenta + Magenta
+*color5:                          #b16286
+*color13:                         #d3869b
+! DarkCyan + Cyan
+*color6:                          #689d6a
+*color14:                         #8ec07c
+! LightGrey + White
+*color7:                          #a89984
+*color15:                         #ebdbb2
 
 URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
 
