@@ -18,3 +18,7 @@ augroup DashUnderlineCompletion
 	autocmd InsertEnter *.* set isk +=\-
 	autocmd InsertLeave *.* set isk -=\-
 augroup END
+
+augroup RemoveTrailingSpace
+	autocmd BufWritePre * %s/\s\+$//e
+augroup END
