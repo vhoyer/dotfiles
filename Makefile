@@ -7,8 +7,9 @@ setup: system-config i3 oh-my-zsh dotconfig dotlocal nvim st git fzf nvm
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
 	sudo timedatectl set-ntp true
-	rm -f ${HOME}/.profile
+	rm -f ${HOME}/{.profile,.Xresources}
 	ln -s $(realpath ./home-files/.profile) ${HOME}
+	ln -s $(realpath ./home-files/.Xresources) ${HOME}
 
 i3:
 	rm -rf ${HOME}/.i3
