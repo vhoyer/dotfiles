@@ -49,3 +49,6 @@ set background=dark
 
 " prevent vim from complaning abount leaving an unsaved buffer
 set hidden
+
+" enable true color support
+set termguicolors
