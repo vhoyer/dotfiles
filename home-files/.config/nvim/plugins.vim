@@ -3,6 +3,7 @@ call plug#begin()
 Plug 'Lokaltog/neoranger'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
