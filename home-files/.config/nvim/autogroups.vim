@@ -12,7 +12,8 @@ augroup CocRelated
 	autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
 
-augroup UpdateXServerIfConfigFilesChanges
+augroup ReloadThingsIfConfigFilesChanges
+	autocmd BufWritePost */.i3/* !i3-msg reload
 	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 augroup END
 
