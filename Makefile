@@ -19,9 +19,8 @@ i3:
 oh-my-zsh:
 	sudo chsh -s /bin/zsh ${USER}
 	curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
-	rm -f ${HOME}/{.zshrc,.zcompdump}
+	rm -f ${HOME}/{.zshrc}
 	ln -s $(realpath ./home-files/.zshrc) ${HOME}
-	ln -s $(realpath ./home-files/.zcompdump) ${HOME}
 
 dotconfig:
 	rm -rf ${HOME}/.config/{ranger,mimeapps.list}
