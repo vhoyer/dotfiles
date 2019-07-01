@@ -174,7 +174,7 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
-# Move focused container to workspace
+# switch to workspace
 bindsym $mod+Ctrl+1 workspace $ws11
 bindsym $mod+Ctrl+2 workspace $ws12
 bindsym $mod+Ctrl+3 workspace $ws13
@@ -195,6 +195,19 @@ bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+
+bindsym $mod+Ctrl+Shift+1 move container to workspace $ws11; workspace $ws11
+bindsym $mod+Ctrl+Shift+2 move container to workspace $ws12; workspace $ws12
+bindsym $mod+Ctrl+Shift+3 move container to workspace $ws13; workspace $ws13
+bindsym $mod+Ctrl+Shift+4 move container to workspace $ws14; workspace $ws14
+bindsym $mod+Ctrl+Shift+5 move container to workspace $ws15; workspace $ws15
+bindsym $mod+Ctrl+Shift+6 move container to workspace $ws16; workspace $ws16
+bindsym $mod+Ctrl+Shift+7 move container to workspace $ws17; workspace $ws17
+bindsym $mod+Ctrl+Shift+8 move container to workspace $ws18; workspace $ws18
+bindsym $mod+Ctrl+Shift+9 move container to workspace $ws19; workspace $ws19
+bindsym $mod+Ctrl+Shift+0 move container to workspace $ws20; workspace $ws20
 
 # Open applications on specific workspaces
 # assign [class="Thunderbird"] $ws1
