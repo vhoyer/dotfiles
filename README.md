@@ -15,7 +15,7 @@ Well, I moved it to its own [repository](https://github.com/vhoyer/studies).
 - a Unix system (I'm making it for Manjaro, so I don't guarantee it works on other systems)
 - Git
 - GNU make (or any program capable of reading and executing a Makefile)
-- pacman package manager 
+- pacman package manager
 - sudo
 
 I think that's it, I may be wrong, and if so, then I'm sorry.
@@ -69,7 +69,7 @@ I will not list what rules are present on the `Makefile` to lower the chances of
 ## Roadmap
 
 - [x] make an script to install it all!
-  - [ ] when installing yay packages, don't ask for [Y/n] to continue (it just 
+  - [ ] when installing yay packages, don't ask for [Y/n] to continue (it just
       need a `yes | yay ...`, but it cannot be used if yay asks for choosing
       installation, see next topic)
   - [ ] when installing yay packages, don't ask for default
@@ -91,9 +91,9 @@ I will not list what rules are present on the `Makefile` to lower the chances of
 - [x] make two monitor setup work
 - [ ] setup that modular key bindings program: sxhkd
 - [x] make `scripts/make-swapfile.sh`
-  - [ ] have an --help parameter
-  - [ ] have a undo option
-  - [ ] have the option to choose how much memory to allocate the swap
+  - [x] have an --help parameter
+  - [x] have a undo option
+  - [x] have the option to choose how much memory to allocate the swap
   - [ ] have the option to change how much memory is allocated to be swap
 - [x] install redshift
 - [x] make `./home-files/.local/bin/commitizen`
