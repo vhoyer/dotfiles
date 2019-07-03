@@ -55,7 +55,7 @@ deallocate() {
   swapoff -v /swapfile
   #
   # 2. Remove the swap file entry /swapfile swap swap defaults 0 0 from the /etc/fstab file
-  sed -i -e "/^\/swapfile swap swap defaults 0 0$/d" fstab
+  sed -i -e "/^\/swapfile swap swap defaults 0 0$/d" /etc/fstab
   #
   # 3. Delete the actual swapfile
   rm /swapfile
