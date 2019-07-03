@@ -58,6 +58,7 @@ let g:fzf_action = {
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --hidden --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, <bang>0)
 
 nnoremap <f3> <esc>:Rg<cr>
+nnoremap <c-h> <esc>:Helptags<cr>
 nnoremap <leader>fb <esc>:Buffers<cr>
 nnoremap <leader>fl <esc>:BCommits<cr>
 nnoremap <leader>fp <esc>:Files<cr>
