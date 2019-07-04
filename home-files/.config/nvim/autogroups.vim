@@ -25,7 +25,7 @@ augroup DashUnderlineCompletion
 augroup END
 
 augroup RemoveTrailingSpace
-	autocmd BufWritePre * %s/\s\+$//e
+	autocmd BufWritePre * if index(['snap', 'diff'], &ft) < 0 | %s/\s\+$//e
 augroup END
 
 augroup FiletypeForUnknowns
