@@ -29,5 +29,5 @@ augroup RemoveTrailingSpace
 augroup END
 
 augroup FiletypeForUnknowns
-	autocmd BufNewFile,BufRead *.svelte set ft=svelte
+	autocmd BufNewFile,BufRead *.svelte setfiletype svelte
 augroup END
