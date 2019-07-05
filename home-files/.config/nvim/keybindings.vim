@@ -3,7 +3,8 @@ let mapleader = "\<Space>"
 " prevent opening of Ex mode, which I dont like :(
 nnoremap Q <nop>
 
-" esc key to jk in insert and command mode
+" esc key to jk in terminal, insert and command mode
+tnoremap jk <c-\><c-n>
 inoremap jk <esc>
 cnoremap jk <esc>
 
