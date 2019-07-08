@@ -1,4 +1,5 @@
 inkscape
+keyboardctl
 nodejs
 npm
 python-pip
