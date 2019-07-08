@@ -125,3 +125,10 @@ let g:vue_disable_pre_processors=1
 "
 nnoremap <leader>b <esc>:Gblame<cr>
 nnoremap <leader>c <esc>:Gcommit<cr>
+
+" open diff
+nnoremap <leader>gd :Gvdiff<CR>
+" take from the left
+nnoremap gdh :diffget //2<CR>
+" take from the right
+nnoremap gdl :diffget //3<CR>
