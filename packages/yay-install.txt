@@ -5,3 +5,4 @@ mons
 neovim
 spotify
 ttf-emojione
+ttf-symbola
