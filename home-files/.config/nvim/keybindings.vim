@@ -6,7 +6,6 @@ nnoremap Q <nop>
 "
 " esc key to jk in terminal, insert and command mode
 "
-tnoremap jk <c-\><c-n>
 inoremap jk <esc>
 cnoremap jk <esc>
 
