@@ -53,3 +53,9 @@ nnoremap <leader>r <esc>:e!<cr>
 
 " search for selected bit
 vnoremap // "yy/\<<c-r>y\><cr>
+
+"
+" super scroll
+"
+nnoremap <c-e> 6<c-e>
+nnoremap <c-y> 6<c-y>
