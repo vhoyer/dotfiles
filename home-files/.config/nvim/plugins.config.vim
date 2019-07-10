@@ -37,23 +37,6 @@ let g:gitgutter_max_signs = 1000
 " make FZF see hidden lines in :Files<cr>
 let $FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l \"\""
 
-" bind ctrl-a to select all lines in fzf
-let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
-
-" method to add lines to quickfix window
-function! s:build_quickfix_list(lines)
-  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-  copen
-  cc
-endfunction
-
-" add ctrl-q to open selected files to quickfix window
-let g:fzf_action = {
-      \ 'ctrl-q': function('s:build_quickfix_list'),
-      \ 'ctrl-t': 'tab split',
-      \ 'ctrl-x': 'split',
-      \ 'ctrl-v': 'vsplit' }
-
 " make :Rg<cr> see hidden files, cuz duh, why this is not default?
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --hidden --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, <bang>0)
 
