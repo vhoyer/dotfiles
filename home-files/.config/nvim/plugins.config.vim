@@ -15,6 +15,7 @@ colorscheme gruvbox
 "
 " Plug 'neoclide/coc.nvim'
 "
+" packages:
 " CocInstall coc-css
 " CocInstall coc-emmet
 " CocInstall coc-highlight
@@ -24,6 +25,10 @@ colorscheme gruvbox
 " CocInstall coc-vetur
 " CocInstall coc-eslint
 " CocInstall coc-tslint
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gy <Plug>(coc-type-definition)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gr <Plug>(coc-references)
 
 "
 " Plug 'airblade/vim-gitgutter'
