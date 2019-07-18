@@ -26,7 +26,7 @@
 	s = status
 	wp = rebase --continue
   back = checkout HEAD~
-  next = "!git checkout $(git rev-list --topo-order HEAD..towards | tail -1)"
+  next = "!git checkout $(git rev-list --topo-order HEAD..master | tail -1)"
 [push]
 	default = simple
 [credetial]
