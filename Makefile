@@ -37,7 +37,7 @@ nvim:
 	curl -fLo ${HOME}/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	nvim -u ${HOME}/.config/nvim/plugins.vim +PlugInstall +UpdateRemotePlugins +qa
 	# wakatime.config
-	rm ~/.wakatime.cfg
+	rm -rf ~/.wakatime.cfg
 	ln -s $(realpath ./home-files/.wakatime.cfg) ${HOME}
 
 st:
