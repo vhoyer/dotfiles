@@ -1,7 +1,7 @@
 " default encoding
 set encoding=utf-8
 
-" vim refresh rate
+" Vim refresh rate
 set updatetime=200
 
 " set timeout for keybinding insertion
@@ -37,7 +37,7 @@ set splitright
 " enable mouse support, mainly for scrolling stuff
 set mouse=a
 
-" set diffview as vertical because defautl is horizontal split and that makes
+" set diffview as vertical because default is horizontal split and that makes
 " no sense :p
 set diffopt+=vertical
 
@@ -46,10 +46,10 @@ set wrap
 set linebreak
 set breakindent
 
-" set a vim theme options
+" set a Vim theme options
 set background=dark
 
-" prevent vim from complaning abount leaving an unsaved buffer
+" prevent Vim from complaining about leaving an unsaved buffer
 set hidden
 
 " enable true color support
