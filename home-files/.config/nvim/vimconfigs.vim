@@ -25,6 +25,9 @@ set tabstop=2 " the visible width of tabs
 " Search dictionary for word completion
 set complete=.,w,b,u,i,k " see :h 'complete'
 
+" Vim's default completion mechanism (e.g.: trigged by <c-n>) options
+set completeopt=menuone,noselect
+
 " Set spell checking by default
 set spell
 
