@@ -5,7 +5,9 @@ endif
 let g:loaded_augroups = 1
 
 augroup TerminalStuff
-	autocmd TermOpen * setlocal nonumber norelativenumber
+	autocmd TermOpen * setlocal nonumber
+	autocmd TermOpen * setlocal norelativenumber
+	autocmd TermOpen * setlocal nospell
 augroup END
 
 augroup CocRelated
