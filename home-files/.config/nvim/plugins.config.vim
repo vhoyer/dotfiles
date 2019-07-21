@@ -24,6 +24,8 @@ colorscheme gruvbox
 " CocInstall coc-vetur
 " CocInstall coc-eslint
 " CocInstall coc-tslint
+" CocInstall coc-vimlsp
+
 nnoremap <silent> gd <Plug>(coc-definition)
 nnoremap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent> gi <Plug>(coc-implementation)
