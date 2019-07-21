@@ -25,6 +25,9 @@ set tabstop=2 " the visible width of tabs
 " Search dictionary for word completion
 set complete=.,w,b,u,i,k " see :h 'complete'
 
+" Set spell checking by default
+set spell
+
 " Set cute characters
 set fillchars=fold:-,vert:\│
 set list
