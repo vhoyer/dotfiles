@@ -59,3 +59,6 @@ vnoremap // "yy/\<<c-r>y\><cr>
 "
 nnoremap <c-e> 6<c-e>
 nnoremap <c-y> 6<c-y>
+
+" apply the first suggestion for the bad spelled word
+nnoremap <leader>cw 1z=
