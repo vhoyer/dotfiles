@@ -33,3 +33,7 @@ augroup END
 augroup FiletypeForUnknowns
 	autocmd BufNewFile,BufRead *.svelte setfiletype svelte
 augroup END
+
+augroup SpellChecking
+	autocmd BufRead * hi SpellBad cterm=underline
+augroup END
