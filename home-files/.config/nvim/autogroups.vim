@@ -35,5 +35,5 @@ augroup FiletypeForUnknowns
 augroup END
 
 augroup SpellChecking
-	autocmd BufRead * hi SpellBad cterm=underline
+	autocmd ColorScheme * hi SpellBad cterm=underline
 augroup END
