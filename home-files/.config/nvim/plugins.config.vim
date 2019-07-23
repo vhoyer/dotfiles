@@ -120,3 +120,8 @@ nnoremap <leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 " take from the right
 nnoremap gdl :diffget //3<CR>
+
+"
+" Plug 'ruanyl/vim-gh-line'
+"
+let g:gh_open_command = 'google-chrome '
