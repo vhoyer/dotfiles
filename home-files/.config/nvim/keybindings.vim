@@ -62,3 +62,6 @@ nnoremap <c-y> 6<c-y>
 
 " apply the first suggestion for the bad spelled word
 nnoremap <leader>cw 1z=
+
+" shortcut to past from " registry in insert mode
+inoremap <c-r><c-r> <c-r>"
