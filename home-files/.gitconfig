@@ -25,8 +25,8 @@
 	powf = push origin HEAD --force-with-lease
 	s = status
 	wp = rebase --continue
-  back = checkout HEAD~
-  next = "!git checkout $(git rev-list --topo-order HEAD..master | tail -1)"
+	back = checkout HEAD~
+	next = "!git checkout $(git rev-list --topo-order HEAD..master | tail -1)"
 [push]
 	default = simple
 [credetial]
