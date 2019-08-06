@@ -17,7 +17,6 @@ colorscheme gruvbox
 "
 " packages:
 " CocInstall coc-css
-" CocInstall coc-emmet
 " CocInstall coc-highlight
 " CocInstall coc-html
 " CocInstall coc-json
