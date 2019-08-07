@@ -42,7 +42,7 @@ let g:gitgutter_max_signs = 1000
 let $FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l \"\""
 
 " make :Rg<cr> see hidden files, cuz duh, why this is not default?
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --hidden --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --hidden --no-heading -g '!.git/*' --color=always --smart-case ".shellescape(<q-args>), 1, <bang>0)
 
 nnoremap <f3> <esc>:Rg<cr>
 nnoremap <c-h> <esc>:Helptags<cr>
