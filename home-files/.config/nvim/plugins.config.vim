@@ -113,6 +113,7 @@ let g:vue_disable_pre_processors=1
 "
 nnoremap <leader>b <esc>:Gblame<cr>
 nnoremap <leader>c <esc>:Gcommit<cr>
+vnoremap <c-f> "yy:Ggrep "<C-r>y"<cr><Esc>:copen<cr>
 
 " open diff
 nnoremap <leader>gd :Gvdiff<CR>
