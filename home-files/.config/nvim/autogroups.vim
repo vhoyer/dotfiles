@@ -38,3 +38,12 @@ augroup SpellChecking
 	autocmd!
 	autocmd ColorScheme * hi SpellBad cterm=underline
 augroup END
+
+augroup CursorLine
+	autocmd!
+	autocmd VimEnter * setlocal cursorline
+	autocmd WinEnter * setlocal cursorline
+	autocmd BufWinEnter * setlocal cursorline
+	autocmd WinLeave * setlocal nocursorline
+augroup END
+
