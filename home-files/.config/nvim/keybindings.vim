@@ -4,7 +4,7 @@ let mapleader = "\<Space>"
 nnoremap Q <nop>
 
 "
-" esc key to jk in terminal, insert and command mode
+" esc key to jk in insert and command mode
 "
 inoremap jk <esc>
 cnoremap jk <esc>
