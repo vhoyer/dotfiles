@@ -126,3 +126,18 @@ nnoremap gdl :diffget //3<CR>
 " Plug 'ruanyl/vim-gh-line'
 "
 let g:gh_open_command = 'google-chrome '
+
+"
+" Plug 'vim-airline/vim-airline'
+"
+" hide "-- INSERT --" cuz the statusline already show it
+set noshowmode
+
+" Remove VCS information (branch, hunk summary) (master) and stuff
+let g:airline_section_b = ''
+" Remove file encoding[fileformat] (utf-8[unix]) and stuff
+let g:airline_section_y = ''
+
+" Better display filename on the tab bar at the top, cuz pair programming feels bad without it
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
