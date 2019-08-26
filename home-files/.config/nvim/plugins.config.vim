@@ -26,6 +26,7 @@ colorscheme gruvbox
 " CocInstall coc-tslint
 " CocInstall coc-yank
 " CocInstall coc-vimlsp
+" CocInstall coc-dictionary
 
 nnoremap <silent> gd <Plug>(coc-definition)
 nnoremap <silent> gy <Plug>(coc-type-definition)
