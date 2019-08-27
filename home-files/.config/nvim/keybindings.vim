@@ -17,14 +17,6 @@ nnoremap <leader>l g$
 vnoremap <leader>h ^
 vnoremap <leader>l $
 
-"
-" invert behaviour of j/k and gj/gk
-"
-nnoremap j gj
-nnoremap k gk
-nnoremap gj j
-nnoremap gk k
-
 " save file with <leader>s
 nnoremap <leader>s <esc>:w<cr>
 
