@@ -62,3 +62,7 @@ fzf:
 
 nvm:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+
+folder-mapping:
+	rm -rf ${HOME}/Pictures/wallpaper
+	ln -s $(realpath ./home-files/Pictures/wallpaper) ${HOME}/Pictures/
