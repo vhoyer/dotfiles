@@ -2,7 +2,7 @@ install-dependencies:
 	sudo pacman -Syu --noconfirm `cat ./packages/pacman-install.txt`
 	yay -S --nodiffmenu --nocleanmenu `cat ./packages/yay-install.txt`
 
-setup: system-config i3 oh-my-zsh dotconfig dotlocal nvim st git fzf nvm
+setup: system-config i3 oh-my-zsh dotconfig dotlocal nvim st git fzf nvm folder-mapping
 
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
