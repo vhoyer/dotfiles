@@ -17,7 +17,7 @@ hide_edge_borders none
 # change borders
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
-bindsym $mod+n border normal
+#bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -137,6 +137,8 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
+bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'Rename workspace: '
+
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
@@ -163,51 +165,51 @@ set $ws19 19
 set $ws20 20
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
 
 # switch to workspace
-bindsym $mod+Ctrl+1 workspace $ws11
-bindsym $mod+Ctrl+2 workspace $ws12
-bindsym $mod+Ctrl+3 workspace $ws13
-bindsym $mod+Ctrl+4 workspace $ws14
-bindsym $mod+Ctrl+5 workspace $ws15
-bindsym $mod+Ctrl+6 workspace $ws16
-bindsym $mod+Ctrl+7 workspace $ws17
-bindsym $mod+Ctrl+8 workspace $ws18
-bindsym $mod+Ctrl+9 workspace $ws19
-bindsym $mod+Ctrl+0 workspace $ws20
+bindsym $mod+Ctrl+1 workspace number $ws11
+bindsym $mod+Ctrl+2 workspace number $ws12
+bindsym $mod+Ctrl+3 workspace number $ws13
+bindsym $mod+Ctrl+4 workspace number $ws14
+bindsym $mod+Ctrl+5 workspace number $ws15
+bindsym $mod+Ctrl+6 workspace number $ws16
+bindsym $mod+Ctrl+7 workspace number $ws17
+bindsym $mod+Ctrl+8 workspace number $ws18
+bindsym $mod+Ctrl+9 workspace number $ws19
+bindsym $mod+Ctrl+0 workspace number $ws20
 
 # Move to workspace with focused container
-bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+bindsym $mod+Shift+1 move container to workspace number $ws1; workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2; workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3; workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4; workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5; workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6; workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7; workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8; workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9; workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10; workspace number $ws10
 
-bindsym $mod+Ctrl+Shift+1 move container to workspace $ws11; workspace $ws11
-bindsym $mod+Ctrl+Shift+2 move container to workspace $ws12; workspace $ws12
-bindsym $mod+Ctrl+Shift+3 move container to workspace $ws13; workspace $ws13
-bindsym $mod+Ctrl+Shift+4 move container to workspace $ws14; workspace $ws14
-bindsym $mod+Ctrl+Shift+5 move container to workspace $ws15; workspace $ws15
-bindsym $mod+Ctrl+Shift+6 move container to workspace $ws16; workspace $ws16
-bindsym $mod+Ctrl+Shift+7 move container to workspace $ws17; workspace $ws17
-bindsym $mod+Ctrl+Shift+8 move container to workspace $ws18; workspace $ws18
-bindsym $mod+Ctrl+Shift+9 move container to workspace $ws19; workspace $ws19
-bindsym $mod+Ctrl+Shift+0 move container to workspace $ws20; workspace $ws20
+bindsym $mod+Ctrl+Shift+1 move container to workspace number $ws11; workspace number $ws11
+bindsym $mod+Ctrl+Shift+2 move container to workspace number $ws12; workspace number $ws12
+bindsym $mod+Ctrl+Shift+3 move container to workspace number $ws13; workspace number $ws13
+bindsym $mod+Ctrl+Shift+4 move container to workspace number $ws14; workspace number $ws14
+bindsym $mod+Ctrl+Shift+5 move container to workspace number $ws15; workspace number $ws15
+bindsym $mod+Ctrl+Shift+6 move container to workspace number $ws16; workspace number $ws16
+bindsym $mod+Ctrl+Shift+7 move container to workspace number $ws17; workspace number $ws17
+bindsym $mod+Ctrl+Shift+8 move container to workspace number $ws18; workspace number $ws18
+bindsym $mod+Ctrl+Shift+9 move container to workspace number $ws19; workspace number $ws19
+bindsym $mod+Ctrl+Shift+0 move container to workspace number $ws20; workspace number $ws20
 
 # Open applications on specific workspaces
 # assign [class="Thunderbird"] $ws1
@@ -360,7 +362,7 @@ bar {
 	bindsym button4 nop
 	bindsym button5 nop
 #   font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
+	strip_workspace_numbers no
 
     colors {
         background #222D31
