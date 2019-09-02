@@ -11,7 +11,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align' { 'for': 'markdown' }
 Plug 'mattn/emmet-vim'
 Plug 'morhetz/gruvbox'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
 Plug 'posva/vim-vue'
 Plug 'ruanyl/vim-gh-line'
 Plug 'sheerun/vim-polyglot'
