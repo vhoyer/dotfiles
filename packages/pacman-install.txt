@@ -10,4 +10,5 @@ shellcheck
 unzip
 yarn
 yay
+zip
 zsh
