@@ -55,3 +55,5 @@ automagically
 src
 SCSS
 const
+utils
+redux
