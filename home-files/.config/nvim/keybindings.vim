@@ -12,8 +12,8 @@ cnoremap jk <esc>
 "
 " jump to begin and end of an line in normal and visual mode
 "
-nnoremap <leader>h g^
-nnoremap <leader>l g$
+nnoremap <leader>h ^
+nnoremap <leader>l $
 vnoremap <leader>h ^
 vnoremap <leader>l $
 
