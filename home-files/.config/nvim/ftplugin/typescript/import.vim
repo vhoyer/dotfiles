@@ -1,2 +1,4 @@
 " import javascript as a base
-source ~/.config/nvim/ftplugin/javascript/import.vim
+for f in split(glob('~/.config/nvim/ftplugin/javascript/*.vim'), '\n')
+	exe 'source' f
+endfor
