@@ -21,7 +21,7 @@ COMMITIZEN_HELP="
            (white-space, formatting, missing semi-colons, etc)
 refactor:  A code change that neither fixes a bug or adds a
            feature
-    perf:  A ode change that imporves performance
+    perf:  A code change that improves performance
     test:  Adding missing tests
    chore:  Changes to the build process or auxiliary tools and
            libraries such as documantation generation
