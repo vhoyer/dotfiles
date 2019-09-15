@@ -7,4 +7,4 @@ export BROWSER=/usr/bin/google-chrome-stable
 #
 # Auto startup: On shell login / logout
 #
-feh --bg-scale ~/Pictures/wallpaper/sunlight_3_by_tacosauceninja-damb8id.jpg
+nitrogen --restore &
