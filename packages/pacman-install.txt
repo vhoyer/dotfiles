@@ -1,5 +1,6 @@
 inkscape
 keyboardctl
+nitrogen
 nodejs
 npm
 python-pip
