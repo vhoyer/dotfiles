@@ -17,17 +17,17 @@ colorscheme gruvbox
 "
 " packages:
 " CocInstall coc-css
+" CocInstall coc-dictionary
+" CocInstall coc-eslint
 " CocInstall coc-highlight
 " CocInstall coc-html
 " CocInstall coc-json
 " CocInstall coc-stylelint
+" CocInstall coc-tslint
 " CocInstall coc-tsserver
 " CocInstall coc-vetur
-" CocInstall coc-eslint
-" CocInstall coc-tslint
-" CocInstall coc-yank
 " CocInstall coc-vimlsp
-" CocInstall coc-dictionary
+" CocInstall coc-yank
 
 nnoremap <silent> gd <Plug>(coc-definition)
 nnoremap <silent> gy <Plug>(coc-type-definition)
