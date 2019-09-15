@@ -20,6 +20,7 @@ colorscheme gruvbox
 " CocInstall coc-highlight
 " CocInstall coc-html
 " CocInstall coc-json
+" CocInstall coc-stylelint
 " CocInstall coc-tsserver
 " CocInstall coc-vetur
 " CocInstall coc-eslint
