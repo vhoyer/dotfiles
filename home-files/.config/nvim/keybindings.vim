@@ -71,3 +71,6 @@ nnoremap <leader>cw 1z=
 
 " shortcut to past from " registry in insert mode
 inoremap <c-r><c-r> <c-r>"
+
+" prevent wrong use of ç in normal mode due to keyboard layout difference
+nnoremap Ç :
