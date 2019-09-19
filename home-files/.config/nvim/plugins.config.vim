@@ -157,3 +157,5 @@ let g:airline_section_y = ''
 " Better display filename on the tab bar at the top, cuz pair programming feels bad without it
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+" Hide buffer open on the current window, cuz this information is useless :D
+let g:airline#extensions#tabline#show_splits = 0
