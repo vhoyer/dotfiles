@@ -53,6 +53,22 @@ let $FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l \"\""
 " make :Rg<cr> see hidden files, cuz duh, why this is not default?
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --hidden --no-heading -g '!.git/*' --color=always --smart-case ".shellescape(<q-args>), 1, <bang>0)
 
+"
+" choose from templates and apply to file
+"
+function! s:ReadTemplateIntoBuffer(template)
+	execute '0r ~/.config/nvim/templates/'.a:template
+endfunction
+
+command! -bang -nargs=* LoadTemplate call fzf#run({
+			\   'source': 'ls -1 ~/.config/nvim/templates',
+			\   'down': 20,
+			\   'sink': function('<sid>ReadTemplateIntoBuffer')
+			\ })
+
+"
+" key mappings
+"
 nnoremap <f3> <esc>:Rg<cr>
 nnoremap <c-f> <esc>:BLines<cr>
 nnoremap <c-h> <esc>:Helptags<cr>
