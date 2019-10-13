@@ -1,7 +1,7 @@
 {
   "tslint.autoFixOnSave": true,
   "tslint.enable": true,
-  "tslint.jsEnable": false,
+  "tsserver.enableJavascript": false,
   "eslint.trace.server": "verbose",
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": [
