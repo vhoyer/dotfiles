@@ -60,3 +60,6 @@ set hidden
 
 " enable true color support
 set termguicolors
+
+" configure backup behavior
+set backupcopy=yes
