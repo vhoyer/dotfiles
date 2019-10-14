@@ -3,6 +3,7 @@ keyboardctl
 nitrogen
 nodejs
 npm
+playerctl
 python-pip
 redshift
 ripgrep
