@@ -8,3 +8,4 @@ export BROWSER=/usr/bin/google-chrome-stable
 # Auto startup: On shell login / logout
 #
 nitrogen --restore &
+sxhkd -m -1 &

@@ -1,0 +1,8 @@
+XF86AudioPlay
+	playerctl play-pause --player=spotify
+
+XF86AudioNext
+	playerctl next --player=spotify
+
+XF86AudioPrev
+	playerctl previous --player=spotify
