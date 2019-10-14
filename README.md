@@ -89,7 +89,7 @@ I will not list what rules are present on the `Makefile` to lower the chances of
   - [x] make it default
   - [x] install and use a better default font with emoji support :D
 - [x] make two monitor setup work
-- [ ] setup that modular key bindings program: sxhkd
+- [x] setup that modular key bindings program: sxhkd
 - [x] make `scripts/make-swapfile.sh`
   - [x] have an --help parameter
   - [x] have a undo option
