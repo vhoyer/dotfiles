@@ -9,3 +9,4 @@ export BROWSER=/usr/bin/google-chrome-stable
 #
 nitrogen --restore &
 sxhkd -m -1 &
+# tlp start
