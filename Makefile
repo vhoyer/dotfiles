@@ -2,7 +2,7 @@ install-dependencies:
 	sudo pacman -Syu --noconfirm `cat ./packages/pacman-install.txt`
 	yay -S --nodiffmenu --nocleanmenu `cat ./packages/yay-install.txt`
 
-setup: system-config i3 oh-my-zsh dotconfig dotlocal nvim st git fzf nvm folder-mapping
+setup: system-config i3 oh-my-zsh dotconfig dotlocal nvim st git fzf nvm folder-mapping betterlockscreen
 
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
@@ -15,6 +15,11 @@ i3:
 	rm -rf ${HOME}/.i3
 	ln -s $(realpath ./home-files/.i3/) ${HOME}
 	i3-msg reload
+
+betterlockscreen:
+	rm -rf ${HOME}/src/betterlockscreen
+	git clone https://github.com/pavanjadhaw/betterlockscreen ${HOME}/src/betterlockscreen
+	cp -f ${HOME}/src/betterlockscreen/betterlockscreen ./home-files/.local/bin/
 
 oh-my-zsh:
 	sudo chsh -s /bin/zsh ${USER}
