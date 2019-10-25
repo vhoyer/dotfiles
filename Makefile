@@ -16,10 +16,24 @@ i3:
 	ln -s $(realpath ./home-files/.i3/) ${HOME}
 	i3-msg reload
 
-betterlockscreen:
+betterlockscreen: i3lock-color
 	rm -rf ${HOME}/src/betterlockscreen
 	git clone https://github.com/pavanjadhaw/betterlockscreen ${HOME}/src/betterlockscreen
 	cp -f ${HOME}/src/betterlockscreen/betterlockscreen ./home-files/.local/bin/
+	betterlockscreen -u ${HOME}/Pictures/wallpaper/john-sommo-untitled-3.jpg
+
+i3lock-color:
+	mkdir -p ${HOME}/Documents/backup/
+	rm -rf /tmp/i3lock-color
+	git clone https://github.com/PandorasFox/i3lock-color /tmp/i3lock-color;
+	cd /tmp/i3lock-color; git checkout $$(git describe --abbrev=0)
+	cd /tmp/i3lock-color; autoreconf --force --install
+	cd /tmp/i3lock-color; rm -rf build
+	cd /tmp/i3lock-color; mkdir -p build
+	cd /tmp/i3lock-color/build; ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+	cd /tmp/i3lock-color/build; make
+	cd /tmp/i3lock-color/build; sudo mv -t ${HOME}/Documents/backup/ /usr/bin/i3lock
+	cd /tmp/i3lock-color/build; sudo cp -t /usr/bin/ ./i3lock
 
 oh-my-zsh:
 	sudo chsh -s /bin/zsh ${USER}
