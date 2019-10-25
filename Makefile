@@ -21,6 +21,8 @@ betterlockscreen: i3lock-color
 	git clone https://github.com/pavanjadhaw/betterlockscreen ${HOME}/src/betterlockscreen
 	cp -f ${HOME}/src/betterlockscreen/betterlockscreen ./home-files/.local/bin/
 	betterlockscreen -u ${HOME}/Pictures/wallpaper/john-sommo-untitled-3.jpg
+	rm -f ${HOME}/.config/betterlockscreenrc
+	ln -s $(realpath ./home-files/.config/betterlockscreenrc) ${HOME}/.config/
 
 i3lock-color:
 	mkdir -p ${HOME}/Documents/backup/
