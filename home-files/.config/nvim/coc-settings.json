@@ -12,5 +12,6 @@
     "css",
     "scss"
   ],
-  "vetur.validation.template": true
+  "vetur.validation.template": true,
+  "vetur.experimental.templateInterpolationService": true
 }
