@@ -1,8 +1,9 @@
-install-dependencies:
+install-dependencies: nvm
 	sudo pacman -Syu --noconfirm $$(cat ./packages/pacman-install.txt)
 	yay -S --nodiffmenu --nocleanmenu $$(cat ./packages/yay-install.txt)
+	npm install -g $$(cat ./packages/npm-install.txt)
 
-setup: system-config i3 oh-my-zsh dotconfig dotlocal nvim st git fzf nvm folder-mapping betterlockscreen
+setup: system-config i3 oh-my-zsh dotconfig dotlocal nvim st git fzf folder-mapping betterlockscreen
 
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
