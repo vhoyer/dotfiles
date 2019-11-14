@@ -31,4 +31,4 @@
 [push]
 	default = simple
 [credetial]
-  helper=store
+	helper=store
