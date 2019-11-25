@@ -69,26 +69,24 @@ command! -bang -nargs=* LoadTemplate call fzf#run({
 "
 " key mappings
 "
-nnoremap <f3> <esc>:Rg<cr>
-nnoremap <c-f> <esc>:BLines<cr>
-nnoremap <c-h> <esc>:Helptags<cr>
-nnoremap <leader>fb <esc>:Buffers<cr>
-nnoremap <leader>fl <esc>:BCommits<cr>
-nnoremap <leader>fp <esc>:Files<cr>
-nnoremap <leader>fw <esc>:Windows<cr>
 " :Files [PATH]   " Files (similar to :FZF)
+nnoremap <c-p> <esc>:Files<cr>
 " :GFiles [OPTS]  " Git files (git ls-files)
 " :GFiles?        " Git files (git status)
 " :Buffers        " Open buffers
+nnoremap <leader>fb <esc>:Buffers<cr>
 " :Colors         " Color schemes
 " :Ag [PATTERN]   " ag search result (ALT-A to select all, ALT-D to deselect all)
 " :Rg [PATTERN]   " rg search result (ALT-A to select all, ALT-D to deselect all)
+nnoremap <f3> <esc>:Rg<cr>
 " :Lines [QUERY]  " Lines in loaded buffers
 " :BLines [QUERY] " Lines in the current buffer
+nnoremap <c-f> <esc>:BLines<cr>
 " :Tags [QUERY]   " Tags in the project (ctags -R)
 " :BTags [QUERY]  " Tags in the current buffer
 " :Marks          " Marks
 " :Windows        " Windows
+nnoremap <leader>fw <esc>:Windows<cr>
 " :Locate PATTERN " locate command output
 " :History        " v:oldfiles and open buffers
 " :History:       " Command history
@@ -96,9 +94,12 @@ nnoremap <leader>fw <esc>:Windows<cr>
 " :Snippets       " Snippets (UltiSnips)
 " :Commits        " Git commits (requires fugitive.vim)
 " :BCommits       " Git commits for the current buffer
+nnoremap <leader>fl <esc>:BCommits<cr>
 " :Commands       " Commands
+nnoremap <c-s-p> <esc>:Commands<cr>
 " :Maps           " Normal mode mappings
 " :Helptags       " Help tags 1
+nnoremap <c-h> <esc>:Helptags<cr>
 " :Filetypes      " File types
 
 "
