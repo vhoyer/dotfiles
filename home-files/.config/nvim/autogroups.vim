@@ -29,9 +29,9 @@ augroup RemoveTrailingSpace
 	autocmd BufWritePre * if index(['snap', 'diff'], &ft) < 0 | %s/\s\+$//e
 augroup END
 
-augroup FiletypeForUnknowns
+augroup FiletypeOverride
 	autocmd!
-	autocmd BufNewFile,BufRead *.svelte setfiletype svelte
+	autocmd FileType json set filetype=jsonc
 augroup END
 
 augroup SpellChecking
