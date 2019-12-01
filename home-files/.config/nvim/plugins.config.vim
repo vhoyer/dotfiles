@@ -70,7 +70,7 @@ command! -bang -nargs=* LoadTemplate call fzf#run({
 " key mappings
 "
 " :Files [PATH]   " Files (similar to :FZF)
-nnoremap <c-p> <esc>:Files<cr>
+nnoremap <leader>fp <esc>:Files<cr>
 " :GFiles [OPTS]  " Git files (git ls-files)
 " :GFiles?        " Git files (git status)
 " :Buffers        " Open buffers
@@ -81,7 +81,7 @@ nnoremap <leader>fb <esc>:Buffers<cr>
 nnoremap <f3> <esc>:Rg<cr>
 " :Lines [QUERY]  " Lines in loaded buffers
 " :BLines [QUERY] " Lines in the current buffer
-nnoremap <c-f> <esc>:BLines<cr>
+nnoremap <leader>ff <esc>:BLines<cr>
 " :Tags [QUERY]   " Tags in the project (ctags -R)
 " :BTags [QUERY]  " Tags in the current buffer
 " :Marks          " Marks
@@ -96,10 +96,10 @@ nnoremap <leader>fw <esc>:Windows<cr>
 " :BCommits       " Git commits for the current buffer
 nnoremap <leader>fl <esc>:BCommits<cr>
 " :Commands       " Commands
-nnoremap <c-s-p> <esc>:Commands<cr>
+nnoremap <leader>fc <esc>:Commands<cr>
 " :Maps           " Normal mode mappings
 " :Helptags       " Help tags 1
-nnoremap <c-h> <esc>:Helptags<cr>
+nnoremap <f1> <esc>:Helptags<cr>
 " :Filetypes      " File types
 
 "
