@@ -74,3 +74,6 @@ inoremap <c-r><c-r> <c-r>"
 
 " prevent wrong use of ç in normal mode due to keyboard layout difference
 nnoremap Ç :
+
+" paste without overriding the registry
+vnoremap gp "_dP
