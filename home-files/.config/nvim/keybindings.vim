@@ -77,3 +77,6 @@ nnoremap Ç :
 
 " paste without overriding the registry
 vnoremap gp "_dP
+
+" open terminal on horizontal split
+nnoremap <leader>t <esc><c-w>s:terminal<cr>A
