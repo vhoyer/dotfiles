@@ -1,3 +1,4 @@
+firebase-tools
 gitmoji-cli
 gitmoji-log
 inquirer
