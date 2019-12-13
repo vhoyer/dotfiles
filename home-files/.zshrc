@@ -89,7 +89,7 @@ else
   export EDITOR='nvim'
 fi
 
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/npm/bin"
 
 [ -f ~/.local.zshrc ] && . ~/.local.zshrc
 
@@ -106,7 +106,3 @@ export PATH="$PATH:$HOME/.local/bin"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias rng="ranger"
 alias n="npm"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

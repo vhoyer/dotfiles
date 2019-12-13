@@ -1,6 +1,7 @@
-install-dependencies: nvm
+install-dependencies:
 	sudo pacman -Syu --noconfirm $$(cat ./packages/pacman-install.txt)
 	yay -S --nodiffmenu --nocleanmenu $$(cat ./packages/yay-install.txt)
+	npm config set prefix ${HOME}/.local/npm
 	npm install -g $$(cat ./packages/npm-install.txt)
 
 setup: system-config i3 oh-my-zsh dotconfig dotlocal nvim st git fzf folder-mapping betterlockscreen
@@ -81,9 +82,6 @@ fzf:
 	rm -rf ${HOME}/.fzf
 	git clone --depth 1 https://github.com/junegunn/fzf.git ${HOME}/.fzf
 	${HOME}/.fzf/install --key-bindings --completion --update-rc
-
-nvm:
-	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
 sxhkd:
 	rm -rf ${HOME}/.config/sxhkd
