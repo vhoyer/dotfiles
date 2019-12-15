@@ -80,3 +80,5 @@ vnoremap gp "_dP
 
 " open terminal on horizontal split
 nnoremap <leader>t <esc><c-w>s:terminal<cr>A
+" open terminal on vertical split
+nnoremap <leader>T <esc><c-w>v:terminal<cr>A
