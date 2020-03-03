@@ -5,6 +5,7 @@
   "eslint.trace.server": "verbose",
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": [
+    "typescript",
     "javascript",
     "vue"
   ],
