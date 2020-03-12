@@ -58,7 +58,7 @@ nnoremap <c-n> <esc>:tabe %<cr><C-o>
 nnoremap <leader>r <esc>:e!<cr>
 
 " search for selected bit
-vnoremap // "yy/\<<c-r>y\><cr>
+vnoremap // "yy/\<<c-r>y\><cr>N
 
 "
 " super scroll
