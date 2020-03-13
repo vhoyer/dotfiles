@@ -29,12 +29,6 @@ vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
 vnoremap RR y:%s/<C-R>"//gc<left><left><left>
 
 "
-" Reselect text after an indentation
-"
-vnoremap < <gv
-vnoremap > >gv
-
-"
 " prevent pasting in insert mode to mess with indentation
 "
 let &t_SI .= "\<Esc>[?2004h"
