@@ -36,6 +36,7 @@ nnoremap <silent> gi <Plug>(coc-implementation)
 nnoremap <silent> gr <Plug>(coc-references)
 
 noremap <leader>r <esc>:e!<cr>:CocRestart<cr>
+noremap ,f <esc>:CocFix<cr>
 
 nmap <silent> [e <Plug>(coc-diagnostic-prev)
 nmap <silent> ]e <Plug>(coc-diagnostic-next)
