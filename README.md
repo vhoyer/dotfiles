@@ -7,8 +7,13 @@ need. And so I ~did~ am doing it!
 
 ## wiki
 
-So if you are my stalker, you probably saw that I had a personal wiki section here, right?
-Well, I moved it to its own [repository](https://github.com/vhoyer/studies).
+~So if you are my stalker, you probably saw that I had a personal wiki section here, right?
+Well, I moved it to its own [repository](https://github.com/vhoyer/studies).~
+
+EDIT:
+
+I've moved the studies repo back to this one because in the end is more convenient event if
+it doesn't make all the sense in the world, :shrug:.
 
 ## Dependencies
 
