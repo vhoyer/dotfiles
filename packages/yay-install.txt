@@ -6,3 +6,4 @@ neovim
 spotify
 ttf-emojione
 ttf-symbola
+libxft-bgra
