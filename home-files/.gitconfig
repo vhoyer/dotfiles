@@ -35,3 +35,5 @@
 	helper=store
 [pager]
 	log = gitmoji-log | less --tabs=4 -rFX
+[rerere]
+	enabled = true
