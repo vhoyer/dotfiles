@@ -22,11 +22,16 @@ nnoremap <leader>s <esc>:w<cr>
 
 vnoremap s :sort<cr>
 
-"
 " find replace in the same buffer
-"
 vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
-vnoremap RR y:%s/<C-R>"//gc<left><left><left>
+
+"
+" find replace inside visual line selection
+" ref: https://www.reddit.com/r/vim/comments/9n45h2/mapping_only_in_visual_line_mode/
+"
+xnoremap <expr> RR {'v':      "\"yy",
+                  \ 'V':      ":s/<C-R>y/<C-R>y/gc<left><left><left>",
+                  \ }[mode()]
 
 "
 " prevent pasting in insert mode to mess with indentation
