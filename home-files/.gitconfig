@@ -27,7 +27,7 @@
 	wp = rebase --continue
 	back = checkout HEAD~
 	next = "!git checkout $(git rev-list --topo-order HEAD..master | tail -1)"
-	clearLocalBranchs = "!clb() { echo Executing 'it remote prune origin' && git remote prune origin && echo Finding merged branchs && git branch --merged | grep \"master\\|next-release\\|$(git rev-parse --abbrev-ref HEAD)\" -v >/tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches;}; clb"
+	clear-local-branches = "!clb() { echo Executing 'it remote prune origin' && git remote prune origin && echo Finding merged branchs && git branch --merged | grep \"master\\|next-release\\|$(git rev-parse --abbrev-ref HEAD)\" -v >/tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches;}; clb"
 	c = "!gitmoji -c"
 [push]
 	default = simple
