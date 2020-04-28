@@ -29,7 +29,7 @@
 	next = "!git checkout $(git rev-list --topo-order HEAD..master | tail -1)"
 	clear-local-branches = "!clb() { echo Executing 'it remote prune origin' && git remote prune origin && echo Finding merged branchs && git branch --merged | grep \"master\\|next-release\\|$(git rev-parse --abbrev-ref HEAD)\" -v >/tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches;}; clb"
 	clb = clear-local-branches
-	pull-preview = "!gitpullpreview() { echo Fetching new changes... && git fetch --prune && git diff HEAD...origin/$(git branch --show-current); }; gitpullpreview"
+	pull-preview = "!gitpullpreview() { echo Fetching new changes... && git fetch --prune && git diff ...@{u}; }; gitpullpreview"
 	pp = pull-preview
 	c = "!gitmoji -c"
 [push]
