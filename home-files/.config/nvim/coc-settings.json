@@ -9,10 +9,6 @@
     "javascript",
     "vue"
   ],
-  "emmet.excludeLanguages": [
-    "css",
-    "scss"
-  ],
   "vetur.validation.template": true,
   "vetur.experimental.templateInterpolationService": false
 }
