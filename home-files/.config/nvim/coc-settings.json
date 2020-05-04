@@ -9,6 +9,7 @@
     "javascript",
     "vue"
   ],
+  "vetur.completion.tagCasing": "initial",
   "vetur.validation.template": true,
   "vetur.experimental.templateInterpolationService": false
 }
