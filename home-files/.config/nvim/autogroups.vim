@@ -26,7 +26,7 @@ augroup END
 
 augroup RemoveTrailingSpace
 	autocmd!
-	autocmd BufWritePre * if index(['snap', 'diff'], &ft) < 0 | %s/\s\+$//e
+	autocmd BufWritePre * if index(['snap', 'diff'], expand('%:e')) < 0 | %s/\s\+$//e
 augroup END
 
 augroup FiletypeOverride
