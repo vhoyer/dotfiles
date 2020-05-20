@@ -51,6 +51,7 @@ set diffopt+=vertical
 set wrap
 set linebreak
 set breakindent
+set breakindentopt=shift:2
 
 " set a Vim theme options
 set background=dark
