@@ -15,6 +15,7 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
 Plug 'posva/vim-vue'
 Plug 'ruanyl/vim-gh-line'
 Plug 'sheerun/vim-polyglot'
+Plug 'simnalamburt/vim-mundo'
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'tpope/vim-commentary'
