@@ -34,9 +34,11 @@ augroup FiletypeOverride
 	autocmd FileType json set filetype=jsonc
 augroup END
 
-augroup SpellChecking
+augroup ColorSchemeOverrides
 	autocmd!
-	autocmd ColorScheme * hi SpellBad cterm=underline
+	autocmd ColorScheme * highlight SpellBad cterm=underline
+	autocmd ColorScheme * highlight link Operator Normal
+	autocmd ColorScheme * highlight link Operator GruvboxFg1
 augroup END
 
 augroup CursorLine
