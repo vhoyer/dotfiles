@@ -3,5 +3,6 @@ if exists('b:jsvimconfg')
 endif
 
 highlight link jsOperatorKeyword Keyword
+highlight link jsGlobalObjects GruvboxYellow
 
 let b:jsvimconfg="yeah"
