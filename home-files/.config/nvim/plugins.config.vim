@@ -135,7 +135,7 @@ let g:user_emmet_codepretty_key = '<C-e>c'
 "
 " Plug 'posva/vim-vue'
 "
-let g:vue_disable_pre_processors=1
+let g:vue_pre_processors = ['scss']
 
 "
 " Plug 'tpope/vim-fugitive'
