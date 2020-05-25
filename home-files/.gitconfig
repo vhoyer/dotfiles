@@ -8,6 +8,7 @@
 	excludesfile = ~/.ggitignore
 [alias]
 	ad = add -p
+	ada = add -A
 	adog = log --all --decorate --oneline --graph
 	ch = checkout
 	co = commit

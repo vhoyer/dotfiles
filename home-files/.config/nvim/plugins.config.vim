@@ -38,8 +38,8 @@ nnoremap <silent> gr <Plug>(coc-references)
 noremap <leader>r <esc>:e!<cr>:CocRestart<cr>
 noremap ,f <esc>:CocFix<cr>
 
-nmap <silent> [e <Plug>(coc-diagnostic-prev)
-nmap <silent> ]e <Plug>(coc-diagnostic-next)
+map <silent> [e <Plug>(coc-diagnostic-prev)
+map <silent> ]e <Plug>(coc-diagnostic-next)
 
 "
 " Plug 'airblade/vim-gitgutter'
