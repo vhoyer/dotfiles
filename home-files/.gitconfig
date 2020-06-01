@@ -7,6 +7,7 @@
 	editor = nvim
 	excludesfile = ~/.ggitignore
 [alias]
+	g = "!gitagain() { git \"$@\"; }; gitagain"
 	ad = add -p
 	ada = add -A
 	adog = log --all --decorate --oneline --graph
