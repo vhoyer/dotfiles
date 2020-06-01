@@ -30,13 +30,13 @@ colorscheme gruvbox
 " CocInstall coc-vimlsp
 " CocInstall coc-yank
 
-nnoremap <silent> gd <Plug>(coc-definition)
-nnoremap <silent> gy <Plug>(coc-type-definition)
-nnoremap <silent> gi <Plug>(coc-implementation)
-nnoremap <silent> gr <Plug>(coc-references)
-
 noremap <leader>r <esc>:e!<cr>:CocRestart<cr>
 noremap ,f <esc>:CocFix<cr>
+
+nmap ,d <Plug>(coc-definition)
+nmap ,y <Plug>(coc-type-definition)
+nmap ,i <Plug>(coc-implementation)
+nmap ,r <Plug>(coc-references)
 
 map <silent> [e <Plug>(coc-diagnostic-prev)
 map <silent> ]e <Plug>(coc-diagnostic-next)
