@@ -64,3 +64,6 @@ set termguicolors
 
 " configure backup behavior
 set backupcopy=yes
+
+" disable swap exists warning
+"set shortmess+=A
