@@ -17,8 +17,8 @@ nnoremap <leader>l $
 vnoremap <leader>h ^
 vnoremap <leader>l $
 
-" save file with <leader>s
-nnoremap <leader>s <esc>:w<cr>
+" save file with ease
+nnoremap <leader>w <esc>:w<cr>
 
 vnoremap s :sort<cr>
 
