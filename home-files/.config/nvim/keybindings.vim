@@ -68,6 +68,21 @@ nnoremap <c-y> 6<c-y>
 " apply the first suggestion for the bad spelled word
 nnoremap <leader>cw 1z=
 
+let g:currentLang = 0
+let g:myLangList = [ "en", "pt_br" ]
+
+function! ToggleSpellCheckLang()
+	"loop through languages
+	let g:currentLang = g:currentLang + 1
+	if g:currentLang >= len(g:myLangList)
+		let g:currentLang = 0
+	endif
+
+	execute "set spelllang=".get(g:myLangList, g:currentLang)
+endfunction
+
+nnoremap <silent> <leader>s <esc>:call ToggleSpellCheckLang()<cr>
+
 " shortcut to past from " registry in insert mode
 inoremap <c-r><c-r> <c-r>"
 
