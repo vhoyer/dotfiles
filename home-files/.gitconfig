@@ -27,6 +27,8 @@
 	pow = push origin HEAD -u
 	powf = push origin HEAD -u --force-with-lease
 	s = status
+	suffix-it = "!gitsuffixit() { [ $1 ] && git branch -m \"$(git branch --show-current)-$1\" || echo 'needs a suffix to append to branch name'; }; gitsuffixit"
+	suf = suffix-it
 	wp = rebase --continue
 	back = checkout HEAD~
 	next = "!git checkout $(git rev-list --topo-order HEAD..master | tail -1)"
