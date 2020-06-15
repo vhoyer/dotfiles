@@ -34,6 +34,9 @@ xnoremap <expr> RR {'v':      "\"yy",
                   \ 'V':      ":s/<C-R>y/<C-R>y/gc<left><left><left>",
                   \ }[mode()]
 
+" go to next git conflict
+nnoremap ,c /=======<cr>
+
 "
 " prevent pasting in insert mode to mess with indentation
 "
