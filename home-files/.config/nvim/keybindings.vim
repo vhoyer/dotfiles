@@ -20,6 +20,7 @@ vnoremap <leader>l $
 " save file with ease
 nnoremap <leader>w <esc>:w<cr>
 
+" sort selection
 vnoremap s :sort<cr>
 
 " find replace in the same buffer
