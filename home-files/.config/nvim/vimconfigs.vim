@@ -67,3 +67,6 @@ set backupcopy=yes
 
 " disable swap exists warning
 "set shortmess+=A
+
+" Also <C-a> and <C-x> letters
+set nrformats+=alpha
