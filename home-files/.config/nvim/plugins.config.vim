@@ -61,6 +61,9 @@ command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --hidden
 "
 function! s:ReadTemplateIntoBuffer(template)
 	execute '0r ~/.config/nvim/templates/'.a:template
+
+	" Remove all trailing whitespace only line at the end of the file
+	execute '%s/\($\n\s*\)\+\%$//'
 endfunction
 
 command! -bang -nargs=* LoadTemplate call fzf#run({
