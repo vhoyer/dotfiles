@@ -64,6 +64,7 @@ function! s:ReadTemplateIntoBuffer(template)
 
 	" Remove all trailing whitespace only line at the end of the file
 	execute '%s/\($\n\s*\)\+\%$//'
+	normal 
 endfunction
 
 command! -bang -nargs=* LoadTemplate call fzf#run({
