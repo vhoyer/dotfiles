@@ -24,6 +24,7 @@ colorscheme gruvbox
 " CocInstall coc-html
 " CocInstall coc-json
 " CocInstall coc-stylelint
+" CocInstall coc-tabnine " This is AI-based suggestions for text, it's just great
 " CocInstall coc-tslint
 " CocInstall coc-tsserver
 " CocInstall coc-vetur
