@@ -65,7 +65,12 @@ function! s:ReadTemplateIntoBuffer(template)
 
 	" Remove all trailing whitespace only line at the end of the file
 	execute '%s/\($\n\s*\)\+\%$//'
-	normal 
+
+	" <%.*%>
+	" TODO: Make template interpolation work
+
+	" Reposition cursor at the top of the file
+	normal gg
 endfunction
 
 command! -bang -nargs=* LoadTemplate call fzf#run({
