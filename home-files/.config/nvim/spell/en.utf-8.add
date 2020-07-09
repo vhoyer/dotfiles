@@ -52,7 +52,7 @@ API
 JSX
 destructuring
 automagically
-src
+#rc
 SCSS
 const
 utils
@@ -95,3 +95,8 @@ blog
 monorepo
 Zilla's
 Nuxt
+Lodash
+SEO
+webpack's
+CSR
+src/!
