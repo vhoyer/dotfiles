@@ -67,7 +67,9 @@ function! s:ReadTemplateIntoBuffer(template)
 	execute '%s/\($\n\s*\)\+\%$//'
 
 	" <%.*%>
-	" TODO: Make template interpolation work
+	" TODO: Make template interpolation actually work, because now, I'm just
+	" faking it :D
+	execute '%s/<%\s*expand(''%:t:r'')\s*%>/'.expand('%:t:r')."/"
 
 	" Reposition cursor at the top of the file
 	normal gg
