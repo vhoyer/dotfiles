@@ -9,7 +9,8 @@ for a detailed list of options, use: \`$PRGNAME --help\`
 HELPMSG="if you run $PRGNAME with no options it will display
 the commitizen categories.
 
-  -h\tdisplays this message
+  -h		short help message
+  --help	display this message
 "
 
 case "$1" in
@@ -25,3 +26,5 @@ case "$1" in
     exit 1
     ;;
 esac
+
+# vim:ts=8
