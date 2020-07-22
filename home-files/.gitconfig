@@ -16,6 +16,11 @@
 		&& git pull \
 		&& git checkout -;\
 		}; gitmup"
+	prefix-it = "!gitsuffixit() { \
+		[ $1 ] \
+		&& git branch -m \"$1-$(git branch --show-current)\" \
+		|| echo 'needs a suffix to append to branch name' && return 1;\
+		}; gitsuffixit"
 	suffix-it = "!gitsuffixit() { \
 		[ $1 ] \
 		&& git branch -m \"$(git branch --show-current)-$1\" \
@@ -45,6 +50,7 @@
 	# shorthands
 	#
 	mup = master-update
+	pre = suffix-it
 	suf = suffix-it
 	clb = clear-local-branches
 	pp = pull-preview
