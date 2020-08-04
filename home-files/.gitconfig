@@ -50,7 +50,7 @@
 	# shorthands
 	#
 	mup = master-update
-	pre = suffix-it
+	pre = prefix-it
 	suf = suffix-it
 	clb = clear-local-branches
 	pp = pull-preview
