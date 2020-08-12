@@ -13,8 +13,8 @@
 	#
 	master-update = "!gitmup() {\
 		git checkout ${1:-master} \
-		&& git pull \
-		&& git checkout -;\
+		&& git pull; \
+		git checkout -;\
 		}; gitmup"
 	prefix-it = "!gitsuffixit() { \
 		[ $1 ] \
