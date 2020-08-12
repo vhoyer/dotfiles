@@ -46,9 +46,15 @@
 		&& git fetch --prune \
 		&& git diff ...@{u};\
 		}; gitpulldiff"
+	branch-rename = "!branchrename() { \
+		git branch --show-current >/tmp/new-branch-name;\
+		$EDITOR /tmp/new-branch-name;\
+		</tmp/new-branch-name xargs -I{} git branch -m {};\
+		}; branchrename"
 	#
 	# shorthands
 	#
+	bmv = branch-rename
 	mup = master-update
 	pre = prefix-it
 	suf = suffix-it
