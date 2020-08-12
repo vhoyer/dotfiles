@@ -54,7 +54,6 @@
 	#
 	# shorthands
 	#
-	bmv = branch-rename
 	mup = master-update
 	pre = prefix-it
 	suf = suffix-it
