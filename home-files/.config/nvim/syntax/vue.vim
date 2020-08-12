@@ -11,9 +11,6 @@ if exists('g:vue_disable_pre_processors') && g:vue_disable_pre_processors
   let g:vue_pre_processors = []
 endif
 
-syn include @vueHtmlJavascript syntax/javascript.vim
-unlet b:current_syntax
-
 runtime! syntax/html.vim
 syntax clear htmlTagName
 syntax match htmlTagName contained "\<[a-zA-Z0-9:-]*\>"
@@ -76,13 +73,10 @@ syn keyword htmlSpecialTagName  contained template
 syn keyword htmlArg             contained scoped ts
 syn match   htmlArg "[@v:a-z][-:.0-9_a-z]*\>" contained
 
-syn region vueJavascriptInsideStuff matchgroup=vueDelimiter start=/{{/ keepend end=/}}/ contains=@vueHtmlJavascript
-"
-"syn region vueJavascriptInsideStuff start=/{{/ms=e+1 keepend end=/}}/me=s-1 contains=@vueHtmlJavascript
-"syn region vueJavascriptInsideStuff start=/([@v:][-:.0-9_a-z]*=)\@<="/rs=e+1 keepend end=/"/re=s-1 contains=@vueHtmlJavascript containedin=htmlTag
-"syn region  javaScriptExpression contained start=+&{+ keepend end=+};+ contains=@vueHtmlJavascript
+syn region vueJavascriptInsideStuff matchgroup=vueDelimiter start=/{{/ keepend end=/}}/ contains=@jsAll containedin=ALLBUT,htmlComment
+syn region vueJavascriptInsideStuff start=/\(\([@:]\|v-\)[-:.0-9_a-z]*=\)\@<=["']/ms=e+1 keepend end=/["']/me=s-1 contains=@jsAll containedin=ALL
 
-hi link vueDelimiter GruvboxPurple
+hi link vueDelimiter GruvboxOrange
 
 syntax sync fromstart
 
