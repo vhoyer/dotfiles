@@ -66,7 +66,7 @@ function! s:ReadTemplateIntoBuffer(template)
 	" Remove all trailing whitespace only line at the end of the file
 	execute '%s/\($\n\s*\)\+\%$//'
 
-	" <%.*%>
+	" <%\s*\(.\{-}\)\s*%>
 	" TODO: Make template interpolation actually work, because now, I'm just
 	" faking it :D
 	execute '%s/<%\s*expand(''%:t:r'')\s*%>/'.expand('%:t:r')."/"
