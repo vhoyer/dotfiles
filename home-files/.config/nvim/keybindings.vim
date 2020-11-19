@@ -9,6 +9,9 @@ nnoremap Q <nop>
 inoremap jk <esc>
 cnoremap jk <esc>
 
+" this is to fix any InsertLeave autocmd present in the config if the user uses Ctrl-C to exit insert mode
+inoremap <C-c> <esc>
+
 "
 " jump to begin and end of an line in normal and visual mode
 "
