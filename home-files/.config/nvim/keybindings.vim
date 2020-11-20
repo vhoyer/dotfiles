@@ -15,10 +15,10 @@ inoremap <C-c> <esc>
 "
 " jump to begin and end of an line in normal and visual mode
 "
-nnoremap <leader>h ^
-nnoremap <leader>l $
-vnoremap <leader>h ^
-vnoremap <leader>l $
+"nnoremap <leader>h ^
+"nnoremap <leader>l $
+"vnoremap <leader>h ^
+"vnoremap <leader>l $
 
 " save file with ease
 nnoremap <leader>w <esc>:w<cr>
