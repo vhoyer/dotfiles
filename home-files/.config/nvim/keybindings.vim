@@ -24,7 +24,7 @@ inoremap <C-c> <esc>
 nnoremap <leader>w <esc>:w<cr>
 
 " sort selection
-vnoremap s :sort<cr>
+vnoremap ,s :sort<cr>
 
 " find replace in the same buffer
 vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
