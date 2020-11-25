@@ -1,0 +1,64 @@
+#!/bin/sh
+
+PRGNAME="$(basename $0)"
+
+# BEGIN PARAMETERS
+# END PARAMETERS
+
+SHORTHELP="usage: $PRGNAME [options]
+for a detailed list of options, use: \`$PRGNAME --help\`
+"
+
+HELPMSG="if you run $PRGNAME with no options it will display run the default
+action.
+
+  -h		short help message
+  --help	display this message
+"
+
+watchFilesystemChange() {
+  msg="\n\nWaiting for file changes to run command again, to cancel this behavior press CTRL-C"
+  do_exec=0
+  chksum1=`chksumGenerate`;
+
+  while [ true ]; do
+    if [ $do_exec ]; then
+      clear
+
+      eval "$@"
+
+      echo $msg
+      unset do_exec
+    fi
+
+
+    # Repeat if changed
+    chksum2=`chksumGenerate`;
+    if [ "$chksum1" != "$chksum2" ]; then
+      chksum1=`chksumGenerate`;
+      do_exec=0
+    fi
+    sleep 0.2
+  done
+}
+
+chksumGenerate() {
+  echo `find . \
+    -not -path "./.git/*" \
+    -not -path "./.nuxt/*" \
+    -not -path "./node_modules/*" \
+    -type f -printf "%T@ %p\n" |
+    md5sum |
+    cut -d " " -f 1`
+}
+
+case "$1" in
+  # you can insert your own options here to do stuff
+  "--help") printf "%s" "$HELPMSG" ;;
+  "-h") printf "%s"  "$SHORTHELP" ;;
+  *)
+    watchFilesystemChange $@
+    ;;
+esac
+
+# vim:ts=8
