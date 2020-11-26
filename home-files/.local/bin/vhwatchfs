@@ -38,7 +38,7 @@ watchFilesystemChange() {
       chksum1=`chksumGenerate`;
       do_exec=0
     fi
-    sleep 0.2
+    sleep 0.1
   done
 }
 
