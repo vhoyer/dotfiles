@@ -195,3 +195,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 " Hide buffer open on the current window, cuz this information is useless :D
 let g:airline#extensions#tabline#show_splits = 0
+
+"
+" Plug 'junegunn/vim-peekaboo'
+"
+
+" only show peekaboo if I clearly forgot what I was doing
+let g:peekaboo_delay = 1000
