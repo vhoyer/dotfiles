@@ -82,6 +82,14 @@ This new piece of information was taken from [this thread on majaro wiki][3].
 
 Really just read this: https://wiki.archlinux.org/index.php/bumblebee
 
+## If you are on the fly
+
+Remember you have `mons`, the multi-monitor helper.
+
+```bash
+mons -e top
+```
+
 <!--
 ## References -->
 
