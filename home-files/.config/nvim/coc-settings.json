@@ -4,11 +4,8 @@
   "tsserver.enableJavascript": false,
   "eslint.trace.server": "verbose",
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": [
-    "typescript",
-    "javascript",
-    "vue"
-  ],
+  /* "workspace.bottomUpFiletypes": [], */
+  "workspace.workspaceFolderCheckCwd": false,
   "vetur.completion.tagCasing": "initial",
   "vetur.validation.template": true,
   "vetur.experimental.templateInterpolationService": false
