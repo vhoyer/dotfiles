@@ -4,6 +4,7 @@ A list of things I always find myself wanting a link, but never know where the a
 
 - https://undraw.co/ - slick open source free illustrations for your project
 - [Optimize webpack chunk splitting](#chunk-spliting)
+- https://csswizardry.com/2020/11/site-speed-topography/ - how to analyze WebPageTest/lighthouse reports: TTFB, FP, FCP, SI, LCP, CLS, TBT
 
 <a name="chunk-spliting"></a>
 ## optimize webpack chunk splitting
