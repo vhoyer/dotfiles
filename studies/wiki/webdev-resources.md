@@ -6,6 +6,7 @@ A list of things I always find myself wanting a link, but never know where the a
 - [Optimize webpack chunk splitting](#chunk-spliting)
 - https://csswizardry.com/2020/11/site-speed-topography/ - how to analyze WebPageTest/lighthouse reports: TTFB, FP, FCP, SI, LCP, CLS, TBT
 - https://github.com/petkaantonov/bluebird/wiki/Optimization-killers - optimization tricks for V8 (the js engine for chrome) [but it's deprecated]
+- [idle-until-urgent (FID optimization strategy)](https://philipwalton.com/articles/idle-until-urgent/)
 
 <a name="chunk-spliting"></a>
 ## optimize webpack chunk splitting
