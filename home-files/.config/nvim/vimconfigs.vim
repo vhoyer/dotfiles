@@ -1,3 +1,6 @@
+" No stupid sounds on windows WLS
+set visualbell
+
 " THIS IS A MUST, I dunno why this is not default, not having this makes using
 " macros painful!!! With this macros is practically instant
 set lazyredraw

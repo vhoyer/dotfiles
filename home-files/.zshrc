@@ -1,6 +1,10 @@
 # Enable zshell startup time profiling
 #zmodload zsh/zprof
 
+# Turn off sounds
+# https://blog.vghaisas.com/zsh-beep-sound/
+unsetopt BEEP
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
