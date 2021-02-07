@@ -6,4 +6,4 @@ if [ ! $1 ]; then
 fi
 
 ssh-keygen -t rsa -C "$1"
-xclip -sel c < $HOME/.ssh/id_rsa.pub
+xclip -sel c < $HOME/.ssh/id_rsa.pub && echo 'Copied to clipboard' || cat $HOME/.ssh/id_rsa.pub

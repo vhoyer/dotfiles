@@ -30,7 +30,7 @@ I think that's it, I may be wrong, and if so, then I'm sorry.
 Because I never remember that command:
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/vhoyer/dotfiles/i3-zsh/scripts/generate-ssh-key.sh) <your@email.here>
+bash <(curl -s https://raw.githubusercontent.com/vhoyer/dotfiles/master/scripts/generate-ssh-key.sh) <your@email.here>
 ```
 
 ## Quick start
