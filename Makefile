@@ -1,10 +1,24 @@
-install-dependencies:
+#
+# Dependencies:
+#
+
+install-manjaro: pacman-yay npm
+install-ubuntu:
+
+pacman-yay:
 	sudo pacman -Syu --noconfirm $$(cat ./packages/pacman-install.txt)
 	yay -S --nodiffmenu --nocleanmenu $$(cat ./packages/yay-install.txt)
+
+npm:
 	npm config set prefix ${HOME}/.local/npm
 	npm install -g $$(cat ./packages/npm-install.txt)
 
-setup: system-config i3 oh-my-zsh dotconfig dotlocal nvim st git fzf folder-mapping betterlockscreen
+#
+# Configurations:
+#
+
+setup-manjaro: system-config i3 oh-my-zsh dotconfig dotlocal nvim st git fzf folder-mapping betterlockscreen
+setup-ubuntu: oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping
 
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
