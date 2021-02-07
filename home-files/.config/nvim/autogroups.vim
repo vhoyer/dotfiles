@@ -1,9 +1,11 @@
-augroup TerminalStuff
-	autocmd!
-	autocmd TermOpen * setlocal nonumber
-	autocmd TermOpen * setlocal norelativenumber
-	autocmd TermOpen * setlocal nospell
-augroup END
+if has('nvim')
+	augroup TerminalStuff
+		autocmd!
+		autocmd TermOpen * setlocal nonumber
+		autocmd TermOpen * setlocal norelativenumber
+		autocmd TermOpen * setlocal nospell
+	augroup END
+endif
 
 augroup CocRelated
 	autocmd!

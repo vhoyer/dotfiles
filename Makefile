@@ -54,11 +54,17 @@ dotlocal:
 	rm -rf ${HOME}/.local/bin/
 	ln -s $(realpath ./home-files/.local/bin/) ${HOME}/.local/bin
 
-nvim:
+vim:
 	rm -rf ${HOME}/.config/nvim
+	rm -rf ${HOME}/nvim
+	rm -rf ${HOME}/.vim
+	rm -rf ${HOME}/.vimrc
+	mkdir -p ${HOME}/.config/
 	ln -s $(realpath ./home-files/.config/nvim/) ${HOME}/.config/
+	ln -s $(realpath ./home-files/.config/nvim/) ${HOME} && mv ${HOME}/nvim ${HOME}/.vim
+	ln -s $(realpath ./home-files/.config/nvim/init.vim) ${HOME}/ && mv ${HOME}/init.vim ${HOME}/.vimrc
 	curl -fLo ${HOME}/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	nvim -u ${HOME}/.config/nvim/plugins.vim +PlugInstall +UpdateRemotePlugins +qa
+	${EDITOR} -u ${HOME}/.config/nvim/plugins.vim +PlugInstall +UpdateRemotePlugins +qa
 	# wakatime.config
 	rm -rf ~/.wakatime.cfg
 	ln -s $(realpath ./home-files/.wakatime.cfg) ${HOME}

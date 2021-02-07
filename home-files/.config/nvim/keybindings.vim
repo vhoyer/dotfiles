@@ -99,7 +99,14 @@ nnoremap Ç :
 " paste without overriding the registry, this binding overrides default |gp|
 vnoremap gp "_dP
 
-" open terminal on horizontal split
-nnoremap <leader>t <esc><c-w>s:terminal<cr>A
-" open terminal on vertical split
-nnoremap <leader>T <esc><c-w>v:terminal<cr>A
+if has('nvim')
+	" open terminal on horizontal split
+	nnoremap <leader>t <esc><c-w>s:terminal<cr>A
+	" open terminal on vertical split
+	nnoremap <leader>T <esc><c-w>v:terminal<cr>A
+else
+	" open terminal on horizontal split
+	nnoremap <silent> <leader>t <esc>:terminal<cr>
+	" open terminal on vertical split
+	nnoremap <silent> <leader>T <esc>:vertical terminal<cr>
+endif
