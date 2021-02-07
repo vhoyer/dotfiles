@@ -4,7 +4,7 @@
 [core]
 	autocrlf = input
 	safecrlf = warn
-	editor = nvim
+	editor = $EDITOR
 	# this file is symbolic linked to ./global_gitignore by `../Makefile`
 	excludesfile = ~/.global_gitignore
 [alias]
