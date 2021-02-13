@@ -28,6 +28,7 @@ colorscheme gruvbox
 " CocInstall coc-tsserver
 " CocInstall coc-vetur
 " CocInstall coc-vimlsp
+" CocInstall coc-tailwindcss
 
 noremap <leader>r <esc>:e!<cr>:CocRestart<cr>
 noremap ,f <esc>:CocFix<cr>
