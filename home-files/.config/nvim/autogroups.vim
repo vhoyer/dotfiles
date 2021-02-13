@@ -19,11 +19,11 @@ augroup ReloadThingsIfConfigFilesChanges
 augroup END
 
 augroup DashUnderlineCompletion
-	autocmd!
-	autocmd InsertEnter *.* set isk +=_
-	autocmd InsertLeave *.* set isk -=_
-	autocmd InsertEnter *.* set isk +=\-
-	autocmd InsertLeave *.* set isk -=\-
+	" autocmd!
+	" autocmd InsertEnter *.* set isk +=_
+	" autocmd InsertLeave *.* set isk -=_
+	" autocmd InsertEnter *.* set isk +=\-
+	" autocmd InsertLeave *.* set isk -=\-
 augroup END
 
 augroup RemoveTrailingSpace
