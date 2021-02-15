@@ -1,8 +1,8 @@
 {
-  "tslint.autoFixOnSave": true,
+  "eslint.trace.server": "verbose",
+  "stylelint.trace.server": "verbose",
   "tslint.enable": true,
   "tsserver.enableJavascript": false,
-  "eslint.trace.server": "verbose",
   "eslint.autoFixOnSave": true,
   /* "workspace.bottomUpFiletypes": [], */
   "workspace.workspaceFolderCheckCwd": false,
