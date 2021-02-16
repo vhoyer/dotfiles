@@ -87,7 +87,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]] || [[ "$(which nvim)" ]]; then
+if [[ -n $SSH_CONNECTION ]] || [[ "$(which nvim)" != *"nvim"* ]]; then
   export EDITOR='vim'
 else
   export EDITOR='nvim'
