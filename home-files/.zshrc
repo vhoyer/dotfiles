@@ -86,14 +86,14 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor with fallback to default 'vim'
-if ! (which nvim > /dev/null 2>&1); then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
-
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/npm/bin"
+
+# Preferred editor with fallback to default 'vim'
+if (which nvim > /dev/null 2>&1); then
+  export EDITOR='nvim'
+else
+  export EDITOR='vim'
+fi
 
 [ -f ~/.local.zshrc ] && . ~/.local.zshrc
 
