@@ -22,11 +22,14 @@ Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'vim-airline/vim-airline'
 Plug 'wakatime/vim-wakatime'
+
+" script making
+Plug 'junegunn/vader.vim'
+Plug 'tpope/vim-scriptease'
 
 call plug#end()
 
