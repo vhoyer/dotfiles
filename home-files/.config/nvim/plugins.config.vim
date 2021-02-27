@@ -202,3 +202,10 @@ let g:airline#extensions#tabline#show_splits = 0
 
 " only show peekaboo if I clearly forgot what I was doing
 let g:peekaboo_delay = 1000
+
+"
+" Plug 'tpope/vim-scriptease'
+"
+
+" Change keybinding to inspect under cursor syntax
+nmap ZI <Plug>ScripteaseSynnames
