@@ -9,8 +9,8 @@ SHORTHELP="usage: $PRGNAME [options]
 for a detailed list of options, use: \`$PRGNAME --help\`
 "
 
-HELPMSG="if you run $PRGNAME with no options it will display run the default
-action.
+HELPMSG="if you run '$PRGNAME <command>', it will run this command every time
+the file system detects a change in one of the files.
 
   -h		short help message
   --help	display this message
