@@ -114,3 +114,4 @@ backend
 Rollbar
 set
 WLS
+regex
