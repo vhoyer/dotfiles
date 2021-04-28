@@ -34,3 +34,10 @@ case "$1" in
     ;;
 esac
 ```
+
+## Make sure the script is executed from project's root always
+
+```sh
+# Make sure the script is executed from project's root always
+cd $(dirname $(realpath "$0"))/..
+```
