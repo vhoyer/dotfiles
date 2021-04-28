@@ -1,6 +1,8 @@
 [user]
 	name = Vinícius Hoyer
 	email = contact@vhoyer.dev
+[init]
+	defaultBranch = main
 [core]
 	autocrlf = input
 	safecrlf = warn
@@ -20,7 +22,7 @@
 		&& xargs -I{} git revert {} <$file;\
 		}; revertMenu"
 	master-update = "!gitmup() {\
-		git checkout ${1:-master} \
+		git checkout ${1:-$(git config --get init.defaultBranch)} \
 		&& git pull; \
 		git checkout -;\
 		}; gitmup"
