@@ -46,6 +46,9 @@ chksumGenerate() {
   echo `find . \
     -not -path "./.git/*" \
     -not -path "./.nuxt/*" \
+    -not -path "./dist/*" \
+    -not -path "*.snap" \
+    -not -path "./__coverage__/*" \
     -not -path "./node_modules/*" \
     -type f -printf "%T@ %p\n" |
     md5sum |
