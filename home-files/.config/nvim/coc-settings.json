@@ -4,6 +4,7 @@
   "tslint.enable": true,
   "tsserver.enableJavascript": false,
   "eslint.autoFixOnSave": true,
+  "coverage.jsonReportPath": "/test/coverage/coverage-final.json",
   /* "workspace.bottomUpFiletypes": [], */
   "workspace.workspaceFolderCheckCwd": false,
   "vetur.completion.tagCasing": "initial",
