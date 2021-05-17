@@ -49,6 +49,7 @@ chksumGenerate() {
     -not -path "./dist/*" \
     -not -path "*.snap" \
     -not -path "./__coverage__/*" \
+    -not -path "./test/coverage/*" \
     -not -path "./node_modules/*" \
     -type f -printf "%T@ %p\n" |
     md5sum |
