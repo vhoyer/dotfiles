@@ -43,14 +43,13 @@ watchFilesystemChange() {
 }
 
 chksumGenerate() {
+  # The -exec line make the find respect the .gitignore file
+
   echo `find . \
     -not -path "./.git/*" \
-    -not -path "./.nuxt/*" \
-    -not -path "./dist/*" \
-    -not -path "*.snap" \
-    -not -path "./__coverage__/*" \
-    -not -path "./test/coverage/*" \
     -not -path "./node_modules/*" \
+    -not -path "*.snap" \
+    -exec sh -c 'for f do git check-ignore -q "$f" || printf '%s\n' "$f"; done' find-sh {} + \
     -type f -printf "%T@ %p\n" |
     md5sum |
     cut -d " " -f 1`
