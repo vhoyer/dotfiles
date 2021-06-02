@@ -1,2 +1,2 @@
-inoremap <buffer> >> () => {}<left>
+inoremap <buffer> >> () =><space>
 inoremap <buffer> :: : ,<left>
