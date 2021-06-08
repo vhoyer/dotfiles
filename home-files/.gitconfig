@@ -41,7 +41,7 @@
 		&& git remote prune origin \
 		&& echo Finding merged branchs \
 		&& echo '# Remove from the buffer the branches you want to keep' >/tmp/merged-branches \
-		&& git branch --merged | grep \"master\\|next-release\\|$(git rev-parse --abbrev-ref HEAD)\" -v >>/tmp/merged-branches \
+		&& git branch --merged | grep \"master\\|next-release\\|$(git rev-parse --abbrev-ref HEAD)\\|$(git config --get init.defaultBranch)\" -v >>/tmp/merged-branches \
 		&& $EDITOR /tmp/merged-branches +':setfiletype ClearLocalBranches' \
 		&& sed -ine '/^#/d' /tmp/merged-branches \
 		&& xargs git branch -d </tmp/merged-branches;\
