@@ -12,7 +12,12 @@ help:
 	@echo ""
 
 install-manjaro: pacman-yay npm
-install-ubuntu:
+install-wsl-ubuntu: apt npm
+
+apt:
+	sudo apt update
+	sudo apt --yes upgrade
+	sudo apt --yes install $$(cat ./packages/wls-ubuntu-apt-install.txt)
 
 pacman-yay:
 	sudo pacman -Syu --noconfirm $$(cat ./packages/pacman-install.txt)
@@ -32,7 +37,7 @@ setup-ubuntu: oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
 	sudo timedatectl set-ntp true
-	rm -f ${HOME}/{.profile,.Xresources}
+	for x in .profile .Xresources; do rm -f ${HOME}/$$x; done
 	ln -s $(realpath ./home-files/.profile) ${HOME}
 	ln -s $(realpath ./home-files/.Xresources) ${HOME}
 
@@ -64,33 +69,33 @@ i3lock-color:
 
 oh-my-zsh:
 	sudo chsh -s /bin/zsh ${USER}
-	curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
-	rm -f ${HOME}/{.zshrc}
+	[ -f ${HOME}/.oh-my-zsh/ ] && curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh || echo "oh-my-zsh already exist"
+	rm -f ${HOME}/.zshrc
 	ln -s $(realpath ./home-files/.zshrc) ${HOME}
 
 dotconfig:
-	rm -rf ${HOME}/.config/{ranger,mimeapps.list}
+	for x in ranger mimeapps.list; do rm -rf ${HOME}/.config/$$x; done
+	mkdir -p ${HOME}/.config/
 	ln -s $(realpath ./home-files/.config/ranger/) ${HOME}/.config/
 	ln -s $(realpath ./home-files/.config/mimeapps.list) ${HOME}/.config/
 
 dotlocal:
 	rm -rf ${HOME}/.local/bin/
+	mkdir -p ${HOME}/.local/bin/
 	ln -s $(realpath ./home-files/.local/bin/) ${HOME}/.local/bin
 
+test:
+	$${EDITOR-vim}
+
 vim:
-	rm -rf ${HOME}/.config/nvim
-	rm -rf ${HOME}/nvim
-	rm -rf ${HOME}/.vim
-	rm -rf ${HOME}/.vimrc
+	for x in .config/nvim nvim .vim .vimrc .wakatime.cfg; do rm -rf ${HOME}/$$x; done
 	mkdir -p ${HOME}/.config/
+	ln -s $(realpath ./home-files/.wakatime.cfg) ${HOME}
 	ln -s $(realpath ./home-files/.config/nvim/) ${HOME}/.config/
 	ln -s $(realpath ./home-files/.config/nvim/) ${HOME} && mv ${HOME}/nvim ${HOME}/.vim
 	ln -s $(realpath ./home-files/.config/nvim/init.vim) ${HOME}/ && mv ${HOME}/init.vim ${HOME}/.vimrc
 	curl -fLo ${HOME}/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	${EDITOR} -u ${HOME}/.config/nvim/plugins.vim +PlugInstall +UpdateRemotePlugins +qa
-	# wakatime.config
-	rm -rf ~/.wakatime.cfg
-	ln -s $(realpath ./home-files/.wakatime.cfg) ${HOME}
+	$${EDITOR-vim} -u ${HOME}/.config/nvim/vimconfigs.vim -u ${HOME}/.config/nvim/plugins.vim +PlugInstall +UpdateRemotePlugins +qa
 
 st:
 	mkdir -p ${HOME}/src/
@@ -99,7 +104,7 @@ st:
 	sudo make -C ${HOME}/src/st install
 
 git:
-	rm -f ${HOME}/{.gitconfig,.global_gitignore}
+	for x in .gitconfig .global_gitignore; do rm -f ${HOME}/$$x; done
 	ln -s $(realpath ./home-files/.gitconfig) ${HOME}
 	ln -s $(realpath ./home-files/.global_gitignore) ${HOME}
 
@@ -118,4 +123,5 @@ sxhkd:
 
 folder-mapping:
 	rm -rf ${HOME}/Pictures/wallpaper
+	mkdir -p ${HOME}/Pictures/
 	ln -s $(realpath ./home-files/Pictures/wallpaper) ${HOME}/Pictures/

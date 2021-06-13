@@ -110,3 +110,5 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias rng="ranger"
 alias n="npm"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

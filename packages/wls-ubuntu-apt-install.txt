@@ -1,0 +1,10 @@
+neovim
+nodejs
+npm
+ranger
+ripgrep
+shellcheck
+unzip
+yarn
+zip
+zsh
