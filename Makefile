@@ -2,6 +2,15 @@
 # Dependencies:
 #
 
+help:
+	@echo "First install dependencies by running make with one of these options:"
+	@sed -n -e '/^\(#\|$$\|\t\)/d' -e's/:.*//' -e's/^install/\t\0/' -e'/^\t/p' <./Makefile
+	@echo ""
+	@echo "After installing dependencies, run make with one of these options to \
+	configurate everything (or manually choose each recipe to run):"
+	@sed -n -e '/^\(#\|$$\|\t\)/d' -e's/:.*//' -e's/^setup/\t\0/' -e'/^\t/p' <./Makefile
+	@echo ""
+
 install-manjaro: pacman-yay npm
 install-ubuntu:
 
