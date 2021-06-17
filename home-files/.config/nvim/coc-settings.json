@@ -1,12 +1,12 @@
 {
   "eslint.trace.server": "verbose",
   "stylelint.trace.server": "verbose",
-  "tslint.enable": true,
-  "tsserver.enableJavascript": false,
   "eslint.autoFixOnSave": true,
   "coverage.jsonReportPath": "/test/coverage/coverage-final.json",
+  // https://github.com/neoclide/coc.nvim/wiki/Using-workspaceFolders
   /* "workspace.bottomUpFiletypes": [], */
-  "workspace.workspaceFolderCheckCwd": false,
+  "workspace.workspaceFolderCheckCwd": true,
+  "coc.preferences.rootPatterns": [".git", ".hg", ".projections.json", ".eslintrc.js"],
   "vetur.completion.tagCasing": "initial",
   "vetur.validation.template": true,
   "vetur.experimental.templateInterpolationService": false
