@@ -82,7 +82,7 @@
 	cp = cherry-pick
 	d = diff
 	ds = diff --staged
-	dw = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
+	dword = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
 	f = fetch -p
 	fix = "!nvim `git diff --name-only --diff-filter=U`"
 	fuck = commit --amend
