@@ -23,12 +23,12 @@ colorscheme gruvbox
 " CocInstall coc-highlight
 " CocInstall coc-html
 " CocInstall coc-json
-" CocInstall coc-stylelint
 " CocInstall coc-tabnine " This is AI-based suggestions for text, it's just great
 " CocInstall coc-tsserver
 " CocInstall coc-vetur
 " CocInstall coc-vimlsp
 " CocInstall coc-tailwindcss
+" CocInstall coc-stylelintplus
 
 noremap <leader>r <esc>:e!<cr>:CocRestart<cr>
 noremap ,f <esc>:CocFix<cr>

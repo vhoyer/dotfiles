@@ -1,6 +1,6 @@
 {
   "eslint.trace.server": "verbose",
-  "stylelint.trace.server": "verbose",
+  "stylelintplus.autoFixOnSave": true,
   "eslint.autoFixOnSave": true,
   "coverage.jsonReportPath": "/test/coverage/coverage-final.json",
   // https://github.com/neoclide/coc.nvim/wiki/Using-workspaceFolders
