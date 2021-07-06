@@ -4,6 +4,7 @@ Plug 'Lokaltog/neoranger'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'hail2u/vim-css3-syntax'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
