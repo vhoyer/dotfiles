@@ -16,19 +16,20 @@ colorscheme gruvbox
 "
 " Plug 'neoclide/coc.nvim'
 "
-" packages:
-" CocInstall coc-css
-" CocInstall coc-dictionary
-" CocInstall coc-eslint
-" CocInstall coc-highlight
-" CocInstall coc-html
-" CocInstall coc-json
-" CocInstall coc-tabnine " This is AI-based suggestions for text, it's just great
-" CocInstall coc-tsserver
-" CocInstall coc-vetur
-" CocInstall coc-vimlsp
-" CocInstall coc-tailwindcss
-" CocInstall coc-stylelintplus
+let g:coc_global_extensions = [
+			\ 'coc-css',
+			\ 'coc-dictionary',
+			\ 'coc-eslint',
+			\ 'coc-highlight',
+			\ 'coc-html',
+			\ 'coc-json',
+			\ 'coc-tabnine',
+			\ 'coc-tsserver',
+			\ 'coc-vetur',
+			\ 'coc-vimlsp',
+			\ 'coc-tailwindcss',
+			\ 'coc-stylelintplus',
+			\]
 
 noremap <leader>r <esc>:e!<cr>:CocRestart<cr>
 noremap ,f <esc>:CocFix<cr>
