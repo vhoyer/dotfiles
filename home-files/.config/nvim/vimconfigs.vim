@@ -1,6 +1,3 @@
-" No stupid sounds on windows WLS
-set visualbell
-
 " highlight current search
 set hlsearch
 
