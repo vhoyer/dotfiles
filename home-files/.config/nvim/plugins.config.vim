@@ -95,7 +95,7 @@ nnoremap <leader>fb <esc>:Buffers<cr>
 " :Ag [PATTERN]   " ag search result (ALT-A to select all, ALT-D to deselect all)
 " :Rg [PATTERN]   " rg search result (ALT-A to select all, ALT-D to deselect all)
 nnoremap <f3> <esc>:Rg<cr>
-nnoremap <leader><f3> <esc>:Rg <c-r>"<cr>
+nnoremap <leader><f3> <esc>viw"yy:Rg <c-r>y<cr>
 vnoremap <leader><f3> "yy<esc>:Rg <c-r>y<cr>
 " :Lines [QUERY]  " Lines in loaded buffers
 " :BLines [QUERY] " Lines in the current buffer
