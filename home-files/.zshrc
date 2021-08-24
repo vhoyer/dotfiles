@@ -96,6 +96,7 @@ else
 fi
 
 [ -f ~/.local.zshrc ] && . ~/.local.zshrc
+[ -f ~/.zshrc.local ] && . ~/.zshrc.local
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
