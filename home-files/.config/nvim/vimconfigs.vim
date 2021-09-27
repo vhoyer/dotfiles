@@ -41,7 +41,7 @@ set spell
 " Set cute characters
 set fillchars=fold:-,vert:\│
 set list
-set listchars=tab:┆\ ,eol:¬,trail:•,extends:❯,precedes:❮
+set listchars=tab:┆\ ,eol:¬,trail:•,extends:❯,precedes:❮,nbsp:⍽
 
 " open new tab on the bottom and on the right
 set splitbelow
