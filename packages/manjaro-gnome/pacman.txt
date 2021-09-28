@@ -5,3 +5,7 @@ ripgrep
 shellcheck
 yarn
 yay
+htop
+docker
+xsel
+docker-compose

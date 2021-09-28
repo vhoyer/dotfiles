@@ -133,3 +133,9 @@ folder-mapping:
 	rm -rf ${HOME}/Pictures/wallpaper
 	mkdir -p ${HOME}/Pictures/
 	ln -s $(realpath ./home-files/Pictures/wallpaper) ${HOME}/Pictures/
+
+docker:
+	sudo systemctl start docker.service
+	sudo systemctl enable docker.service
+	# Allow docker without "sudo"
+	sudo usermod -aG docker ${USER}
