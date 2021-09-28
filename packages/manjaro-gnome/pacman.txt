@@ -1,0 +1,7 @@
+nodejs
+npm
+python-pip
+ripgrep
+shellcheck
+yarn
+yay

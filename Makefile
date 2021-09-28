@@ -11,17 +11,24 @@ help:
 	@sed -n -e '/^\(#\|$$\|\t\)/d' -e's/:.*//' -e's/^setup/\t\0/' -e'/^\t/p' <./Makefile
 	@echo ""
 
-install-manjaro: pacman-yay npm
-install-wsl-ubuntu: apt npm
+flavor-manjaro-gnome:
+	$(eval SYSTEM := manjaro-gnome)
+flavor-manjaro-i3:
+	$(eval SYSTEM := manjaro-i3)
+flavor-wls-ubuntu:
+	$(eval SYSTEM := wls-ubuntu)
+
+install-pacman: pacman-yay npm
+install-apt: apt npm
 
 apt:
 	sudo apt update
 	sudo apt --yes upgrade
-	sudo apt --yes install $$(cat ./packages/wls-ubuntu-apt-install.txt)
+	sudo apt --yes install $$(cat ./packages/$(SYSTEM)/apt.txt)
 
 pacman-yay:
-	sudo pacman -Syu --noconfirm $$(cat ./packages/pacman-install.txt)
-	yay -S --nodiffmenu --nocleanmenu $$(cat ./packages/yay-install.txt)
+	sudo pacman -Syu --noconfirm $$(cat ./packages/$(SYSTEM)/pacman.txt)
+	yay -S --nodiffmenu --nocleanmenu $$(cat ./packages/$(SYSTEM)/yay.txt)
 
 npm:
 	npm config set prefix ${HOME}/.local/npm
@@ -31,7 +38,8 @@ npm:
 # Configurations:
 #
 
-setup-manjaro: system-config i3 oh-my-zsh dotconfig dotlocal nvim st git fzf folder-mapping betterlockscreen
+setup-manjaro-i3: system-config i3 oh-my-zsh dotconfig dotlocal vim st git fzf folder-mapping betterlockscreen
+setup-manjaro-gnome: system-config oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping
 setup-ubuntu: oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping
 
 system-config:
@@ -69,7 +77,7 @@ i3lock-color:
 
 oh-my-zsh:
 	sudo chsh -s /bin/zsh ${USER}
-	[ -f ${HOME}/.oh-my-zsh/ ] && curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh || echo "oh-my-zsh already exist"
+	[ ! -f ${HOME}/.oh-my-zsh/ ] && curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh || echo "oh-my-zsh already exist"
 	rm -f ${HOME}/.zshrc
 	ln -s $(realpath ./home-files/.zshrc) ${HOME}
 

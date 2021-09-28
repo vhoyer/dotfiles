@@ -1,0 +1,4 @@
+google-chrome
+heroku-cli
+neovim
+spotify
