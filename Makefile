@@ -77,9 +77,9 @@ i3lock-color:
 
 oh-my-zsh:
 	sudo chsh -s /bin/zsh ${USER}
-	[ ! -f ${HOME}/.oh-my-zsh/ ] && curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh || echo "oh-my-zsh already exist"
-	rm -f ${HOME}/.zshrc
-	ln -s $(realpath ./home-files/.zshrc) ${HOME}
+	curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh || echo 'I think oh-my-zsh already exists'
+	ln -fs $(realpath ./home-files/.zshrc) ${HOME}
+	ln -fs $(realpath ./home-files/.zshrc.smartTitle) ${HOME}
 
 dotconfig:
 	for x in ranger mimeapps.list; do rm -rf ${HOME}/.config/$$x; done
