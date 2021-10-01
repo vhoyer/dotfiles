@@ -3,3 +3,5 @@ heroku-cli
 neovim
 spotify
 franz
+ibus
+ibus-mozc-uc

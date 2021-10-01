@@ -45,9 +45,9 @@ setup-ubuntu: oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
 	sudo timedatectl set-ntp true
-	for x in .profile .Xresources; do rm -f ${HOME}/$$x; done
-	ln -s $(realpath ./home-files/.profile) ${HOME}
-	ln -s $(realpath ./home-files/.Xresources) ${HOME}
+	ln -fs $(realpath ./home-files/.profile) ${HOME}
+	ln -fs $(realpath ./home-files/.xprofile) ${HOME}
+	ln -fs $(realpath ./home-files/.Xresources) ${HOME}
 
 i3:
 	rm -rf ${HOME}/.i3
