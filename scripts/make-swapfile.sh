@@ -8,6 +8,8 @@ for a detailed list of options, use: \`$PRGNAME --help\`
 
 HELPMSG="this script was originated by the following blog post:
 https://linuxize.com/post/create-a-linux-swap-file/
+afterwards the support for btrfs was added following the guide from this answer:
+https://askubuntu.com/questions/1206157/can-i-have-a-swapfile-on-btrfs
 
 You can verify the swap status.
 To verify that the swap is active we can use either the swapon or the free command as shown below:
@@ -44,25 +46,27 @@ allocate() {
     exit 1
   fi
 
-  # 1. create the file
-  # fallocate -l $SIZE $SWAPFILE
-  # if fail run:
-  # dd if=/dev/zero of=/swapfile bs=1024 count=1048576
-  BYTE_SIZE=`numfmt --from=iec $SIZE`
-  SECTOR_SIZE=1024
-  SECTOR_COUNT=`expr $BYTE_SIZE / $SECTOR_SIZE`
-  dd if=/dev/zero of=$SWAPFILE bs=$SECTOR_SIZE count=$SECTOR_COUNT status=progress
+  # - create the file
+  fallocate -l $SIZE $SWAPFILE
+  # if fail, try run with dd:
+  ### BYTE_SIZE=`numfmt --from=iec $SIZE`
+  ### SECTOR_SIZE=1024
+  ### SECTOR_COUNT=`expr $BYTE_SIZE / $SECTOR_SIZE`
+  ### dd if=/dev/zero of=$SWAPFILE bs=$SECTOR_SIZE count=$SECTOR_COUNT status=progress
   #
-  # 2. Set correct permissions
+  # - Set correct permissions
   chmod 600 $SWAPFILE
   #
-  # 3. Set up a linux swap area
+  # - (on btrfs) Disable COW for this file
+  chattr +C $SWAPFILE
+  #
+  # - Set up a linux swap area
   mkswap $SWAPFILE --verbose
   #
-  # 4. Enable the swap
+  # - Enable the swap
   swapon $SWAPFILE
   #
-  # 5. make it persistent
+  # - make it persistent
   fstabContent >> /etc/fstab
 }
 
