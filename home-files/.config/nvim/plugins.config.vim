@@ -179,7 +179,7 @@ set noshowmode
 
 " Define symbols to make the line more lean
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+	let g:airline_symbols = {}
 endif
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.paste = 'ρ'
