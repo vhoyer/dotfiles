@@ -155,8 +155,8 @@ let g:vue_pre_processors = 'detect_on_enter'
 "
 " Plug 'tpope/vim-fugitive'
 "
-nnoremap <leader>b <esc>:Gblame<cr>
-nnoremap <leader>c <esc>:Gcommit<cr>
+nnoremap <leader>b <esc>:Git blame<cr>
+nnoremap <leader>c <esc>:Git commit<cr>
 vnoremap <c-f> "yy:Ggrep "<C-r>y"<cr><Esc>:copen<cr>
 
 " open diff
