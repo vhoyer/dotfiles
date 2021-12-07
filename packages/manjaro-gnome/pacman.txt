@@ -10,3 +10,4 @@ docker
 xsel
 docker-compose
 discord
+bat
