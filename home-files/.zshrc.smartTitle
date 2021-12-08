@@ -51,7 +51,7 @@ function vhoyer_termsupport_preexec {
   local CMD=${1[(wr)^(*=*|sudo|ssh|mosh|rake|-*)]:gs/%/%%}
   local LINE="${2:gs/%/%%}"
 
-  title '$CMD' '%100>...>$LINE%<<@${PWD##*/}'
+  title "$CMD" "%100>...>$LINE%<<@${PWD##*/}"
 }
 
 autoload -Uz add-zsh-hook
