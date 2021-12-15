@@ -138,7 +138,9 @@ docker:
 	sudo systemctl start docker.service
 	sudo systemctl enable docker.service
 	# Allow docker without "sudo"
+	sudo groupadd docker || echo "group 'docker' already exists"
 	sudo usermod -aG docker ${USER}
+	newgrp docker
 
 aws:
 	# https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
