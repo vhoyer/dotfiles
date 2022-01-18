@@ -121,6 +121,15 @@ nnoremap <f1> <esc>:Helptags<cr>
 " :Filetypes      " File types
 
 "
+" Plug 'junegunn/vim-easy-align'
+"
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+"
 " stefandtw/quickfix-reflector.vim
 "
 " let g:qf_modifiable = 1 "If 1, automatically sets quickfix buffers 'modifiable'. Default: 1
