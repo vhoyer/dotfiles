@@ -82,3 +82,7 @@ set nrformats+=alpha
 silent !mkdir ~/tmp > /dev/null 2>&1
 set directory=~/tmp
 set backupdir=~/tmp
+
+" on a ultra wide monitor with three vertical splits, that's the displayed
+" number of characters per window
+set colorcolumn=88
