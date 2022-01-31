@@ -14,7 +14,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'mattn/emmet-vim'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vhoyer/vim-vue' " Plug 'posva/vim-vue'
+Plug 'vhoyer/vim-vue', { 'branch': 'add-support-for-gridsome-graphql' } " Plug 'posva/vim-vue'
 Plug 'ruanyl/vim-gh-line'
 Plug 'sheerun/vim-polyglot'
 Plug 'simnalamburt/vim-mundo'
