@@ -83,6 +83,6 @@ silent !mkdir ~/tmp > /dev/null 2>&1
 set directory=~/tmp
 set backupdir=~/tmp
 
-" on a ultra wide monitor with three vertical splits, that's the displayed
-" number of characters per window
-set colorcolumn=88
+" on a ultra wide monitor with three vertical splits, 88 is the displayed
+" number of characters per window, and 120 is just the reasonable default
+set colorcolumn=88,120
