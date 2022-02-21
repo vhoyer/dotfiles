@@ -16,7 +16,7 @@
 	revert-menu = "!revertMenu() {\
 		file='/tmp/revert-menu' \
 		&& echo '# lines prepended with an \"k\" are keept while with an \"r\" are reverted' >$file \
-		&& git log --oneline --max-count=20 --format=format:'%h %s' | sed -e 's/^/k /' >>$file \
+		&& git log --oneline --max-count=${1:-20} --format=format:'%h %s' | sed -e 's/^/k /' >>$file \
 		&& $EDITOR $file +':setfiletype RevertMenu' \
 		&& sed -e '/^#/d' -e '/^k/d' -e 's/r \\(\\w\\+\\).*/\\1/' -in $file \
 		&& xargs -I{} git revert {} <$file;\
