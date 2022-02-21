@@ -79,6 +79,9 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git fzf npm ripgrep sudo)
 
+[ -f ~/.local.zshrc ] && . ~/.local.zshrc
+[ -f ~/.zshrc.local ] && . ~/.zshrc.local
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -96,9 +99,6 @@ if (which nvim > /dev/null 2>&1); then
 else
   export EDITOR='vim'
 fi
-
-[ -f ~/.local.zshrc ] && . ~/.local.zshrc
-[ -f ~/.zshrc.local ] && . ~/.zshrc.local
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
