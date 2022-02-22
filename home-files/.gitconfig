@@ -61,6 +61,9 @@
 		$EDITOR /tmp/new-branch-name;\
 		</tmp/new-branch-name xargs -I{} git branch -m {};\
 		}; branchrename"
+	update-base = "!frmcc() { \
+		git f && git rb && git merge - --no-edit || git ch --theirs . && git commit --no-edit; \
+		}; frmcc"
 	#
 	# shorthands
 	#
@@ -70,6 +73,7 @@
 	clb = clear-local-branches
 	pp = pull-preview
 	pd = pull-diff
+	ub = update-base
 	#
 	# general
 	#
