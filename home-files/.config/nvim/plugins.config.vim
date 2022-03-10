@@ -216,6 +216,12 @@ let g:airline#extensions#tabline#show_splits = 0
 let g:peekaboo_delay = 1000
 
 "
+" Plug 'tpope/vim-rhubarb'
+"
+
+noremap <leader>gb :GBrowse<cr>
+
+"
 " Plug 'tpope/vim-scriptease'
 "
 
