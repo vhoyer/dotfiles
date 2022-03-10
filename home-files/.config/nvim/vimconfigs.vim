@@ -1,6 +1,9 @@
 " highlight current search
 set hlsearch
 
+" this can be overruled by using "\c" or "\C" in the pattern
+set ignorecase
+
 " THIS IS A MUST, I dunno why this is not default, not having this makes using
 " macros painful!!! With this macros is practically instant
 set lazyredraw
