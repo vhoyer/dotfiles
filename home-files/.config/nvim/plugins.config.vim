@@ -170,6 +170,10 @@ augroup BlameLine
 	autocmd BufEnter * EnableBlameLine
 augroup END
 
+highlight NvimBlameLine guifg=#504945 ctermfg=239 guibg=NONE ctermbg=NONE gui=italic cterm=italic
+" Specify the highlight group used for the virtual text ('Comment' by default)
+let g:blameLineVirtualTextHighlight = 'NvimBlameLine'
+
 "
 " Plug 'tpope/vim-fugitive'
 "
