@@ -1,3 +1,4 @@
+" plugins saved to {stdpath('data') . '/plugged'} by default
 call plug#begin()
 
 Plug 'Lokaltog/neoranger'
