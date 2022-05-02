@@ -15,7 +15,6 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'mattn/emmet-vim'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile' }
-Plug 'ruanyl/vim-gh-line'
 Plug 'sheerun/vim-polyglot'
 Plug 'simnalamburt/vim-mundo'
 Plug 'stefandtw/quickfix-reflector.vim'

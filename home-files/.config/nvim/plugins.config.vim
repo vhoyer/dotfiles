@@ -162,11 +162,6 @@ let g:user_emmet_mergelines_key = '<C-e>m'
 let g:user_emmet_codepretty_key = '<C-e>c'
 
 "
-" Plug 'posva/vim-vue'
-"
-let g:vue_pre_processors = 'detect_on_enter'
-
-"
 " Plug 'tpope/vim-fugitive'
 "
 nnoremap <leader>b <esc>:Git blame<cr>
