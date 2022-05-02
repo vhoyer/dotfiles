@@ -162,6 +162,15 @@ let g:user_emmet_mergelines_key = '<C-e>m'
 let g:user_emmet_codepretty_key = '<C-e>c'
 
 "
+" Plug 'tveskag/nvim-blame-line'
+"
+nnoremap <silent> <leader>bl :ToggleBlameLine<CR>
+augroup BlameLine
+	autocmd!
+	autocmd BufEnter * EnableBlameLine
+augroup END
+
+"
 " Plug 'tpope/vim-fugitive'
 "
 nnoremap <leader>b <esc>:Git blame<cr>
