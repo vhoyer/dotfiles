@@ -1,4 +1,4 @@
-" plugins saved to {stdpath('data') . '/plugged'} by default
+" plugins saved to {stdpath('data').'/plugged'='~/.local/share/nvim/plugged'} by default
 call plug#begin()
 
 Plug 'Lokaltog/neoranger'
