@@ -7,11 +7,6 @@ if has('nvim')
 	augroup END
 endif
 
-augroup CocRelated
-	autocmd!
-	autocmd CursorHold * silent call CocActionAsync('highlight')
-augroup END
-
 augroup ReloadThingsIfConfigFilesChanges
 	autocmd!
 	autocmd BufWritePost */.i3/* !i3-msg reload
