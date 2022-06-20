@@ -11,3 +11,4 @@ xsel
 docker-compose
 discord
 bat
+shfmt
