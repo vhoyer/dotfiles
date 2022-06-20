@@ -30,6 +30,7 @@ let g:coc_global_extensions = [
 			\ 'coc-vimlsp',
 			\ 'coc-tailwindcss',
 			\ 'coc-stylelintplus',
+			\ 'coc-diagnostic',
 			\]
 
 noremap <leader>r <esc>:e!<cr>:CocRestart<cr>
