@@ -90,6 +90,19 @@ command! -bang -nargs=* LoadTemplate call fzf#run({
 			\ })
 
 "
+" generate ctags file for a language
+"
+function! s:ExecuteScript(language)
+	execute '! ~/.config/nvim/ctags-generation/'.a:language
+endfunction
+
+command! -bang -nargs=* GenerateTags call fzf#run({
+			\   'source': 'ls -1 ~/.config/nvim/ctags-generation/',
+			\   'down': 20,
+			\   'sink': function('<sid>ExecuteScript')
+			\ })
+
+"
 " key mappings
 "
 " :Files [PATH]   " Files (similar to :FZF)
