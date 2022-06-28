@@ -110,3 +110,46 @@ else
 	" open terminal on vertical split
 	nnoremap <silent> <leader>T <esc>:vertical terminal<cr>
 endif
+
+"
+" copy to clipboard current link to GitHub
+"
+function! s:GithubLinkToClipboard(line1, count)
+	let remote = 'origin'
+
+	let default_branch = system('git config --get init.defaultBranch')
+	let default_branch = substitute(default_branch, '[\x0]', '', 'g')
+	" 'main'
+	let current_branch = system('git status -sb | head -1')
+	let current_branch = substitute(current_branch, '[\x0]\|^##\s', '', 'g')
+	" 'feat-branch...origin/feat-branch' | 'feat-branch'
+
+	let branch = (default_branch)
+	let regex_has_remote = ('\.\.\.'.remote.'\/')
+	if matchstr(current_branch, regex_has_remote) > -1
+		let branch = substitute(current_branch, '^.*'.regex_has_remote, '', '')
+	endif
+
+	let fetch = system('git remote show '.remote.' -n | grep "Fetch URL"')
+	let fetch = substitute(fetch, '^.*URL:\s\+\|[\x0]', '', 'g')
+	" 'git@github.com:/quero-edu/quero-cli'
+	let user = substitute(fetch, '.*\/\([^/]\+\)\/\([^/]\+\)$', '\1', '')
+	let repo = substitute(fetch, '.*\/\([^/]\+\)\/\([^/]\+\)$', '\2', '')
+
+	let file = expand('%p')
+
+	let lines = ''
+	let line1 = a:count > 0 ? a:line1 : 0
+	let line2 = a:count > 0 ? a:count : 0
+	if (line2 > 0 && line1 == line2)
+		let lines = ('\#L'.line1)
+	elseif (line1 > 0 && line2 > 0)
+		let lines = ('\#L'.line1.'-L'.line2)
+	endif
+
+	let link = ('https://github.com/'.user.'/'.repo.'/blob/'.branch.'/'.file.lines)
+
+	exec '!echo '.shellescape(link).' | xclip -selection clipboard -in'
+endfunction
+command! -range=-1 GithubLinkToClipboard :call <SID>GithubLinkToClipboard(<line1>, <count>)
+noremap <leader>gl :GithubLinkToClipboard<CR>
