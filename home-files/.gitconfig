@@ -26,6 +26,13 @@
 		&& git pull; \
 		git checkout -;\
 		}; gitmup"
+	homolog-push = "!homologPush() {\
+		git checkout homolog;\
+		git fetch --prune;\
+		git reset --hard @{u};\
+		git merge - --no-edit && git push &&\
+		git checkout -;\
+		}; homologPush"
 	prefix-it = "!gitsuffixit() { \
 		[ $1 ] \
 		&& git branch -m \"$1-$(git branch --show-current)\" \
