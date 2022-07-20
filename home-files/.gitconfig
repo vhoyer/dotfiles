@@ -87,6 +87,7 @@
 	g = "!gitagain() { git \"$@\"; }; gitagain"
 	ad = add -p
 	ada = add -A
+	dog = log --decorate --oneline --graph
 	adog = log --all --decorate --oneline --graph
 	ch = checkout
 	co = commit
