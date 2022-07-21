@@ -26,7 +26,7 @@ let g:coc_global_extensions = [
 			\ 'coc-json',
 			\ 'coc-tabnine',
 			\ 'coc-tsserver',
-			\ 'coc-vetur',
+			\ '@yaegassy/coc-volar',
 			\ 'coc-vimlsp',
 			\ 'coc-tailwindcss',
 			\ 'coc-stylelintplus',

@@ -26,8 +26,5 @@
       // should be split into two strings, the flag and then the value
       "args": ["-i", "2", "-bn", "-ci", "-sr"]
     }
-  },
-  "vetur.completion.tagCasing": "initial",
-  "vetur.validation.template": true,
-  "vetur.experimental.templateInterpolationService": false
+  }
 }
