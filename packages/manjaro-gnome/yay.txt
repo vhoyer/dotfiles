@@ -5,4 +5,5 @@ spotify
 franz
 ibus
 ibus-anthy
+ibus-mozc
 ibus-mozc-uc
