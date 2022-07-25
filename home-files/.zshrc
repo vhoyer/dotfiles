@@ -47,8 +47,8 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
-
-source $HOME/.zshrc.smartTitle
+# "smart-title" is being loaded by the "vhdot module system" system near the
+# end of this file.
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -115,3 +115,11 @@ alias rng="ranger"
 alias n="npm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+###
+# "vhdot module system"
+#
+VHDOT_MODULE_FILE="$("$HOME/dotfiles/scripts/vhdotmodule.sh" modulefile)"
+for vhdm in $(<"$VHDOT_MODULE_FILE"); do
+  source "$HOME/.dotfiles/zshrc-modules/.zshrc.$vhdm"
+done

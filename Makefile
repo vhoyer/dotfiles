@@ -78,8 +78,10 @@ i3lock-color:
 oh-my-zsh:
 	sudo chsh -s /bin/zsh ${USER}
 	curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh || echo 'I think oh-my-zsh already exists'
+	rm -rf ${HOME}/.dotfiles/
 	ln -fs $(realpath ./home-files/.zshrc) ${HOME}
-	ln -fs $(realpath ./home-files/.zshrc.smartTitle) ${HOME}
+	ln -fs $(realpath ./home-files/.dotfiles) ${HOME}
+	./scripts/vhdotmodule.sh add smart-title
 
 dotconfig:
 	for x in ranger mimeapps.list; do rm -rf ${HOME}/.config/$$x; done
