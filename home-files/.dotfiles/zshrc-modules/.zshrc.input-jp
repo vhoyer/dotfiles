@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+# https://forum.manjaro.org/t/japanese-ime-enablement/29723
+# https://wiki.archlinux.org/title/Fcitx#Set_environment_variables_for_IM_modules
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
