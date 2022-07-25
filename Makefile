@@ -160,8 +160,3 @@ kubectl:
 	sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 	kubectl version --client
 	rm kubectl*
-
-input-jp:
-	yay -S --nodiffmenu --nocleanmenu $$(cat ./packages/manjaro-gnome/input-jp.txt)
-	gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/IMModule':<'fcitx'>}"
-	./scripts/vhdotmodule.sh add input-jp
