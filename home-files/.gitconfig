@@ -88,6 +88,7 @@
 	ad = add -p
 	ada = add -A
 	dog = log --decorate --oneline --graph
+	doguh = log --decorate --oneline --graph @{u} HEAD
 	adog = log --all --decorate --oneline --graph
 	ch = checkout
 	co = commit
