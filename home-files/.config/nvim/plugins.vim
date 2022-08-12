@@ -1,7 +1,6 @@
 " plugins saved to {stdpath('data').'/plugged'='~/.local/share/nvim/plugged'} by default
 call plug#begin()
 
-Plug 'Lokaltog/neoranger'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'editorconfig/editorconfig-vim'
@@ -26,6 +25,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tveskag/nvim-blame-line'
 Plug 'unblevable/quick-scope'
+Plug 'vhoyer/neoranger', { 'branch': 'patch-1' } " Plug 'Lokaltog/neoranger'
 Plug 'vhoyer/vim-vue', { 'branch': 'add-support-for-gridsome-graphql' } " Plug 'posva/vim-vue'
 Plug 'vim-airline/vim-airline'
 Plug 'wakatime/vim-wakatime'
