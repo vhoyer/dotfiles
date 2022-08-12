@@ -42,9 +42,53 @@ set completeopt=menuone,noselect
 set spell
 
 " Set cute characters
-set fillchars=fold:-,vert:\│
+set fillchars=fold:\ ,vert:\│
 set list
 set listchars=tab:┆\ ,eol:¬,trail:•,extends:❯,precedes:❮,nbsp:⍽
+
+if has('folding')
+	" custom function to define what is shown when fold closed
+	function! FoldText() abort
+		let l:commentline_start_dictionary = {
+					\ 'vim': '"',
+					\ 'make': '#',
+					\ 'sh': '#',
+					\}
+		let l:commentline_start = get(l:commentline_start_dictionary, &filetype, '//')
+
+		" meta information after the line
+		let l:lines = l:commentline_start.' '.(v:foldend - v:foldstart + 1).' lines'
+
+		" make the folded preview have the same indent as the original line
+		let l:first = substitute(getline(v:foldstart), '\(^\|\t\)\@<=\t', repeat(' ', &tabstop), 'g')
+		let l:first = substitute(l:first, '^ ', '+', '')
+
+		return l:first . ' ' . l:lines
+	endfunction
+
+	set foldmethod=indent " how the folding is processed, other values: syntax,manual
+	set foldlevelstart=99 " start unfolded
+	set foldtext=FoldText() " call custom function
+
+	function HLFold() abort
+		let l:guibg=synIDattr(hlID("Normal"), "bg", "GUI")
+		let l:guifg=synIDattr(hlID("Comment"), "fg", "GUI")
+		let l:ctermbg=synIDattr(hlID("Normal"), "bg", "cterm")
+		let l:ctermfg=synIDattr(hlID("Comment"), "fg", "cterm")
+
+		let l:histring = ['highlight Folded',
+					\ 'guifg=' . l:guifg, 'ctermfg=' . l:ctermfg,
+					\ 'guibg=' . l:guibg, 'ctermbg=' . l:ctermbg,
+					\ 'gui=NONE', 'cterm=NONE'
+					\ ]
+
+		execute join(l:histring, ' ')
+	endfunction
+	augroup FoldSyntax
+		autocmd!
+		autocmd Syntax * call HLFold()
+	augroup END
+endif
 
 " open new tab on the bottom and on the right
 set splitbelow
