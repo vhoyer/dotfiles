@@ -3,7 +3,14 @@
 "
 let g:neoranger_opts='--cmd="set show_hidden true"'
 let g:neoranger_viewmode='miller'
-nnoremap <leader>n <esc>:RangerCurrentFile<cr>
+function! OpenRanger()
+	try
+		RangerCurrentFile
+	catch
+		Ranger
+	endtry
+endfunction
+nnoremap <silent> <leader>n <esc>:call OpenRanger()<cr>
 
 "
 " Plug 'morhetz/gruvbox'
