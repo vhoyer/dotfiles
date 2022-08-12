@@ -132,3 +132,6 @@ import
 SFC
 CDN
 output
+falsy
+truthy
+shellcheck
