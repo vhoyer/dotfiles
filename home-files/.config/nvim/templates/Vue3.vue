@@ -1,6 +1,6 @@
 <template>
   <div>
-    oi
+    <% expand('%:t:r') %>
   </div>
 </template>
 
