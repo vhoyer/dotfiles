@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <%= expand('%:t:r') %>
-  </div>
+  <%= expand('%:t:r') %>
 </template>
 
 <script setup>
