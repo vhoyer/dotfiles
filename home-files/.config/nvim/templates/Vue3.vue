@@ -1,6 +1,6 @@
 <template>
   <div>
-    <% expand('%:t:r') %>
+    <%= expand('%:t:r') %>
   </div>
 </template>
 

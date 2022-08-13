@@ -88,13 +88,16 @@ function! s:ReadTemplateIntoBuffer(template)
 	" Remove all trailing whitespace only line at the end of the file
 	execute '%s/\($\n\s*\)\+\%$//'
 
-	" <%\s*\(.\{-}\)\s*%>
-	" TODO: Make template interpolation actually work, because now, I'm just
-	" faking it :D
-	execute '%s/<%\s*expand(''%:t:r'')\s*%>/'.expand('%:t:r')."/"
+	let l:replacer_pattern = '<%=\s*\(.\{-}\)\s*%>'
+	call cursor(1, 1) " position cursor at the first char
+	while search(l:replacer_pattern, 'W') > 0
+		let l:replacer = matchstr(getline('.'), l:replacer_pattern)
+		let l:replacer = substitute(l:replacer, '^<%=\s*\|\s*%>$', '', 'g')
 
-	" Reposition cursor at the top of the file
-	normal gg
+		execute 's/<%=\s*'.l:replacer.'\s*%>/'.eval(l:replacer)."/"
+	endwhile
+
+	call cursor(1, 1) " reposition cursor at the top of the file
 endfunction
 
 command! -bang -nargs=* LoadTemplate call fzf#run({

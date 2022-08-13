@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: '<% expand('%:t:r') %>',
+  name: '<%= expand('%:t:r') %>',
 };
 </script>
 
