@@ -27,7 +27,8 @@ nnoremap <leader>w <esc>:w<cr>
 vnoremap ,s :sort<cr>
 
 " find replace in the same buffer
-vnoremap R y:%s/<C-R>"/<C-R>"/gc<left><left><left>
+" take extra steps to escape everything so the substitution always works
+vnoremap R "sy:let @p=escape(@s,'^$.*?/\\[]~')<cr>:let @s=escape(@s, '\\')<cr>:%s/<C-R>p/<C-R>s/gc<left><left><left>
 
 "
 " find replace inside visual line selection
