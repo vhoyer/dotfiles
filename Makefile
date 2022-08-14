@@ -41,6 +41,7 @@ npm:
 setup-manjaro-i3: system-config i3 oh-my-zsh dotconfig dotlocal vim st git fzf folder-mapping betterlockscreen
 setup-manjaro-gnome: system-config oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping
 setup-ubuntu: oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping
+setup-penguin: oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping
 
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
