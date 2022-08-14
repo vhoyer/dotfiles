@@ -10,7 +10,13 @@ endif
 syntax include @vimAll syntax/vim.vim
 unlet! b:current_syntax
 
-syn region embeddedvim matchgroup=Special start=/<%=/ keepend end=/%>/ contains=@vimAll containedin=ALL,javaScript
+" replacer
+syntax region embeddedvim_substitution matchgroup=Special start=/<%=/ keepend end=/%>/ contains=@vimAll containedin=ALL
+
+" cursor
+syntax region embeddedvim matchgroup=Special start=/<%\(=\)\@!/ keepend end=/%>/ containedin=ALL
+
+syntax keyword Statement cursor containedin=embeddedvim
 " }}}
 
 " Load the other syntax for the file based on sub.extension {{{

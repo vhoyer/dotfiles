@@ -6,5 +6,6 @@
     <title><%= expand('%:t:r') %></title>
   </head>
   <body>
+    <% cursor %>
   </body>
 </html>

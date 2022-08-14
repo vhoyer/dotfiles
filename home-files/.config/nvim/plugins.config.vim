@@ -98,6 +98,11 @@ function! s:ReadTemplateIntoBuffer(template)
 	endwhile
 
 	call cursor(1, 1) " reposition cursor at the top of the file
+
+	if search('<%\s*cursor\s*%>') > 0
+		" the ":s" command already positions the cursor at the place
+		execute '%s/<%\s*cursor\s*%>//g'
+	endif
 endfunction
 
 command! -bang -nargs=* LoadTemplate call fzf#run({
