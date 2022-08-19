@@ -65,7 +65,8 @@ nnoremap <c-n> <esc>:tabe %<cr><C-o>
 nnoremap <leader>r <esc>:e!<cr>
 
 " search for selected bit
-vnoremap // "yy/\<<c-r>y\><cr>N
+vnoremap // "yy:let @y=escape(@y,'^$.*?/\\[]~')<cr>/\<<c-r>y\><cr>N
+vnoremap ?? "yy:let @y=escape(@y,'^$.*?/\\[]~')<cr>/<c-r>y<cr>N
 
 "
 " super scroll
