@@ -123,3 +123,10 @@ VHDOT_MODULE_FILE="$("$HOME/dotfiles/scripts/vhdotmodule.sh" modulefile)"
 for vhdm in $(<"$VHDOT_MODULE_FILE"); do
   source "$HOME/.dotfiles/zshrc-modules/.zshrc.$vhdm"
 done
+
+# bun completions
+[ -s "/home/vhoyer/.bun/_bun" ] && source "/home/vhoyer/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
