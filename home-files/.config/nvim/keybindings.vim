@@ -68,12 +68,6 @@ nnoremap <leader>r <esc>:e!<cr>
 vnoremap // "yy:let @y=escape(@y,'^$.*?/\\[]~')<cr>/\<<c-r>y\><cr>N
 vnoremap ?? "yy:let @y=escape(@y,'^$.*?/\\[]~')<cr>/<c-r>y<cr>N
 
-"
-" super scroll
-"
-nnoremap <c-e> 6<c-e>
-nnoremap <c-y> 6<c-y>
-
 " apply the first suggestion for the bad spelled word
 nnoremap <leader>cw 1z=
 
