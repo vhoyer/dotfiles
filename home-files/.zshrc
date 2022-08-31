@@ -130,3 +130,8 @@ done
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/vhoyer/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
