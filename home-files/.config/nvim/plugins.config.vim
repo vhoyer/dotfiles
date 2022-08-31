@@ -52,6 +52,8 @@ nmap <F2> <Plug>(coc-rename)
 map <silent> [e <Plug>(coc-diagnostic-prev)
 map <silent> ]e <Plug>(coc-diagnostic-next)
 
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
 augroup CocRelated
 	autocmd!
 	autocmd CursorHold * silent call CocActionAsync('highlight')
