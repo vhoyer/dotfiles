@@ -114,8 +114,6 @@ fi
 alias rng="ranger"
 alias n="npm"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 ###
 # "vhdot module system"
 #
@@ -123,6 +121,12 @@ VHDOT_MODULE_FILE="$("$HOME/dotfiles/scripts/vhdotmodule.sh" modulefile)"
 for vhdm in $(<"$VHDOT_MODULE_FILE"); do
   source "$HOME/.dotfiles/zshrc-modules/.zshrc.$vhdm"
 done
+
+###
+# Auto inserted configuration
+#   for configs written by automated installation processes
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # bun completions
 [ -s "/home/vhoyer/.bun/_bun" ] && source "/home/vhoyer/.bun/_bun"
