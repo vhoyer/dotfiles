@@ -28,6 +28,7 @@ let g:coc_global_extensions = [
 			\ 'coc-css',
 			\ 'coc-dictionary',
 			\ 'coc-eslint',
+			\ 'coc-prettier',
 			\ 'coc-highlight',
 			\ 'coc-html',
 			\ 'coc-json',
