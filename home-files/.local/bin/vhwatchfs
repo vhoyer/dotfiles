@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PRGNAME="$(basename $0)"
+PRGNAME="$(basename "$0")"
 
 # BEGIN PARAMETERS
 # END PARAMETERS
@@ -12,30 +12,50 @@ for a detailed list of options, use: \`$PRGNAME --help\`
 HELPMSG="if you run '$PRGNAME <command>', it will run this command every time
 the file system detects a change in one of the files.
 
-  -h		short help message
-  --help	display this message
+  -h		 short help message
+  --help	 display this message
+  -w <dir>,
+  --watch <dir>  what directory to watch
 "
 
+WATCH_DIR="."
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    "--help") printf "%s" "$HELPMSG" && exit 0 ;;
+    "-h") printf "%s"  "$SHORTHELP" && exit 0 ;;
+    "-w" | "--watch")
+      shift
+      WATCH_DIR="$1"
+      ;;
+    *) break ;;
+  esac
+  shift
+done
+
 watchFilesystemChange() {
+  running="Running..."
+  hr="==================================================================================="
   msg="\n\nWaiting for file changes to run command again, to cancel this behavior press CTRL-C"
   do_exec=0
-  chksum1=`chksumGenerate`;
+  chksum1="$(chksumGenerate)"
 
-  while [ true ]; do
+  while true; do
     if [ $do_exec ]; then
       clear
+      printf "\033[s%s\033[u" "$running"
 
-      eval "$@"
+      "$@" # EXECUTE THE COMMAND
 
-      echo $msg
+      printf "%s\n%s" "$hr" "$msg"
       unset do_exec
     fi
 
 
     # Repeat if changed
-    chksum2=`chksumGenerate`;
+    chksum2="$(chksumGenerate)"
     if [ "$chksum1" != "$chksum2" ]; then
-      chksum1=`chksumGenerate`;
+      chksum1="$(chksumGenerate)"
       do_exec=0
     fi
     sleep 0.1
@@ -45,23 +65,16 @@ watchFilesystemChange() {
 chksumGenerate() {
   # The -exec line make the find respect the .gitignore file
 
-  echo `find . \
+  find "$WATCH_DIR" \
     -not -path "./.git/*" \
     -not -path "./node_modules/*" \
     -not -path "*.snap" \
-    -exec sh -c 'for f do git check-ignore -q "$f" || printf '%s\n' "$f"; done' find-sh {} + \
-    -type f -printf "%T@ %p\n" |
-    md5sum |
-    cut -d " " -f 1`
+    -exec sh -c 'for f do git check-ignore -q "$f" || printf "%s\n" "$f"; done' find-sh {} + \
+    -type f -printf "%T@ %p\n" \
+    | md5sum \
+    | cut -d " " -f 1
 }
 
-case "$1" in
-  # you can insert your own options here to do stuff
-  "--help") printf "%s" "$HELPMSG" ;;
-  "-h") printf "%s"  "$SHORTHELP" ;;
-  *)
-    watchFilesystemChange $@
-    ;;
-esac
+watchFilesystemChange "$@"
 
 # vim:ts=8
