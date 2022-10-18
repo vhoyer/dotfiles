@@ -42,8 +42,7 @@ let g:coc_global_extensions = [
 			\]
 
 noremap <leader>r <esc>:e!<cr>:CocRestart<cr>
-nmap ,f <Plug>(coc-fix-current)
-nmap ,c <Plug>(coc-codeaction)
+nmap ,f <Plug>(coc-codeaction)
 
 " Formatting selected code.
 xmap ,=  <Plug>(coc-format-selected)
