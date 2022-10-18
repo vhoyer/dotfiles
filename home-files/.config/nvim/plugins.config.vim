@@ -66,9 +66,9 @@ inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 " Use <c-space> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+	inoremap <silent><expr> <c-space> coc#refresh()
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+	inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
 " Use K to show documentation in preview window.
@@ -256,8 +256,8 @@ augroup BlameLine
 augroup END
 
 augroup NvimBlameLineSyntax
-  autocmd! * <buffer>
-  autocmd Syntax * highlight NvimBlameLine guifg=#665c54 ctermfg=239 guibg=NONE ctermbg=NONE gui=italic cterm=italic
+	autocmd! * <buffer>
+	autocmd Syntax * highlight NvimBlameLine guifg=#665c54 ctermfg=239 guibg=NONE ctermbg=NONE gui=italic cterm=italic
 augroup END
 " Specify the highlight group used for the virtual text ('Comment' by default)
 let g:blameLineVirtualTextHighlight = 'NvimBlameLine'
