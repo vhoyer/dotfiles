@@ -283,6 +283,7 @@ let g:gh_open_command = 'google-chrome '
 "
 " Plug 'vim-airline/vim-airline'
 "
+
 " hide "-- INSERT --" cuz the statusline already show it
 set noshowmode
 
