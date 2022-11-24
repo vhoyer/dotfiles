@@ -33,6 +33,37 @@ Because I never remember that command:
 bash <(curl -s https://raw.githubusercontent.com/vhoyer/dotfiles/master/scripts/generate-ssh-key.sh) <your@email.here>
 ```
 
+## GPG key generation
+
+```sh
+# list all the keys in your key ring
+gpg --list-keys
+# create a new key (follow the wizard) (recommended: highest bits, 1y expiration)
+# after typing the passphrase, immediately begin performing random actions on
+# your pc to increase entropy
+gpg --full-generate-key
+# edit the key
+# it opens a console where you can type some commands
+# > list # to list all keys and sub keys
+# > key 0 # to select a key based on index (0 based)
+# > expire # to edit the expiration date of your key, you can use this to renew it
+gpg --edit-key <your@email.here>
+# change your passphrase
+gpg --passwd <your@email.here>
+```
+
+If you do renew your key, you should edit the expiration date of all your sub
+keys as well as the primary.
+
+It is possible to revoke your key in case of compromise, I will let future me
+search the process up if it is ever needed.
+
+If you need to move your configuration for GPG keys to a new computer, my
+recommendation it to zip the `~/.gnupg` folder, save it to a thumb drive and
+copy it over to the new machine. Just pay attention to the file permissions.
+
+Reference: https://www.youtube.com/watch?v=1vVIpIvboSg
+
 ## Quick start
 
 With all dependencies installed, you may clone the repository:

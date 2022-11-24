@@ -49,6 +49,7 @@ system-config:
 	ln -fs $(realpath ./home-files/.profile) ${HOME}
 	ln -fs $(realpath ./home-files/.xprofile) ${HOME}
 	ln -fs $(realpath ./home-files/.Xresources) ${HOME}
+	ln -fs $(realpath ./home-files/.gnupg/gpg-agent.conf) ${HOME}/.gnupg/
 
 i3:
 	rm -rf ${HOME}/.i3
