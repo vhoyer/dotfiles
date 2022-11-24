@@ -1,6 +1,7 @@
 [user]
 	name = Vinícius Hoyer
 	email = contact@vhoyer.dev
+	signingkey = contact@vhoyer.dev
 [init]
 	defaultBranch = main
 [core]
@@ -121,3 +122,7 @@
 	ff = only
 [init]
 	defaultBrnch = main
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
