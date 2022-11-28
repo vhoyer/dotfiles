@@ -1,3 +1,6 @@
+source ~/.config/nvim/ftplugin/_blocking.vim
+source ~/.config/nvim/ftplugin/_stringing.vim
+
 " tab/spaces stuffs
 set noexpandtab " transforms tabs into spaces
 set shiftround " round indent to a multiple of 'shiftwidth'

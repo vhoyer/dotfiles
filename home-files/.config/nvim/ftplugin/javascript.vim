@@ -1,3 +1,7 @@
+source ~/.config/nvim/ftplugin/_blocking.vim
+source ~/.config/nvim/ftplugin/_stringing.vim
+source ~/.config/nvim/ftplugin/_jslike-keybindings.vim
+
 setlocal suffixesadd+=.js,.json,/index.js,/package.json
 setlocal path+=.,,src,node_modules
 
