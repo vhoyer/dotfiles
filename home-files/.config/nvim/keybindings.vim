@@ -2,6 +2,8 @@ let mapleader = "\<Space>"
 
 " prevent opening of Ex mode, which I dont like :(
 nnoremap Q <nop>
+" prevent push to talk key from messing on insert mode
+inoremap <F9> <nop>
 
 "
 " esc key to jk in insert and command mode
