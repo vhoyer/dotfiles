@@ -151,3 +151,21 @@ function! s:GithubLinkToClipboard(line1, count)
 endfunction
 command! -range=-1 GithubLinkToClipboard :call <SID>GithubLinkToClipboard(<line1>, <count>)
 noremap <leader>gl :GithubLinkToClipboard<CR>
+
+"
+" inspect a commit sha/hash by spawning a git show on it
+"
+" this is basically a command to be used during interactive git rebasing
+"
+function! s:GitShowCommitHashUnderCursor()
+	let commit_hash = expand('<cword>')
+
+	" split screen
+	vsplit
+	" open the show command
+	exec 'terminal git show '.commit_hash
+	" enter insert mode to easily manipulate the terminal
+	normal i
+endfunction
+command! GitShowCommitHashUnderCursor :call s:GitShowCommitHashUnderCursor()
+noremap <leader>gs :GitShowCommitHashUnderCursor<CR>
