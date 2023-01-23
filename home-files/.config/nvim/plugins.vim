@@ -1,6 +1,8 @@
 " plugins saved to {stdpath('data').'/plugged'='~/.local/share/nvim/plugged'} by default
 call plug#begin()
 
+Plug 'MunifTanjim/nui.nvim' " required by: vuki656/package-info.nvim
+
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'editorconfig/editorconfig-vim'
@@ -28,6 +30,7 @@ Plug 'unblevable/quick-scope'
 Plug 'vhoyer/neoranger', { 'branch': 'patch-1' } " Plug 'Lokaltog/neoranger'
 Plug 'vhoyer/vim-vue', { 'branch': 'add-support-for-gridsome-graphql' } " Plug 'posva/vim-vue'
 Plug 'vim-airline/vim-airline'
+Plug 'vuki656/package-info.nvim'
 Plug 'wakatime/vim-wakatime'
 
 " script making
