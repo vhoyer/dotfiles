@@ -36,12 +36,12 @@ execute 'runtime! syntax/'.s:filetype.'.vim'
 unlet! b:current_syntax
 " }}}
 
-" exceptions for html {{{
-syn clear htmlTagError " it's ugly and I don't know how to get rid of this otherwise
-syn clear htmlError " it's ugly and I don't know how to get rid of this otherwise
-" }}}
+if s:filetype == 'html'
+	" it's ugly and I don't know how to get rid of this otherwise
+	syn clear htmlTagError
+	syn clear htmlError
+endif
 
 let b:current_syntax = "ejs"
 
 " vim: foldmethod=marker
-
