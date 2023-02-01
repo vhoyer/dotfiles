@@ -1,3 +1,4 @@
+github-cli
 nodejs
 npm
 python-pip
