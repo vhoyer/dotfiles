@@ -73,7 +73,13 @@
 		git f && git rb && git merge - --no-edit || git ch --theirs . && git commit --no-edit; \
 		}; frmcc"
 	interactive-change-branch = "!interactivechangebranch(){ \
-		git checkout \"$(git branch --sort=-committerdate | grep -v '^\\*' | sed -e 's/^\\s*//' | fzf)\"; \
+		git checkout \"$(\
+			git branch -a --sort=-committerdate \
+			| grep -v \"HEAD\\|\\<$(git branch --show-current)\\>\" \
+			| uniq \
+			| fzf\
+			| sed -e 's/remotes\\/[^/]\\+\\/\\|\\s->.*$\\|^\\s\\+//g' \
+			)\"; \
 		}; interactivechangebranch"
 	#
 	# shorthands
