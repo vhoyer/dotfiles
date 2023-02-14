@@ -102,10 +102,15 @@ set mouse=a
 set diffopt+=vertical
 
 " when wrapping a line, wrap around words not any-letter
-set wrap
 set linebreak
 set breakindent
 set breakindentopt=shift:2
+
+" when no wrapping a line, make sure the window displays everything
+set sidescrolloff=5
+
+" set default behavior to not wrap
+set nowrap
 
 " set a Vim theme options
 set background=dark
