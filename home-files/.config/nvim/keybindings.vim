@@ -169,3 +169,10 @@ function! s:GitShowCommitHashUnderCursor()
 endfunction
 command! GitShowCommitHashUnderCursor :call s:GitShowCommitHashUnderCursor()
 noremap <leader>gs :GitShowCommitHashUnderCursor<CR>
+
+function! s:LoremPicsum()
+	let url = 'https://picsum.photos/200/300'
+
+	exec 'normal i' . url
+endfunction
+command! Picsum :call s:LoremPicsum()
