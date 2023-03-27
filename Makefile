@@ -84,6 +84,9 @@ oh-my-zsh:
 	ln -fs $(realpath ./home-files/.zshrc) ${HOME}
 	ln -fs $(realpath ./home-files/.dotfiles) ${HOME}
 	./scripts/vhdotmodule.sh add smart-title
+	# install zplug
+	rm -rf ${HOME}/.zplug/
+	curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
 dotconfig:
 	for x in ranger mimeapps.list; do rm -rf ${HOME}/.config/$$x; done
