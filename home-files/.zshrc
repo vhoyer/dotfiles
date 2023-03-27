@@ -105,6 +105,7 @@ fi
 #
 source ~/.zplug/init.zsh
 
+# https://gitlab.com/raabf/gitmoji-fuzzy-hook
 zplug raabf/gitmoji-fuzzy-hook, from:gitlab
 
 # Install plugins if there are plugins that have not been installed
