@@ -116,7 +116,7 @@ alias n="npm"
 
 ###
 # "vhdot module system"
-#
+# load every "module" that has it's name present on the module file
 VHDOT_MODULE_FILE="$("$HOME/dotfiles/scripts/vhdotmodule.sh" modulefile)"
 for vhdm in $(<"$VHDOT_MODULE_FILE"); do
   source "$HOME/.dotfiles/zshrc-modules/.zshrc.$vhdm"

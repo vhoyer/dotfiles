@@ -20,6 +20,9 @@ done
 CMD="$1"
 shift
 
+##
+# add the text to the ZSH_MODULES file to be later loaded by /home-files/.zshrc
+# don't readd files that already exist
 add() {
   while [ $# -ne 0 ]; do
     case "$1" in
@@ -37,6 +40,8 @@ add() {
   <"/tmp/${PRGNAME}1" uniq >"$ZSH_MODULES"
 }
 
+##
+# remove module name from ZSH_MODULES file
 remove() {
   while [ $# -ne 0 ]; do
     case "$1" in
@@ -52,6 +57,8 @@ remove() {
   sed -ie "/^$1$/d" "$ZSH_MODULES"
 }
 
+##
+# return config file name to centralize where this file lies only on this file
 modulefile() {
   echo "$ZSH_MODULES"
 }
