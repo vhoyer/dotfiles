@@ -32,6 +32,10 @@ vnoremap ,s :sort<cr>
 " take extra steps to escape everything so the substitution always works
 vnoremap R "sy:let @p=escape(@s,'^$.*?/\\[]~')<cr>:let @s=escape(@s, '\\')<cr>:%s/<C-R>p/<C-R>s/gc<left><left><left>
 
+" execute on every matching line in the same buffer
+" take extra steps to escape everything so the substitution always works
+vnoremap G "sy:let @p=escape(@s,'^$.*?/\\[]~')<cr>:g/<C-R>p/
+
 "
 " find replace inside visual line selection
 " ref: https://www.reddit.com/r/vim/comments/9n45h2/mapping_only_in_visual_line_mode/
