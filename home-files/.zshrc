@@ -82,6 +82,9 @@ plugins=(git fzf npm ripgrep sudo)
 [ -f ~/.local.zshrc ] && . ~/.local.zshrc
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 
+# Load custom plugin for "vh" command (see https://github.com/vhoyer/vh-cli)
+plugins+=(vh)
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
