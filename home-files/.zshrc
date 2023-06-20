@@ -139,6 +139,9 @@ zplug load # --verbose
 alias rng="ranger"
 alias n="npm"
 
+# interactive cd
+alias vhcd='ranger --cmd="set show_hidden true" --choosedir=/tmp/vhcddir; cd "$(cat /tmp/vhcddir)" || exit 1'
+
 ###
 # "vhdot module system"
 # load every "module" that has it's name present on the module file
