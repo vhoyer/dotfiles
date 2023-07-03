@@ -23,8 +23,7 @@ augroup END
 
 augroup RemoveTrailingSpace
 	autocmd!
-	autocmd BufRead * let b:do_remove_trailing_space = index(['snap', 'diff'], expand('%:e')) < 0 " 1 is true, 0 is false
-	autocmd BufWritePre * if b:do_remove_trailing_space | %s/\s\+$//e
+	autocmd BufWritePre * if (index(['snapshot', 'diff'], &filetype) == -1) | %s/\s\+$//e
 augroup END
 
 augroup FiletypeOverride
