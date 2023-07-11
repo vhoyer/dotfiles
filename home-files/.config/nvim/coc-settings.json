@@ -2,6 +2,9 @@
   "eslint.trace.server": "verbose",
   "stylelintplus.autoFixOnSave": true,
   "eslint.autoFixOnSave": true,
+  "eslint.workingDirectories": [
+    { "mode": "auto" }
+  ],
   // https://github.com/neoclide/coc.nvim/wiki/Using-workspaceFolders
   /* "workspace.bottomUpFiletypes": [], */
   "workspace.workspaceFolderCheckCwd": true,
