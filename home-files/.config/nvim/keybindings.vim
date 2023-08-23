@@ -161,18 +161,17 @@ noremap <leader>gl :GithubLinkToClipboard<CR>
 "
 " this is basically a command to be used during interactive git rebasing
 "
-function! s:GitShowCommitHashUnderCursor()
-	let commit_hash = expand('<cword>')
-
+function! s:GitShowCommitHashUnderCursor(commit_hash)
 	" split screen
 	vsplit
 	" open the show command
-	exec 'terminal git show '.commit_hash
+	exec 'terminal git show '.a:commit_hash
 	" enter insert mode to easily manipulate the terminal
 	normal i
 endfunction
-command! GitShowCommitHashUnderCursor :call s:GitShowCommitHashUnderCursor()
-noremap <leader>gs :GitShowCommitHashUnderCursor<CR>
+command! -nargs=? -range GitShowCommitHashUnderCursor :call s:GitShowCommitHashUnderCursor(<args>)
+noremap <leader>gs :GitShowCommitHashUnderCursor expand('<cword>')<CR>
+vnoremap <leader>gs "yy:GitShowCommitHashUnderCursor '<c-r>y'<CR>
 
 function! s:LoremPicsum()
 	let url = 'https://picsum.photos/200/300'
