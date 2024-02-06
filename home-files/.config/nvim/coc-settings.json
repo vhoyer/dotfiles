@@ -1,14 +1,22 @@
 {
-  "eslint.trace.server": "verbose",
-  "stylelintplus.autoFixOnSave": true,
-  "eslint.autoFixOnSave": true,
-  "eslint.workingDirectories": [
-    { "mode": "auto" }
-  ],
   // https://github.com/neoclide/coc.nvim/wiki/Using-workspaceFolders
   /* "workspace.bottomUpFiletypes": [], */
   "workspace.workspaceFolderCheckCwd": true,
   "workspace.rootPatterns": [".git", ".hg", ".projections.json", ".eslintrc.js"],
+
+
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "stylelintplus.autoFixOnSave": true,
+
+
+  "eslint.autoFixOnSave": true,
+  "eslint.workingDirectories": [
+    { "mode": "auto" }
+  ],
+
+
   "diagnostic-languageserver.filetypes": {
     // lint `sh` (includes `bash`) files
     "sh": "shellcheck"
