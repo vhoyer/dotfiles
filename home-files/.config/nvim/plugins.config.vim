@@ -323,12 +323,6 @@ let g:peekaboo_delay = 1000
 noremap <leader>gb :GBrowse<cr>
 
 "
-" Plug 'vuki656/package-info.nvim'
-"
-
-lua require('plugin-config.package-info')
-
-"
 " Plug 'tpope/vim-scriptease'
 "
 
