@@ -1,3 +1,0 @@
-#!/bin/sh
-# shellcheck disable=SC2046
-ctags -R --languages=ruby --exclude=.git --exclude=log --exclude=tmp . $(bundle list --paths)
