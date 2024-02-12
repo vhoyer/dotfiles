@@ -41,7 +41,20 @@ call s:PlugSetup(['junegunn/vim-easy-align'])
 call s:PlugSetup(['junegunn/vim-peekaboo'])
 call s:PlugSetup(['mattn/emmet-vim'])
 call s:PlugSetup(['morhetz/gruvbox'])
-call s:PlugSetup(['neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile' }])
+" call s:PlugSetup(['neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile' }])
+call s:PlugSetup(
+			\ ['hrsh7th/cmp-nvim-lsp'],
+			\ ['hrsh7th/cmp-buffer'],
+			\ ['hrsh7th/cmp-path'],
+			\ ['hrsh7th/cmp-cmdline'],
+			\ ['hrsh7th/nvim-cmp'],
+			\
+			\ ['stevearc/dressing.nvim'],
+			\
+			\ ['williamboman/mason.nvim'],
+			\ ['williamboman/mason-lspconfig.nvim'],
+			\ ['neovim/nvim-lspconfig'],
+			\ )
 call s:PlugSetup(['sheerun/vim-polyglot'])
 call s:PlugSetup(['simnalamburt/vim-mundo'])
 call s:PlugSetup(['stefandtw/quickfix-reflector.vim'])
