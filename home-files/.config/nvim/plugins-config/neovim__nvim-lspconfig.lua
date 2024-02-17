@@ -71,6 +71,14 @@ lspconfig.bashls.setup({
 	capabilities = capabilities,
 })
 
+lspconfig.dockerls.setup({
+	capabilities = capabilities,
+})
+
+lspconfig.docker_compose_language_service.setup({
+	capabilities = capabilities,
+})
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', ',e', vim.diagnostic.open_float)
@@ -96,15 +104,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end, opts)
 
 		vim.keymap.set('n', ',d', vim.lsp.buf.definition, opts)
-		vim.keymap.set('n', ',D', vim.lsp.buf.type_definition, opts)
+		vim.keymap.set('n', ',D', vim.lsp.buf.declaration, opts)
+		vim.keymap.set('n', ',t', vim.lsp.buf.type_definition, opts)
 		vim.keymap.set('n', ',i', vim.lsp.buf.implementation, opts)
 		vim.keymap.set('n', ',r', vim.lsp.buf.references, opts)
 		vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
 
 		vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 		vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-
-		vim.keymap.set('n', ',dd', vim.lsp.buf.declaration, opts)
 
 		vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
 		vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
