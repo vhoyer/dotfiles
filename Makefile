@@ -38,10 +38,11 @@ npm:
 # Configurations:
 #
 
-setup-manjaro-i3: system-config i3 oh-my-zsh dotconfig dotlocal vim st git fzf folder-mapping betterlockscreen
-setup-manjaro-gnome: system-config oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping
-setup-ubuntu: oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping
-setup-penguin: oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping
+setup-shared: oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping vh-cli
+setup-manjaro-i3: setup-shared system-config i3 vim st betterlockscreen
+setup-manjaro-gnome: setup-shared system-config
+setup-ubuntu: setup-shared
+setup-penguin: setup-shared
 
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
@@ -165,3 +166,10 @@ kubectl:
 	sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 	kubectl version --client
 	rm kubectl*
+
+vh-cli:
+	mkdir -p ${HOME}/src/
+	rm -rf ${HOME}/src/vh-cli
+	git clone git@github.com:vhoyer/vh-cli.git ${HOME}/src/vh-cli
+	cd ${HOME}/src/vh-cli; make install
+	cd ${HOME}/src/vh-cli; make install-oh-my-zsh-tab-completion
