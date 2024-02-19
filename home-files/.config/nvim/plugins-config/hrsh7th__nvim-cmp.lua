@@ -3,7 +3,7 @@ local cmp = require('cmp')
 
 cmp.setup({
 		completion = {
-			completeopt = 'menu,menuone,preview,noinsert',
+			completeopt = 'menu,menuone,preview,noinsert,noselect',
 		},
 		snippet = {
 			-- REQUIRED - you must specify a snippet engine
