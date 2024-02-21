@@ -3,7 +3,11 @@ local cmp = require('cmp')
 
 cmp.setup({
 		completion = {
+			-- Like vim's completeopt setting. See 'completeopt'.
 			completeopt = 'menu,menuone,preview,noinsert,noselect',
+			-- The event to trigger autocompletion. If set to `false`, then
+			-- completion is only invoked manually (e.g. by calling `cmp.complete`).
+			autocomplete = false,
 		},
 		snippet = {
 			-- REQUIRED - you must specify a snippet engine
