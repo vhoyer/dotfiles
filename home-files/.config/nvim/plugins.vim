@@ -44,6 +44,7 @@ call s:PlugSetup(['morhetz/gruvbox'])
 " call s:PlugSetup(['neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile' }])
 call s:PlugSetup(
 			\ ['hrsh7th/cmp-nvim-lsp'],
+			\ ['hrsh7th/cmp-nvim-lsp-signature-help'],
 			\ ['hrsh7th/cmp-buffer'],
 			\ ['hrsh7th/cmp-path'],
 			\ ['hrsh7th/cmp-cmdline'],
