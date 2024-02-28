@@ -80,6 +80,7 @@ lspconfig.docker_compose_language_service.setup({
 })
 
 -- Global mappings.
+vim.keymap.set('n', ',R', ':LspRestart<CR>')
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', ',e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[e', vim.diagnostic.goto_prev)
