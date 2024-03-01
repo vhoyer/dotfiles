@@ -79,6 +79,10 @@ lspconfig.docker_compose_language_service.setup({
 	capabilities = capabilities,
 })
 
+lspconfig.cssls.setup({
+	capabilities = capabilities,
+})
+
 -- Global mappings.
 vim.keymap.set('n', ',R', ':LspRestart<CR>')
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
