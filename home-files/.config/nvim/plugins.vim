@@ -26,6 +26,10 @@ endfunction
 " plugins saved to {stdpath('data').'/plugged'='~/.local/share/nvim/plugged'} by default
 call plug#begin()
 
+call s:PlugSetup(
+			\ ['nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}],
+			\ ['nvim-treesitter/nvim-treesitter-context'],
+			\ )
 call s:PlugSetup(['airblade/vim-gitgutter'])
 call s:PlugSetup(['ap/vim-css-color'])
 call s:PlugSetup(['editorconfig/editorconfig-vim'])
