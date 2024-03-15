@@ -1,3 +1,8 @@
+" https://github.com/junegunn/fzf/blob/master/README-VIM.md
+
+" open fzf in a new window instead of floating window (default)
+let g:fzf_layout = { 'window': 'new' }
+
 " make FZF see hidden lines in :Files<cr>
 let $FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l \"\""
 
@@ -30,11 +35,12 @@ function! s:ReadTemplateIntoBuffer(template)
 	endif
 endfunction
 
-command! -bang -nargs=* LoadTemplate call fzf#run({
+command! -bang -nargs=* LoadTemplate call fzf#run(fzf#wrap({
+			\   'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true },
+			\   'options': '--reverse',
 			\   'source': 'ls -1 ~/.config/nvim/templates',
-			\   'down': 20,
 			\   'sink': function('<sid>ReadTemplateIntoBuffer')
-			\ })
+			\ }))
 
 "
 " key mappings
