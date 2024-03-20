@@ -43,6 +43,20 @@ command! -bang -nargs=* LoadTemplate call fzf#run(fzf#wrap({
 			\ }))
 
 "
+" cd into a project
+"
+function! s:CdIntoProject(template)
+	execute 'cd ~/src/'.a:template
+endfunction
+
+command! -bang -nargs=* ChangeProject call fzf#run(fzf#wrap({
+			\   'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true },
+			\   'options': '--reverse',
+			\   'source': 'cd ~/src/ && rg --hidden --files --null | xargs -0 dirname | rg \.git$ | sort -u | sed -e ''s/\/\.git$//''',
+			\   'sink': function('<sid>CdIntoProject')
+			\ }))
+
+"
 " key mappings
 "
 
