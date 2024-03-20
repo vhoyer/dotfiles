@@ -125,3 +125,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end, opts)
 	end,
 })
+
+-- use undercurl instead of underline for diagnostics
+vim.cmd [[
+hi DiagnosticUnderlineError gui=undercurl
+hi DiagnosticUnderlineWarn gui=undercurl
+]]
