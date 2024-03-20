@@ -1,5 +1,8 @@
+" https://neovide.dev/configuration.html#underline-automatic-scaling
+
 let g:neovide_scale_factor = 0.75
 let g:neovide_underline_stroke_scale = 1.0
+let g:neovide_transparency = 0.9
 
 let g:neovide_scroll_animation_length = 0.15
 
@@ -10,8 +13,6 @@ let g:neovide_padding_left = 0
 
 let g:neovide_floating_blur_amount_x = 1.0
 let g:neovide_floating_blur_amount_y = 1.0
-
-let g:neovide_transparency = 0.8
 
 let g:neovide_theme = 'auto'
 
