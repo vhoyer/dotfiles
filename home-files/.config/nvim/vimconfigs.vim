@@ -128,7 +128,8 @@ set backupcopy=yes
 "set shortmess+=A
 
 " Also <C-a> and <C-x> letters
-set nrformats+=alpha
+" set nrformats+=alpha
+" I've decided that this is more annoying than useful
 
 " make all files vim creates stay away from git control
 silent !mkdir ~/tmp > /dev/null 2>&1
