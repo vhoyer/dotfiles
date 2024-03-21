@@ -4,10 +4,6 @@ if has('nvim')
 		autocmd TermOpen * setlocal nonumber
 		autocmd TermOpen * setlocal norelativenumber
 		autocmd TermOpen * setlocal nospell
-
-		" prevent [process exited] messages
-		" https://github.com/neovim/neovim/issues/14986
-		autocmd TermClose * execute 'bdelete! ' . expand('<abuf>')
 	augroup END
 endif
 
