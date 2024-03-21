@@ -20,7 +20,7 @@
 		&& git log --oneline --max-count=${1:-20} --format=format:'%h %s' | sed -e 's/^/k /' >>$file \
 		&& $EDITOR $file +':setfiletype RevertMenu' \
 		&& sed -e '/^#/d' -e '/^k/d' -e 's/r \\(\\w\\+\\).*/\\1/' -in $file \
-		&& xargs -I{} git revert {} <$file;\
+		&& xargs -I{} sh -c 'git revert {} && git commit --amend -m\":rewind: $(git show --format=%B --quiet)\"' <$file;\
 		}; revertMenu"
 	master-update = "!gitmup() {\
 		git checkout ${1:-$(git config --get init.defaultBranch)} \
