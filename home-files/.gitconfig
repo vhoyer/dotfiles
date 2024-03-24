@@ -136,3 +136,8 @@
 	gpgsign = true
 [tag]
 	gpgSign = true
+[rebase]
+	updateRefs = true
+	autoStash = true
+	autoSquash = true
+	stat = true
