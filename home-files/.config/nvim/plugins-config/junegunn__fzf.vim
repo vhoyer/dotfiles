@@ -1,7 +1,7 @@
 " https://github.com/junegunn/fzf/blob/master/README-VIM.md
 
 " open fzf in a new window instead of floating window (default)
-let g:fzf_layout = { 'window': 'new' }
+let g:fzf_layout = { 'window': 'enew' }
 
 " make FZF see hidden lines in :Files<cr>
 let $FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l \"\""
