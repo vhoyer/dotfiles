@@ -138,6 +138,6 @@
 	gpgSign = true
 [rebase]
 	updateRefs = true
-	autoStash = true
+	autoStash = false # this is an option from the Demon itself
 	autoSquash = true
 	stat = true
