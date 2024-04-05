@@ -4,6 +4,9 @@ if has('nvim')
 		autocmd TermOpen * setlocal nonumber
 		autocmd TermOpen * setlocal norelativenumber
 		autocmd TermOpen * setlocal nospell
+
+		" fix terminal width to the size it was when the terminal was opened
+		autocmd TermOpen * setlocal winfixwidth
 	augroup END
 endif
 
