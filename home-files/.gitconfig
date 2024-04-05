@@ -78,7 +78,7 @@
 			| grep -v \"HEAD\\|\\<$(git branch --show-current)\\>\" \
 			| uniq \
 			| fzf\
-			| sed -e 's/remotes\\/[^/]\\+\\/\\|\\s->.*$\\|^\\s\\+//g' \
+			| sed -e 's/remotes\\/[^/]\\+\\/\\|\\s->.*$\\|^\\s\\+//g' -e 's/^+\\s//g' \
 			)\"; \
 		}; interactivechangebranch"
 	#
