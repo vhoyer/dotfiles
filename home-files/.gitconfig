@@ -81,6 +81,13 @@
 			| sed -e 's/remotes\\/[^/]\\+\\/\\|\\s->.*$\\|^\\s\\+//g' -e 's/^+\\s//g' \
 			)\"; \
 		}; interactivechangebranch"
+	commit-with-local-tool = "!commitwithlocaltool() { \
+		if [ -f package.json ] && npm run | grep '^  \\S' | grep commit >/dev/null; then \
+			npm run commit; \
+		else \
+			gitmoji -c; \
+		fi; \
+		}; commitwithlocaltool"
 	#
 	# shorthands
 	#
@@ -92,6 +99,7 @@
 	pd = pull-diff
 	ub = update-base
 	cd = interactive-change-branch
+	c = commit-with-local-tool
 	#
 	# general
 	#
@@ -120,7 +128,6 @@
 	wp = rebase --continue
 	back = checkout HEAD~
 	next = "!git checkout $(git rev-list --topo-order HEAD..master | tail -1)"
-	c = "!gitmoji -c"
 	rb = reset --hard @{u}
 [push]
 	default = simple
