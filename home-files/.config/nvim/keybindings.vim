@@ -30,11 +30,11 @@ vnoremap ,s :sort<cr>
 
 " find replace in the same buffer
 " take extra steps to escape everything so the substitution always works
-vnoremap ,r "sy:let @p=escape(@s,'^$.*?/\\[]~')<cr>:let @s=escape(@s, '\\')<cr>:%s/<C-R>p/<C-R>s/gc<left><left><left>
+vnoremap ,r "sy:let @s=escape(@s,'^$.*?/\\[]~')<cr>:%s/<C-R>s/<C-R>s/gc<left><left><left>
 
 " execute on every matching line in the same buffer
 " take extra steps to escape everything so the substitution always works
-vnoremap ,g "sy:let @p=escape(@s,'^$.*?/\\[]~')<cr>:g/<C-R>p/
+vnoremap ,g "sy:let @s=escape(@s,'^$.*?/\\[]~')<cr>:g/<C-R>s/
 
 "
 " find replace inside visual line selection
