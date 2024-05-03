@@ -1,4 +1,6 @@
 let mapleader = "\<Space>"
+nmap <backspace> <leader>
+vmap <backspace> <leader>
 
 " prevent opening of Ex mode, which I dont like :(
 nnoremap Q <nop>
