@@ -3,6 +3,8 @@
 " open fzf in a floating window covering most of the current window on top of the current window
 let g:fzf_layout = { 'window': { 'width': 1, 'height': 1, 'relative': v:true } }
 
+let $FZF_DEFAULT_OPTS='--preview-window ''right,35%,border-left,<90(up,30%,border-bottom)'''
+
 " make FZF see hidden lines in :Files<cr>
 let $FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l \"\""
 
