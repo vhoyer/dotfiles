@@ -71,10 +71,10 @@ if has('folding')
 	set foldtext=FoldText() " call custom function
 
 	function HLFold() abort
-		let l:guibg=synIDattr(hlID("Normal"), "bg", "GUI")
-		let l:guifg=synIDattr(hlID("Comment"), "fg", "GUI")
-		let l:ctermbg=synIDattr(hlID("Normal"), "bg", "cterm")
-		let l:ctermfg=synIDattr(hlID("Comment"), "fg", "cterm")
+		let l:guibg=synIDattr(hlID("Normal"), "bg", "GUI") || 'NONE'
+		let l:guifg=synIDattr(hlID("Comment"), "fg", "GUI") || 'NONE'
+		let l:ctermbg=synIDattr(hlID("Normal"), "bg", "cterm") || 'NONE'
+		let l:ctermfg=synIDattr(hlID("Comment"), "fg", "cterm") || 'NONE'
 
 		let l:histring = ['highlight Folded',
 					\ 'guifg=' . l:guifg, 'ctermfg=' . l:ctermfg,
