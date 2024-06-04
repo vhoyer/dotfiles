@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  "runtime.version": "LuaJIT",
+  "workspace.checkThirdParty": false,
+  "workspace.library": ["$VIMRUNTIME/lua", "${3rd}/luv/library"],
+  "hint.enable": true,
+  "hint.setType": true,
+  "hint.arrayIndex": "Disable",
+  "diagnostics.disable": ["missing-fields"],
+  "telemetry.enable": false
+}
