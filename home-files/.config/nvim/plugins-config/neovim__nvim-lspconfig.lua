@@ -68,6 +68,10 @@ lspconfig.cssls.setup({
 	capabilities = capabilities,
 })
 
+lspconfig.tailwindcss.setup({
+	capabilities = capabilities,
+})
+
 -- Global mappings.
 vim.keymap.set('n', ',R', ':LspRestart<CR>')
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
