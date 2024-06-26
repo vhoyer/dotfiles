@@ -10,6 +10,7 @@ let $FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l \"\""
 
 " make :Rg<cr> see hidden files, cuz duh, why this is not default?
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --hidden --no-heading -g '!.git/*' --color=always --smart-case ".shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* RgFollow call fzf#vim#grep("rg --column --line-number --hidden --no-heading -g '!.git/*' --color=always --smart-case --follow ".shellescape(<q-args>), 1, <bang>0)
 
 "
 " choose from templates and apply to file
