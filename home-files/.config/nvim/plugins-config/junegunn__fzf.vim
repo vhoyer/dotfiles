@@ -9,8 +9,9 @@ let $FZF_DEFAULT_OPTS='--preview-window ''right,35%,border-left,<90(up,30%,borde
 let $FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l \"\""
 
 " make :Rg<cr> see hidden files, cuz duh, why this is not default?
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --hidden --no-heading -g '!.git/*' --color=always --smart-case ".shellescape(<q-args>), 1, <bang>0)
-command! -bang -nargs=* RgFollow call fzf#vim#grep("rg --column --line-number --hidden --no-heading -g '!.git/*' --color=always --smart-case --follow ".shellescape(<q-args>), 1, <bang>0)
+let s:rg_default_command = "rg --column --line-number --hidden --no-heading --ignore-file=".$HOME."/.global_rgignore --color=always --smart-case "
+command! -bang -nargs=* Rg call fzf#vim#grep(s:rg_default_command . shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* RgFollow call fzf#vim#grep(s:rg_default_command . '--follow ' .shellescape(<q-args>), 1, <bang>0)
 
 "
 " choose from templates and apply to file

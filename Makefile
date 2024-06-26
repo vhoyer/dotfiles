@@ -132,6 +132,7 @@ fzf:
 	rm -rf ${HOME}/.fzf
 	git clone --depth 1 https://github.com/junegunn/fzf.git ${HOME}/.fzf
 	${HOME}/.fzf/install --key-bindings --completion --update-rc
+	ln -s $(realpath ./home-files/.global_rgignore) ${HOME}
 
 sxhkd:
 	rm -rf ${HOME}/.config/sxhkd
