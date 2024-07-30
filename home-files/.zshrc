@@ -95,6 +95,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/bin/bin:$HOME/.local/npm/bin"
+export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # Preferred editor with fallback to default 'vim'
 if (which nvim > /dev/null 2>&1); then
@@ -167,3 +168,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PNPM_HOME="/home/vhoyer/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+# fnm
+FNM_PATH="/home/vhoyer/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/vhoyer/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+# fnm end

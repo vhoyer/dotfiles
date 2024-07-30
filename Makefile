@@ -18,10 +18,26 @@ flavor-manjaro-i3:
 flavor-wls-ubuntu:
 	$(eval SYSTEM := wls-ubuntu)
 
-install-pacman: pacman-yay npm
-install-apt: apt npm
+install-pacman: pacman-yay npm fnm
+install-apt: apt npm fnm
 
-apt:
+# apt install a very old nvim, so this makes up for it's shortcoming
+neovim:
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+	sudo rm -rf /opt/nvim
+	sudo tar -C /opt -xzf nvim-linux64.tar.gz
+
+fnm:
+	# installs fnm (Fast Node Manager)
+	curl -fsSL https://fnm.vercel.app/install | bash
+	# reset append that the above script made
+	git checkout ./home-files/.zshrc
+	# enable fnm
+	if [ -d "/home/vhoyer/.local/share/fnm" ]; then export PATH="/home/vhoyer/.local/share/fnm:$PATH"; eval "`fnm env`"; fi
+	# download and install Node.js
+	fnm use --install-if-missing 20
+
+apt: neovim
 	sudo apt update
 	sudo apt --yes upgrade
 	sudo apt --yes install $$(cat ./packages/$(SYSTEM)/apt.txt)
