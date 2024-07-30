@@ -29,13 +29,7 @@ neovim:
 
 fnm:
 	# installs fnm (Fast Node Manager)
-	curl -fsSL https://fnm.vercel.app/install | bash
-	# reset append that the above script made
-	git checkout ./home-files/.zshrc
-	# enable fnm
-	if [ -d "/home/vhoyer/.local/share/fnm" ]; then export PATH="/home/vhoyer/.local/share/fnm:$PATH"; eval "`fnm env`"; fi
-	# download and install Node.js
-	fnm use --install-if-missing 20
+	curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
 
 apt: neovim
 	sudo apt update
