@@ -173,6 +173,7 @@ export PATH="$PNPM_HOME:$PATH"
 FNM_PATH="/home/vhoyer/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="/home/vhoyer/.local/share/fnm:$PATH"
-  eval "`fnm env`"
+  eval "$(fnm env)"
+  eval "$(fnm completions)"
 fi
 # fnm end
