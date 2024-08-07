@@ -33,6 +33,7 @@ call s:PlugSetup(
 call s:PlugSetup(['airblade/vim-gitgutter'])
 call s:PlugSetup(['ap/vim-css-color'])
 call s:PlugSetup(['editorconfig/editorconfig-vim'])
+call s:PlugSetup(['f-person/auto-dark-mode.nvim'])
 call s:PlugSetup(['github/copilot.vim'])
 call s:PlugSetup(['hail2u/vim-css3-syntax'])
 call s:PlugSetup(['iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'}])
