@@ -137,11 +137,10 @@ zplug load # --verbose
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias rng="ranger"
 alias n="npm"
 
 # interactive cd
-alias vhcd='ranger --cmd="set show_hidden true" --choosedir=/tmp/vhcddir; cd "$(cat /tmp/vhcddir)" || exit 1'
+alias rng='ranger --cmd="set show_hidden true" --choosedir=/tmp/vhcddir; cd "$(cat /tmp/vhcddir)" || exit 1'
 
 ###
 # "vhdot module system"
