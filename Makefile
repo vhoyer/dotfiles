@@ -18,7 +18,7 @@ help:
 flavor-manjaro-gnome:
 	echo 'manjaro-gnome' > $(FILE_FLAVOR)
 	echo 'install-pacman' > $(FILE_MANAGER)
-	echo 'setup-shared system-config' > $(FILE_SETUP)
+	echo 'setup-shared system-config docker' > $(FILE_SETUP)
 flavor-manjaro-i3:
 	echo 'manjaro-i3' > $(FILE_FLAVOR)
 	echo 'install-pacman' > $(FILE_MANAGER)
