@@ -77,7 +77,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf npm ripgrep sudo)
+plugins=(git fzf npm sudo)
 
 [ -f ~/.local.zshrc ] && . ~/.local.zshrc
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
