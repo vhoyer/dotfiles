@@ -1,16 +1,12 @@
 github-cli
 nodejs
 npm
-python-pip
 ripgrep
 shellcheck
-yarn
 yay
 htop
 docker
 xsel
-docker-compose
-discord
 bat
 shfmt
 jq

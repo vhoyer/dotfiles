@@ -1,22 +1,39 @@
-#
-# Dependencies:
-#
+FILE_FLAVOR:=/tmp/dotfiles-flavor
+FILE_MANAGER:=/tmp/dotfiles-pkg-manager
+FILE_SETUP:=/tmp/dotfiles-setup
+
+$(shell touch ${FILE_FLAVOR})
+$(shell touch ${FILE_MANAGER})
+$(shell touch ${FILE_SETUP})
 
 help:
-	@echo "First install dependencies by running make with one of these options:"
-	@sed -n -e '/^\(#\|$$\|\t\)/d' -e's/:.*//' -e's/^install/\t\0/' -e'/^\t/p' <./Makefile
+	@echo "First choose the flavor you want for this installation:"
+	@sed -n -e '/^\(#\|$$\|\t\)/d' -e's/:.*//' -e's/^flavor/\t\0/' -e'/^\t/p' <./Makefile
 	@echo ""
-	@echo "After installing dependencies, run make with one of these options to \
-	configurate everything (or manually choose each recipe to run):"
-	@sed -n -e '/^\(#\|$$\|\t\)/d' -e's/:.*//' -e's/^setup/\t\0/' -e'/^\t/p' <./Makefile
+	@echo "Then run 'make setup' to configure everything according to the flavor choosen."
+	@echo "It's recommended to pay attention to the screen specially at the beginning of the setup,"
+	@echo "package managers may inquire for confirmations."
 	@echo ""
 
 flavor-manjaro-gnome:
-	$(eval SYSTEM := manjaro-gnome)
+	echo 'manjaro-gnome' > $(FILE_FLAVOR)
+	echo 'install-pacman' > $(FILE_MANAGER)
+	echo 'setup-shared system-config' > $(FILE_SETUP)
 flavor-manjaro-i3:
-	$(eval SYSTEM := manjaro-i3)
+	echo 'manjaro-i3' > $(FILE_FLAVOR)
+	echo 'install-pacman' > $(FILE_MANAGER)
+	echo 'setup-shared system-config i3 st betterlockscreen' > $(FILE_SETUP)
 flavor-wls-ubuntu:
-	$(eval SYSTEM := wls-ubuntu)
+	echo 'wls-ubuntu' > $(FILE_FLAVOR)
+	echo 'install-apt' > $(FILE_MANAGER)
+	echo 'setup-shared' > $(FILE_SETUP)
+
+install: $(shell cat ${FILE_MANAGER})
+setup: install $(shell cat ${FILE_FLAVOR})
+
+#
+# Dependencies:
+#
 
 install-pacman: pacman-yay npm fnm
 install-apt: apt npm fnm
@@ -34,11 +51,11 @@ fnm:
 apt: neovim
 	sudo apt update
 	sudo apt --yes upgrade
-	sudo apt --yes install $$(cat ./packages/$(SYSTEM)/apt.txt)
+	sudo apt --yes install $$(cat ./packages/$(shell cat ${FILE_FLAVOR})/apt.txt)
 
 pacman-yay:
-	sudo pacman -Syu --noconfirm $$(cat ./packages/$(SYSTEM)/pacman.txt)
-	yay -S --nodiffmenu --nocleanmenu $$(cat ./packages/$(SYSTEM)/yay.txt)
+	sudo pacman -Syu --noconfirm $$(cat ./packages/$(shell cat ${FILE_FLAVOR})/pacman.txt)
+	yay -S $$(cat ./packages/$(shell cat ${FILE_FLAVOR})/yay.txt)
 
 npm:
 	npm config set prefix ${HOME}/.local/npm
@@ -49,10 +66,6 @@ npm:
 #
 
 setup-shared: oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping vh-cli
-setup-manjaro-i3: setup-shared system-config i3 vim st betterlockscreen
-setup-manjaro-gnome: setup-shared system-config
-setup-ubuntu: setup-shared
-setup-penguin: setup-shared
 
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
