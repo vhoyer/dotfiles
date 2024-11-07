@@ -69,16 +69,14 @@ Reference: https://www.youtube.com/watch?v=1vVIpIvboSg
 With all dependencies installed, you may clone the repository:
 
 ```bash
-git clone https://github.com/vhoyer/dotfiles.git
+git clone git@github.com:/vhoyer/dotfiles.git
 cd dotfiles
 ```
 
-And run `make` on that directory:
+And run `make` on that directory and follow it's instructions:
 
 ```bash
 make
-
-make setup
 ```
 
 You may also choose what you want to setup manually, by calling:
@@ -87,13 +85,7 @@ You may also choose what you want to setup manually, by calling:
 make <insert here name of rule>
 ```
 
-Example, if you want to only install packages listed on `./packages/*.txt` files, you may:
-
-```
-make install-programs
-```
-
-Then if you only want to setup git:
+Example if you only want to setup git:
 
 ```bash
 make setup-git
@@ -112,13 +104,10 @@ I will not list what rules are present on the `Makefile` to lower the chances of
       (e.g.: google-chrome? 1=stable; 2=beta; etc)
 - [x] install nvim
   - [x] install gruvbox
-  - [x] install coc.nvim
-    - [ ] make CocInstall work by itself
   - [x] install neoranger
   - [x] install `stefandtw/quickfix-reflector.vim`
 - [x] install zsh
   - [x] install oh-my-zsh
-  - [ ] ask for reboot after finish make
 - [x] install i3
 - [x] install and use st
 - [x] install google-chrome
@@ -130,7 +119,6 @@ I will not list what rules are present on the `Makefile` to lower the chances of
   - [x] have an --help parameter
   - [x] have a undo option
   - [x] have the option to choose how much memory to allocate the swap
-  - [ ] have the option to change how much memory is allocated to be swap
 - [x] install redshift
 - [x] make `./home-files/.local/bin/commitizen`
     - [ ] have a way to automatically commit formated
