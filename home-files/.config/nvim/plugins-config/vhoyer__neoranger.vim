@@ -7,4 +7,7 @@ function! OpenRanger()
 		Ranger
 	endtry
 endfunction
-nnoremap <silent> <leader>n <esc>:call OpenRanger()<cr>
+
+if !has('win32')
+	nnoremap <silent> <leader>n <esc>:call OpenRanger()<cr>
+endif

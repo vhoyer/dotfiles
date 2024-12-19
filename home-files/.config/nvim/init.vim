@@ -1,12 +1,13 @@
-source ~/.config/nvim/keybindings.vim
-source ~/.config/nvim/vimconfigs.vim
-source ~/.config/nvim/autogroups.vim
-source ~/.config/nvim/plugins.vim
+execute 'source ' . fnamemodify(stdpath('config'), ':p') . 'keybindings.vim'
+execute 'source ' . fnamemodify(stdpath('config'), ':p') . 'vimconfigs.vim'
+execute 'source ' . fnamemodify(stdpath('config'), ':p') . 'autogroups.vim'
+execute 'source ' . fnamemodify(stdpath('config'), ':p') . 'plugins.vim'
 
-if filereadable(expand('~/.config/nvim/local.vim'))
-  source ~/.config/nvim/local.vim
+let localconfig = fnamemodify(stdpath('config'), ':p') . 'local.vim'
+if filereadable(localconfig)
+  execute 'source ' . localconfig
 endif
 
-if exists('g:neovide') && filereadable(expand('~/.config/nvim/local.vim'))
-	source ~/.config/nvim/neovide.vim
+if exists('g:neovide')
+	execute 'source ' . fnamemodify(stdpath('config'), ':p') . 'neovide.vim'
 endif
