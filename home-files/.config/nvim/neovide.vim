@@ -2,7 +2,7 @@
 
 let g:neovide_scale_factor = 0.75
 let g:neovide_underline_stroke_scale = 1.0
-let g:neovide_transparency = 0.9
+let g:neovide_transparency = 0.965
 
 let g:neovide_scroll_animation_length = 0.15
 

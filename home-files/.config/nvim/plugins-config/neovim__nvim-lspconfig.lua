@@ -72,6 +72,15 @@ lspconfig.tailwindcss.setup({
 	capabilities = capabilities,
 })
 
+lspconfig.gdscript.setup({
+	capabilities = capabilities,
+	cmd = { 'ncat.exe', '127.0.0.1', '6005' }
+})
+
+lspconfig.gdshader_lsp.setup({
+	capabilities = capabilities,
+})
+
 -- Global mappings.
 vim.keymap.set('n', ',R', ':LspRestart<CR>')
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
