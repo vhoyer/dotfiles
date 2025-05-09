@@ -116,7 +116,7 @@
 	ds = diff --staged
 	dword = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
 	dchar = diff --color-words='.'
-	f = fetch -p
+	f = fetch -p --all
 	fix = "!nvim `git diff --name-only --diff-filter=U`"
 	fuck = commit --amend
 	fuckno = commit --amend --no-edit
