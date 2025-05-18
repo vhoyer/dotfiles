@@ -29,7 +29,7 @@ flavor-wls-ubuntu:
 	echo 'setup-shared' > $(FILE_SETUP)
 
 install: $(shell cat ${FILE_MANAGER})
-setup: install $(shell cat ${FILE_FLAVOR})
+setup: install $(shell cat ${FILE_SETUP})
 
 #
 # Dependencies:
@@ -40,9 +40,9 @@ install-apt: apt npm fnm
 
 # apt install a very old nvim, so this makes up for it's shortcoming
 neovim:
-	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 	sudo rm -rf /opt/nvim
-	sudo tar -C /opt -xzf nvim-linux64.tar.gz
+	sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 
 fnm:
 	# installs fnm (Fast Node Manager)
@@ -125,6 +125,17 @@ dotlocal:
 
 test:
 	$${EDITOR-vim}
+
+node:
+	# Download and install fnm:
+	curl -o- https://fnm.vercel.app/install | bash
+	# Download and install Node.js:
+	fnm install 22
+	# Verify the Node.js version:
+	node -v # Should print "v22.15.1".
+	# Verify npm version:
+	npm -v # Should print "10.9.2".
+
 
 vim:
 	for x in .config/nvim nvim .vim .vimrc .wakatime.cfg; do rm -rf ${HOME}/$$x; done

@@ -95,7 +95,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/bin/bin:$HOME/.local/npm/bin"
-export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin/"
 
 # Preferred editor with fallback to default 'vim'
 if (which nvim > /dev/null 2>&1); then
