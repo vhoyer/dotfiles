@@ -135,3 +135,27 @@ set backupdir=~/tmp
 " on a ultra wide monitor with three vertical splits, 88 is the displayed
 " number of characters per window, and 120 is just the reasonable default
 set colorcolumn=88,120
+
+function! IsWSL() abort
+  if has('unix')
+    let os_version = readfile('/proc/version')[0]
+    return (os_version =~? 'microsoft') || !empty($WSL_DISTRO_NAME)
+  endif
+  return v:false
+endfunction
+
+if IsWSL()
+	" configure clipboard service
+	let g:clipboard = {
+		\   'name': 'WslClipboard',
+		\   'copy': {
+		\      '+': 'clip.exe',
+		\      '*': 'clip.exe',
+		\    },
+		\   'paste': {
+		\      '+': 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+		\      '*': 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+		\   },
+		\   'cache_enabled': 0,
+		\ }
+endif
