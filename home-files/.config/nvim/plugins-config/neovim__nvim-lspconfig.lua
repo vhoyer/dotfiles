@@ -72,8 +72,10 @@ lspconfig.tailwindcss.setup({
 })
 
 lspconfig.gdscript.setup({
+	name = 'Godot',
+	cmd = {'ncat.exe', '127.0.0.1', '6005'},
+	root_dir = vim.fs.dirname(vim.fs.find({ 'project.godot', '.git' }, { upward = true })[1]),
 	capabilities = capabilities,
-	cmd = { 'ncat.exe', '127.0.0.1', '6005' }
 })
 
 lspconfig.gdshader_lsp.setup({
