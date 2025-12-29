@@ -42,6 +42,13 @@ augroup ColorSchemeOverrides
 	autocmd ColorScheme * highlight link Operator GruvboxFg1
 augroup END
 
+if ! exists('g:neovide')
+	augroup TransparentBGOnTerm
+		autocmd!
+		autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+	augroup END
+endif
+
 augroup CursorLine
 	autocmd!
 	autocmd VimEnter * setlocal cursorline
