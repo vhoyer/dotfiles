@@ -51,9 +51,9 @@ lspconfig.vimls.setup({
 	capabilities = capabilities,
 })
 
-lspconfig.bashls.setup({
-	capabilities = capabilities,
-})
+-- lspconfig.bashls.setup({
+-- 	capabilities = capabilities,
+-- })
 
 lspconfig.dockerls.setup({
 	capabilities = capabilities,
