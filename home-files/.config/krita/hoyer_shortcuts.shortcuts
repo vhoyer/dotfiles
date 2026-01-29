@@ -1,0 +1,5 @@
+[Shortcuts]
+KisToolSelectContiguous=none
+KisToolSelectOutline=Ctrl+R
+KisToolSelectRectangular=Ctrl+Shift+R
+paste_as_reference=none
