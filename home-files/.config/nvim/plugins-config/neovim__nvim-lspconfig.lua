@@ -74,7 +74,6 @@ lspconfig.tailwindcss.setup({
 lspconfig.gdscript.setup({
 	name = 'Godot',
 	cmd = {'ncat.exe', '127.0.0.1', '6005'},
-	-- cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
 	root_dir = vim.fs.dirname(vim.fs.find({ 'project.godot', '.git' }, { upward = true })[1]),
 	capabilities = capabilities,
 })
@@ -84,7 +83,7 @@ lspconfig.gdshader_lsp.setup({
 })
 
 -- Global mappings.
-vim.keymap.set('n', ',R', ':LspRestart<CR>')
+vim.keymap.set('n', '<space>r', '<ESC>:LspRestart<CR>:e!<CR>')
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', ',e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[e', vim.diagnostic.goto_prev)
