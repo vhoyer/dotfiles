@@ -125,6 +125,7 @@
 	elog = "!gitelog() { git log $@ | gitmoji-log | bat --plain; }; gitelog"
 	pow = push origin HEAD -u
 	powf = push origin HEAD -u --force-with-lease
+	pt = push --tags
 	s = status
 	wp = rebase --continue
 	back = checkout HEAD~
