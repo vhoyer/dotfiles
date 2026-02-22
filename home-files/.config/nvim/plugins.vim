@@ -61,6 +61,7 @@ call s:PlugSetup(
 			\ ['williamboman/mason-lspconfig.nvim'],
 			\ ['neovim/nvim-lspconfig'],
 			\ )
+call s:PlugSetup(['mphe/vim-gdscript4'])
 call s:PlugSetup(['sheerun/vim-polyglot'])
 call s:PlugSetup(['simnalamburt/vim-mundo'])
 call s:PlugSetup(['stefandtw/quickfix-reflector.vim'])
