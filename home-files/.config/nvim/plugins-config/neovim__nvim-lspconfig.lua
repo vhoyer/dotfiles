@@ -82,7 +82,7 @@ vim.lsp.config('gdshader_lsp', {
 })
 
 -- Global mappings.
-vim.keymap.set('n', '<space>r', '<ESC>:LspRestart<CR>:e!<CR>')
+vim.keymap.set('n', '<space>r', '<ESC>:LspRestart<CR>:e!<CR>zz')
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', ',e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[e', vim.diagnostic.goto_prev)
