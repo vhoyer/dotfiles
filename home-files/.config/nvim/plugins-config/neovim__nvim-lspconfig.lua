@@ -2,13 +2,6 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 vim.lsp.config('eslint', {
 	capabilities = capabilities,
-	-- ---@diagnostic disable-next-line: unused-local
-	-- on_attach = function(client, bufnr)
-	-- 	vim.api.nvim_create_autocmd("BufWritePre", {
-	-- 		buffer = bufnr,
-	-- 		command = "EslintFixAll",
-	-- 	})
-	-- end,
 })
 
 vim.lsp.config('lua_ls', {
@@ -73,9 +66,11 @@ vim.lsp.config('tailwindcss', {
 vim.lsp.config('gdscript', {
 	name = 'Godot',
 	cmd = {'ncat.exe', '127.0.0.1', '6005'},
+	filetypes = {'gdscript', 'gdscript3'},
 	root_dir = vim.fs.dirname(vim.fs.find({ 'project.godot', '.git' }, { upward = true })[1]),
 	capabilities = capabilities,
 })
+vim.lsp.enable('gdscript')
 
 vim.lsp.config('gdshader_lsp', {
 	capabilities = capabilities,
