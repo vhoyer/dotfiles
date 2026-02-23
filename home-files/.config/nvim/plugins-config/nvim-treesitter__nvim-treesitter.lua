@@ -1,20 +1,12 @@
--- idk bro, this entire file seems to do absolutely nothing :D
-require('nvim-treesitter').setup({
-	ensure_installed = { 'gdscript', 'gdshader', 'godot_resource' },
-	highlight = {
-		enabled = true,
-	},
-})
-
+require('nvim-treesitter').setup({})
 
 local augroup = vim.api.nvim_create_augroup('TreeSitterFiletypeGroup', { clear = true })
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = {
-		'*.godot',
-		'*.gshader',
-		'*.tres',
-		'*.tscn',
+		'gdscript',
+		'gdshader',
+		'gdresource',
 	},
 	callback = function() vim.treesitter.start() end,
 	group = augroup,

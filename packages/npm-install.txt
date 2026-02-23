@@ -1,3 +1,3 @@
-firebase-tools
 gitmoji-cli
 gitmoji-log
+tree-sitter-cli
