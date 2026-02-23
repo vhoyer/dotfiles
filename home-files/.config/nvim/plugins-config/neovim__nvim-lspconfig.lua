@@ -64,13 +64,22 @@ vim.lsp.config('tailwindcss', {
 })
 
 vim.lsp.config('gdscript', {
-	name = 'Godot',
 	cmd = {'ncat.exe', '127.0.0.1', '6005'},
 	filetypes = {'gdscript', 'gdscript3'},
 	root_dir = vim.fs.dirname(vim.fs.find({ 'project.godot', '.git' }, { upward = true })[1]),
 	capabilities = capabilities,
 })
 vim.lsp.enable('gdscript')
+
+-- Keepalive ping to prevent Godot LSP from disconnecting due to inactivity
+local gdscript_ping_timer = vim.uv.new_timer()
+if gdscript_ping_timer then
+	gdscript_ping_timer:start(20000, 20000, vim.schedule_wrap(function()
+		for _, client in ipairs(vim.lsp.get_clients({ name = 'gdscript' })) do
+			client:request('workspace/symbol', { query = '' }, function() end)
+		end
+	end))
+end
 
 vim.lsp.config('gdshader_lsp', {
 	capabilities = capabilities,
