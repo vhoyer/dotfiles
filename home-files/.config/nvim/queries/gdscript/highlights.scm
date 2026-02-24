@@ -8,6 +8,10 @@
 
 (comment) @comment @spell
 
+(region_start) @comment
+(region_end) @comment
+(region_label) @comment @spell
+
 (string_name) @string
 
 (string) @string
