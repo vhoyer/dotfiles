@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd('FileType', {
 		'gdshader',
 		'gdresource',
 	},
-	callback = function() vim.treesitter.start() end,
+	callback = function() pcall(vim.treesitter.start) end,
 	group = augroup,
 	desc = 'Enable highlighting through neovim using treesitter'
 })
