@@ -88,6 +88,25 @@
 			gitmoji -c; \
 		fi; \
 		}; commitwithlocaltool"
+	# shorthand for push but also set the upstream AND disallow fixup! commits
+	push-origin-wow = "!pushoriginwow() { \
+		allow=0; \
+		other_args=''; \
+		for arg in \"$@\"; do \
+			if [ \"$arg\" = '--allow-fixups' ]; then \
+				allow=1; \
+			else \
+				other_args=\"$other_args $arg\"; \
+			fi; \
+		done; \
+		if git log HEAD --not --remotes --format=%s | grep -q '^fixup!'; then \
+			if [ $allow -eq 0 ]; then \
+				echo 'error: fixup! commits detected; pass --allow-fixups to push anyway'; \
+				return 1; \
+			fi; \
+		fi; \
+		git push origin HEAD -u $other_args; \
+		}; pushoriginwow"
 	#
 	# shorthands
 	#
@@ -100,6 +119,7 @@
 	ub = update-base
 	cd = interactive-change-branch
 	c = commit-with-local-tool
+	pow = push-origin-wow
 	#
 	# general
 	#
@@ -123,7 +143,6 @@
 	hist = log --graph --decorate --pretty=oneline --abbrev-commit --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
 	lop = log --decorate --pretty=oneline --abbrev-commit --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
 	elog = "!gitelog() { git log $@ | gitmoji-log | bat --plain; }; gitelog"
-	pow = push origin HEAD -u
 	powf = push origin HEAD -u --force-with-lease
 	pt = push --tags
 	s = status
