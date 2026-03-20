@@ -8,8 +8,6 @@
 
 (comment) @comment @spell
 
-(region_start) @comment
-(region_end) @comment
 (region_label) @comment @spell
 
 (string_name) @string
@@ -94,13 +92,13 @@
 ; But, should (source (variable_statement (name))) be @property, too? Since a
 ; script file is a class in gdscript.
 (class_definition
-  (class_body
+  (body
     (variable_statement
       (name) @property)))
 
 ; Same question but for methods?
 (class_definition
-  (class_body
+  (body
     (function_definition
       (name) @function.method)))
 

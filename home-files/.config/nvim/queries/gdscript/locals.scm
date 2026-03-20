@@ -77,21 +77,21 @@
   (#set! definition.type.scope "parent"))
 
 (class_definition
-  (class_body
+  (body
     (variable_statement
       (name) @local.definition.field)))
 
 
 
 (class_definition
-  (class_body
+  (body
     (signal_statement
       (name) @local.definition.field)))
 
 ; Although a script is also a class, let's only define functions in an inner class as
 ; methods.
 ((class_definition
-  (class_body
+  (body
     (function_definition
       (name) @local.definition.method)))
   (#set! definition.method.scope "parent"))

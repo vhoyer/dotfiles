@@ -64,7 +64,9 @@ vim.lsp.config('tailwindcss', {
 })
 
 vim.lsp.config('gdscript', {
-	cmd = {'ncat.exe', '127.0.0.1', '6005'},
+	cmd = vim.fn.has('wsl') == 1
+		and {'ncat.exe', '127.0.0.1', '6005'}
+		or vim.lsp.rpc.connect('127.0.0.1', 6005),
 	filetypes = {'gdscript', 'gdscript3'},
 	root_dir = vim.fs.dirname(vim.fs.find({ 'project.godot', '.git' }, { upward = true })[1]),
 	capabilities = capabilities,
