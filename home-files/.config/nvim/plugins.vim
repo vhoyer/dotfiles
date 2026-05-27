@@ -26,10 +26,16 @@ endfunction
 " plugins saved to {stdpath('data').'/plugged'='~/.local/share/nvim/plugged'} by default
 call plug#begin()
 
+" https://github.com/romus204/tree-sitter-manager.nvim
+" seems like a good replacement for 'nvim-treesitter/nvim-treesitter', since
+" it was archived, but it supposedly only supports nvim>=0.12 and I'm still
+" using 0.11.1 mainly, so let's just leave this in the back pocket for now
+" That said, when time does come to update, it is possible that this
+" functionality becomes built-in, so do your homework before updating
 call s:PlugSetup(
 			\ ['nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}],
-			\ ['nvim-treesitter/nvim-treesitter-context'],
 			\ )
+call s:PlugSetup(['nvim-treesitter/nvim-treesitter-context'])
 call s:PlugSetup(['airblade/vim-gitgutter'])
 call s:PlugSetup(['ap/vim-css-color'])
 call s:PlugSetup(['editorconfig/editorconfig-vim'])
