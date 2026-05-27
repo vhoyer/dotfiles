@@ -92,13 +92,13 @@
 ; But, should (source (variable_statement (name))) be @property, too? Since a
 ; script file is a class in gdscript.
 (class_definition
-  (body
+  (class_body
     (variable_statement
       (name) @property)))
 
 ; Same question but for methods?
 (class_definition
-  (body
+  (class_body
     (function_definition
       (name) @function.method)))
 
