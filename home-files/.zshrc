@@ -181,3 +181,7 @@ fi
 # godot version manager gdvm.io
 export PATH="/home/vhoyer/.gdvm/bin/current_godot:/home/vhoyer/.gdvm/bin:$PATH"
 command -v gdvm >/dev/null 2>&1 && command -v compdef >/dev/null 2>&1 && eval "$(gdvm completions zsh)"
+
+
+# opencode
+export PATH=/home/vhoyer/.opencode/bin:$PATH
