@@ -82,7 +82,7 @@ call s:PlugSetup(
 call s:PlugSetup(['tveskag/nvim-blame-line'])
 call s:PlugSetup(['unblevable/quick-scope'])
 call s:PlugSetup(['vhoyer/neoranger', { 'branch': 'patch-1' }]) " Plug 'Lokaltog/neoranger'
-call s:PlugSetup(['vhoyer/vim-vue', { 'branch': 'add-support-for-gridsome-graphql' }]) " Plug 'posva/vim-vue'
+call s:PlugSetup(['vhoyer/vim-vue']) " Plug 'posva/vim-vue'
 call s:PlugSetup(['vim-airline/vim-airline'])
 call s:PlugSetup(['wakatime/vim-wakatime'])
 call s:PlugSetup(['stevearc/oil.nvim'])
