@@ -65,7 +65,7 @@ npm:
 # Configurations:
 #
 
-setup-shared: oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping vh-cli
+setup-shared: oh-my-zsh dotconfig dotlocal vim git fzf folder-mapping vh-cli gdvm
 
 system-config:
 	sudo xdg-settings set default-web-browser google-chrome.desktop
@@ -208,3 +208,7 @@ vh-cli:
 	git clone git@github.com:vhoyer/vh-cli.git ${HOME}/src/vh-cli
 	cd ${HOME}/src/vh-cli; make install
 	cd ${HOME}/src/vh-cli; make install-oh-my-zsh-tab-completion
+
+# godot version manager
+gdvm:
+	curl -sSL https://gdvm.io/install.sh | bash
