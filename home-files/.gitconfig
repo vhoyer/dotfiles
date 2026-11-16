@@ -107,6 +107,34 @@
 		fi; \
 		git push origin HEAD -u $other_args; \
 		}; pushoriginwow"
+	agent-review = "!agentreviewofworktree() { \
+		AGENT_WORKTREE_PATH=$(git worktree list --porcelain | awk '/^worktree / {wt=$2} /^branch refs\\/heads\\/agent$/ {print wt}'); \
+		CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD); \
+		if [ -z \"$AGENT_WORKTREE_PATH\" ]; then \
+			printf '%s\\n' \"Error: 'agent' worktree not found. Create a worktree and checkout a branch named 'agent' on it.\" >&2; \
+			exit 1; \
+		fi; \
+		if [ -n \"$(git -C $AGENT_WORKTREE_PATH status --porcelain)\" ]; then \
+			printf '%s\\n' \"Error: 'agent' worktree has unstaged changes.\" >&2; \
+			exit 1; \
+		fi; \
+		if ! git -C $AGENT_WORKTREE_PATH rebase $CURRENT_BRANCH; then \
+			printf '%s\\n' \"Error: 'agent' probably has a conflict.\" >&2; \
+			exit 1; \
+		fi; \
+		git diff $CURRENT_BRANCH agent; \
+		printf '%s' \"Merge agent's work? [y/N]: \"; \
+		read -r ANSWER; \
+		case \"$ANSWER\" in \
+			[yY]) \
+				git rebase -i agent; \
+			;; \
+			*) \
+				printf '%s\\n' \"Aborted.\"; \
+				exit 1; \
+			;; \
+		esac;\
+	}; agentreviewofworktree"
 	#
 	# shorthands
 	#
@@ -120,6 +148,7 @@
 	cd = interactive-change-branch
 	c = commit-with-local-tool
 	pow = push-origin-wow
+	ar = agent-review
 	#
 	# general
 	#
